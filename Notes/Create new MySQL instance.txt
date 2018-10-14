@@ -1,0 +1,57 @@
+Create a new MySQL database instance
+
+1. Install Mysql server on that machine
+2. Find your MySQL data location. It's likely in a hidden folder 
+	under C:\ProgramData\MySQL\MySQL Server vX.X\...
+3. Create 2-3 folders...say data1, data2 etc inside your data location...
+	they will hold the data for respective tables of respective 
+	installation.
+4. Create 3 files my1.ini, my2.ini, my3.ini inside your data location.
+5. Find out my.ini of your original Mysql server installation. And copy
+	the content into all 3 ini files.
+6. Modify following configurations in all 3 ini files according to 
+	your convenience. Here is example..  There may also be a default 
+	.ini file you can copy and alter.  Just be sure to give the new one 
+	a different name and port number
+	[client]
+	# password = your_password
+	port = 3307
+	enable-named-pipe
+	socket = "C:\xampp\mysql\mypipe1"
+	[mysqld]
+	port= 3307
+	socket = "C:\xampp\mysql\mypipe1"
+	datadir="C:\ProgramData\MySQL\MYSQL Server vX.X\data1"
+	pid_file="mysql.pid1"
+	log_error="mysql_error.log1"
+	log-bin=master1-bin
+	server-id = 1
+	innodb_data_home_dir = "C:\ProgramData\MySQL\MYSQL Server vX.X\data1"
+	innodb_log_group_home_dir = "C:\ProgramData\MySQL\MYSQL Server vX.X\data1"
+
+	Each ini file will contain respective unique entry for port, 
+	datadir, server-id, socket etc..  socket may be optional in Windows.
+7. In your MySQL installation folder, probably 
+	C:\Program Files\MySQL\MySQL Server vX.X\, 
+	find \mysql\data\mysql and copy it into all of your data locations
+	data1, data2 and data3.
+8. Go to comand prompt and run these commands
+	MySQLInstallPath\mysql\bin\mysqld --install mysqld1 --defaults-file="yourDataLocation\my1.ini"
+	MySQLInstallPath\mysql\bin\mysqld --install mysqld1 --defaults-file="yourDataLocation\my2.ini"
+	MySQLInstallPath\mysql\bin\mysqld --install mysqld1 --defaults-file="yourDataLocation\my3.ini"
+
+9. Start your respective service ie mysqld1,mysqld2,mysqld3 
+	[these are all different instances of mysql].
+	If the services fail to start check the Windows Event viewer for
+	the exact errors.
+10. Login to individual mysql server using following command
+	mysql --port=3306 --host=127.0.0.1 --user=root --password
+	mysql --port=3307 --host=127.0.0.1 --user=root --password
+	mysql --port=3308 --host=127.0.0.1 --user=root --password
+	
+If you're using MySQL Workbench and get the error 
+	"Table 'performance_schema.session_variables' doesn't exist" log
+	into the respective database and type the command 
+	mysql> set @@global.show_compatibility_56=ON;
+	
+	https://stackoverflow.com/questions/31967527/table-performance-schema-session-variables-doesnt-exist

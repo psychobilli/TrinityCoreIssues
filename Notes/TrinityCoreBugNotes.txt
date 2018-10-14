@@ -1,0 +1,347 @@
+--VERIFIED QUERIES
+-- find quest items by name or container
+select it.entry as itemId
+	, it.name as ItemName
+	, got.name as ContainerName
+    , go.position_x
+    , go.position_y
+    , go.position_z
+    , go.spawntimesecs
+from world.item_template it
+  join world.gameobject_loot_template glt on glt.item = it.entry
+  join world.gameobject_questitem gqi on gqi.itemId = it.entry
+  join world.gameobject go on go.id = gqi.gameObjectEntry
+  join world.gameobject_template got on got.entry = go.id
+-- where it.name like '%Captain''s Documents%';
+where got.name like 'Gan''jo''s%';
+
+-- find creature spawn location, time by name
+select ct.name
+	, c.zoneId
+	, c.position_x
+    , c.position_y
+    , c.position_z
+    , c.spawntimesecs
+from world.creature_template ct
+  join world.creature c on c.id = ct.entry
+where name like 'Elder Saltwater%';
+
+-- view creature loot table
+select ct.name
+	, i.name
+	, clt.chance
+from world.creature_template ct
+  join world.creature_loot_template clt on clt.entry = ct.entry
+  join world.item_template i on i.entry = clt.item
+where ct.name like 'Monstrous Kaliri%';
+
+-- Find a gameobject by zone.  Map must be found from Map.dbc.m_Id
+select *
+from world.gameobject go
+  join world.gameobject_template got on got.entry = go.id
+where go.map = 429
+  and got.name like '%%';
+  
+-- Find approximate character item level
+select sub.guid
+	, c.name
+	, avg(iLevel)
+from (
+	select ci.guid as guid
+		, it.inventoryType as type
+		, max(it.itemLevel) as iLevel
+	from characters.character_inventory ci
+	  join characters.item_instance ii on ii.guid = ci.item
+	  join world.item_template it on it.entry = ii.itementry
+	where ci.guid in (1,2,3,4)
+	  and it.inventoryType between 1 and 17
+	  and it.inventoryType <> 4
+	  and (slot < 18 and ci.bag = 0
+		or ci.bag in (18, 19, 20, 21, 22))
+	  and it.inventoryType not in (/*shirt*/4,/*one-hand*/13,14,21,22,23,/*two-hand*/17,/*ranged*/15,25,26,28)
+	group by ci.guid
+		, it.inventoryType
+	union
+	select ci.guid as guid
+		, 13 as type
+		, max(it.itemLevel)
+	from characters.character_inventory ci
+	  join characters.item_instance ii on ii.guid = ci.item
+	  join world.item_template it on it.entry = ii.itementry
+	where it.inventoryType between 1 and 28
+	  and (slot < 18 and ci.bag = 0
+		or ci.bag in (18, 19, 20, 21, 22))
+	  and it.inventoryType in (/*one-hand*/13,14,21,22,23,/*two-hand*/17)
+	group by ci.guid
+		, it.inventoryType
+	union
+	select ci.guid as guid
+		, 15 as type
+		, max(it.itemLevel)
+	from characters.character_inventory ci
+	  join characters.item_instance ii on ii.guid = ci.item
+	  join world.item_template it on it.entry = ii.itementry
+	where it.inventoryType between 1 and 28
+	  and (slot < 18 and ci.bag = 0
+		or ci.bag in (18, 19, 20, 21, 22))
+	  and it.inventoryType in (/*ranged*/15,25,26,28)
+	group by ci.guid
+		, it.inventoryType
+	) sub
+  join characters.characters c on c.guid = sub.guid
+-- where c.guid in (1,2,3,4)
+group by sub.guid
+	, c.name;
+
+-- LONG RESPAWNS
+Wavefront Medallion, 18 at 15 minute respawn.
+Fifth Mosh'aru Tablet, 2 minute respawn
+Sixth Mosh'aru Tablet, 2 minute respawn
+Bijou's Belongings in Bijou's Belongings, 2 min
+Darkstone Tablet, 2 minute respawn
+Emerald Dreamcatcher in Tallonkai's Dresser, 5 min
+Black Feather Quill in Chest of the Black Feather, 2 min
+Rune of Nesting in Chest of Nesting, 2 min
+Sapphire of Sky in Chest of the Sky, 2 min
+Raven Claw Talisman in Chest of the Raven Claw, 2 min
+Dragon Bone contains Dragon Bone, 10 min, 2 min would be better.
+Sack of Supplies in Stolen Supply Sack 15 min, 2 min would be better.
+A Faded Journal Page in Marshal Haggard's Chest, 3 min
+Velinde's Journal in Velinde's Locker, 5 min
+Wizards' Reagents in Caravan Chest, 10 min
+Sack of Barley in Sack of Barley, 10 min
+Draenethyst Crystal in Draenethyst Crystals, 10 min
+Rubbing: Rune of Beth'Amara in Rune of Beth'Amara, 3 min
+Rubbing: Rune of Jin'yael in Rune of Jin'yael, 3 min
+Rubbing: Rune of Markri in Rune of Markri, 3 min
+Rubbing: Rune of Sael'hai in Rune of Sael'hai, 3 min
+First Relic Fragment in Highborne Relic Fragment, 5 min
+Second Relic Fragment in Highborne Relic Fragment, 5 min
+Third Relic Fragment in Highborne Relic Fragment, 5 min
+Fourth Relic Fragment in Highborne Relic Fragment, 5 min
+Sacred Highborne Writings in Sacred Highborne Writings, 3 min
+Doomrigger's Clasp in Doomrigger's Coffer, 2 min
+Thunderlord Clan Drum in Thunderlord Clan Drum, 3 min
+Thunderlord Clan Arrow in Thunderlord Clan Arrow, 3 min
+Thunderlord Clan Tablet in Thunderlord Clan Tablet, 3 min
+Underspore Frond in The Underspore, 5 min
+T'chali's Hookah in T'chali's Hookah, 3 min
+Grulloc's Sack in Grulloc's Sack, 3 min
+Diagnostic Results in Diagnostic Equipment, 3 min
+Krasus's Compendium - Chapter 1	in Krasus's Compendium - Chapter 1, 3 min
+Krasus's Compendium - Chapter 2	in Krasus's Compendium - Chapter 2, 3 min
+Krasus's Compendium - Chapter 3	in Krasus's Compendium - Chapter 3, 3 min
+Naberius's Phylactery in Suspicious Outhouse, 3 min
+Ethereum Data Cell in Ethereum Data Cell, 3 min
+Teleporter Power Pack in Teleporter Power Pack, 1 min
+Fel Reaver Armor Plate in  Fel Reaver Armor Plating, 3 min
+Fel Reaver Power Core in Fel Reaver Power Core, 3 min
+Rod of Lianthe in Lianthe's Strongbox, 3 min
+The Art of Fel Reaver Maintenance in The Doctor's Strongbox, 3 min
+Rotten Arakkoa Egg in Rotten Arakkoa Egg, 3 min
+Harvested Blight Crystal in Harvested Blight Crystal, 5 spawns 2 min
+Colossus Defense Specs in Colossus Defense Specs, 5 min
+Spool of Thread in Spool of Thread, 2 min
+The Doctor's Cleaver in The Doctor's Cleaver, 2 min
+
+
+-- NOT ENOUGH SPAWNS
+-- Salt Flats Scavenger
+-- x = -5881.809570, y = -4333.811035, z = -58.750046, o = 2.027706
+-- x = -5911.588379, y = -4340.400879, z = -58.750046, o = 1.058412
+-- x = -5907.132813, y = -4295.205078, z = -58.750046, o = 1.098467
+-- x = -5905.008301, y = -4267.068848, z = -58.750046, o = 5.602725
+-- x = -5887.314453, y = -4256.914063, z = -58.750046, o = 5.015247
+-- x = -5749.185547, y = -3519.044678, z = -58.519135, o = 4.920621
+
+
+-- NOT BLIZZ LIKE
+DK START - Eye of Acherus moves far too slowly.  Maybe.
+BRD - Cyrus Therepentous does not offer 4024 - A Taste of Flame
+	Ring of Law Event Fails
+	Shadowforge Gate resets
+UBRS - Rend event does not spawn waves correctly.
+	Nefarion does not flee.
+	Doors do not open.
+	Father Flame event does not work.
+	Drakkisath death does not open doors.
+Scholomance - Dawn's Gamit event doesn't work.
+Statholme - Fras Siabi can't be summoned.
+Plaguelands - 5944 - In Dreams escort does not work.
+Dire Maul - 
+	Pylons do not shatter correctly.
+	Immol'thar is not correctly accessible.
+	Prince does not move or aggro after Immol'thar death.
+	Chest for Unfinished Gordok Business does not become lootable.
+	Knot is in the wrong spot.
+	x = 581.066040, y = 523.055725, z = -25.403263, o = 2.760699
+Nagrand - Diplomatic Measures does not correctly open 
+	9927 - Ruthless Cunning and 9928 - Armaments for Deceoptsion
+	10641 - Against the Legion incorrectly offered after 
+		10011 - Forge Camp: Annihilated
+	10668 - Against the Illidari and 10669 - Against All Odds
+		are not correctly offered with 10641 - Against the Legion
+		after 10689 - Altruis is completed.
+Blade's Edge Mountains - 10525 - Vision GuideThe Final Artifact 
+	vision drops you at the artifact.  It should return you to 
+	Thunderlord Stronghold.
+	10859 - Gather the Orbs - Totem is hostile and attacks player.
+	10607 - Whispers of the Raven God - Totems are slow or non-functioning.
+	10720 - The Smallest Creatures - Marmots are not controlled.
+		Kegs cannot be poisoned.
+	10742 - Showdown - Goc despawns when the fight starts.
+	10806 - Showdown - Goc despawns when the fight starts.
+	10911 - Fire At Will! - Cannons do not fire on gates.
+	11010 - Bombing Run - cannot be acquired.  Druid version can.
+	11058 - An Apexis Relic - cannot be completed.  Gossip does not work.
+	11059 - Guardian of the Monument - same as 11058
+	10518 - Planting the Banner - Mobs don't climb tower.
+	10584 - Picking Up Some Power Converters - Power converters don't despawns
+		on use.
+	10594 - Gauging the Resonant Frequency - Objects do not work properly.
+	10674 - Tripping the Light Fantastic - Cannot loot traps correctly.
+		Fixed in Mar 2018 update.
+	10710, 10716, 10557, 10711, 10712 - Test Flight:* - Launch pad sends
+		player in random directions.
+Netherstorm - 10203 - Invaluable Asset Zapping - Can't loot objects.
+	10248 - You, Robot - Pet doesn't spawn properly, Negatron doesn't
+		attack.
+	10240 - Building a Perimiter - Objectives are not flagged for all
+		party members and they stealth despawn after using the rune.
+	10269 - Triangulation Point One - Item does not point you to the
+		point.  Point does not have a visible marker.
+	10406 - Delivering the Message - quest does not complete correctly.
+	10439 - Dimensius the All-Devouring - Gossip for Captain Saeed is
+		not available.  Cannot attack Dimensius.
+Shadowmoon Valley - 10613 - The Fel and the Furious - Cannot control
+		fel reavers.
+	10612 - The Fel and the Furious - Alliance cannot control
+		fel reavers.
+	10672 - Frankly, It Makes No Sense - Scorpions reset after 5 secs.
+	10634 - Divination: Gorefiend's Armor and 10635 - Divination: Gorefiend's Cloak
+		are not offered with 10636 - Divination: Gorefiend's Truncheon
+	10639, 10645 - Teron Gorefiend, I am... - Target NPC despawns too quickly,
+		cannot leave Teron vehicle.
+	10451 - Escape from Coilskar Cistern - Quest Giver cannot be freed,
+		quest is unobtainable.
+	10540 - The Cipher of Damnation - Ar'tor's Charge - Spirit Guide
+		does not correctly summon named mob.
+	10588 - The Cipher of Damnation - Cyrukh the Firelord does not aggro.
+Shattered Halls - Grand Warlock Nethercurse does not correctly aggro.
+	Numerous spawns are missing.
+	Trial of the Naaru: Mercy (10884) - Executioner does not drop quest item.
+The Black Morass - Rifts spawn on an erratic schedule.
+	Portals to not remain open, whelps and trash do not spawn.
+Shattrath - 11880 - The Multiphase Survey - Not correctly offered to Horde.
+Karazhan - Chess Event does not work.
+Zul'Aman - Boss Chests cannot be opened.
+	Lynx Boss is not affected by VAS Autobalance
+	Zul'jin encounter is extremely buggy.
+Serpentshrine Cavern: The Lurker doesn’t engage in combat.
+	The Lurker’s spawn pool despawns and respawns after every fishing cast.
+	Lady Vashj drops aggro too easily.
+Tempest Keep: Quest to kill A’lar is completed on accept.
+	Kael’thas targets players prematurely – he should stay in one place until phase 4.
+	Kael’thas may evade on entering phase 4.
+Hyjal - 10467 Defender's Vow is always available.
+	Incoming waves move too slowly.  They should run.
+	Archimond evades rather than entering the death sequence.
+Black Temple - 100985 A Distraction for Akama, cannot turn in quest. Sometimes.
+	Flames of Azinoth do insane damage.
+Sunwell Plateau - Kalecgos evades when phasing, unable to kill him.
+	Killing Brutallus does not drop the fire barrier, gobject 50442, 
+		because the Felmyst Encounter doesn't begin.
+Zul'Drak item 41390 - Stefan's Horn - Stephan spawns but does not land.
+	12673 - It Rolls Downhill - Controlled Geists do not path to crystals.
+	12686 - Zero Tolerance - Controlled pet will not attacked named.
+	12676 - Sabotage - Destroying wagons does not yield credit.
+	12690 - Fuel for the Fire - Controlled pet will not attack. Pet's%
+		stun affects everything in range, including the player and pet.
+	12710 - Disclosure - Quest does not yield credit.
+	12713 - Betrayal - Pet cannot auto attack, can use spells.  Encounter
+		doesn't feel right.
+Sholazar Basin - 12805 - Salvaging Life's Strength - Quest feels out of
+		sequence.  Should probably be offered with 12612 - The Fallen Pillar
+Storm Peaks - 13005 - The Earthen Oath - Mobs do not correctly yield
+		credit.
+	12980 - The Armor's Secrets - Attendant Tock paths northward, through
+		walls after interaction.
+	13007 - The Iron Colossus - Cannot mount tamed Jormungar
+	13274 - The Core's Keeper - Quest item is not group lootable.
+Icecrown - 13216 - Battle of Valhalas: The Return of Sigrid Iceborn -
+		unable to attacked named mob.
+	13136 - Jagged Shards - Unable to start quest when item drops, later
+		completion is not possible.  The entire questline is incorrectly
+		ordered.
+	13288 - That's Abominable - Abom wouldn't kill mobs. Worked for Horde.
+	13398 - Where Dragons Fell - Should be offered with 13397 - Sindragosa's Fall
+	13359 - Where Dragons Fell - Should be offered with 13397 - Sindragosa's Fall
+	13400 - The Hunter and the Prince - Bloodstained Stone does not spawn.
+	13361 - The Hunter and the Prince - Stone spawns, but parry doesn't work.
+The Nexus - Missing spawns in frozen mobs hall.
+	Crystalline Flayers don't aggro
+	Anomolous does not spawn portals correctly.
+	Dryads and Trents have no waypoints.
+	Intense Cold does not register correctly.
+Azjol Nerub - First and Second bosses both reset at random.
+Drak'Tharon - Oh Novos achievement doesn't proc.
+	Better of Dread achievement doesn't tally correctly.
+Violet Hold - Mobs do not yield dungeon rep.
+Gundrak - Spitting Cobra does not give rep.
+Halls of Stone - Tribunal does not correctly stop attacking at event end.
+Utgarde Pinnacle - Skadi the Ruthless does not dismount correctly.
+Culling of Stratholme - Unplayable.
+Halls of Reflection - Escape Arthas event doesn't work correctly 
+	unless you take your time in clearing the trash.
+Argent Tournament - Valiant and Champion jousting tend to evade bug.
+	Boneguard Footmen do not get Trampled
+	Chillmaw drops his adds late or not at all.
+	Kvaldir on boats don't respawn properly. Disproportionate mob types.
+	Get Kraken doesn't register hits or grant tooth on death.
+Eye of Eternity - Malygos phase 3 does not start correctly.
+
+-- COULD BE RESTORED
+Alliance Onyxia quest line.
+
+-- VAS Autobalance Bugs
+Sometimes stats don't change until server restart.
+Violet Hold - Boss stats are not modified, except Cyanogosa.
+Brann Bronzebeard in Halls of Stone - entry 28070 - doesn't have enough health.
+Grobbulus in Naxxramas isn't affected by VAS Autobalance
+
+*** REQUIRES TESTING ***
+
+
+*** FIXED ***
+-- LONG RESPAWNS
+'Metal Coffer',
+'Torn Pilgrim''s Pack',
+'Ango''rosh Attack Plans',
+'Eye of Veil Shienor',
+'Eye of Veil Reskk',
+'Crashed Plague Sprayer',
+'Krom Stoutarm''s Chest',
+'Ancient Chest',
+'Conspicuous Urn',
+'Shadowforge Cache',
+'Fei Fei''s Cache',
+'Reagent Pouch',
+'Dragonflayer Battle Plans',
+'Harpoon Operation Manual',
+'Sacred Artifact',
+'Building Tools',
+'Apothecary''s Package',
+'Fields, Factories and Workshops',
+'Kul Tiras Wine',
+'Crafty''s Tools',
+'Scrying Orb',
+'Onslaught Map',
+'Fordragon''s Shield',
+'Mistwhisper Treasure',
+'Warsong Axe Shipment',
+'Ancient Brazier',
+'Document Chest #1',
+'Document Chest #2',
+'Document Chest #3'
+Core Fragment, 10 minute respawn
+Heart of the Mountain, 120 minute respawn

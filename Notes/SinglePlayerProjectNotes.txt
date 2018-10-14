@@ -1,0 +1,158 @@
+-- LONG RESPAWNS
+-- Krom Soutarm's Treasure, long respawn.
+-- Tablet of Ryun'eh
+-- shattered necklace topaz has a long respawn
+-- shadowforge cache containing shattered necklace ruby respawn
+-- spirit of silverpine charts long respawn
+-- spirit of silverpine log is just fine
+-- tablet of will long respawn
+-- Mysteries of the Light 5 minute respawn
+-- Fei Fei's Cache, 2 minute respawn
+-- Regent Pouch 5 min
+-- Dragonflayer Battle Plans 5 min
+-- Harpoon Operation Manual 5 min
+-- Sacred Artifact 3 min
+-- Building Tools 5 min
+-- Apothecary's Package 5 min
+-- Iron Rune Carving Tools
+-- Amani Vase 5 min
+-- Eagle Figurine 5 min
+-- Hawthorn's Anti-Venom in First Aid Supplies 5 min
+-- Fields, Factories and Workshops 5 min
+-- Wine Crate contains Kul Tiras Wine 5 min
+-- Crafty's Tools 3 min
+-- Scrying Orb 3 min
+-- Onslaught Map 5 min
+-- Foredragon's Shield
+-- Drakkari Tablets
+-- Ganjo's Chest 5 min
+-- Sacred Drakkari Offering 5 min
+-- Raised Mud contains Vic's Keys
+-- Mistwhisper Treasure 5 min
+-- Burlap-Wrapped Note 3 min
+-- Antheol's Elemental Grimoire 3 min
+-- Wavefront Medallion 15 min (there's a lot)
+-- Rathis Tomber's Supplies 15 min
+-- Night Elf Plans: An'daroth 15 min
+-- Night Elf Plans: An'owyn 15 min
+-- Night Elf Plans: An'daroth 3 min (dup?)
+-- Night Elf Plans: Scrying on the Sin'dorei 3 min
+-- Worn Chest contains Stone of Flame 15 min
+-- Dented Chest contains Stone of Light 5 min
+-- Warsong Axe Shipment 15 min
+-- Ancient Brazier contains Cloven Hoof 5 min
+-- Document Chest #1 contains Secret Note #1 3 min
+-- Document Chest #2 contains Secret Note #2 3 min
+-- Document Chest #3 contains Secret Note #3 3 min
+-- Cozzle's Footlocker contains Fuel Regulator Blueprints 15 min
+-- Captain's Footlocker contains Captain's Documents 15 min
+
+
+-- INSUFFICIENT SPAWNS
+-- slain auchenai warrior
+-- slain sha'tar vindicator
+-- not enough Jormungar tunnelers
+-- 7213.717285, -2048.229980, 769.316409, 3.026795
+-- 7186.907227, -2032.279175, 765.162170, 4.911751
+-- 7233.691406, -2083.996826, 764.046387, .861129
+-- 7290.229980, -2026.211548, 771.945557, 5.422723
+-- not a lot of indurium ore veins
+-- not enough Stormforged Invaders for Unwelcome Guests
+-- not enough Silithid Invaders for The Swarm Grows pt 3
+
+
+-- LONG MOB RESPAWNS
+-- Apothecary Enith 10 min
+-- Apprentice Varnis 5 min
+-- Ranger Vedoran 5 min
+
+-- DROPPED OBJECTS DESPAWN ON LOOT
+-- Sorlof's Booty should be lootable by more than one person
+-- Salrand's Broken Key should be lootable by more than one person
+-- Kaw's War Halberd should be lootable by more than one person
+-- Slim Pickings Sample of Rockflesh looted from Ravaged Crystalline Ice Giant loots for all.
+-- Treasure of Kutube'sa should be lootable by all. *Maybe not
+-- Treasure of Chulo the Mad should be lootable by all. *Maybe not
+-- Treasure of Gawanil should be lootable by all. *Maybe not
+-- Araj's Phylactery Shard not lootable by all
+-- Thel'zan's Phylactery not lootable by all
+-- Thunderbrew's Jungle Punch
+
+
+-- BROKEN QUESTS
+-- Springing the Trap does not work.
+-- cages in Borean Tundra (which trap Winterfin Tadpoles) need a shorter spawntime.
+-- Escape from Winterfin Caverns does not yeild group credit.
+-- We Strike! gives group credit, but that's an escort event.
+-- Put Them to Rest does not.
+-- I Sense a Disturance does not work correctly.
+-- Argent Guard Thaelrid is hostile to Horde
+-- Defeat at the Ring not working
+-- Drop It then Rock It! broken
+-- It Goes to 11... broken
+-- Let's Go Surfing Now broken
+-- We Call Him Steelfeather
+-- Scouting the Sinkholes broken
+-- Hah... You're Not So Big Now! kinda broken
+-- Durar does not drop Durar's Power Cell
+-- Post-partum Agression does not flag the kill
+-- Forced Hand does not set At War with Frenzyheart
+-- A Delicate Touch broken
+-- The Drakkensryd does not allow melee to attack
+-- Veranus Lured should provide group credit
+
+
+-- TOO MANY SPAWNS
+-- Anub'ar Slayer, Rabid Grizzly and Blighted Elk appear to have duplicated spawns
+-- Anub'ar Underlord has duplicated spawns
+-- Anub'ar Ambusher has duplicated spawns
+
+
+-- SUSPECT LOOT TABLES
+-- Nifflem Forfather
+-- Restless Frostborn
+-- Brittle Revenant
+-- Seething Revenant
+-- Ravenous Jormungar
+
+-- NOT BLIZZ-LIKE
+-- Atal'ai Deathwalker Spirit is too fast
+-- Rescue from Town Square does not yeild group credit
+-- Zul'Drak Rats don't despawn after looting if you're mounted
+-- After Foundation for Revenge some trolls become unkillable.
+-- The Earthen Oath does not yeild group credit
+-- Voidwalker Minion for Burning Blade Apprentice has way too much hp.
+
+
+*** REQUIRES TESTING ***
+
+
+*** FIXED ***
+-- LONG RESPAWNS
+-- metal coffer contains sha'naar key
+-- torn pilgrim's pack contains torn pilgrim's pack
+-- ikeyen's belongings respawned in 10 - 20 sec
+-- ango'rosh attack plans about 1.5 - 3 minutes
+-- eye of veil shienor 3 minutes
+-- eye of veil resk 3 minutes
+-- sealed box 3 minutes
+-- Fengir's Clue in Mound of Debris 
+-- Rodin's Clue
+-- Isuldof's Clue
+-- Windan's Clue
+-- The Frozen Heart of Isuldof
+-- Gurgleboggle's Bauble, 5 minute respawn
+-- Burblegobble's Bauble, 5 minute respawn
+-- Scarlet Onslaught Daily Orders: Barracks, 5 minute respawn
+-- Scarlet Onslaught Daily Orders: Abbey, 5 minute respawn
+-- Scarlet Onslaught Daily Orders: Beach, 15 minute respawn
+-- Diary of High General Abbendis, 5 minute respawn
+-- Ruby Lilac, 5 minute respawn
+-- Crashed plauge sprayer 5 minute respawn.
+-- Sparksocket's Tools, 5 minute respawn
+-- Transporter Power Cell, 5 minute respawn.
+
+
+-- INSUFFICIENT SPAWNS
+-- 5 Vengeful Draenei required for quest
+-- not enough Brittle Revenants

@@ -1,0 +1,46 @@
+BEGIN
+    
+	account
+	account_access
+	realmCharacters
+	account_data
+	account_tutorial
+	
+	characters
+	character_account_data
+	character_achievement
+	character_achievement_progress
+	character_action
+	character_battleground_data
+	character_glyphs
+	character_homebind
+	character_queststatus
+	character_queststatus_daily
+	character_queststatus_monthly
+	character_queststatus_rewarded
+	character_queststatus_seasonal
+	character_queststatus_weekly
+	character_reputation
+	character_skills
+	character_social
+	character_spell
+	character_spell_cooldown
+	character_talent
+	mail
+	character_pet
+	character_pet_declinedname
+	pet_spell
+	guild
+	guild_member
+	guild_bank_tab
+	guild_bank_eventlog
+	guild_bank_right
+	guild_eventlog
+	guild_rank
+	character_inventory
+	auctionhouse
+	mail_items
+	guild_bank_item
+	item_instance
+    
+END

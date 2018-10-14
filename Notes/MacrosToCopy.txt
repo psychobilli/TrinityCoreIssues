@@ -1,0 +1,28 @@
+||
+\
+
+achievemnt 4518
+		
+Stabled Campaign Warhorse (npc 34125) should use 
+Trample Scourge (spell 63000, 63001) on Boneguard Footman (npc 33438)
+
+From Dalaran Wow
+Game/Spells: Add spellscriptsupport for quest 'At the Enemy's Gates'
+
+    Trample Scourge spell now only targets the footmans
+    spell 'Trample Scourge' 63001 will now periodically trigger spell 'Trample Scourge' https://wowgaming.altervista.org/aowow/?spell=63001 (damage effect)
+    player vehicles for the quest now get faction 2105 (friendly to player, agressiv to monster)
+    closes: #4752
+    commit: 1747c62568421b34954fc6d78e6b7e92e78cd0ad
+
+SpellId 63000 is cast when the player mounts a Campaign Warhorse.
+	On entering the vehicle, 63221 Ride Vehicle is cast.
+	This triggers 63000 and 63034 Player on Tournament Mount
+	
+There are other Ride Vehicle spells, how are they linked to a vehicle?
+
+Boneguard Footman - npc 33438
+Trample Scourge - spell 63001 (presumably targets footmen)
+Sheild Level 2 - spell 63131
+Ride Vehicle - spell 63221
+Trample Scourge - spell 63000
