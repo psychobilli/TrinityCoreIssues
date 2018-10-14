@@ -1,0 +1,8 @@
+reference_loot_template
+	35063 - Level 80 Grey armor and weapons.
+	35064 - Northrend Food and Cloth (Humanoid Drops)
+	35065 - Level 70 Scrolls
+	35066 - Level 77-79 Greens
+	35067 - Level 77-78 Blues and Jewelcrafting Designs
+	35070 - IC 5 Epic Zone Drops
+	35074 - Northrend Epic World Drops
