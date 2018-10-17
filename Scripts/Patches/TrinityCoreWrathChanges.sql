@@ -121,7 +121,7 @@ where entry in (
 )
   and item in (
 	select entry
-    from item_template
+    from world.item_template
     where name in (
 		'Giant Kaliri Wing'
 	)
@@ -141,7 +141,7 @@ where entry in (
 )
   and item in (
 	select entry
-    from item_template
+    from world.item_template
     where name in (
 		'Essence of the Storm',
 		'Essence of the Monsoon'

@@ -191,8 +191,6 @@ The Nexus - Missing spawns in frozen mobs hall.
 Azjol Nerub - First and Second bosses both reset at random.
 Drak'Tharon - Oh Novos achievement doesn't proc.
 	Better of Dread achievement doesn't tally correctly.
-Violet Hold - Mobs do not yield dungeon rep.
-Gundrak - Spitting Cobra does not give rep.
 Halls of Stone - Tribunal does not correctly stop attacking at event end.
 Utgarde Pinnacle - Skadi the Ruthless does not dismount correctly.
 Culling of Stratholme - Unplayable.
@@ -250,3 +248,7 @@ Grobbulus in Naxxramas isn't affected by VAS Autobalance
 'Document Chest #3'
 Core Fragment, 10 minute respawn
 Heart of the Mountain, 120 minute respawn
+
+-- NOT BLIZZ LIKE
+Violet Hold - Mobs do not yield dungeon rep.
+Gundrak - Spitting Cobra does not give rep.
