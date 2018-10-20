@@ -196,6 +196,9 @@ Utgarde Pinnacle - Skadi the Ruthless does not dismount correctly.
 Culling of Stratholme - Heroic Risen Zombies run too fast.
 	Non-Heroic waves don't seem accurate.
 	Infinite Corruptor does not appear to spawn.
+Trial of the Champion - Champions do not get trampled correctly.
+	Champions run too fast to claim a new mount.
+	Vehicles from opposing faction incorrectly trample player
 Halls of Reflection - Escape Arthas event doesn't work correctly 
 	unless you take your time in clearing the trash.
 Argent Tournament - Valiant and Champion jousting tend to evade bug.
