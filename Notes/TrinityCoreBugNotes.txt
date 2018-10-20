@@ -193,7 +193,9 @@ Drak'Tharon - Oh Novos achievement doesn't proc.
 	Better of Dread achievement doesn't tally correctly.
 Halls of Stone - Tribunal does not correctly stop attacking at event end.
 Utgarde Pinnacle - Skadi the Ruthless does not dismount correctly.
-Culling of Stratholme - Unplayable.
+Culling of Stratholme - Heroic Risen Zombies run too fast.
+	Non-Heroic waves don't seem accurate.
+	Infinite Corruptor does not appear to spawn.
 Halls of Reflection - Escape Arthas event doesn't work correctly 
 	unless you take your time in clearing the trash.
 Argent Tournament - Valiant and Champion jousting tend to evade bug.
@@ -207,10 +209,11 @@ Eye of Eternity - Malygos phase 3 does not start correctly.
 Alliance Onyxia quest line.
 
 -- VAS Autobalance Bugs
-Sometimes stats don't change until server restart.
-Violet Hold - Boss stats are not modified, except Cyanogosa.
 Brann Bronzebeard in Halls of Stone - entry 28070 - doesn't have enough health.
+Svala Sorrowgrave is not affected by VAS Autobalance
+Ley-Guardian Eregos is not affected by VAS Autobalance
 Grobbulus in Naxxramas isn't affected by VAS Autobalance
+Arthas in CoS doesn't have enough health, causes bugs.
 
 *** REQUIRES TESTING ***
 
@@ -252,3 +255,8 @@ Heart of the Mountain, 120 minute respawn
 -- NOT BLIZZ LIKE
 Violet Hold - Mobs do not yield dungeon rep.
 Gundrak - Spitting Cobra does not give rep.
+Culling of Stratholme - Unplayable.
+
+-- VAS Autobalance Bugs
+Sometimes stats don't change until server restart.
+Violet Hold - Boss stats are not modified, except Cyanogosa.
