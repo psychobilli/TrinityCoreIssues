@@ -194,10 +194,10 @@ Drak'Tharon - Oh Novos achievement doesn't proc.
 Halls of Stone - Tribunal does not correctly stop attacking at event end.
 Dungeons L 80 - Many mobs do not yield dungeon reputation.
 Utgarde Pinnacle - Skadi the Ruthless does not dismount correctly.
-Culling of Stratholme - Non-Heroic waves don't seem accurate.
-	Chromie's pathing is weird at the end.
+Culling of Stratholme - Chromie's pathing is weird at the end.
 	Arthas reappears at the end after leaving.
 	The Infinite Corruptor timer doesn't get removed if Arthas dies.
+	Zomies should spawn slowly, not all at once.
 Trial of the Champion - Champions do not get trampled correctly.
 	Champions run too fast to claim a new mount.
 	Vehicles from opposing faction incorrectly trample player
@@ -254,6 +254,7 @@ Heart of the Mountain, 120 minute respawn
 Violet Hold - Mobs do not yield dungeon rep.
 Gundrak - Spitting Cobra does not give rep.
 Culling of Stratholme - Unplayable.
+	Non-Heroic waves don't seem accurate.
 	Heroic Risen Zombies run too fast.
 
 -- VAS Autobalance Bugs
