@@ -192,10 +192,12 @@ Azjol Nerub - First and Second bosses both reset at random.
 Drak'Tharon - Oh Novos achievement doesn't proc.
 	Better of Dread achievement doesn't tally correctly.
 Halls of Stone - Tribunal does not correctly stop attacking at event end.
+Dungeons L 80 - Many mobs do not yield dungeon reputation.
 Utgarde Pinnacle - Skadi the Ruthless does not dismount correctly.
-Culling of Stratholme - Heroic Risen Zombies run too fast.
-	Non-Heroic waves don't seem accurate.
-	Infinite Corruptor does not appear to spawn.
+Culling of Stratholme - Non-Heroic waves don't seem accurate.
+	Chromie's pathing is weird at the end.
+	Arthas reappears at the end after leaving.
+	The Infinite Corruptor timer doesn't get removed if Arthas dies.
 Trial of the Champion - Champions do not get trampled correctly.
 	Champions run too fast to claim a new mount.
 	Vehicles from opposing faction incorrectly trample player
@@ -210,13 +212,6 @@ Eye of Eternity - Malygos phase 3 does not start correctly.
 
 -- COULD BE RESTORED
 Alliance Onyxia quest line.
-
--- VAS Autobalance Bugs
-Brann Bronzebeard in Halls of Stone - entry 28070 - doesn't have enough health.
-Svala Sorrowgrave is not affected by VAS Autobalance
-Ley-Guardian Eregos is not affected by VAS Autobalance
-Grobbulus in Naxxramas isn't affected by VAS Autobalance
-Arthas in CoS doesn't have enough health, causes bugs.
 
 *** REQUIRES TESTING ***
 
@@ -259,7 +254,13 @@ Heart of the Mountain, 120 minute respawn
 Violet Hold - Mobs do not yield dungeon rep.
 Gundrak - Spitting Cobra does not give rep.
 Culling of Stratholme - Unplayable.
+	Heroic Risen Zombies run too fast.
 
 -- VAS Autobalance Bugs
 Sometimes stats don't change until server restart.
 Violet Hold - Boss stats are not modified, except Cyanogosa.
+Brann Bronzebeard in Halls of Stone - entry 28070 - doesn't have enough health.
+Svala Sorrowgrave is not affected by VAS Autobalance
+Ley-Guardian Eregos is not affected by VAS Autobalance - false report
+Grobbulus in Naxxramas isn't affected by VAS Autobalance - false report
+Arthas in CoS doesn't have enough health, causes bugs.
