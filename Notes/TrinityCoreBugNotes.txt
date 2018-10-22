@@ -209,6 +209,16 @@ Argent Tournament - Valiant and Champion jousting tend to evade bug.
 	Kvaldir on boats don't respawn properly. Disproportionate mob types.
 	Get Kraken doesn't register hits or grant tooth on death.
 Eye of Eternity - Malygos phase 3 does not start correctly.
+Ulduar - Steelforged Defenders don't die.
+	Ignis the Furnace Master had 3m  health, then 500k on second attempt.
+	XT-002 Deconstructor had 3m health.
+	Auriya's death seems to trigger a client crash.
+	Mecha gnomes in tanks appear to spawn and attack on tank death.
+	Tram does not have proper activation control
+	Mimiron's Chest disappears too quickly, or never spawns
+	Hodir's encounter appears incomplete.
+	Enslaved Fire elementals near General Vezaxx respawn too quickly.
+	Yogg-Saron encounter doens't end at death.
 
 -- COULD BE RESTORED
 Alliance Onyxia quest line.
