@@ -224,6 +224,14 @@ where guid in
 	(select entry
      from world.creature_template
      where name = 'Kul the Reckless');
+-- delete a smart script on the wrong mob.
+delete from world.smart_scripts
+where action_type = 42
+  and source_type = 0
+  and entryorguid in
+	(select entry
+     from world.creature_template
+     where name = 'Steelforged Defender');
 -- delete any awarded "Realm First" achievements
 -- excluding those belonging to player characters
 delete from characters.character_achievement
