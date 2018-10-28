@@ -1,54 +1,4 @@
 -- LONG RESPAWNS
-Wavefront Medallion, 18 at 15 minute respawn.
-Fifth Mosh'aru Tablet, 2 minute respawn
-Sixth Mosh'aru Tablet, 2 minute respawn
-Bijou's Belongings in Bijou's Belongings, 2 min
-Darkstone Tablet, 2 minute respawn
-Emerald Dreamcatcher in Tallonkai's Dresser, 5 min
-Black Feather Quill in Chest of the Black Feather, 2 min
-Rune of Nesting in Chest of Nesting, 2 min
-Sapphire of Sky in Chest of the Sky, 2 min
-Raven Claw Talisman in Chest of the Raven Claw, 2 min
-Dragon Bone contains Dragon Bone, 10 min, 2 min would be better.
-Sack of Supplies in Stolen Supply Sack 15 min, 2 min would be better.
-A Faded Journal Page in Marshal Haggard's Chest, 3 min
-Velinde's Journal in Velinde's Locker, 5 min
-Wizards' Reagents in Caravan Chest, 10 min
-Sack of Barley in Sack of Barley, 10 min
-Draenethyst Crystal in Draenethyst Crystals, 10 min
-Rubbing: Rune of Beth'Amara in Rune of Beth'Amara, 3 min
-Rubbing: Rune of Jin'yael in Rune of Jin'yael, 3 min
-Rubbing: Rune of Markri in Rune of Markri, 3 min
-Rubbing: Rune of Sael'hai in Rune of Sael'hai, 3 min
-First Relic Fragment in Highborne Relic Fragment, 5 min
-Second Relic Fragment in Highborne Relic Fragment, 5 min
-Third Relic Fragment in Highborne Relic Fragment, 5 min
-Fourth Relic Fragment in Highborne Relic Fragment, 5 min
-Sacred Highborne Writings in Sacred Highborne Writings, 3 min
-Doomrigger's Clasp in Doomrigger's Coffer, 2 min
-Thunderlord Clan Drum in Thunderlord Clan Drum, 3 min
-Thunderlord Clan Arrow in Thunderlord Clan Arrow, 3 min
-Thunderlord Clan Tablet in Thunderlord Clan Tablet, 3 min
-Underspore Frond in The Underspore, 5 min
-T'chali's Hookah in T'chali's Hookah, 3 min
-Grulloc's Sack in Grulloc's Sack, 3 min
-Diagnostic Results in Diagnostic Equipment, 3 min
-Krasus's Compendium - Chapter 1	in Krasus's Compendium - Chapter 1, 3 min
-Krasus's Compendium - Chapter 2	in Krasus's Compendium - Chapter 2, 3 min
-Krasus's Compendium - Chapter 3	in Krasus's Compendium - Chapter 3, 3 min
-Naberius's Phylactery in Suspicious Outhouse, 3 min
-Ethereum Data Cell in Ethereum Data Cell, 3 min
-Teleporter Power Pack in Teleporter Power Pack, 1 min
-Fel Reaver Armor Plate in  Fel Reaver Armor Plating, 3 min
-Fel Reaver Power Core in Fel Reaver Power Core, 3 min
-Rod of Lianthe in Lianthe's Strongbox, 3 min
-The Art of Fel Reaver Maintenance in The Doctor's Strongbox, 3 min
-Rotten Arakkoa Egg in Rotten Arakkoa Egg, 3 min
-Harvested Blight Crystal in Harvested Blight Crystal, 5 spawns 2 min
-Colossus Defense Specs in Colossus Defense Specs, 5 min
-Spool of Thread in Spool of Thread, 2 min
-The Doctor's Cleaver in The Doctor's Cleaver, 2 min
-
 
 -- NOT ENOUGH SPAWNS
 -- Salt Flats Scavenger
@@ -209,16 +159,17 @@ Argent Tournament - Valiant and Champion jousting tend to evade bug.
 	Kvaldir on boats don't respawn properly. Disproportionate mob types.
 	Get Kraken doesn't register hits or grant tooth on death.
 Eye of Eternity - Malygos phase 3 does not start correctly.
-Ulduar - Steelforged Defenders don't die.
-	Ignis the Furnace Master had 3m  health, then 500k on second attempt.
-	XT-002 Deconstructor had 3m health.
-	Auriya's death seems to trigger a client crash.
+Ulduar - Kologarn's corpse seems to trigger a client crash - tentative fix.
 	Mecha gnomes in tanks appear to spawn and attack on tank death.
 	Tram does not have proper activation control
 	Mimiron's Chest disappears too quickly, or never spawns
 	Hodir's encounter appears incomplete.
 	Enslaved Fire elementals near General Vezaxx respawn too quickly.
-	Yogg-Saron encounter doens't end at death.
+	Keepers despawn inappropriately after releasing them from control.
+	Yogg-Saron encounter doens't end at player death.
+	
+-- Solo Craft bugs
+Characters sometimes fail to get stat boosts, possibly after death/crash.
 
 -- COULD BE RESTORED
 Alliance Onyxia quest line.
@@ -228,37 +179,7 @@ Alliance Onyxia quest line.
 
 *** FIXED ***
 -- LONG RESPAWNS
-'Metal Coffer',
-'Torn Pilgrim''s Pack',
-'Ango''rosh Attack Plans',
-'Eye of Veil Shienor',
-'Eye of Veil Reskk',
-'Crashed Plague Sprayer',
-'Krom Stoutarm''s Chest',
-'Ancient Chest',
-'Conspicuous Urn',
-'Shadowforge Cache',
-'Fei Fei''s Cache',
-'Reagent Pouch',
-'Dragonflayer Battle Plans',
-'Harpoon Operation Manual',
-'Sacred Artifact',
-'Building Tools',
-'Apothecary''s Package',
-'Fields, Factories and Workshops',
-'Kul Tiras Wine',
-'Crafty''s Tools',
-'Scrying Orb',
-'Onslaught Map',
-'Fordragon''s Shield',
-'Mistwhisper Treasure',
-'Warsong Axe Shipment',
-'Ancient Brazier',
-'Document Chest #1',
-'Document Chest #2',
-'Document Chest #3'
-Core Fragment, 10 minute respawn
-Heart of the Mountain, 120 minute respawn
+Most respawns for items in quests with timers >25 sec have been reduced
 
 -- NOT BLIZZ LIKE
 Violet Hold - Mobs do not yield dungeon rep.
@@ -266,6 +187,7 @@ Gundrak - Spitting Cobra does not give rep.
 Culling of Stratholme - Unplayable.
 	Non-Heroic waves don't seem accurate.
 	Heroic Risen Zombies run too fast.
+Ulduar - Steelforged Defenders don't die.
 
 -- VAS Autobalance Bugs
 Sometimes stats don't change until server restart.

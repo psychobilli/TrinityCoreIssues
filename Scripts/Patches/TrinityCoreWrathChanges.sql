@@ -9,50 +9,26 @@ where id =
 		)
 	);
 
--- reduce the respawn time on multiple world objects.
-update world.gameobject go
+-- reduce the respawn time on game objects in use with quests.
+create temporary table goSlowSpawns
+select go.id
+	, got.name
+	, count(got.entry) as gotCount
+from world.gameobject go
+  join world.gameobject_template got on got.entry = go.id
+  join world.gameobject_questitem gqi on gqi.GameObjectEntry = got.entry
+where spawntimesecs > 25
+group by got.name
+having count(got.entry) = 1;
+
+update world.gameobject
 set spawntimesecs = 25
-where go.id in
-	(select got.entry
-     from world.gameobject_template got
-     where got.name in (
-		'Metal Coffer',
-		'Torn Pilgrim''s Pack',
-		'Ango''rosh Attack Plans',
-		'Eye of Veil Shienor',
-		'Eye of Veil Reskk',
-		'Crashed Plague Sprayer',
-        'Krom Stoutarm''s Chest',
-        'Ancient Chest',
-        'Conspicuous Urn',
-        'Shadowforge Cache',
-        'Fei Fei''s Cache',
-        'Reagent Pouch',
-        'Dragonflayer Battle Plans',
-        'Harpoon Operation Manual',
-        'Sacred Artifact',
-        'Building Tools',
-        'Apothecary''s Package',
-        'Fields, Factories and Workshops',
-        'Kul Tiras Wine',
-        'Crafty''s Tools',
-        'Scrying Orb',
-        'Onslaught Map',
-        'Fordragon''s Shield',
-        'Mistwhisper Treasure',
-        'Warsong Axe Shipment',
-        'Ancient Brazier',
-        'Document Chest #1',
-        'Document Chest #2',
-        'Document Chest #3',
-		'Heart of the Mountain',
-		'Core Fragment',
-		'Fifth Mosh''aru Tablet',
-		'Sixth Mosh''aru Tablet',
-		'Darkstone Tablet'
-     )
-	)
-  and go.spawntimesecs > 25;
+where spawntimesecs > 25
+  and id in
+	(select id
+     from goSlowSpawns);
+     
+drop temporary table goSlowSpawns;
   
 -- reduce dual spec to 10g from 1000.
 update world.gossip_menu_option
