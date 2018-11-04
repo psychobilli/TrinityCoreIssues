@@ -159,7 +159,8 @@ Argent Tournament - Valiant and Champion jousting tend to evade bug.
 	Kvaldir on boats don't respawn properly. Disproportionate mob types.
 	Get Kraken doesn't register hits or grant tooth on death.
 Eye of Eternity - Malygos phase 3 does not start correctly.
-Ulduar - Kologarn's corpse seems to trigger a client crash - tentative fix.
+Ulduar - Dwarfageddon doesn't proc.
+	You can't do that while stunned doesn't proc.
 	Mecha gnomes in tanks appear to spawn and attack on tank death.
 	Tram does not have proper activation control
 	Mimiron's Chest disappears too quickly, or never spawns
@@ -188,6 +189,7 @@ Culling of Stratholme - Unplayable.
 	Non-Heroic waves don't seem accurate.
 	Heroic Risen Zombies run too fast.
 Ulduar - Steelforged Defenders don't die.
+	Kologarn's corpse seems to trigger a client crash.
 
 -- VAS Autobalance Bugs
 Sometimes stats don't change until server restart.
