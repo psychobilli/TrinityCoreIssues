@@ -1,2 +1,33 @@
 tirisfal glades
 	(q)night web's hollow - night web spiders are missing.
+	(q)no better than the zombies - darnell is invisible to non-undead
+	(q)ever so lonely - murloc does not follow
+	(q)planting some fear - fears player and nearby npcs, cannot be removed
+	
+gilneas (worgen start)
+	(q) something's amiss - cannot turn in quest
+	
+
+vashj'ir
+	(q)28805 the eye of the storm - condition does not complete
+	(q)28826 the eye of the storm - condition does not complete
+	(q)call of duty - event to pull players down to ship doesn't work
+		ships are not phased
+		picking up quests does not phase players
+		need to trigger quest complete
+		teleport player to coordinates, based on faction
+		disable drowning while in the ships
+		make erunak stonespeaker (36915(A),41618(H)) visible
+			he doesn't appear to be phased - the cansee method always returns true
+	(q)25929 sea legs - sea legs spell is not correctly rewarded
+		player is supposed to get a water breathing item
+	(q)24432 sea legs - player is supposed to get a water breathing item
+		sea legs spell is not correctly rewarded
+	(q)25936 pay it forward - drowning warriors are not in the game
+	(q)25281 pay it forward - saving drowning soldiers does not complete criteria
+	
+	(w)graveyards don't appear to be defined
+	
+deep run tram
+	(w)players cannot board the train
+	(w)only one train is running
