@@ -11,6 +11,8 @@
 
 
 -- NOT BLIZZ LIKE
+BURNING STEPPS
+	gaining acceptance(13662) - not repeatable
 DK START - Eye of Acherus moves far too slowly.  Maybe.
 BRD - Cyrus Therepentous does not offer 4024 - A Taste of Flame
 	Ring of Law Event Fails

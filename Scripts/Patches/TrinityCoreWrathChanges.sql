@@ -227,3 +227,18 @@ where achievement in (457,467,466,465,464,463,
 		'Z'
 	 )
 	);
+-- Molten Core trash mobs yield rep through exalted (7) instead of honored (5)
+update world.creature_onkill_reputation
+set MaxStanding1 = 7
+where creature_id in (
+	12076, 11673, 11671, 11668, 11667, 11666,
+	11665, 11664, 11663, 11662, 11661, 11659,
+	11658, 12100, 12101, 12119
+);
+-- Molten Core bosses yield rep through exalted (7) instead of revered (6)
+update world.creature_onkill_reputation
+set MaxStanding1 = 7
+where creature_id in (
+	12057, 12056, 11982, 11672, 
+    12098, 12118, 12259, 12264
+);

@@ -7,6 +7,15 @@ tirisfal glades
 gilneas (worgen start)
 	(q) something's amiss - cannot turn in quest
 	
+dun moroh
+	(q)24474 first thing's first - unable to loot cask of stormhammer 
+		stout and cask of gnomenbrau.  both items appear selectable.
+	(q)3361 a refugee's quandry - unable to loot felix's bucket of bolts
+	(q)24492 pack your bags - unable to loot any quest items
+		flight path after the quest drops player through the world
+	(q)24493 don't forget about us - unable to talk to quest receiver
+	(q)25792 pushing forward - unable to burn totems.
+	(q)25839 ultra safe personnel launcher - unable to use launcher.
 
 vashj'ir
 	(q)28805 the eye of the storm - condition does not complete
@@ -19,6 +28,9 @@ vashj'ir
 		disable drowning while in the ships
 		make erunak stonespeaker (36915(A),41618(H)) visible
 			he doesn't appear to be phased - the cansee method always returns true
+			he has a spell that makes him invisible, and another to counter it
+		see erunak spells is disabled when using .tele
+			also with transports to vashj'ir
 	(q)25929 sea legs - sea legs spell is not correctly rewarded
 		player is supposed to get a water breathing item
 	(q)24432 sea legs - player is supposed to get a water breathing item
