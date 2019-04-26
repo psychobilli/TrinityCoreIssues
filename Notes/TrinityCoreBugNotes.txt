@@ -11,6 +11,31 @@
 
 
 -- NOT BLIZZ LIKE
+EVERSONG WOODS
+	unexpected business (8488) - does not yield group credit
+SILVERMOON CITY - PALADIN
+	the first trial (9678) - unable to turn in quest with completed criteria
+BARRENS
+	deep cover (2458) - unable to interact with quest giver 7233
+WESTFALL
+	the defias brotherhood (155) - does not yield group credit
+BOOTY BAY
+	gnomer-gooone (2843) - doesn't reward if another player picks up the quest
+	goblin transponder doesn't work.
+THOUSAND NEEDLES
+	protect kanati greyclound (4966) - centaur spawn but don't path
+		kanati dies, though the quest completes and he respawns immediately.
+DESOLACE
+	body guard for hire (5821) - quest is always available, escort doesn't
+		appear to be scripted.
+	gizelton caravan (5943) -  quest is always available, escort doesn't
+		appear to be scripted.
+STANGLETHORN VALE
+	encrusted tail fins (1107) - mobs have insane spawn times
+	pearl diving (705) - gameobject 2744 has long spawn times.
+DUSTWALLOW SWAMP
+	cleansing witch hill (11183) - event runs twice with 2 players in group
+	stinky's escape (1270) - does not yield group credit
 BURNING STEPPS
 	gaining acceptance(13662) - not repeatable
 DK START - Eye of Acherus moves far too slowly.  Maybe.
