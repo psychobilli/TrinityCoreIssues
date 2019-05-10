@@ -242,3 +242,19 @@ where creature_id in (
 	12057, 12056, 11982, 11672, 
     12098, 12118, 12259, 12264
 );
+-- Correct Hyjal run speeds for mobs
+update creature_template
+set speed_walk = 4.5 -- walk previously 1.2
+where entry in
+	(select creature_id
+     from creature_onkill_reputation
+     where RewOnKillRepFaction1 = 990)
+  and name not in ('Gargoyle','Giant Infernal');
+
+update creature_template
+set speed_walk = 2 -- walk previously 1.2
+where entry in
+	(select creature_id
+     from creature_onkill_reputation
+     where RewOnKillRepFaction1 = 990)
+  and name = 'Giant Infernal';
