@@ -252,9 +252,22 @@ where entry in
   and name not in ('Gargoyle','Giant Infernal');
 
 update creature_template
+set speed_walk = 2.4 -- walk previously 1.2
+where entry in
+	(select creature_id
+     from creature_onkill_reputation
+     where RewOnKillRepFaction1 = 990)
+  and name in ('Gargoyle');
+
+update creature_template
 set speed_walk = 2 -- walk previously 1.2
 where entry in
 	(select creature_id
      from creature_onkill_reputation
      where RewOnKillRepFaction1 = 990)
   and name = 'Giant Infernal';
+  
+-- correct an Ogri'la quest availability
+update world.quest_template_addon
+set RequiredMinRepValue = 9000
+where id = 11026;

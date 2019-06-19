@@ -118,6 +118,10 @@ Shattrath - 11880 - The Multiphase Survey - Not correctly offered to Horde.
 Karazhan - Chess Event does not work.
 	distinguished service (10741) - does not complete correctly.
 DEADWIND PASS - digging up the past (9680) charred bone fragment is not lootable
+SKETTIS - 11008 - Fires Over Skettis - bombs cause mount dismount
+	11085 - Escape from Skettis - Quest is immediately completed.
+		Quest giver fights nearby monsters before the event starts.
+		Escort does not path anywhere.
 Zul'Aman - Boss Chests cannot be opened.
 	Lynx Boss is not affected by VAS Autobalance
 	Zul'jin encounter is extremely buggy.
