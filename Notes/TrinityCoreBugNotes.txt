@@ -75,7 +75,6 @@ Blade's Edge Mountains - 10525 - Vision GuideThe Final Artifact
 	10806 - Showdown - Goc despawns when the fight starts.
 	10911 - Fire At Will! - Cannons do not fire on gates.
 	11010 - Bombing Run - cannot be acquired.  Druid version can.
-	11058 - An Apexis Relic - cannot be completed.  Gossip does not work.
 	11059 - Guardian of the Monument - same as 11058
 	10518 - Planting the Banner - Mobs don't climb tower.
 	10584 - Picking Up Some Power Converters - Power converters don't despawns
@@ -85,6 +84,7 @@ Blade's Edge Mountains - 10525 - Vision GuideThe Final Artifact
 		Fixed in Mar 2018 update.
 	10710, 10716, 10557, 10711, 10712 - Test Flight:* - Launch pad sends
 		player in random directions.
+	Shartuul's Transporter - Felguard Degrader is not present.
 Netherstorm - 10203 - Invaluable Asset Zapping - Can't loot objects.
 	10248 - You, Robot - Pet doesn't spawn properly, Negatron doesn't
 		attack.
