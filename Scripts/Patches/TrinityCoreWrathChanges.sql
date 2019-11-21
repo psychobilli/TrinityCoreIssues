@@ -271,3 +271,22 @@ where entry in
 update world.quest_template_addon
 set RequiredMinRepValue = 9000
 where id = 11026;
+
+-- double rep gains for keepers of time
+create temporary table repUpdate
+select creature_id , RewOnKillRepValue1 * 2 as RewOnKillRepValue1
+from world.creature_template ct
+  join world.creature_onkill_reputation cor on cor.creature_id = ct.entry
+where 120 = (
+	select RewOnKillRepValue1
+	from world.creature_onkill_reputation cor
+	  join world.creature_template ct on cor.creature_id = ct.entry
+	where ct.name = 'Aeonus'
+)
+  and cor.rewonkillrepfaction1 = 989;
+    
+update world.creature_onkill_reputation cor
+  join repUpdate ru on ru.creature_id = cor.creature_id
+set cor.RewOnKillRepValue1 = ru.RewOnKillRepValue1;
+  
+drop temporary table repUpdate;
