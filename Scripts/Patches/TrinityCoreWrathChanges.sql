@@ -290,3 +290,8 @@ update world.creature_onkill_reputation cor
 set cor.RewOnKillRepValue1 = ru.RewOnKillRepValue1;
   
 drop temporary table repUpdate;
+
+-- allow horde to do quest Maintaing the Portal
+update world.quest_template
+set allowableraces = 0
+where id = 11880;
