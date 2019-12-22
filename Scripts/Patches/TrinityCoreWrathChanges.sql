@@ -295,3 +295,86 @@ drop temporary table repUpdate;
 update world.quest_template
 set allowableraces = 0
 where id = 11880;
+
+-- correct Isle of Qual'Danas drop rates.
+update world.creature_loot_template
+set chance = 42
+where entry in (
+	select entry
+    from world.creature_template
+    where name in (
+        'Darkspine Myrmidon'
+	)
+)
+  and item in (
+	select entry
+    from world.item_template
+    where name in (
+		'Darkspine Chest Key'
+	)
+);
+
+update world.creature_loot_template
+set chance = 48
+where entry in (
+	select entry
+    from world.creature_template
+    where name in (
+        'Wretched Devourer'
+	)
+)
+  and item in (
+	select entry
+    from world.item_template
+    where name in (
+		'Mana Remnants'
+	)
+);
+
+insert into world.creature_loot_template
+(Entry, Item, Reference, Chance, QuestRequired, LootMode, GroupId, MinCount, MaxCount, Comment)
+select ct.entry, clt.Item, clt.Reference, 
+	case when ct.name = 'Wretched Hungerer'
+		then 53
+		when ct.name = 'Wretched Fiend'
+        then 50
+	end,  
+	clt.QuestRequired, clt.LootMode, clt.GroupId, clt.MinCount, clt.MaxCount, clt.Comment
+from world.creature_template ct
+  cross join world.creature_loot_template clt
+where name in (
+	'Wretched Hungerer',
+	'Wretched Fiend'
+)
+  and item in (
+	select entry
+	from world.item_template
+	where name in (
+		'Mana Remnants'
+	)
+)
+  and not exists
+  (select 1
+   from world.creature_loot_template
+   where entry in (
+	select entry
+    from world.creature_template
+	where name in (
+		'Wretched Hungerer',
+		'Wretched Fiend'
+	)
+  )
+    and item in (
+		select entry
+        from world.item_template
+        where name in (
+			'Mana Remnants'
+        )
+    )
+);
+
+update world.gameobject go
+  join world.gameobject_template got on got.entry = go.id
+set spawntimesecs = 120
+where spawntimesecs > 120
+  and got.name = 'Smuggled Mana Cell'
