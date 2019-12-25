@@ -377,4 +377,59 @@ update world.gameobject go
   join world.gameobject_template got on got.entry = go.id
 set spawntimesecs = 120
 where spawntimesecs > 120
-  and got.name = 'Smuggled Mana Cell'
+  and got.name = 'Smuggled Mana Cell';
+  
+-- Make Netherwing Dailies easier.
+select @felGland := entry
+from world.item_template
+where name = 'Fel Gland';
+
+update world.creature_loot_template
+set chance = 100
+where item = @felGland;
+
+select @crystals := entry
+from world.item_template
+where name = 'Netherwing Crystal';
+
+update world.creature_loot_template
+set MaxCount = 4, MinCount = 2
+where item = @crystals;
+
+select @ore := entry
+from world.item_template
+where name = 'Nethercite Ore';
+
+update world.gameobject_loot_template
+set minCount = 4, maxCount = 10
+where item = @ore;
+
+update world.gameobject go
+  join world.gameobject_template got on go.id = got.entry
+  join world.gameobject_loot_template glt on got.data1 = glt.entry
+set go.spawntimesecs = 300
+where glt.item = @ore;
+
+select @pollen := entry
+from world.item_template
+where name = 'Netherdust Pollen';
+
+update world.gameobject_loot_template
+set minCount = 4, maxCount = 10
+where item = @pollen;
+
+update world.gameobject go
+  join world.gameobject_template got on go.id = got.entry
+  join world.gameobject_loot_template glt on got.data1 = glt.entry
+set go.spawntimesecs = 300
+where glt.item = @pollen;
+
+select @dragonmaw_peon := entry
+from world.creature_template
+where name = 'Disobedient Dragonmaw Peon';
+
+update world.smart_scripts
+set target_type = 27
+where entryorguid = @dragonmaw_peon
+  and source_type = 0
+  and id = 0;
