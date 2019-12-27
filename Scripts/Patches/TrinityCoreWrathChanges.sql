@@ -418,6 +418,15 @@ update world.gameobject_loot_template
 set minCount = 4, maxCount = 10
 where item = @pollen;
 
+delete from world.pool_gameobject
+where guid in (
+	select guid 
+    from world.gameobject go
+	  join world.gameobject_template got on go.id = got.entry
+	  join world.gameobject_loot_template glt on got.data1 = glt.entry
+	where glt.item = @pollen
+);
+
 update world.gameobject go
   join world.gameobject_template got on go.id = got.entry
   join world.gameobject_loot_template glt on got.data1 = glt.entry
@@ -429,7 +438,7 @@ from world.creature_template
 where name = 'Disobedient Dragonmaw Peon';
 
 update world.smart_scripts
-set target_type = 27
+set target_type = 16
 where entryorguid = @dragonmaw_peon
   and source_type = 0
   and id = 0;
