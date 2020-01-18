@@ -36,9 +36,18 @@ STANGLETHORN VALE
 DUSTWALLOW SWAMP
 	cleansing witch hill (11183) - event runs twice with 2 players in group
 	stinky's escape (1270) - does not yield group credit
+	take down tethyr! - tethyr cannot be damaged with cannons
+MAGE
+	items of power (1948) - bramble can never be looted.
+	mana surges (1957) - half of the mobs don't spawn.
+FELWOOD
+	rescue from jaedenar (5203) - does not yield group credit.
+	ancient spirit (4261) - does not yield group credit.
 BURNING STEPPS
 	gaining acceptance(13662) - not repeatable
 DK START - Eye of Acherus moves far too slowly.  Maybe.
+ZUL'FARRAK - Ghaz'Rilla is unattackable, sometimes.
+SUNKEN TEMPLE - Atal'ai Deathwalker Spirit moves too fast.
 BRD - Cyrus Therepentous does not offer 4024 - A Taste of Flame
 	Ring of Law Event Fails
 	Shadowforge Gate resets

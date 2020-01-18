@@ -1,6 +1,6 @@
 -- reduce the respawn on Dark Iron Pillows.
 update world.gameobject
-set spawntimesecs = 150
+set spawntimesecs = 90
 where id = 
 	(select got.entry
      from world.gameobject_template got
@@ -8,6 +8,15 @@ where id =
 		'Dark Iron Pillow'
 		)
 	);
+
+-- reduce the respawn time on Incendosaurs
+update world.creature
+set spawntimesecs = 240
+where id in (
+	select entry
+    from world.creature_template
+    where name = 'Incendosaur'
+);
 
 -- reduce the respawn time on game objects in use with quests.
 create temporary table goSlowSpawns
@@ -243,27 +252,27 @@ where creature_id in (
     12098, 12118, 12259, 12264
 );
 -- Correct Hyjal run speeds for mobs
-update creature_template
+update world.creature_template
 set speed_walk = 4.5 -- walk previously 1.2
 where entry in
 	(select creature_id
-     from creature_onkill_reputation
+     from world.creature_onkill_reputation
      where RewOnKillRepFaction1 = 990)
   and name not in ('Gargoyle','Giant Infernal');
 
-update creature_template
+update world.creature_template
 set speed_walk = 2.4 -- walk previously 1.2
 where entry in
 	(select creature_id
-     from creature_onkill_reputation
+     from world.creature_onkill_reputation
      where RewOnKillRepFaction1 = 990)
   and name in ('Gargoyle');
 
-update creature_template
+update world.creature_template
 set speed_walk = 2 -- walk previously 1.2
 where entry in
 	(select creature_id
-     from creature_onkill_reputation
+     from world.creature_onkill_reputation
      where RewOnKillRepFaction1 = 990)
   and name = 'Giant Infernal';
   
@@ -393,7 +402,7 @@ from world.item_template
 where name = 'Netherwing Crystal';
 
 update world.creature_loot_template
-set MaxCount = 4, MinCount = 2
+set MaxCount = 5, MinCount = 3
 where item = @crystals;
 
 select @ore := entry
@@ -442,3 +451,13 @@ set target_type = 16
 where entryorguid = @dragonmaw_peon
   and source_type = 0
   and id = 0;
+  
+-- correct Atal'ai Deathwalker's Spirit move speed.
+update world.creature_template
+set speed_walk = .68, speed_run = .75
+where name = 'Atal''ai Deathwalker''s Spirit';
+
+-- change required quest for A Tast of Flame (BRD Quest)
+update world.quest_template_addon
+set PrevQuestId = 0 -- was 4023
+where Id = 4024;
