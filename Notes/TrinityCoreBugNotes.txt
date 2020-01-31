@@ -43,6 +43,8 @@ MAGE
 FELWOOD
 	rescue from jaedenar (5203) - does not yield group credit.
 	ancient spirit (4261) - does not yield group credit.
+SEARING GORGE
+	suntar stones (3368) - does not yield group credit
 BURNING STEPPS
 	gaining acceptance(13662) - not repeatable
 DK START - Eye of Acherus moves far too slowly.  Maybe.

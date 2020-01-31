@@ -454,7 +454,7 @@ where entryorguid = @dragonmaw_peon
   
 -- correct Atal'ai Deathwalker's Spirit move speed.
 update world.creature_template
-set speed_walk = .68, speed_run = .75
+set speed_walk = .25, speed_run = .33
 where name = 'Atal''ai Deathwalker''s Spirit';
 
 -- change required quest for A Tast of Flame (BRD Quest)
