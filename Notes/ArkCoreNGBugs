@@ -1,5 +1,19 @@
 GENERAL
-	Mobs do not have basic script for wandering.
 
 MULGORE
 	Trainer Sunwalker Helaku (37737) does not provide trainer dialog.
+		--Druid trainer Gart Mistrunner (3060) does not work correctly either, Sheal Runetotem (3034) does.
+		--Player:PrepareGossipMenu - trainer menu doesn't proc.  GossipMenuItemsMapBounds menuItemBounds has
+			missing data.
+			Data comes from gossip menu options
+			Field in question is called OptionType
+		Issue is in conditions.
+			SourceTypeOrReferenceID 
+				14 = CONDITION_SOURCE_TYPE_GOSSIP_MENU, gossip_menu.entry, gossip_menu.text_id
+				15 = CONDITION_SOURCE_TYPE_GOSSIP_MENU_OPTION, gossip_menu_option.menu_id, gossip_menu_option.id
+			
+			ConditionTypeOrReference 
+				15 = CONDITION_CLASS, Class Mask from ChrClasses.dbc
+					except the data isn't in the dbc, it's just some damn enum in the code.
+					
+	Rejuvenating Touch (27067) - Spell does not award quest credit.
