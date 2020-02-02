@@ -17,6 +17,30 @@ where SourceTypeOrReferenceId in (14,15)
 		where menu_id = ct.gossip_menu_id
 		)
 );
+select ct.name
+	, 'No conditions for options'
+    , gmo.option_text
+from creature_template ct
+	left join gossip_menu_option gmo on gmo.menu_id = ct.gossip_menu_id
+	left join conditions c on c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 15
+                        and c.SourceEntry = gmo.id
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gmo.menu_id is not null;
+select ct.name
+	, 'No conditions for text'
+    , nt.text0_0
+    , nt.text0_1
+from creature_template ct
+	left join gossip_menu gm on gm.entry = ct.gossip_menu_id
+    left join npc_text nt on nt.id = gm.text_id
+	left join conditions c on c.SourceEntry = gm.text_id
+						and c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 14
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gm.text_id is not null;
 -- Warrior
 set @classId := 1;
 set @failState := 1534;
@@ -36,6 +60,30 @@ where SourceTypeOrReferenceId in (14,15)
 		where menu_id = ct.gossip_menu_id
 		)
 );
+select ct.name
+	, 'No conditions for options'
+    , gmo.option_text
+from creature_template ct
+	left join gossip_menu_option gmo on gmo.menu_id = ct.gossip_menu_id
+	left join conditions c on c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 15
+                        and c.SourceEntry = gmo.id
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gmo.menu_id is not null;
+select ct.name
+	, 'No conditions for text'
+    , nt.text0_0
+    , nt.text0_1
+from creature_template ct
+	left join gossip_menu gm on gm.entry = ct.gossip_menu_id
+    left join npc_text nt on nt.id = gm.text_id
+	left join conditions c on c.SourceEntry = gm.text_id
+						and c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 14
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gm.text_id is not null;
 -- Paladin
 set @classId := 2;
 set @failState := 1533;
@@ -55,6 +103,26 @@ where SourceTypeOrReferenceId in (14,15)
 		where menu_id = ct.gossip_menu_id
 		)
 );
+select ct.name
+	, 'No conditions for options'
+from creature_template ct
+	left join conditions c on c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 15
+where trainer_class = @classId
+  and c.SourceGroup is null;
+select ct.name
+	, 'No conditions for text'
+    , nt.text0_0
+    , nt.text0_1
+from creature_template ct
+	left join gossip_menu gm on gm.entry = ct.gossip_menu_id
+    left join npc_text nt on nt.id = gm.text_id
+	left join conditions c on c.SourceEntry = gm.text_id
+						and c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 14
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gm.text_id is not null;
 -- Hunter
 set @classId := 3;
 set @failState := 1531;
@@ -74,6 +142,30 @@ where SourceTypeOrReferenceId in (14,15)
 		where menu_id = ct.gossip_menu_id
 		)
 );
+select ct.name
+	, 'No conditions for options'
+    , gmo.option_text
+from creature_template ct
+	left join gossip_menu_option gmo on gmo.menu_id = ct.gossip_menu_id
+	left join conditions c on c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 15
+                        and c.SourceEntry = gmo.id
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gmo.menu_id is not null;
+select ct.name
+	, 'No conditions for text'
+    , nt.text0_0
+    , nt.text0_1
+from creature_template ct
+	left join gossip_menu gm on gm.entry = ct.gossip_menu_id
+    left join npc_text nt on nt.id = gm.text_id
+	left join conditions c on c.SourceEntry = gm.text_id
+						and c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 14
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gm.text_id is not null;
 -- Rogue
 set @classId := 4;
 set @failState := 1527;
@@ -93,6 +185,30 @@ where SourceTypeOrReferenceId in (14,15)
 		where menu_id = ct.gossip_menu_id
 		)
 );
+select ct.name
+	, 'No conditions for options'
+    , gmo.option_text
+from creature_template ct
+	left join gossip_menu_option gmo on gmo.menu_id = ct.gossip_menu_id
+	left join conditions c on c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 15
+                        and c.SourceEntry = gmo.id
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gmo.menu_id is not null;
+select ct.name
+	, 'No conditions for text'
+    , nt.text0_0
+    , nt.text0_1
+from creature_template ct
+	left join gossip_menu gm on gm.entry = ct.gossip_menu_id
+    left join npc_text nt on nt.id = gm.text_id
+	left join conditions c on c.SourceEntry = gm.text_id
+						and c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 14
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gm.text_id is not null;
 -- Priest
 set @classId := 5;
 set @failState := 1519;
@@ -112,6 +228,30 @@ where SourceTypeOrReferenceId in (14,15)
 		where menu_id = ct.gossip_menu_id
 		)
 );
+select ct.name
+	, 'No conditions for options'
+    , gmo.option_text
+from creature_template ct
+	left join gossip_menu_option gmo on gmo.menu_id = ct.gossip_menu_id
+	left join conditions c on c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 15
+                        and c.SourceEntry = gmo.id
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gmo.menu_id is not null;
+select ct.name
+	, 'No conditions for text'
+    , nt.text0_0
+    , nt.text0_1
+from creature_template ct
+	left join gossip_menu gm on gm.entry = ct.gossip_menu_id
+    left join npc_text nt on nt.id = gm.text_id
+	left join conditions c on c.SourceEntry = gm.text_id
+						and c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 14
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gm.text_id is not null;
 -- Death Knight
 set @classId := 6;
 set @failState := 1503;
@@ -131,6 +271,30 @@ where SourceTypeOrReferenceId in (14,15)
 		where menu_id = ct.gossip_menu_id
 		)
 );
+select ct.name
+	, 'No conditions for options'
+    , gmo.option_text
+from creature_template ct
+	left join gossip_menu_option gmo on gmo.menu_id = ct.gossip_menu_id
+	left join conditions c on c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 15
+                        and c.SourceEntry = gmo.id
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gmo.menu_id is not null;
+select ct.name
+	, 'No conditions for text'
+    , nt.text0_0
+    , nt.text0_1
+from creature_template ct
+	left join gossip_menu gm on gm.entry = ct.gossip_menu_id
+    left join npc_text nt on nt.id = gm.text_id
+	left join conditions c on c.SourceEntry = gm.text_id
+						and c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 14
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gm.text_id is not null;
 -- Shaman
 set @classId := 7;
 set @failState := 1471;
@@ -150,6 +314,30 @@ where SourceTypeOrReferenceId in (14,15)
 		where menu_id = ct.gossip_menu_id
 		)
 );
+select ct.name
+	, 'No conditions for options'
+    , gmo.option_text
+from creature_template ct
+	left join gossip_menu_option gmo on gmo.menu_id = ct.gossip_menu_id
+	left join conditions c on c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 15
+                        and c.SourceEntry = gmo.id
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gmo.menu_id is not null;
+select ct.name
+	, 'No conditions for text'
+    , nt.text0_0
+    , nt.text0_1
+from creature_template ct
+	left join gossip_menu gm on gm.entry = ct.gossip_menu_id
+    left join npc_text nt on nt.id = gm.text_id
+	left join conditions c on c.SourceEntry = gm.text_id
+						and c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 14
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gm.text_id is not null;
 -- Mage
 set @classId := 8;
 set @failState := 1407;
@@ -169,6 +357,30 @@ where SourceTypeOrReferenceId in (14,15)
 		where menu_id = ct.gossip_menu_id
 		)
 );
+select ct.name
+	, 'No conditions for options'
+    , gmo.option_text
+from creature_template ct
+	left join gossip_menu_option gmo on gmo.menu_id = ct.gossip_menu_id
+	left join conditions c on c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 15
+                        and c.SourceEntry = gmo.id
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gmo.menu_id is not null;
+select ct.name
+	, 'No conditions for text'
+    , nt.text0_0
+    , nt.text0_1
+from creature_template ct
+	left join gossip_menu gm on gm.entry = ct.gossip_menu_id
+    left join npc_text nt on nt.id = gm.text_id
+	left join conditions c on c.SourceEntry = gm.text_id
+						and c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 14
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gm.text_id is not null;
 -- Warlock
 set @classId := 9;
 set @failState := 1407;
@@ -188,3 +400,27 @@ where SourceTypeOrReferenceId in (14,15)
 		where menu_id = ct.gossip_menu_id
 		)
 );
+select ct.name
+	, 'No conditions for options'
+    , gmo.option_text
+from creature_template ct
+	left join gossip_menu_option gmo on gmo.menu_id = ct.gossip_menu_id
+	left join conditions c on c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 15
+                        and c.SourceEntry = gmo.id
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gmo.menu_id is not null;
+select ct.name
+	, 'No conditions for text'
+    , nt.text0_0
+    , nt.text0_1
+from creature_template ct
+	left join gossip_menu gm on gm.entry = ct.gossip_menu_id
+    left join npc_text nt on nt.id = gm.text_id
+	left join conditions c on c.SourceEntry = gm.text_id
+						and c.SourceGroup = ct.gossip_menu_id
+						and c.SourceTypeOrReferenceId = 14
+where trainer_class = @classId
+  and c.SourceGroup is null
+  and gm.text_id is not null;

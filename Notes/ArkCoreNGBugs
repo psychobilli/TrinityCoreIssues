@@ -1,6 +1,7 @@
 GENERAL
 
 MULGORE
+	There may be some duplicate spawns in the zone, or spacing is not accurate.
 	Trainer Sunwalker Helaku (37737) does not provide trainer dialog.
 		--Druid trainer Gart Mistrunner (3060) does not work correctly either, Sheal Runetotem (3034) does.
 		--Player:PrepareGossipMenu - trainer menu doesn't proc.  GossipMenuItemsMapBounds menuItemBounds has
