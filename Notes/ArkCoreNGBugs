@@ -1,20 +1,21 @@
 GENERAL
+	All holiday events appear to be active.
+	Honor tab automatically opens on loginat level 10.
 
 MULGORE
-	There may be some duplicate spawns in the zone, or spacing is not accurate.
-	Trainer Sunwalker Helaku (37737) does not provide trainer dialog.
-		--Druid trainer Gart Mistrunner (3060) does not work correctly either, Sheal Runetotem (3034) does.
-		--Player:PrepareGossipMenu - trainer menu doesn't proc.  GossipMenuItemsMapBounds menuItemBounds has
-			missing data.
-			Data comes from gossip menu options
-			Field in question is called OptionType
-		Issue is in conditions.
-			SourceTypeOrReferenceID 
-				14 = CONDITION_SOURCE_TYPE_GOSSIP_MENU, gossip_menu.entry, gossip_menu.text_id
-				15 = CONDITION_SOURCE_TYPE_GOSSIP_MENU_OPTION, gossip_menu_option.menu_id, gossip_menu_option.id
-			
-			ConditionTypeOrReference 
-				15 = CONDITION_CLASS, Class Mask from ChrClasses.dbc
-					except the data isn't in the dbc, it's just some damn enum in the code.
-					
-	Rejuvenating Touch (27067) - Spell does not award quest credit.
+	D - Many mobs do not have basic smart scripts active.
+	D - Some mobs on roads are well under the ground.
+	D - There may be some duplicate spawns in the zone, or spacing is not accurate.
+	N - Trainer Sunwalker Helaku (37737) does not provide trainer dialog.					
+	Q - Rejuvenating Touch (27067) - Spell does not award quest credit.
+	M - Bael'dun Dwarves are marked for pvp, but shouldn't be.
+	Q - Kyle's Gone Missine (11129) - Kyle does not path.
+	M - Flatland Couger (3566) - Visible while prowling
+	Q - Rite of Vision (20441) - Quest does not progress after drinking water.
+	Q - War Dance (24540) - Baine does not spawn to help, many mobs poorly spawned.
+	
+THUNDER BLUFF
+	N - Bluff Watchers do not point to Paladin Trainers
+	
+DUROTAR
+	Q - Arcane Missiles (25149) - Training dummy does not proc quest credit
