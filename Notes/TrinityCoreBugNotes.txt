@@ -68,6 +68,10 @@ Dire Maul -
 	Chest for Unfinished Gordok Business does not become lootable.
 	Knot is in the wrong spot.
 	x = 581.066040, y = 523.055725, z = -25.403263, o = 2.760699
+HELLFIRE PENINSULA
+	A Spirit Guide (9410) - Ghost Wolf has no escort scripts.
+ZANGAR MARSH
+	Withered Flesh (10355) - Mobs do not correctly drop quest items.
 Nagrand - Diplomatic Measures does not correctly open 
 	9927 - Ruthless Cunning and 9928 - Armaments for Deceoptsion
 	10641 - Against the Legion incorrectly offered after 
@@ -120,6 +124,12 @@ Shadowmoon Valley - 10613 - The Fel and the Furious - Cannot control
 	10540 - The Cipher of Damnation - Ar'tor's Charge - Spirit Guide
 		does not correctly summon named mob.
 	10588 - The Cipher of Damnation - Cyrukh the Firelord does not aggro.
+MANA TOMBS
+	Someone Else's Hard Work Pays Off (10218) - does not yield group credit.
+CAVERNS OF TIME
+	The Caverns of time (10277) - Does not yield group credit.
+SETHEKK Halls
+	Brother Against Brother (10097) - Does not yield group credit on freeing Lakka.
 Shattered Halls - Grand Warlock Nethercurse does not correctly aggro.
 	Numerous spawns are missing.
 	Trial of the Naaru: Mercy (10884) - Executioner does not drop quest item.
