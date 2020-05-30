@@ -1,6 +1,7 @@
 GENERAL
 	All holiday events appear to be active.
-	Honor tab automatically opens on loginat level 10.
+	Honor tab automatically opens on login at level 10.
+	Treasure Chests do not yield exp or items
 
 MULGORE
 	D - Many mobs do not have basic smart scripts active.
@@ -9,7 +10,7 @@ MULGORE
 	N - Trainer Sunwalker Helaku (37737) does not provide trainer dialog.					
 	Q - Rejuvenating Touch (27067) - Spell does not award quest credit.
 	M - Bael'dun Dwarves are marked for pvp, but shouldn't be.
-	Q - Kyle's Gone Missine (11129) - Kyle does not path.
+	Q - Kyle's Gone Missing (11129) - Kyle does not path.
 	M - Flatland Couger (3566) - Visible while prowling
 	Q - Rite of Vision (20441) - Quest does not progress after drinking water.
 	Q - War Dance (24540) - Baine does not spawn to help, many mobs poorly spawned.
@@ -20,3 +21,12 @@ THUNDER BLUFF
 DUROTAR
 	Q - Arcane Missiles (25149) - Training dummy does not proc quest credit
 	Q - The War of Northwarch Aggression (25169) - Quest is completed on acquire.
+	Q - Breaking the Chain (25167) - Mobs do not path.
+	Q - Rise of the Darkspear (24750) - Available to Orcs.
+	Q - Riding On (25171) - Player does not get taxi.
+	Q - Spirits Be Praised (25189) - Removed in WoD, not available in ArkCore.
+	Q - Unbidden Visitors (25194) - Striders do not drop combat correctly.
+		They also grant water walking.
+	
+ORGRIMMAR
+	N - Guards and quests point to classic locations, not Cata.

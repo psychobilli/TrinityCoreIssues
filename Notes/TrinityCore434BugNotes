@@ -1,0 +1,26 @@
+GENERAL
+
+
+MULGORE
+	C - Many spawns appear duplicated.
+	Q - Stop the Thorcallers (14455) - There may be too many gun thieves in the area.
+	Q - Feed of Evil (14461) - There are way too many boars.
+	Q - Rite of Honor (14460) - Complete quest POI is wrong, until I got close to the quest giver.
+	Q - The Restless Earth (14491) - Unable to complete quest objectives, spell does not yield credit.
+	C - Morin Coudstalker (14436) - Quest availability is suspect.
+	C - Deviate Viper (5755) - Should not be in Mulgore.
+	Q - Supervisor Fizprocket (26180, 765) - Both quests should not be offered.
+	Q - Rite of Vision (20441) - Wolf spirit does not path after drinking water.
+	C - Eastern Mulgore is void of mobs.
+	Q - Wildmane Totem (24523) - No quest POI.
+	Q - Wildmane Cleansing (24524) - Unable to target well with quest item.  No mobs present.
+	Q - War Dance (24540) - No mobs at Stonetalon Pass.
+	
+THUNDER BLUFF
+	C - Kah Mistrunner (3028) - Offers all fishing daily quests.
+	
+ORGRIMMAR
+	C - Garrosh Hellscream (31256) - "Placeholder" as gossip text.
+
+EXAMPLE DATA
+	Q - Rite of the Winds (24215) - Player changes form, flies to new location.
