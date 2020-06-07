@@ -1,5 +1,6 @@
 GENERAL
-
+	B - Fishing doesn't work right, the bobber doesn't dismiss correctly.
+	O - Mineral nodes do not always give items.  Seems to be related to failed attempts.
 
 MULGORE
 	C - Many spawns appear duplicated.
@@ -19,8 +20,65 @@ MULGORE
 THUNDER BLUFF
 	C - Kah Mistrunner (3028) - Offers all fishing daily quests.
 	
+DUROTAR
+	Q - Proving Pit (24768) - Darkspear Jailor gossip does not progress quest.
+	Q - Saving the Young (24623) - Quest Item does not activate Lost Bloodtalon Hatchling (39157)
+	Q - Young and Vicious (24626) - Swiftclaw is not present.
+	Q - Breaking the Line (25035) - Unable to mount raptor.
+	Q - An Ancient Enemy (24814) - Gossip does not activate Vol'jin (38225).
+				Zar'jira (38306) cannot be attacked.
+	Q - Purge the Valley (25168) - Should be offered along with The War of Northwatch Aggression (25169)
+	Q - Riding On (25171) - Player does not get taxi.
+	Q - Loss Reduction (25179) - Quest cannot be obtained or completed.
+	Q - Lost in the Floods (25187) - Quest Item does not function.
+	C - Dreadmaw Toothgnasher (39452) - Cannot be skinned.  There's also duplicated spawns.
+	C - Wayward Plainstrider (39337) - Cannot be skinned.
+	Q - Unbidden Visitors (25194) - Plainstriders do not run when weakened.
+	Q - Spirits Be Praised (25189) - Removed in WoD, not available in Trinity 434.
+	Q - Watershed Patrol (25188) - Quest does not complete when npcs are helped.
+	Q - Winds in the Desert (834) - Not enough game objects to loot.
+	Q - The Wolf and the Kodo (25205) - Player is not changed to a wolf, no gossip from quest giver.
+	Q - Thunder Down Under (25236) - Quest Item cannot be cast on Thunder Lizards.
+	C - Drowned Thunder Lizard (39464) - Does not discharge electricity randomly.
+	Q - Fizzled (25260) - Fizzle has no gossip option.
+	C - Kor'kron Deathbringer (42946) - Mob is hostile to Horde.
+	
 ORGRIMMAR
 	C - Garrosh Hellscream (31256) - "Placeholder" as gossip text.
+	
+DUN MOROGH
+	Q - Pack Your Bags (24492) - Quest Reward Coldridge Mountaineer's Pouch (57540) has no loot.
+	N - Captain Tharran (40950) - Quest offerings are suspect.
+	C - Wendigo (40941) - Respawn rate is too high.  Some mobs may be too close together.
+	N - Halbin Frosthammer (43464) - Does not train Shaman.
+	C - Snow Tracker Wolf (41478) - Not skinnable
+	N - Innkeeper Belm (1247) - Cannot bind Hearthstone, cannot buy beverages.
+	Q - Forced to Watch from Afar (313) - Moutaineers do not yield quest credit,
+	Q - The Ultrasafe Personnel Launcher (25839) - Cannot activate launcher.
+	Q - Strike from Above (25841) - Calling strikes does not yield quest credit.
+	Q - The View from Down Here (28868) - Using device does not yield quest credit.
+	Q - Rams on the Lam (25905) - Whistling at Rams does not yield quest credit.
+	Q - It's Raid Night Every Night (25932) - Event does not start.
+	Q - Get to the Airfield (25998) - Mathiel Rustwrench (41846) does not offer transport to airfield.
+	Q - Extinguish the Fires (26078) - Using device does not yield quest credit.
+	Q - Rallying the Defenders (26085) - Flag placement is on player position, not snow mound.
+	Q - Striking Back (26094) - Unable to board vehicle.
+	Q - Grimaxe's Demise (26102) - Unable to target Grimaxe.
+	Q - Seize the Ambassador (26118) - Ambassdor does not correctly follow on arrest.
+	
+IRONFORGE
+	N - Daryl Riknussun (5159) - Offers all daily cooking quests.
+	
+ELWYNN FOREST
+
 
 EXAMPLE DATA
 	Q - Rite of the Winds (24215) - Player changes form, flies to new location.
+	N - Coldridge Defender (37177) - Attacks nearby mobs.
+	Q - Pushing Forward (25792) - Burning Totems does not yield quest credit.
+	N - Grimnur Stonebrand (5161) - Offers only one daily fishing quest at a time. (The Gnomish Bait-o-Matic on 5/30)
+	Q - Fear No Evil (28806) - Apparent game object with spell cast effect.
+	Q - Extinguishing Hope (26391) - Use items to affect game objects.
+	Q - Find the Lost Guards (37) - Game Object which completes quest.
+	Q - Wanted: "Hogger" (176) - NPC's arrive to handle mob in scripted event.
+	Q - Never Trust a Big Barb and a Smile (25165) - Object which cast aura to absorb spell.
