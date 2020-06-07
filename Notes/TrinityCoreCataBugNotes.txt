@@ -1,0 +1,100 @@
+GENERAL
+	B - Fishing doesn't work right, the bobber doesn't dismiss correctly.
+	O - Mineral nodes do not always give items.  Seems to be related to failed attempts.
+
+MULGORE
+	C - Many spawns appear duplicated, noticibly worse than TrinityCore 434.
+	Q - Stop the Thorcallers (14455) - There may be too many gun thieves in the area.
+	Q - Feed of Evil (14461) - There are way too many boars.
+	Q - The Way of the Sunwalkers (27023) - Unable to complete quest objectives.
+	N - Sunwalker Helaku (37737) - Has no gossip after first quest is completed.  Might be normal for paladins.
+	Q - The Restless Earth (14491) - Unable to complete quest objectives, spell does not yield credit.
+	Q - Kyle's Gone Missing (11129) - Feeding Kyle did not give quest credit.
+	C - Morin Coudstalker (14436) - Quest availability is suspect.
+	C - Deviate Viper (5755) - Should not be in Mulgore.
+	N - Sunwalker Iopi (43013) - Does not offer all Paladin spells.  None of the Paladin Trainers do.
+	Q - Supervisor Fizprocket (26180, 765) - Both quests should not be offered.
+	Q - Rite of Vision (20441) - Wolf spirit does not path after drinking water.
+	C - Eastern Mulgore is void of mobs.
+	Q - Wildmane Cleansing (24524) - Unable to target well with quest item.  No mobs present.
+	Q - War Dance (24540) - No mobs at Stonetalon Pass.
+	
+THUNDER BLUFF
+	C - Kah Mistrunner (3028) - Offers all fishing daily quests.
+	
+DUROTAR
+	Q - Burning Blade Medallion (25132) - Offered too early.
+	Q - Lazy Peons (25134) - No valid peons.
+	Q - Thazz'ril's Pick (25135) - Offered too early.
+	Q - The Rise of the Darkspear (24750) - May be improperly offered to orcs.
+	C - Tiki Target (38038) - Target is mobile.
+	Q - Proving Pit (24768) - Darkspear Jailor gossip does not progress quest.
+	Q - The Arts of a Druid (24766) - Healing Jailor does not give quest credit.
+	Q - Saving the Young (24623) - Quest Item does not activate Lost Bloodtalon Hatchling (39157)
+	Q - Young and Vicious (24626) - Swiftclaw is not present.
+	Q - Breaking the Line (25035) - Unable to mount raptor.
+	Q - Territorial Fetish (24813) - Tikis can be cast on corpses multiple times.
+	Q - An Ancient Enemy (24814) - Gossip does not activate Vol'jin (38225).
+				Zar'jira (38306) cannot be attacked.
+	Q - The War of Northwatch Aggression (25169) - Should be offered along with Purge the Valley (25168)
+	Q - Riding On (25171) - Player does not get taxi.
+	Q - Loss Reduction (25179) - Quest cannot be obtained or completed.
+	Q - Lost in the Floods (25187) - Quest Item does not function.
+	I - Durotar Crocolisk Tooth (606015) - Lootable without quest.
+	C - Dreadmaw Toothgnasher (39452) - Cannot be skinned.  There's also duplicated spawns.
+	C - Wayward Plainstrider (39337) - Cannot be skinned.
+	Q - Unbidden Visitors (25194) - Plainstriders do not run when weakened.
+	Q - Spirits Be Praised (25189) - Quest is availble, escort does not path.
+	N - Grandmatron Tekla (39325) - Has a seond spawn at X 392 Y 4081
+	N - Un'Thuwa (5880) - Does not offer mage training.
+	Q - Watershed Patrol (25188) - Quest does not complete when npcs are helped.
+	Q - The Wolf and the Kodo (25205) - Player is not changed to a wolf, no gossip from quest giver.
+	Q - Thunder Down Under (25236) - Quest Item cannot be cast on Thunder Lizards, not visible in quest tracker.
+	C - Drowned Thunder Lizard (39464) - Does not discharge electricity randomly.
+	Q - Fizzled (25260) - Fizzle has no gossip option.
+	C - Griswold Hanniston (39353) - Has a spell that does 4k damage.
+	C - Kor'kron Deathbringer (42946) - Mob is hostile to Horde.
+	
+ORGRIMMAR
+	C - Garrosh Hellscream (31256) - "Placeholder" as gossip text.
+	
+DUN MOROGH
+	N - Teo Hammerstorm (37115) - Does not offer Shaman training.
+	Q - Trolling for Information (24489) - Causes a "You are in the wrong zone" error on completion.
+	Q - A Trip to Ironforge (24490) - Rockslide does not block cave on completion.  Phase not triggered.
+	Q - Pack Your Bags (24492) - Quest Reward Coldridge Mountaineer's Pouch (57540) has no loot.
+	N - Captain Tharran (40950) - Quest offerings are suspect.
+	C - Wendigo (40941) - Respawn rate is too high.  Some mobs may be too close together.
+	C - Snow Tracker Wolf (41478) - Not skinnable
+	N - Innkeeper Belm (1247) - Cannot bind Hearthstone, cannot buy beverages.
+	Q - Pilfered Supplies (25668) - Supplies lootable after quest completed.
+	Q - Forced to Watch from Afar (313) - Moutaineers do not yield quest credit,
+	Q - The Ultrasafe Personnel Launcher (25839) - Cannot activate launcher.
+	Q - Strike from Above (25841) - Calling strikes does not yield quest credit.
+	Q - The View from Down Here (28868) - Using device does not yield quest credit.
+	Q - Rams on the Lam (25905) - Whistling at Rams does not yield quest credit.
+	Q - It's Raid Night Every Night (25932) - Event does not start.
+	Q - Get to the Airfield (25998) - Mathiel Rustwrench (41846) does not offer transport to airfield.
+	Q - Extinguish the Fires (26078) - Using device does not yield quest credit.
+	Q - Rallying the Defenders (26085) - Flag placement is on player position, not snow mound.
+	Q - Striking Back (26094) - Unable to board vehicle.  I may have attempted the wrong vehicle.
+	Q - Grimaxe's Demise (26102) - Unable to target Grimaxe.
+	Q - Seize the Ambassador (26118) - Ambassdor does not correctly follow on arrest.
+	
+IRONFORGE
+	N - Daryl Riknussun (5159) - Offers all daily cooking quests.
+	
+ELWYNN FOREST
+	P - Hunter Pet Actions not available.
+
+
+EXAMPLE DATA
+	Q - Rite of the Winds (24215) - Player changes form, flies to new location.
+	N - Coldridge Defender (37177) - Attacks nearby mobs.
+	Q - Pushing Forward (25792) - Burning Totems does not yield quest credit.
+	N - Grimnur Stonebrand (5161) - Offers only one daily fishing quest at a time. (The Gnomish Bait-o-Matic on 5/30)
+	Q - Fear No Evil (28806) - Apparent game object with spell cast effect.
+	Q - Extinguishing Hope (26391) - Use items to affect game objects.
+	Q - Find the Lost Guards (37) - Game Object which completes quest.
+	Q - Wanted: "Hogger" (176) - NPC's arrive to handle mob in scripted event.
+	Q - Never Trust a Big Barb and a Smile (25165) - Object which cast aura to absorb spell.
