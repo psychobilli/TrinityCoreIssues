@@ -87,6 +87,19 @@ IRONFORGE
 ELWYNN FOREST
 	P - Hunter Pet Actions not available.
 
+TIRISFAL GLADES
+	Q - The Shadow Grave (28608) - Darnell (49141) does not path to target, just follows.
+	Q - Those That Couldn't Be Saved (26799) - Darnell (49141) does not assist in combat.
+	Q - The Wakening (24960) - Required NPC's are not present.
+	N - Therisa Sallow (48619) - Does not train Alchemy, or Herbalism.
+	Q - Ever So Lonely (24974) - Quest does not give credit for capturing a Murloc.
+	E - Entering Brill triggers "You are in the wrong zone" errors.
+	N - Nedric Sallow (47400) - Does not train Alchemy, or Herbalism.
+	N - Marion Call (2130) - Does not offere Rogue Training.
+	Q - Planting the Seed of Fear (24999) - Playable, but player constantly does animation.
+	N - Apprentice Crispin (38978) - Flagged as a repair vendor, offers no gossip.
+	Q - Speak with Sevren (25005) - Incorrectly flagged as completed on pickup.
+	Q - A Daughter's Embrace (25046) - Mobs are too tightly packed, no quest credit on completion.
 
 EXAMPLE DATA
 	Q - Rite of the Winds (24215) - Player changes form, flies to new location.
@@ -98,3 +111,6 @@ EXAMPLE DATA
 	Q - Find the Lost Guards (37) - Game Object which completes quest.
 	Q - Wanted: "Hogger" (176) - NPC's arrive to handle mob in scripted event.
 	Q - Never Trust a Big Barb and a Smile (25165) - Object which cast aura to absorb spell.
+	Q - Recruitment (26800) - NPC picks up objects.
+	Q - A Scarlet Letter (24979) - Scripted event with summoned mob and spell casts.
+	Q - Holland's Experiment (24996) - Scripted event kills npc.
