@@ -100,6 +100,94 @@ TIRISFAL GLADES
 	N - Apprentice Crispin (38978) - Flagged as a repair vendor, offers no gossip.
 	Q - Speak with Sevren (25005) - Incorrectly flagged as completed on pickup.
 	Q - A Daughter's Embrace (25046) - Mobs are too tightly packed, no quest credit on completion.
+	
+ACHERUS
+	Q - Grand Theft Palomino (12680) - Quest completion does not cause dismount.
+	N - Fineous (28943) - Has Repair Vendor mouse over, no gossip.
+	Q - Noth's Special Brew (12717) - Cauldron does not have Quest Complete gossip.
+	Q - How to Win Friends And Influence Enemies (12720) - Persuaders don't work.
+	Q - Behind Scarlet Lines (12723) - Should not be offered until How to Win Friends and Influence Enemies (12720) 
+			and The Plaguebringer's Request (12716) are complete.
+	Q - The Scarlet Apocalypse (12778) - Does not trigger next quest, An End to All Things (12779)
+	Q - An End to All Things (12779) - Cannot turn in quest.
+	Q - Taking Back Acherus (13165) - Using Death Gate does not set correct phase (403).
+	Q - Where Kings Walk (13188) - Portal to Stormwind does not work. NPCs do not throw fruit.  Varian does not give the speech.
+	
+TELDRASSIL
+	N - Rhyanda (43006) - No gossips, does not offer mage training.
+	Q - Arcane Missiles (26940) - Not offered by mage trainer.
+	N - Training Dummies follow player like mobs.  They're not rooted.
+	N - Syral Bladeleaf (2083) - Quest availability is suspect.
+	N - Iranis Shadebloom (47420) - Does not offer tradeskill training.
+	N - Irriende (43005) - Does not offer mage training.
+	C - Gnarlpine Shaman (2009) - Runs on aggro.
+	Q - Mist (938) - Quest does not complete on return to base.
+	
+DARNASSUS
+	N - Alegorn (4210) - Offers all daily cooking quests.
+	Q - The Howling Oak (28517) - Genn Greymane is not present.
+	
+BROKEN ISLES
+	P - Warlock Pet Actions not available.
+	Q - Off to the Bank (26712)(26711) - Incorrectly offered to wrong gender, not dependent on Rolling with My Homies (14071).
+	Q - Life of the Party (14113)(14153) - May be gender accurate, but not dependent on Give Sassy the News (24520)
+	Q - Rolling with My Homies (14071) - Unable to enter Hot Rod.
+	Q - Necessary Roughness (24502) - Shreddar is not present, event does not start.
+	Q - Fourth and Goal (28414)(24503) - Event does not start.
+	Q - The New You (14109)(14110) - NPCs are missing gossip text.
+	Q - Life of the Party (14113) - Does not enter correct phase.  Party items do not work on guests.
+	Q - Pirate Party Crashers (14115) - Does not enter correct phase.  Pirates to not aggro correctly.
+	Q - The Uninvited Guest (14116) - Trade Prince Gallywix is not present.
+	Q - Liberate the Kaja'mite (14124) - May not enter correct phase, Kaja'mite does not break apart.
+	Q - Robbing Hoods (14121) - Does not enter correct phase, Hoods do not aggro correctly.
+	Q - The Great Bank Heist (14122) - Not completeable.
+	Q - Waltz Right In (14123) - Completeable, but there's no apparent challenge.
+	O - Last Chance Yacht Boarding Mortar (223085,207355) - Does nothing.
+	Q - Life Savings (14126) - Correctly plays movie on completion.  Player does not arrive in Broken Isles after.
+	
+EVERSONG WOODS
+	Q - Quest availability is suspect.
+	N - Saren (47421) - Does not train professions.
+	
+GILNEAS
+	Q - By Blood and Ash (14218) - Far too many mobs.
+	Q - Last Stand (14222) - Far too many mobs.
+	N - Jack "All-Trades" Derrington (50247) - Does not offer profession training.
+	N - Vicus Darkwalker (36632) - Does not offer warlock training.
+	Q - Gasping for Breath (14395) - Unable to rescue watchmen.
+	Q - I Can't Wear This (14400) - Incorrect phase, clothes not visible.
+	Q - Grandma's Cat (14401) - Not offered after I Can't Wear This (14400), Lucius the Cruel (36461) not attackable.
+	Q - Ready to Go (14402) - Not offered after Grandma's Cat (14401)
+	Q - The Hungry Ettin (14416) - Round Up Horse spell on vehicle does nothing.
+	Q - Horses foor Duskhaven (14463) - Not offered after The Hungry Ettin (14416).  Cannot be turned in or rewarded.
+	Q - To Greymane Manor (14465) - Gates out of town don't open.  Does not set correct phase.
+	Q - Exodus (24438) - Required vehicle is not present.
+	Q - Stranded at the Marsh (24468) - Crash Survivors have no gossip or available action.
+	Q - Losing your Tail (24616) - Ranger does not appear.
+	Q - Preparations (24628) - Moonleaf game objects do not offer loot items.
+	Q - Take Back What's Ours (24646) - Tobias does not charge.
+	Q - Betrayal at Tempest's Reach (24592) - Mobs attack quest giver, preventing turn in.
+	Q - Liberation Day (24575) - Unable to free Gilneans.
+	Q - The Battle for Gilneas City (24904) - Event does not start.
+	Q - Slowing the Inevitable (24920) - Bat vehicle cannot be activated.
+	Q - Knee-Deep (24678) - Quest Item does not frighten vermin.
+	Q - Patriarch's Blessing (24679) - Does not trigger movie.
+	Q - They Have Allies, But So Do We (24681) - Unable to use glaive thrower, event does not start.
+	Q - Endgame (26706) - Unable to mount hippogryph.
+	
+AZUREMYST ISLE
+	Q - Aiding the Injured (26970) - Unable to heal dranei - spell always targets self.
+	Q - Red Snapper - Very Tasty (9452) - Failed casts to not summon mob.
+	N - Daedal (17215) - Does not train alchemy.
+	N - Guvan (17482) - Does not train priests.
+	N - Stephanos (17555) - Does not offer flight path to Azure Watch.
+	N - Valln (47431) - Does not offer profession training.
+	Q - Tree's Company (9531) - Event does not run correctly.
+	Q - All That Remains (9527) - Not properly offered by Cowlen.  Maybe I did it out of sequence.
+	I - Rune Covered Tablet (23759) - May not be in loot table.
+	Q - Totem of Coo (9539) - NPC is slightly too fast.
+	Q - Totem of Tikti (9540) - Player cannot fly.
+	Q - Totem of Yor (9541) - NPC does not correctly path to totem.
 
 EXAMPLE DATA
 	Q - Rite of the Winds (24215) - Player changes form, flies to new location.
@@ -114,3 +202,19 @@ EXAMPLE DATA
 	Q - Recruitment (26800) - NPC picks up objects.
 	Q - A Scarlet Letter (24979) - Scripted event with summoned mob and spell casts.
 	Q - Holland's Experiment (24996) - Scripted event kills npc.
+	Q - The Endless Hunger (12848) - Unlock a prison to fight mob.
+	Q - Death Comes From On High (12641) - Use spells to target markers.
+	Q - Death's Challenge (12733) - Challenge NPCs to Duel.  Works exactly like duels should.
+	Q - Massacre at Light's Point (12701) - Taxi (of a sort) to target.
+	Q - The Light of Dawn (12801) - Big battle, scripted events.
+	Q - The Relics of Wakening (483) - NPC spawns and assists.
+	Q - The Vengeance of Elune (14005) - Puts player in a vehicle until completion.
+	Q - The Dwarven Spy (8483) - Gossip causes mob to path, then aggro.
+	Q - Abandoned Investigations (8891) - Quest obtained from game object.
+	Q - Deactivating the Spire (8889) - Game objects give quest credit.
+	Q - Powering our Defenses (8490) - Quest Item starts event to protect game object.
+	Q - Lockdown (14078) - Correctly sets new phase.
+	P - Gilnean Mastiff (35631) - Correctly acts as pet.
+	Q - Last Stand (14222) - Correctly plays movie and relocates player.
+	Q - A Cry For Help (9528) - A correctly functioning escort quest.
+	Q - Warlord Sriss'tiz (9515) - NPC's play event, then offer quest.
