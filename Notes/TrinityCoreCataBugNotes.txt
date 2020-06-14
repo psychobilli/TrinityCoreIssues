@@ -63,6 +63,12 @@ DUN MOROGH
 	Q - Trolling for Information (24489) - Causes a "You are in the wrong zone" error on completion.
 	Q - A Trip to Ironforge (24490) - Rockslide does not block cave on completion.  Phase not triggered.
 	Q - Pack Your Bags (24492) - Quest Reward Coldridge Mountaineer's Pouch (57540) has no loot.
+	Q - Decontamination (27635) - Vehicle does not path, quest does not complete.
+	Q - A Job for the Multi-Bot (26205) - Geysers not present, multi-bot does nothing.
+	N - Drill Sergeant Steamcrank (42324) - Does not offer warrior training.
+	Q - Missing in Action (26284) - Demolitionists do not offer quest credit, gives Invalid Target error.
+	Q - Down with Crushcog (26364) - Gossip on High Tinker Mekkatorque (42894) does not function.
+					Razlo Crushcog (42839) cannot be aggrod.
 	N - Captain Tharran (40950) - Quest offerings are suspect.
 	C - Wendigo (40941) - Respawn rate is too high.  Some mobs may be too close together.
 	C - Snow Tracker Wolf (41478) - Not skinnable
