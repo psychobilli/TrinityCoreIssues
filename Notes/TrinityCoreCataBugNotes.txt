@@ -3,11 +3,12 @@ GENERAL
 	O - Mineral nodes do not always give items.  Seems to be related to failed attempts.
 
 MULGORE
+	N - Seer Ravenfeather (37724) - Does not offer Priest training.
+	N - Meela Dawnstrider (3062) - Offers wrong Shaman training spell list.
 	C - Many spawns appear duplicated, noticibly worse than TrinityCore 434.
 	Q - Stop the Thorcallers (14455) - There may be too many gun thieves in the area.
 	Q - Feed of Evil (14461) - There are way too many boars.
 	Q - The Way of the Sunwalkers (27023) - Unable to complete quest objectives.
-	N - Sunwalker Helaku (37737) - Has no gossip after first quest is completed.  Might be normal for paladins.
 	Q - The Restless Earth (14491) - Unable to complete quest objectives, spell does not yield credit.
 	Q - Kyle's Gone Missing (11129) - Feeding Kyle did not give quest credit.
 	C - Morin Coudstalker (14436) - Quest availability is suspect.
@@ -23,10 +24,17 @@ THUNDER BLUFF
 	C - Kah Mistrunner (3028) - Offers all fishing daily quests.
 	
 DUROTAR
+	N - Karranisha (39214) - Does not offer Hunter training.
+	N - Rwag (3155) - Does not offer Rogue training.
+	N - Shikrik (3157) - Does not offer Shaman training.
+	N - Nartok (3156) - Does not offer Warlock training.
 	Q - Burning Blade Medallion (25132) - Offered too early.
 	Q - Lazy Peons (25134) - No valid peons.
 	Q - Thazz'ril's Pick (25135) - Offered too early.
 	Q - The Rise of the Darkspear (24750) - May be improperly offered to orcs.
+	N - Legati (38244) - Does not offer Rogue training.
+	N - Nekali (38242) - Does not offer Shaman training.
+	N - Voldreka (42618) - Does not offer Warlock training.
 	C - Tiki Target (38038) - Target is mobile.
 	Q - Proving Pit (24768) - Darkspear Jailor gossip does not progress quest.
 	Q - The Arts of a Druid (24766) - Healing Jailor does not give quest credit.
@@ -60,12 +68,20 @@ ORGRIMMAR
 	
 DUN MOROGH
 	N - Teo Hammerstorm (37115) - Does not offer Shaman training.
+	N - Thran Khorman (912) - Does not offer Warrior training.
+	N - Solm Hargrin (916) - Does not offer  Rogue training.
+	N - Branstock Khalder (837) - Does not offer Priest training.
+	N - Teegli Merrowith (37121) - Does not offer Mage training.
+	N - Saripal Smolderbrew (43455) - Does not offer Warlock training.
 	Q - Trolling for Information (24489) - Causes a "You are in the wrong zone" error on completion.
 	Q - A Trip to Ironforge (24490) - Rockslide does not block cave on completion.  Phase not triggered.
 	Q - Pack Your Bags (24492) - Quest Reward Coldridge Mountaineer's Pouch (57540) has no loot.
 	Q - Decontamination (27635) - Vehicle does not path, quest does not complete.
 	Q - A Job for the Multi-Bot (26205) - Geysers not present, multi-bot does nothing.
-	N - Drill Sergeant Steamcrank (42324) - Does not offer warrior training.
+	N - Drill Sergeant Steamcrank (42324) - Does not offer Warrior training.
+	N - Kelsey Steelspark (42366) - Does not offer Rogue training.
+	N - "Doc" Cogspin (42323) - Does not offer Priest training.
+	N - Bipsi Frostfinger (42331) - Does not offer Mage training.
 	Q - Missing in Action (26284) - Demolitionists do not offer quest credit, gives Invalid Target error.
 	Q - Down with Crushcog (26364) - Gossip on High Tinker Mekkatorque (42894) does not function.
 					Razlo Crushcog (42839) cannot be aggrod.
@@ -92,8 +108,13 @@ IRONFORGE
 	
 ELWYNN FOREST
 	P - Hunter Pet Actions not available.
+	N - Priestess Anetta (375) - Offers wrong Priest spell list.
 
 TIRISFAL GLADES
+	P - Undead Mages do not start laying down.
+	N - David Trias (2122) - Offers wrong Rogue spell list.
+	N - Dark Cleric Dueston (2123) - Offers wrong Priest spell list.
+	N - Maximillion (2126) - Does not offer Warlock training.
 	Q - The Shadow Grave (28608) - Darnell (49141) does not path to target, just follows.
 	Q - Those That Couldn't Be Saved (26799) - Darnell (49141) does not assist in combat.
 	Q - The Wakening (24960) - Required NPC's are not present.
@@ -121,6 +142,7 @@ ACHERUS
 	
 TELDRASSIL
 	N - Rhyanda (43006) - No gossips, does not offer mage training.
+	N - Shanda (3595) - Does not offer Priest training.
 	Q - Arcane Missiles (26940) - Not offered by mage trainer.
 	N - Training Dummies follow player like mobs.  They're not rooted.
 	N - Syral Bladeleaf (2083) - Quest availability is suspect.
@@ -135,6 +157,10 @@ DARNASSUS
 	
 BROKEN ISLES
 	P - Warlock Pet Actions not available.
+	N - Bamm Megabomb (34673) - Does not offer Hunter training.
+	N - Slinky Sharpshiv (34693) - Does not offer Rogue training.
+	N - Sister Goldskimmer (34692) - Does not offer Priest training.
+	N - Fizz Lighter (34689) - Does not offer Mage training.
 	Q - Off to the Bank (26712)(26711) - Incorrectly offered to wrong gender, not dependent on Rolling with My Homies (14071).
 	Q - Life of the Party (14113)(14153) - May be gender accurate, but not dependent on Give Sassy the News (24520)
 	Q - Rolling with My Homies (14071) - Unable to enter Hot Rod.
@@ -152,14 +178,27 @@ BROKEN ISLES
 	Q - Life Savings (14126) - Correctly plays movie on completion.  Player does not arrive in Broken Isles after.
 	
 EVERSONG WOODS
+	N - Delios Silverblade (43010) - Offers wrong warrior spell list.
+	N - Jesthenis Sunstriker (15280) - Does not train Paladins.
+	N - Ranger Sallina (15513) - Does not train Hunters.
+	N - Pathstalker Kariel (15285) - Does not train Rogues.
+	N - Matron Arena (15284) - Does not train Priests.
+	N - Julia Sunstriker (15279) - Does not train Mages.
+	N - Summoner Teli'Larien (15283) - Does not train Warlocks.
 	Q - Quest availability is suspect.
 	N - Saren (47421) - Does not train professions.
 	
 GILNEAS
+	N - Sergeant Cleese (35839) - Does not offer Warrior training.
+	N - Huntsman Blake (35874) - Does not offer Hunter training.
+	N - Loren the Fence (35871) - Does not offer Rogue training.
+	N - Sister Almyra (35870) - Offers wrong Priest spell list.
+	N - Myriam Spellwaker (35872) - Does not train Mages.
 	Q - By Blood and Ash (14218) - Far too many mobs.
 	Q - Last Stand (14222) - Far too many mobs.
+	Q - Someone's Keeping Track of You (14275) - Unable to complete quest on gossip select.
 	N - Jack "All-Trades" Derrington (50247) - Does not offer profession training.
-	N - Vicus Darkwalker (36632) - Does not offer warlock training.
+	N - Vitus Darkwalker (36632) - Does not offer warlock training.
 	Q - Gasping for Breath (14395) - Unable to rescue watchmen.
 	Q - I Can't Wear This (14400) - Incorrect phase, clothes not visible.
 	Q - Grandma's Cat (14401) - Not offered after I Can't Wear This (14400), Lucius the Cruel (36461) not attackable.
@@ -182,6 +221,12 @@ GILNEAS
 	Q - Endgame (26706) - Unable to mount hippogryph.
 	
 AZUREMYST ISLE
+	N - Kore (16503) - Does not train Warriors.
+	N - Aurelon (16501) - Offers wrong Paladin spell list.
+	N - Keilnei (16499) - Offers wrong Hunter spell list.
+	N - Zalduun (16502) - Offers wrong Priest spell list.
+	N - Firmanvaar (17089) - Does not train Shaman.
+	N - Valaatu (16500) - Offers wrong Mage spell list.
 	Q - Aiding the Injured (26970) - Unable to heal dranei - spell always targets self.
 	Q - Red Snapper - Very Tasty (9452) - Failed casts to not summon mob.
 	N - Daedal (17215) - Does not train alchemy.
@@ -204,6 +249,7 @@ EXAMPLE DATA
 	Q - Extinguishing Hope (26391) - Use items to affect game objects.
 	Q - Find the Lost Guards (37) - Game Object which completes quest.
 	Q - Wanted: "Hogger" (176) - NPC's arrive to handle mob in scripted event.
+	Q - Rise of the Darkspear (various) - NPC paths on quest accept.
 	Q - Never Trust a Big Barb and a Smile (25165) - Object which cast aura to absorb spell.
 	Q - Recruitment (26800) - NPC picks up objects.
 	Q - A Scarlet Letter (24979) - Scripted event with summoned mob and spell casts.
@@ -219,7 +265,8 @@ EXAMPLE DATA
 	Q - Abandoned Investigations (8891) - Quest obtained from game object.
 	Q - Deactivating the Spire (8889) - Game objects give quest credit.
 	Q - Powering our Defenses (8490) - Quest Item starts event to protect game object.
-	Q - Lockdown (14078) - Correctly sets new phase.
+	Q - Lockdown (14078) - Correctly sets new phase.  Followup quest Something's Amiss (14091) may do the work.
+	Q - Royal Orders (14099) - Sets new phase on accept.
 	P - Gilnean Mastiff (35631) - Correctly acts as pet.
 	Q - Last Stand (14222) - Correctly plays movie and relocates player.
 	Q - A Cry For Help (9528) - A correctly functioning escort quest.
