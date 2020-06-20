@@ -13,12 +13,16 @@ MULGORE
 	Q - Kyle's Gone Missing (11129) - Feeding Kyle did not give quest credit.
 	C - Morin Coudstalker (14436) - Quest availability is suspect.
 	C - Deviate Viper (5755) - Should not be in Mulgore.
-	N - Sunwalker Iopi (43013) - Does not offer all Paladin spells.  None of the Paladin Trainers do.
 	Q - Supervisor Fizprocket (26180, 765) - Both quests should not be offered.
 	Q - Rite of Vision (20441) - Wolf spirit does not path after drinking water.
 	C - Eastern Mulgore is void of mobs.
 	Q - Wildmane Cleansing (24524) - Unable to target well with quest item.  No mobs present.
 	Q - War Dance (24540) - No mobs at Stonetalon Pass.
+	
+	N - Sunwalker Iopi (43013) - Does not offers wrong Paladin spell set.
+	N - Seer Alsoomse (43015) - Does not offer Priest training.
+	
+	N - Lalum Darkmane (47419) - Does not offer Profession training.
 	
 THUNDER BLUFF
 	C - Kah Mistrunner (3028) - Offers all fishing daily quests.
@@ -54,7 +58,6 @@ DUROTAR
 	Q - Unbidden Visitors (25194) - Plainstriders do not run when weakened.
 	Q - Spirits Be Praised (25189) - Quest is availble, escort does not path.
 	N - Grandmatron Tekla (39325) - Has a seond spawn at X 392 Y 4081
-	N - Un'Thuwa (5880) - Does not offer mage training.
 	Q - Watershed Patrol (25188) - Quest does not complete when npcs are helped.
 	Q - The Wolf and the Kodo (25205) - Player is not changed to a wolf, no gossip from quest giver.
 	Q - Thunder Down Under (25236) - Quest Item cannot be cast on Thunder Lizards, not visible in quest tracker.
@@ -62,6 +65,24 @@ DUROTAR
 	Q - Fizzled (25260) - Fizzle has no gossip option.
 	C - Griswold Hanniston (39353) - Has a spell that does 4k damage.
 	C - Kor'kron Deathbringer (42946) - Mob is hostile to Horde.
+	
+	N - Tarshaw Jaggedsar (3169) - Does not train Warriors.
+	N - Kaplak (3170) - Does not train Rogues.
+	N - Un'Thuwa (5880) - Does not offer Mage training.
+	N - Dhurgru Gorelust (3172) - Does not offer Warlock training.
+	N - Jabul (44380) - Does not offer Druid training.
+	
+	N - Yeniss (50006) - Does not offer Warrior training.
+	N - Jamai (50004) - Does not offer Hunter training.
+	N - Munalti (50015) - Does not offer Rogue training.
+	N - Cona (50011) - Does not offer Shaman training.
+	N - Gusini (49998) - Does not offer Warlock training.
+	N - Den'chulu (49997) - Does not offer Druid training.
+	
+	N - Krunn (3175) - Does not train Mining.
+	N - Dwukk (3174) - Does not train Blacksmithing.
+	N - Mukdrak (11025) - Does not train Engineering.
+	N - Runda (47418) - Does not train Professions.
 	
 ORGRIMMAR
 	C - Garrosh Hellscream (31256) - "Placeholder" as gossip text.
@@ -88,7 +109,6 @@ DUN MOROGH
 	N - Captain Tharran (40950) - Quest offerings are suspect.
 	C - Wendigo (40941) - Respawn rate is too high.  Some mobs may be too close together.
 	C - Snow Tracker Wolf (41478) - Not skinnable
-	N - Innkeeper Belm (1247) - Cannot bind Hearthstone, cannot buy beverages.
 	Q - Pilfered Supplies (25668) - Supplies lootable after quest completed.
 	Q - Forced to Watch from Afar (313) - Moutaineers do not yield quest credit,
 	Q - The Ultrasafe Personnel Launcher (25839) - Cannot activate launcher.
@@ -103,12 +123,25 @@ DUN MOROGH
 	Q - Grimaxe's Demise (26102) - Unable to target Grimaxe.
 	Q - Seize the Ambassador (26118) - Ambassdor does not correctly follow on arrest.
 	
+	N - Innkeeper Belm (1247) - Cannot bind Hearthstone, cannot buy beverages.
+	
+	N - Granis Swiftaxe (1229) - Does not offer warrior training.
+	N - Hogral Bakkan (1234) - Does not offer Rogue training.
+	N - Maxan Anvol (1226) - Does not offer Priest training.
+	N - Magis Sparkmantle (1228) - Does not offer Mage training.
+	
+	N - Wembil Taskwidget (47396) - Does not offer profession training.
+	N - Tognus Flintfire (1241) - Does not offer Blacksmithing training.
+	
 IRONFORGE
 	N - Daryl Riknussun (5159) - Offers all daily cooking quests.
 	
 ELWYNN FOREST
 	P - Hunter Pet Actions not available.
 	N - Priestess Anetta (375) - Offers wrong Priest spell list.
+	N - Lien Farnet (47384) - Does not train professions.
+	N - Kitta Firewind (11072) - Does not train Enchanting.
+	N - Eldrin (1103) - Does not train Tailoring.
 
 TIRISFAL GLADES
 	P - Undead Mages do not start laying down.
@@ -118,15 +151,23 @@ TIRISFAL GLADES
 	Q - The Shadow Grave (28608) - Darnell (49141) does not path to target, just follows.
 	Q - Those That Couldn't Be Saved (26799) - Darnell (49141) does not assist in combat.
 	Q - The Wakening (24960) - Required NPC's are not present.
-	N - Therisa Sallow (48619) - Does not train Alchemy, or Herbalism.
 	Q - Ever So Lonely (24974) - Quest does not give credit for capturing a Murloc.
 	E - Entering Brill triggers "You are in the wrong zone" errors.
-	N - Nedric Sallow (47400) - Does not train Alchemy, or Herbalism.
-	N - Marion Call (2130) - Does not offere Rogue Training.
 	Q - Planting the Seed of Fear (24999) - Playable, but player constantly does animation.
 	N - Apprentice Crispin (38978) - Flagged as a repair vendor, offers no gossip.
 	Q - Speak with Sevren (25005) - Incorrectly flagged as completed on pickup.
 	Q - A Daughter's Embrace (25046) - Mobs are too tightly packed, no quest credit on completion.
+	
+	N - Shernon the Footpad (48615) - Does not offer Rogue training.
+	N - Dark Cleric Claressa (48614) - Does not offer Priest training.
+	N - Maressa Milner (48612) - Does not offer Warlock training.
+	
+	N - Dedlow Wormwood (39100) - Does not offer Hunter training.
+	N - Marion Call (2130) - Does not offer Rogue training.
+	N - Rupert Boch (2127) - Does not offer Warlock training.
+	
+	N - Therisa Sallow (48619) - Does not train Professions.
+	N - Nedric Sallow (47400) - Does not train Alchemy, or Herbalism.
 	
 ACHERUS
 	Q - Grand Theft Palomino (12680) - Quest completion does not cause dismount.
@@ -146,10 +187,16 @@ TELDRASSIL
 	Q - Arcane Missiles (26940) - Not offered by mage trainer.
 	N - Training Dummies follow player like mobs.  They're not rooted.
 	N - Syral Bladeleaf (2083) - Quest availability is suspect.
-	N - Iranis Shadebloom (47420) - Does not offer tradeskill training.
-	N - Irriende (43005) - Does not offer mage training.
 	C - Gnarlpine Shaman (2009) - Runs on aggro.
 	Q - Mist (938) - Quest does not complete on return to base.
+	
+	N - Irriende (43005) - Does not offer mage training.
+	N - Laurna Morninglight (3600) - Does not offer priest training.
+	
+	N - Iranis Shadebloom (47420) - Does not offer Profession training.
+	N - Cyndra Kindwhisper (3603) - Does not offer Alchemy training.
+	N - Zarrin (3603) - Does not offer Cooking training.
+	N - Byancie (6094) - Does not offer First Aid training.
 	
 DARNASSUS
 	N - Alegorn (4210) - Offers all daily cooking quests.
@@ -177,6 +224,32 @@ BROKEN ISLES
 	O - Last Chance Yacht Boarding Mortar (223085,207355) - Does nothing.
 	Q - Life Savings (14126) - Correctly plays movie on completion.  Player does not arrive in Broken Isles after.
 	
+	Data Validation
+	N - Warrior-Matic NX-01 (35807) - Warrior Trainer
+	N - Warrior-Matic NX-01 (36525) - Warrior Trainer
+	N - Warrior-Matic NX-01 (38518) - Warrior Trainer
+	N - Bamm Megabomb (38122) - Hunter Trainer
+	N - Bamm Megabomb (36518) - Hunter Trainer
+	N - Bamm Megabomb (35758) - Hunter Trainer
+	N - Slinky Sharpshiv (35806) - Rogue Trainer
+	N - Slinky Sharpshiv (38517) - Rogue Trainer
+	N - Slinky Sharpshiv (36524) - Rogue Trainer
+	N - Sister Goldskimmer (35805) - Priest Trainer
+	N - Sister Goldskimmer (38516) - Priest Trainer
+	N - Sister Goldskimmer (36523) - Priest Trainer
+	N - Maxx Avalanche (35786) - Shaman Trainer
+	N - Maxx Avalanche (36521) - Shaman Trainer
+	N - Maxx Avalanche (38515) - Shaman Trainer
+	N - Fizz Lighter (35780) - Mage Trainer
+	N - Fizz Lighter (36520) - Mage Trainer
+	N - Fizz Lighter (38514) - Mage Trainer
+	N - Evol Fingers (35778) - Warlock Trainer
+	N - Evol Fingers (36519) - Warlock Trainer
+	N - Evol Fingers (38513) - Warlock Trainer
+	
+	N - Doc Zapnozzle (36615) - First Aid Trainer
+	N - KTC Train-a-Tron Deluxe (45286) - Professions Trainer
+	
 EVERSONG WOODS
 	N - Delios Silverblade (43010) - Offers wrong warrior spell list.
 	N - Jesthenis Sunstriker (15280) - Does not train Paladins.
@@ -186,7 +259,15 @@ EVERSONG WOODS
 	N - Julia Sunstriker (15279) - Does not train Mages.
 	N - Summoner Teli'Larien (15283) - Does not train Warlocks.
 	Q - Quest availability is suspect.
+	
+	N - Noellene (16275) - Offer wrong Paladin spell list.
+	N - Hannovia (16270) - Does not offer Hunter training.
+	N - Tannaria (16279) - Offers wrong Rogue spell list.
+	N - Garridel (16269) - Does not offer Mage training.
+	
 	N - Saren (47421) - Does not train professions.
+	N - Perascamin (16280) - Does not offer Riding training.
+	N - Sathein (16278) - Wrong mouseover icon.  Repair, not trainer.
 	
 GILNEAS
 	N - Sergeant Cleese (35839) - Does not offer Warrior training.
@@ -220,6 +301,43 @@ GILNEAS
 	Q - They Have Allies, But So Do We (24681) - Unable to use glaive thrower, event does not start.
 	Q - Endgame (26706) - Unable to mount hippogryph.
 	
+	Data validation
+	N - Sergeant Cleese (35839) - Warrior trainer (low level)
+	N - Sergeant Cleese (36651) - Warrior trainer
+	N - Sergeant Cleese (38793) - Warrior trainer
+	N - Sergeant Cleese (44455) - Warrior trainer
+	N - Huntsman Blake (35874) - Hunter trainer (low level)
+	N - Huntsman Blake (38467) - Hunter trainer
+	N - Huntsman Blake (38798) - Hunter trainer
+	N - Huntsman Blake (36629) - Hunter trainer
+	N - Huntsman Blake (44461) - Hunter trainer
+	N - Loren the Fence (35871) - Rogue trainer (low level)
+	N - Loren the Fence (38796) - Rogue trainer
+	N - Loren the Fence (44464) - Rogue trainer
+	N - Loren the Fence (36630) - Rogue trainer
+	N - Sister Almyra (35870) - Priest Trainer (low level)
+	N - Sister Almyra (36632) - Priest Trainer
+	N - Sister Almyra (44468) - Priest Trainer
+	N - Sister Almyra (38466) - Priest Trainer
+	N - Sister Almyra (38795) - Priest Trainer
+	N - Myriam Spellwaker (35872) - Mage trainer (low level)
+	N - Myriam Spellwaker (36631) - Mage trainer
+	N - Myriam Spellwaker (38794) - Mage trainer
+	N - Myriam Spellwaker (38465) - Mage trainer
+	N - Myriam Spellwaker (44465) - Mage trainer
+	N - Celestine of the Harvest (44459) - Druid trainer (low level)
+	N - Celestine of the Harvest (38799) - Druid trainer
+	N - Celestine of the Harvest (36628) - Druid trainer
+	N - Celestine of the Harvest (35873) - Druid trainer
+	N - Vitus Darkwalker (35869) - Warlock Trainer (low level)
+	N - Vitus Darkwalker (36642) - Warlock Trainer
+	N - Vitus Darkwalker (38797) - Warlock Trainer
+	N - Vitus Darkwalker (44469) - Warlock Trainer
+	
+	N - Jack "All Trades" Derrington (50247) - Profession Trainer
+	N - Amelia Atherton (50574) - First Aid Trainer
+	N - Fielding Chesterhill (50567) - Cooking Trainer
+	
 AZUREMYST ISLE
 	N - Kore (16503) - Does not train Warriors.
 	N - Aurelon (16501) - Offers wrong Paladin spell list.
@@ -229,16 +347,23 @@ AZUREMYST ISLE
 	N - Valaatu (16500) - Offers wrong Mage spell list.
 	Q - Aiding the Injured (26970) - Unable to heal dranei - spell always targets self.
 	Q - Red Snapper - Very Tasty (9452) - Failed casts to not summon mob.
-	N - Daedal (17215) - Does not train alchemy.
-	N - Guvan (17482) - Does not train priests.
 	N - Stephanos (17555) - Does not offer flight path to Azure Watch.
-	N - Valln (47431) - Does not offer profession training.
 	Q - Tree's Company (9531) - Event does not run correctly.
 	Q - All That Remains (9527) - Not properly offered by Cowlen.  Maybe I did it out of sequence.
 	I - Rune Covered Tablet (23759) - May not be in loot table.
 	Q - Totem of Coo (9539) - NPC is slightly too fast.
 	Q - Totem of Tikti (9540) - Player cannot fly.
 	Q - Totem of Yor (9541) - NPC does not correctly path to totem.
+	
+	N - Ruada (17480) - Does not offer Warrior training.
+	N - Guvan (17482) - Does not train priests.
+	N - Tuluun (17212) - Does not offer Shaman training.
+	
+	N - Valn (47431) - Does not offer profession training.
+	N - Daedal (17215) - Does not train alchemy.
+	N - Artificer Daelo (17222) - Does not train Engineering.
+	N - Gurf (17441) - Does not offer Skinning training.
+	N - Moordo (17442) - Does not offer Leatherworking training.
 
 EXAMPLE DATA
 	Q - Rite of the Winds (24215) - Player changes form, flies to new location.
