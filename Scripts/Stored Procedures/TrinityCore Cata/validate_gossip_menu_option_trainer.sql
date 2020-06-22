@@ -64,6 +64,6 @@ BEGIN
 	where exists 
 		(select 1 from gossip_menu_option_trainer gmot 
 			where gmot.MenuId = ct.gossip_menu_id and gmot.trainerId = trainer) 
-	and ct.trainer_type != @class;
+	and ct.trainer_class != @class;
 END //
 DELIMITER ;

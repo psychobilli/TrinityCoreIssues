@@ -139,6 +139,7 @@ IRONFORGE
 ELWYNN FOREST
 	P - Hunter Pet Actions not available.
 	N - Priestess Anetta (375) - Offers wrong Priest spell list.
+	
 	N - Lien Farnet (47384) - Does not train professions.
 	N - Kitta Firewind (11072) - Does not train Enchanting.
 	N - Eldrin (1103) - Does not train Tailoring.
@@ -275,6 +276,7 @@ GILNEAS
 	N - Loren the Fence (35871) - Does not offer Rogue training.
 	N - Sister Almyra (35870) - Offers wrong Priest spell list.
 	N - Myriam Spellwaker (35872) - Does not train Mages.
+	N - Vitus Darkwalker (35869) - Does not offer Warlock training.
 	Q - By Blood and Ash (14218) - Far too many mobs.
 	Q - Last Stand (14222) - Far too many mobs.
 	Q - Someone's Keeping Track of You (14275) - Unable to complete quest on gossip select.
@@ -330,7 +332,7 @@ GILNEAS
 	N - Celestine of the Harvest (36628) - Druid trainer
 	N - Celestine of the Harvest (35873) - Druid trainer
 	N - Vitus Darkwalker (35869) - Warlock Trainer (low level)
-	N - Vitus Darkwalker (36642) - Warlock Trainer
+	N - Vitus Darkwalker (36652) - Warlock Trainer
 	N - Vitus Darkwalker (38797) - Warlock Trainer
 	N - Vitus Darkwalker (44469) - Warlock Trainer
 	
