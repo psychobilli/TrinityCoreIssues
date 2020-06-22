@@ -47,9 +47,14 @@ BEGIN
     where gmo.MenuId = @Menu_Id and OptionIcon = 3 and (gmo.OptionType != 5 or gmo.OptionNpcflag != 16) group by OptionIndex;
     
     insert into results
-    select 7, count(*), 'gossip_menu_option_trainer with OptionType 5 and OptionNpcFlag 16 at OptionIndex', gmo.OptionIndex 
+    select 7, count(*), 'gossip_menu_option_trainer with OptionType 5 and OptionNpcFlag 16 at OptionIndex', concat('OptionIndex: ', gmo.OptionIndex, ', OptionType: ', OptionType, ', OptionNpcFlag: ', OptionNpcFlag)
     from gossip_menu_option_trainer gmot join gossip_menu_option gmo on gmo.MenuId = gmot.MenuId and gmo.OptionIndex = gmot.OptionIndex
     where gmo.OptionType = 5 and gmo.OptionNpcflag = 16 and gmo.MenuId = @Menu_Id group by gmo.OptionIndex;
+    
+    insert into results
+    select 7, count(*), 'gossip_menu_option_trainer with OptionIcon 3 and incorrect Tyoe or Flag', gmo.OptionIndex 
+    from gossip_menu_option_trainer gmot join gossip_menu_option gmo on gmo.MenuId = gmot.MenuId and gmo.OptionIndex = gmot.OptionIndex
+    where gmo.MenuId = @Menu_Id and OptionIcon = 3 and (gmo.OptionType != 5 or gmo.OptionNpcflag != 16) group by OptionIndex;
     
     set @trainer := (select trainerId from gossip_menu_option_trainer gmot 
 			join gossip_menu_option gmo on gmo.MenuId = gmot.MenuId and gmo.OptionIndex = gmot.OptionIndex
