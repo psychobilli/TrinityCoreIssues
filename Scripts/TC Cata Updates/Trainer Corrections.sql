@@ -50,7 +50,6 @@ insert into gossip_menu_option_trainer
 values (4684, 0, 145),
 	(14137, 0, 168),
 	(4676, 0, 17),
---	(14140, 0, 17),
 	(4655, 0, 32),
 	(4643, 0, 32),
 	(4692, 0, 127),
@@ -204,7 +203,6 @@ values (4683, 0, 16),
 	(10818, 0, 3),
 	(4105, 0, 124),
 	(7467, 0, 124),
--- 	(10838, 0, 124),
 	(11049, 0, 124),
 	(64, 0, 135),
 	(6648, 0, 135),
@@ -242,5 +240,3 @@ update creature_template set gossip_menu_id = 10834 where entry = 35873;
 -- warrior
 update creature_template set gossip_menu_id = 14199 where entry = 3169;
 update creature_template set gossip_menu_id = 14199 where entry = 17480;
--- paladin
--- update creature_template set gossip_menu_id =  where entry = ;
