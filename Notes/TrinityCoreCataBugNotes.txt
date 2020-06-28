@@ -24,6 +24,8 @@ MULGORE
 	
 	N - Lalum Darkmane (47419) - Does not offer Profession training.
 	
+	N - Innkeeper Kauth (6747) - Gossip "I want to browse your goods" gives Innkeeper dialogue.
+	
 THUNDER BLUFF
 	C - Kah Mistrunner (3028) - Offers all fishing daily quests.
 	
@@ -194,9 +196,11 @@ TELDRASSIL
 	N - Irriende (43005) - Does not offer mage training.
 	N - Laurna Morninglight (3600) - Does not offer priest training.
 	
+	N - Innkeeper Keldamyr (6736) - Cannot bind hearthstone, cannot buy beverages.
+	
 	N - Iranis Shadebloom (47420) - Does not offer Profession training.
 	N - Cyndra Kindwhisper (3603) - Does not offer Alchemy training.
-	N - Zarrin (3603) - Does not offer Cooking training.
+	N - Zarrin (6286) - Does not offer Cooking training.
 	N - Byancie (6094) - Does not offer First Aid training.
 	
 DARNASSUS
@@ -366,6 +370,9 @@ AZUREMYST ISLE
 	N - Artificer Daelo (17222) - Does not train Engineering.
 	N - Gurf (17441) - Does not offer Skinning training.
 	N - Moordo (17442) - Does not offer Leatherworking training.
+	N - Aalun (20914) - Does not offer Riding training.
+	
+	N - Caregiver Chelian (16553) - Gossip "I want to browse your goods" gives Innkeeper dialogue.
 
 EXAMPLE DATA
 	Q - Rite of the Winds (24215) - Player changes form, flies to new location.
