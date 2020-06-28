@@ -62,188 +62,198 @@ BEGIN
     where gmo.MenuId = @Menu_Id and OptionIcon = 3 and not exists (select 1 from gossip_menu_option sub 
 	where sub.MenuId = gmo.MenuId and sub.OptionType = 5 and sub.OptionNpcflag = 16) group by OptionIndex;
     
-    set @trainer := (select trainerId from gossip_menu_option_trainer gmot 
-			join gossip_menu_option gmo on gmo.MenuId = gmot.MenuId and gmo.OptionIndex = gmot.OptionIndex
-            where gmo.OptionNpcflag = 16 and gmo.OptionType = 5 and gmo.MenuId = @Menu_Id);
-	set @class := case when @trainer in (16, 145)
+    create temporary table trainers (MenuId int, trainerId int, optionIndex int, description text);
+    
+    insert into trainers (MenuId, trainerId, OptionIndex, description)
+    select gmot.MenuId, gmot.trainerId, gmot.OptionIndex, case when gmot.trainerId in (16)
 					   then '(1) warrior'
-                       when @trainer in (164, 168)
+                       when trainerId in (145)
+					   then '(1) warrior low level'
+                       when trainerId in (164)
                        then '(2) paladin'
-                       when @trainer in (15, 40)
+                       when trainerId in (168)
+                       then '(2) paladin low level'
+                       when trainerId in (40)
                        then '(3) hunter'
-                       when @trainer in (17, 33)
+                       when trainerId in (15)
+                       then '(3) hunter low level'
+                       when trainerId in (33)
                        then '(4) rogue'
-                       when @trainer in (3, 127)
+                       when trainerId in (17)
+                       then '(4) rogue low level'
+                       when trainerId in (3)
                        then '(5) priest'
-					   when @trainer in (55)
+                       when trainerId in (127)
+                       then '(5) priest low level'
+					   when trainerId in (55)
 					   then '(6) death knight'
-                       when @trainer in (124, 134)
+                       when trainerId in (124)
                        then '(7) shaman'
-                       when @trainer in (44, 135)
+                       when trainerId in (134)
+                       then '(7) shaman low level'
+                       when trainerId in (135)
                        then '(8) mage'
-                       when @trainer in (32, 154)
+                       when trainerId in (44)
+                       then '(8) mage low level'
+                       when trainerId in (154)
                        then '(9) warlock'
-                       when @trainer in (39, 50)
+                       when trainerId in (32)
+                       then '(9) warlock low level'
+                       when trainerId in (39)
                        then '(11) druid'
-                       else 0
-			end;
-	set @lowlevel := case when @trainer in (145, 168, 15, 17, 127, 134, 44, 32, 50)
-						then 'low level'
-                        else ''
-			end;
-	set @profession := case when @trainer = 2
-                            then 'Illustrious Grand Master Jewelcrafter'
-							when @trainer = 6
-                            then 'Illustrious Grand Master Scribe'
-							when @trainer = 10 -- ?
-                            then 'Illustrious Grand Master Fishing'
-							when @trainer = 12
-                            then 'Horde Portal Trainer'
-							when @trainer = 27
-                            then 'Illustrious Grand Master Blacksmith'
-							when @trainer = 29
-                            then 'Illustrious Grand Master Jewelcrafter'
-							when @trainer = 31
-                            then 'Apprentice Fishing'
-							when @trainer = 34
-                            then 'Illustrious Grand Master Blacksmith'
-							when @trainer = 37
-                            then 'Journeyman Blacksmith'
-							when @trainer = 42
-                            then 'Illustrious Grand Master Tailor'
-                            when @trainer = 46
-                            then 'Journeyman Riding'
-							when @trainer = 48
-                            then 'Apprentice Jewelcrafter'
-							when @trainer = 49
-                            then 'Illustrious Grand Master Miner'
-							when @trainer = 51
-                            then 'Apprentice Enchanter'
-							when @trainer = 56
-                            then 'Illustrious Grand Master Leatherworker'
-							when @trainer = 58
-                            then 'Illustrious Grand Master Blacksmith'
-							when @trainer = 59
-                            then 'Apprentice Alchemist'
-							when @trainer = 62
-                            then 'Illustrious Grand Master Enchanter'
-							when @trainer = 63
-                            then 'Illustrious Grand Master Scribe'
-							when @trainer = 67
-                            then 'Illustrious Grand Master Tailor'
-							when @trainer = 75
-                            then 'Illustrious Grand Master Cook'
-							when @trainer = 77
-                            then 'Illustrious Grand Master Tailor'
-							when @trainer = 80
-                            then 'Apprentice Blacksmith'
-							when @trainer = 82
-                            then 'Illustrious Grand Master Miner'
-							when @trainer = 83
-                            then 'Illustrious Grand Master Skinner'
-							when @trainer = 89
-                            then 'Illustrious Grand Master Herbalist'
-							when @trainer = 90
-                            then 'Illustrious Grand Master Skinner'
-							when @trainer = 91
-                            then 'Illustrious Grand Master Miner'
-							when @trainer = 101
-                            then 'Illustrious Grand Master Herbalist'
-							when @trainer = 102
-                            then 'Apprentice Engineer'
-							when @trainer = 103
-                            then 'Apprentice Leatherworker'
-							when @trainer = 105
-                            then 'Journeyman Alchemist'
-							when @trainer = 107
-                            then 'Illustrious Grand Master First Aid'
-							when @trainer = 114
-                            then 'Neutral Portal Trainer'
-							when @trainer = 117
-                            then 'Apprentice Tailor'
-							when @trainer = 119
-                            then 'Journeyman Jewelcrafter'
-							when @trainer = 122
-                            then 'Illustrious Grand Master Alchemist'
-							when @trainer = 123
-                            then 'Illustrious Grand Master Scribe'
-							when @trainer = 129
-                            then 'Neutral Portal Trainer'
-							when @trainer = 130
-                            then 'Alliance Portal Trainer'
-							when @trainer = 131
-                            then 'Illustrious Grand Master Enchanter'
-							when @trainer = 133
-                            then 'Illustrious Grand Master Herbalist'
-							when @trainer = 136
-                            then 'Illustrious Grand Master Cook'
-							when @trainer = 137
-                            then 'Flight Master'
-							when @trainer = 143
-                            then 'Illustrious Grand Master Leatherworker'
-							when @trainer = 144
-                            then 'Draenei Portal Trainer'
-							when @trainer = 148
-                            then 'Neutral Portal Trainer'
-							when @trainer = 149
-                            then 'Horde Portal Trainer'
-							when @trainer = 150
-                            then 'Illustrious Grand Master Jewelcrafter'
-							when @trainer = 155
-                            then 'Illustrious Grand Master Skinner'
-							when @trainer = 157
-                            then 'Journeyman Tailor'
-							when @trainer = 158
-                            then 'Illustrious Grand Master Fishing at the wrong level'
-							when @trainer = 159
-                            then 'Illustrious Grand Master First Aid'
-							when @trainer = 160
-                            then 'Illustrious Grand Master First Aid'
-							when @trainer = 161
-                            then 'Master Cook'
-							when @trainer = 163
-                            then 'Illustrious Grand Master Tailor'
-							when @trainer = 373
-                            then 'Illustrious Grand Master Archaeology'
-							when @trainer = 374
-                            then 'Illustrious Grand Master Herbalist'
-							when @trainer = 386
-                            then 'Master Riding'
-                            when @trainer = 388
-                            then 'Apprentice Herbalist'
-							when @trainer = 389
-                            then 'Apprentice Miner'
-							when @trainer = 390
-							then 'Apprentice Skinner'
-							when @trainer = 396
-                            then 'Journeyman Cook'
-							when @trainer = 405
-                            then 'Goblin Engineering'
-							when @trainer = 406
-                            then 'Gnomish Engineering'
-							when @trainer = 407
-                            then 'Illustrious Grand Master Engineer'
-							when @trainer = 425
-                            then 'Journeyman Miner'
-                            when @trainer = 427
-                            then 'Apprentice Fishing'
-                            else 0
-			end;
+                       when trainerId in (50)
+                       then '(11) druid low level'
+                       when TrainerId = 2
+						then 'Illustrious Grand Master Jewelcrafter'
+						when TrainerId = 6
+						then 'Illustrious Grand Master Scribe'
+						when TrainerId = 10 -- ?
+						then 'Illustrious Grand Master Fishing'
+						when TrainerId = 12
+						then 'Horde Portal Trainer'
+						when TrainerId = 27
+						then 'Illustrious Grand Master Blacksmith'
+						when TrainerId = 29
+						then 'Illustrious Grand Master Jewelcrafter'
+						when TrainerId = 31
+						then 'Apprentice Fishing'
+						when TrainerId = 34
+						then 'Illustrious Grand Master Blacksmith'
+						when TrainerId = 37
+						then 'Journeyman Blacksmith'
+						when TrainerId = 42
+						then 'Illustrious Grand Master Tailor'
+						when TrainerId = 46
+						then 'Journeyman Riding'
+						when TrainerId = 48
+						then 'Apprentice Jewelcrafter'
+						when TrainerId = 49
+						then 'Illustrious Grand Master Miner'
+						when TrainerId = 51
+						then 'Apprentice Enchanter'
+						when TrainerId = 56
+						then 'Illustrious Grand Master Leatherworker'
+						when TrainerId = 58
+						then 'Illustrious Grand Master Blacksmith'
+						when TrainerId = 59
+						then 'Apprentice Alchemist'
+						when TrainerId = 62
+						then 'Illustrious Grand Master Enchanter'
+						when TrainerId = 63
+						then 'Illustrious Grand Master Scribe'
+						when TrainerId = 67
+						then 'Illustrious Grand Master Tailor'
+						when TrainerId = 75
+						then 'Illustrious Grand Master Cook'
+						when TrainerId = 77
+						then 'Illustrious Grand Master Tailor'
+						when TrainerId = 80
+						then 'Apprentice Blacksmith'
+						when TrainerId = 82
+						then 'Illustrious Grand Master Miner'
+						when TrainerId = 83
+						then 'Illustrious Grand Master Skinner'
+						when TrainerId = 89
+						then 'Illustrious Grand Master Herbalist'
+						when TrainerId = 90
+						then 'Illustrious Grand Master Skinner'
+						when TrainerId = 91
+						then 'Illustrious Grand Master Miner'
+						when TrainerId = 101
+						then 'Illustrious Grand Master Herbalist'
+						when TrainerId = 102
+						then 'Apprentice Engineer'
+						when TrainerId = 103
+						then 'Apprentice Leatherworker'
+						when TrainerId = 105
+						then 'Journeyman Alchemist'
+						when TrainerId = 107
+						then 'Illustrious Grand Master First Aid'
+						when TrainerId = 114
+						then 'Neutral Portal Trainer'
+						when TrainerId = 117
+						then 'Apprentice Tailor'
+						when TrainerId = 119
+						then 'Journeyman Jewelcrafter'
+						when TrainerId = 122
+						then 'Illustrious Grand Master Alchemist'
+						when TrainerId = 123
+						then 'Illustrious Grand Master Scribe'
+						when TrainerId = 129
+						then 'Neutral Portal Trainer'
+						when TrainerId = 130
+						then 'Alliance Portal Trainer'
+						when TrainerId = 131
+						then 'Illustrious Grand Master Enchanter'
+						when TrainerId = 133
+						then 'Illustrious Grand Master Herbalist'
+						when TrainerId = 136
+						then 'Illustrious Grand Master Cook'
+						when TrainerId = 137
+						then 'Flight Master'
+						when TrainerId = 143
+						then 'Illustrious Grand Master Leatherworker'
+						when TrainerId = 144
+						then 'Draenei Portal Trainer'
+						when TrainerId = 148
+						then 'Neutral Portal Trainer'
+						when TrainerId = 149
+						then 'Horde Portal Trainer'
+						when TrainerId = 150
+						then 'Illustrious Grand Master Jewelcrafter'
+						when TrainerId = 155
+						then 'Illustrious Grand Master Skinner'
+						when TrainerId = 157
+						then 'Journeyman Tailor'
+						when TrainerId = 158
+						then 'Illustrious Grand Master Fishing at the wrong level'
+						when TrainerId = 159
+						then 'Illustrious Grand Master First Aid'
+						when TrainerId = 160
+						then 'Illustrious Grand Master First Aid'
+						when TrainerId = 161
+						then 'Master Cook'
+						when TrainerId = 163
+						then 'Illustrious Grand Master Tailor'
+						when TrainerId = 373
+						then 'Illustrious Grand Master Archaeology'
+						when TrainerId = 374
+						then 'Illustrious Grand Master Herbalist'
+						when TrainerId = 386
+						then 'Master Riding'
+						when TrainerId = 388
+						then 'Apprentice Herbalist'
+						when TrainerId = 389
+						then 'Apprentice Miner'
+						when TrainerId = 390
+						then 'Apprentice Skinner'
+						when TrainerId = 396
+						then 'Journeyman Cook'
+						when TrainerId = 405
+						then 'Goblin Engineering'
+						when TrainerId = 406
+						then 'Gnomish Engineering'
+						when TrainerId = 407
+						then 'Illustrious Grand Master Engineer'
+						when TrainerId = 425
+						then 'Journeyman Miner'
+						when TrainerId = 427
+						then 'Apprentice Fishing'
+			end from gossip_menu_option_trainer gmot 
+			join gossip_menu_option gmo on gmo.MenuId = gmot.MenuId and gmo.OptionIndex = gmot.OptionIndex
+            where gmo.OptionNpcflag = 16 and gmo.OptionType = 5 and gmo.MenuId = @Menu_Id;
 			
     insert into results
-    select 8, count(*), 'creature_template with trainer_class and gossip_menu_option_trainer', 
-		concat('ct trainer_class: ', ct.trainer_class, ', trainer conversion:', @class, ' ', @lowlevel)
-    from creature_template ct where ct.entry = entryInput;
-	
-    insert into results
-    select 8, count(*), 'creature_template with profession type on gossip_menu_option_trainer', 
- 		concat('ct trainer_class: ', ct.trainer_class, ', profession:', @profession)
-    from creature_template ct where ct.entry = entryInput;
+    select 8, t.OptionIndex, 'OptionIndex for creature_template with trainer_class and gossip_menu_option_trainer', 
+		concat('ct trainer_class: ', ct.trainer_class, ', trainer conversion:', t.description)
+    from creature_template ct left join trainers t on t.MenuId = ct.gossip_menu_id where ct.entry = entryInput;
     
     insert into results
-    select 9, count(*), 'creature_template records sharing same menuId', @Menu_Id from creature_template where gossip_menu_id = @Menu_Id;
+    select 9, count(*), 'creature_template records sharing same menuId', @Menu_Id from creature_template 
+    where gossip_menu_id = @Menu_Id;
     
     select * from results;
     drop temporary table results;
+    drop temporary table trainers;
 END //
 DELIMITER ;
