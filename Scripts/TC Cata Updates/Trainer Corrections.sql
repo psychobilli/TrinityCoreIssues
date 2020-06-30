@@ -165,31 +165,60 @@ values ('11824','0','3','I require training.', '2756', '5', '16', '0'),
 	('10549','0','3','I require training.', '2756', '5', '16', '0'),
 	('10554','0','3','I require training.', '2756', '5', '16', '0'),
 	('11051','0','3','I require training.', '2756', '5', '16', '0'),
-	('10819','0','3','I require training.', '2756', '5', '16', '0'),
 	('10553','0','3','I require training.', '2756', '5', '16', '0'),
-	('11050','0','3','I require training.', '2756', '5', '16', '0'),
+	('10819','0','3','I require training.', '2756', '5', '16', '0'),
 	('10818','0','3','I require training.', '2756', '5', '16', '0'),
+	('11050','0','3','I require training.', '2756', '5', '16', '0'),
 	('11049','0','3','I require training.', '2756', '5', '16', '0'),
 	('10551','0','3','I require training.', '2756', '5', '16', '0'),
 	('10816','0','3','I require training.', '2756', '5', '16', '0'),
 	('12572','0','3','I require training.', '2756', '5', '16', '0'),
 	('10815','0','3','I require training.', '2756', '5', '16', '0'),
-	('12576','0','3','I require training.', '2756', '5', '16', '0');
+	('12576','0','3','I require training.', '2756', '5', '16', '0'),
+	('12513','0','3','I require training.', '2756', '5', '16', '0'),
+	('12523','0','3','I require training.', '2756', '5', '16', '0'),
+	('12532','0','3','I require training.', '2756', '5', '16', '0'),
+	('12533','0','3','I require training.', '2756', '5', '16', '0'),
+	('12925','0','3','I require training.', '2756', '5', '16', '0'),
+	('12926','0','3','I require training.', '2756', '5', '16', '0'),
+	('12835','0','3','I require training.', '2756', '5', '16', '0'),
+	('10835','0','3','I require training.', '2756', '5', '16', '0');
 	
--- Correct one of the mage trainers.
+-- Correct flags on numerous trainers.
 update gossip_menu_option set OptionType = 5, OptionNpcflag = 16 where OptionIcon = 3
-and MenuId in (141, 11912, 11913, 12050, 4105, 11932, 12606, 10552, 10817, 11766);
+and MenuId in (141, 11912, 11913, 12050, 4105, 11932, 12606, 10552, 10817, 11766, 11875, 12344,  12151);
 
 -- add gossip_menu_option_trainer records.
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
 values (4683, 0, 16),
 	(11052, 0, 16),
+	(4526, 0, 16),
+	(4525, 0, 16),
+	(4527, 0, 16),
+	(12513, 0, 16),
+	(12523, 0, 16),
+	(12532, 0, 16),
+	(12533, 0, 16),
+	(12925, 0, 16),
+	(12533, 0, 16),
+	(12513, 0, 16),
 	(@SunwalkerGossip, 0, 164),
+	(4662, 0, 164),
+	(12516, 0, 164),
+	(12527, 0, 164),
+	(12926, 0, 164),
+	(12516, 0, 164),
 	(14144, 0, 40),
 	(11045, 0, 40),
 	(10814, 0, 40),
 	(10549, 0, 40),
+	(4092, 0, 40),
+	(4138, 0, 40),
+	(12835, 0, 40),
+	(4694, 0, 40),
+	(4674, 0, 40),
+	(10835, 0, 40),
 	(410, 0, 33),
 	(10843, 0, 33),
 	(10554, 0, 33),
@@ -240,6 +269,14 @@ update creature_template set gossip_menu_id = 10834 where entry = 35873;
 -- warrior
 update creature_template set gossip_menu_id = 14199 where entry = 3169;
 update creature_template set gossip_menu_id = 14199 where entry = 17480;
+update creature_template set gossip_menu_id = 4548 where entry = 4593;
+update creature_template set gossip_menu_id = 4548 where entry = 4594;
+update creature_template set gossip_menu_id = 4548 where entry = 4595;
+update creature_template set gossip_menu_id = 4548 where entry = 49955;
+-- paladin
+update creature_template set gossip_menu_id = 6647 where entry = 49954;
+-- hunter
+update creature_template set gossip_menu_id = 4647 where entry = 39116;
 
 -- Correct Profession Trainers
 
