@@ -182,11 +182,29 @@ values ('11824','0','3','I require training.', '2756', '5', '16', '0'),
 	('12925','0','3','I require training.', '2756', '5', '16', '0'),
 	('12926','0','3','I require training.', '2756', '5', '16', '0'),
 	('12835','0','3','I require training.', '2756', '5', '16', '0'),
-	('10835','0','3','I require training.', '2756', '5', '16', '0');
+	('10835','0','3','I require training.', '2756', '5', '16', '0'),
+	('12528','0','3','I require training.', '2756', '5', '16', '0'),
+	('12535','0','3','I require training.', '2756', '5', '16', '0'),
+	('12517','0','3','I require training.', '2756', '5', '16', '0'),
+	('10843','0','3','I require training.', '2756', '5', '16', '0'),
+	('12051','0','3','I require training.', '2756', '5', '16', '0'),
+	('12524','0','3','I require training.', '2756', '5', '16', '0'),
+	('12531','0','3','I require training.', '2756', '5', '16', '0'),
+	('12536','0','3','I require training.', '2756', '5', '16', '0'),
+	('12928','0','3','I require training.', '2756', '5', '16', '0'),
+	('12543','0','3','I require training.', '2756', '5', '16', '0'),
+	('12564','0','3','I require training.', '2756', '5', '16', '0'),
+	('4560','0','3','I require training.', '2756', '5', '16', '0'),
+	('12004','0','3','I require training.', '2756', '5', '16', '0'),
+	('12841','0','3','I require training.', '2756', '5', '16', '0'),
+	('11879','0','3','I require training.', '2756', '5', '16', '0'),
+	('12049','0','3','I require training.', '2756', '5', '16', '0'),
+	('12525','0','3','I require training.', '2756', '5', '16', '0');
 	
 -- Correct flags on numerous trainers.
 update gossip_menu_option set OptionType = 5, OptionNpcflag = 16 where OptionIcon = 3
-and MenuId in (141, 11912, 11913, 12050, 4105, 11932, 12606, 10552, 10817, 11766, 11875, 12344,  12151);
+and MenuId in (141, 11912, 11913, 12050, 4105, 11932, 12606, 10552, 10817, 11766, 11875, 12344, 12151,
+	11879, 12048, 12341, 10838, 12010, 12537, 12714, 10684, 12052, 4555, 4553, 10837, 12918, 12716, 12521);
 
 -- add gossip_menu_option_trainer records.
 insert into gossip_menu_option_trainer
@@ -219,25 +237,64 @@ values (4683, 0, 16),
 	(4694, 0, 40),
 	(4674, 0, 40),
 	(10835, 0, 40),
+	(12528, 0, 40),
+	(12535, 0, 40),
+	(12924, 0, 40),
 	(410, 0, 33),
 	(10843, 0, 33),
 	(10554, 0, 33),
 	(11051, 0, 33),
 	(10819, 0, 33),
+	(12517, 0, 33),
+	(12051, 0, 33),
+	(12524, 0, 33),
+	(12531, 0, 33),
+	(12536, 0, 33),
+	(12928, 0, 33),
+	(12543, 0, 33),
+	(12564, 0, 33),
 	(7265, 0, 3),
 	(4680, 0, 3),
 	(10553, 0, 3),
 	(4691, 0, 3),
 	(11050, 0, 3),
 	(10818, 0, 3),
+	(4574, 0, 3),
+	(4573, 0, 3),
+	(4572, 0, 3),
+	(4559, 0, 3),
+	(4558, 0, 3),
+	(4560, 0, 3),
+	(4523, 0, 3),
+	(3643, 0, 3),
+	(4801, 0, 3),
+	(3642, 0, 3),
+	(12004, 0, 3),
+	(12920, 0, 3),
+	(12841, 0, 3),
 	(4105, 0, 124),
 	(7467, 0, 124),
 	(11049, 0, 124),
+	(4516, 0, 124),
+	(4515, 0, 124),
+	(5123, 0, 124),
+	(11878, 0, 124),
+	(12052, 0, 124),
 	(64, 0, 135),
 	(6648, 0, 135),
 	(10551, 0, 135),
 	(10816, 0, 135),
 	(12572, 0, 135),
+	(4534, 0, 135),
+	(4536, 0, 135),
+	(4535, 0, 135),
+	(4539, 0, 135),
+	(4538, 0, 135),
+	(4537, 0, 135),
+	(4553, 0, 135),
+	(12049, 0, 135),
+	(12233, 0, 135),
+	(12525, 0, 135),
 	(4641, 0, 154),
 	(11932, 0, 154),
 	(4608, 0, 154),
@@ -266,17 +323,48 @@ update creature_template set gossip_menu_id = 10838 where entry = 44468;
 update creature_template set gossip_menu_id = 10834 where entry = 35873;
 
 -- switch numerous trainers to standard class trainer gossip menus
--- warrior
+-- warrior generic gossips
 update creature_template set gossip_menu_id = 14199 where entry = 3169;
 update creature_template set gossip_menu_id = 14199 where entry = 17480;
 update creature_template set gossip_menu_id = 4548 where entry = 4593;
 update creature_template set gossip_menu_id = 4548 where entry = 4594;
 update creature_template set gossip_menu_id = 4548 where entry = 4595;
 update creature_template set gossip_menu_id = 4548 where entry = 49955;
--- paladin
+-- paladin generic gossips
 update creature_template set gossip_menu_id = 6647 where entry = 49954;
--- hunter
+-- hunter generic gossips
 update creature_template set gossip_menu_id = 4647 where entry = 39116;
+update creature_template set gossip_menu_id = 4647 where entry = 49946;
+-- rogue wotlk gossips
+update creature_template set gossip_menu_id = 4542 where entry = 4582;
+update creature_template set gossip_menu_id = 4540 where entry = 4583;
+update creature_template set gossip_menu_id = 4541 where entry = 4584;
+update creature_template set gossip_menu_id = 4562 where entry = 5166;
+-- rogue generic gossips
+update creature_template set gossip_menu_id = 436 where entry = 16759;
+update creature_template set gossip_menu_id = 436 where entry = 49730;
+update creature_template set gossip_menu_id = 436 where entry = 49909;
+update creature_template set gossip_menu_id = 436 where entry = 49949;
+update creature_template set gossip_menu_id = 436 where entry = 51998;
+-- priest wotlk gossips
+update creature_template set gossip_menu_id = 4544 where entry = 4606;
+update creature_template set gossip_menu_id = 4543 where entry = 4607;
+update creature_template set gossip_menu_id = 4543 where entry = 4608;
+-- Sister Almyra gossips
+update creature_template set gossip_menu_id = 10838 where entry = 38466;
+-- priest generic gossips
+update creature_template set gossip_menu_id = 4680 where entry = 49901;
+update creature_template set gossip_menu_id = 4680 where entry = 49950;
+-- mage wotlk gossips
+update creature_template set gossip_menu_id = 4583 where entry = 4567;
+update creature_template set gossip_menu_id = 4537 where entry = 4568;
+update creature_template set gossip_menu_id = 63 where entry = 	23103;
+-- mage generic gossips
+update creature_template set gossip_menu_id = 14136 where entry = 49952;
+update creature_template set gossip_menu_id = 14136 where entry = 50714;
+update creature_template set gossip_menu_id = 14136 where entry = 50715;
+update creature_template set gossip_menu_id = 14136 where entry = 50717;
+update creature_template set gossip_menu_id = 14136 where entry = 50720;
 
 -- Correct Profession Trainers
 
