@@ -13,27 +13,30 @@ BEGIN
 
             call scan_creature_template_entry_trainer(entryInput);
 
-            set @fail := (select case when count(*) > 0 then 0 else 1 end from results where item = 1 and keyfield = entryInput);
-            set @fail := (select case when @fail = 1 then 1 when count(*) > 0 then 0 else 1 end from results
+            set @fail := (select case when count(*) > 0 then 0 else -1 end from results where item = 1 and keyfield = entryInput);
+            set @fail := (select case when @fail != 0 then @fail when count(*) > 0 then 0 else -1 end from results
                             where item = 1 and keyfield > 0 and message like '%creature world%');
-            set @fail := (select case when @fail = 1 then 1 when count(*) > 0 then 0 else 1 end from results
+            set @fail := (select case when @fail != 0 then @fail when count(*) > 0 then 0 else 1 end from results
                             where item = 2 and details like '%true%');
-            set @fail := (select case when @fail = 1 then 1 when count(*) > 0 then 0 else 1 end from results
+            set @fail := (select case when @fail != 0 then @fail when count(*) > 0 then 0 else 1 end from results
                             where item = 3 and details is not null);
-            set @fail := (select case when @fail = 1 then 1 when count(*) > 0 then 0 else 1 end from results
+            set @fail := (select case when @fail != 0 then @fail when count(*) > 0 then 0 else 1 end from results
                             where item = 4 and keyfield > 0);
-            set @fail := (select case when @fail = 1 then 1 when count(*) > 0 then 0 else 1 end from results
+            set @fail := (select case when @fail != 0 then @fail when count(*) > 0 then 0 else 1 end from results
                             where item = 5 and keyfield > 0);
-            set @fail := (select case when @fail = 1 then 1 when count(*) > 0 then 0 else 1 end from results
+            set @fail := (select case when @fail != 0 then @fail when count(*) > 0 then 0 else 1 end from results
                             where item = 6 and keyfield > 0);
-            set @fail := (select case when @fail = 1 then 1 when count(*) > 0 then 0 else 1 end from results
+            set @fail := (select case when @fail != 0 then @fail when count(*) > 0 then 0 else 1 end from results
                             where item = 6 and keyfield > 0 and length(details) < 20);
-            set @fail := (select case when @fail = 1 then 1 when count(*) > 0 then 0 else 1 end from results
+            set @fail := (select case when @fail != 0 then @fail when count(*) > 0 then 0 else 1 end from results
                             where item = 7 and keyfield > 0 and length(details) > 19);
-            set @fail := (select case when @fail = 1 then 1 when count(*) > 0 then 0 else 1 end from results
+            set @fail := (select case when @fail != 0 then @fail when count(*) > 0 then 0 else 1 end from results
                             where item = 8);
 
-            insert into testResults select entryInput, case when @fail = 0 then 'All tests pass' else concat('Test failure for ',entryInput) end as result;
+            insert into testResults select entryInput, 
+			case when @fail = 0 then 'All tests pass' 
+			when @fail = -1 then concat('Creature not in world ', entryInput) 
+			else concat('Test failure for ',entryInput) end as result;
             delete from entries where entry = entryInput;
             drop temporary table results;
         end while;
