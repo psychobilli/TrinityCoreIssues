@@ -199,12 +199,23 @@ values ('11824','0','3','I require training.', '2756', '5', '16', '0'),
 	('12841','0','3','I require training.', '2756', '5', '16', '0'),
 	('11879','0','3','I require training.', '2756', '5', '16', '0'),
 	('12049','0','3','I require training.', '2756', '5', '16', '0'),
-	('12525','0','3','I require training.', '2756', '5', '16', '0');
+	('12525','0','3','I require training.', '2756', '5', '16', '0'),
+	('10702','0','3','I require training.', '2756', '5', '16', '0'),
+	('12053','0','3','I require training.', '2756', '5', '16', '0'),
+	('12526','0','3','I require training.', '2756', '5', '16', '0'),
+	('12921','0','3','I require training.', '2756', '5', '16', '0'),
+	('4602','0','3','I require training.', '2756', '5', '16', '0'),
+	('12882','0','3','I require training.', '2756', '5', '16', '0'),
+	('2522','0','3','I require training.', '2756', '5', '16', '0'),
+	('12845','0','3','I require training.', '2756', '5', '16', '0'),
+	('10373','0','3','I require training.', '2756', '5', '16', '0'),
+	('11997','0','3','I require training.', '2756', '5', '16', '0');
 	
 -- Correct flags on numerous trainers.
 update gossip_menu_option set OptionType = 5, OptionNpcflag = 16 where OptionIcon = 3
 and MenuId in (141, 11912, 11913, 12050, 4105, 11932, 12606, 10552, 10817, 11766, 11875, 12344, 12151,
-	11879, 12048, 12341, 10838, 12010, 12537, 12714, 10684, 12052, 4555, 4553, 10837, 12918, 12716, 12521);
+	11879, 12048, 12341, 10838, 12010, 12537, 12714, 10684, 12052, 4555, 4553, 10837, 12918, 12716, 12521,
+	12821, 12522, 12746, 12927, 12755);
 
 -- add gossip_menu_option_trainer records.
 insert into gossip_menu_option_trainer
@@ -299,7 +310,31 @@ values (4683, 0, 16),
 	(11932, 0, 154),
 	(4608, 0, 154),
 	(4656, 0, 154),
-	(10840, 0, 154);
+	(10840, 0, 154),
+	(4603, 0, 154),
+	(4604, 0, 154),
+	(4609, 0, 154),
+	(4610, 0, 154),
+	(4504, 0, 154),
+	(1522, 0, 154),
+	(10702, 0, 154),
+	(12053, 0, 154),
+	(12821, 0, 154),
+	(12526, 0, 154),
+	(12921, 0, 154),
+	(4602, 0, 154),
+	(12882, 0, 154),
+	(50723, 3, 154),
+	(50729, 3, 154),
+	(2522, 0, 154),
+	(12845, 0, 154),
+	(10373, 0, 39),
+	(21228, 0, 39),
+	(4646, 0, 39),
+	(4687, 0, 39),
+	(11997, 0, 39),
+	(4607, 0, 39),
+	(12755, 0, 39);
 	
 -- change low level gossip_menu_option_trainer to standard class trainer.
 update gossip_menu_option_trainer set TrainerId = 164 where MenuId = 6647;
@@ -365,40 +400,50 @@ update creature_template set gossip_menu_id = 14136 where entry = 50714;
 update creature_template set gossip_menu_id = 14136 where entry = 50715;
 update creature_template set gossip_menu_id = 14136 where entry = 50717;
 update creature_template set gossip_menu_id = 14136 where entry = 50720;
+-- warlock wotlk gossips
+update creature_template set gossip_menu_id = 2383 where entry = 4563;
+update creature_template set gossip_menu_id = 4609 where entry = 4564;
+-- warlock generic gossips
+update creature_template set gossip_menu_id = 4610 where entry = 49945;
+
 
 -- Correct Profession Trainers
-
--- add missing gossip_menu_option for Enchanters.
-insert into gossip_menu_option
-(MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag)
-values (4169, 0, 3, 'Train me in Enchanting.', 0, 5, 16);
-
--- add missing gossip_menu_option for Blacksmiths.
-insert into gossip_menu_option
-(MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag)
-values (2741, 0, 3, 'Train me in Blacksmithing.', 0, 5, 16);
 
 -- add missing gossip_menu_option for Alchemists.
 insert into gossip_menu_option
 (MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag)
-values (4111, 0, 3, 'Train me in Alchemy.', 0, 5, 16);
+values (4111, 0, 3, 'Train me in Alchemy.', 0, 5, 16),
+	(4110, 0, 3, 'Train me in Alchemy.', 0, 5, 16),
+	(4117, 0, 3, 'Train me in Alchemy.', 0, 5, 16),
+	(8863, 0, 3, 'Train me in Alchemy.', 0, 5, 16);
 
--- add missing gossip_menu_option_trainer for High Level Enchanters - the options are Apprentice or Illustrious Grand Master.
-insert into gossip_menu_option_trainer
-(MenuId, OptionIndex, TrainerId)
-values (4169, 0, 63);
+-- add missing gossip_menu_option for Blacksmiths.
+insert into gossip_menu_option
+(MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag)
+values (2741, 0, 3, 'Train me in Blacksmithing.', 0, 5, 16),
+	(2749, 0, 3, 'Train me in Blacksmithing.', 0, 5, 16),
+	(1043, 0, 3, 'Train me in Blacksmithing.', 0, 5, 16),
+	(1042, 0, 3, 'Train me in Blacksmithing.', 0, 5, 16),
+	(1041, 0, 3, 'Train me in Blacksmithing.', 0, 5, 16),
+	(3203, 0, 3, 'Train me in Blacksmithing.', 0, 5, 16),
+	(3202, 0, 3, 'Train me in Blacksmithing.', 0, 5, 16),
+	(8760, 0, 3, 'Train me in Blacksmithing.', 0, 5, 16),
+	(7809, 0, 3, 'Train me in Blacksmithing.', 0, 5, 16),
+	(9131, 0, 3, 'Train me in Blacksmithing.', 0, 5, 16),
+	(9132, 0, 3, 'Train me in Blacksmithing.', 0, 5, 16),
+	(8254, 0, 3, 'Train me in Blacksmithing.', 0, 5, 16);
 
--- add missing gossip_menu_option_trainer for High Level Tailors- the options are Apprentice, Journeyman or Illustrious Grand Master.
-insert into gossip_menu_option_trainer
-(MenuId, OptionIndex, TrainerId)
-values (4261, 0, 163);
+-- add missing gossip_menu_option for Enchanters.
+insert into gossip_menu_option
+(MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag)
+values (4169, 0, 3, 'Train me in Enchanting.', 0, 5, 16),
+	(4156, 0, 3, 'Train me in Enchanting.', 0, 5, 16),
+	(4171, 0, 3, 'Train me in Enchanting.', 0, 5, 16),
+	(4170, 0, 3, 'Train me in Enchanting.', 0, 5, 16);
 
--- add missing gossip_menu_option_trainer for Illustrious Grand Master Alchemists
--- because the other alchemy spell lists are incomplete.
-insert into gossip_menu_option_trainer
-(MenuId, OptionIndex, TrainerId)
-values (4111, 0, 122),
-	(7384, 0, 122);
+-- correct trainer flags in gossip menu options
+update gossip_menu_option set OptionType = 5, OptionNpcflag = 16 where OptionIcon = 3
+and MenuId in (4361, 4134, 4129, 4164)
 
 -- add missing gossip_menu_option_trainer for Apprentice Blacksmiths
 insert into gossip_menu_option_trainer
@@ -417,10 +462,80 @@ insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
 values (7430, 0, 103);
 
+-- add missing gossip_menu_option_trainer for Herbalists.
+insert into gossip_menu_option_trainer
+(MenuId, OptionIndex, TrainerId)
+values (7524, 1, 101),
+	(7459, 0, 101),
+	(10350, 0, 101);
+
+-- add missing gossip_menu_option_trainer for Miners
+insert into gossip_menu_option_trainer
+(MenuId, OptionIndex, TrainerId)
+values (4361, 0, 49),
+	(10351, 0, 49);
+
 -- add missing gossip_menu_option_trainer for Skinners
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
-values (7429, 0, 157);
+values (7429, 0, 83)
+	,(10360, 0, 83);
+	
+-- add missing gossip_menu_option_trainer for Illustrious Grand Master Alchemists
+-- because the other alchemy spell lists are incomplete.
+insert into gossip_menu_option_trainer
+(MenuId, OptionIndex, TrainerId)
+values (4111, 0, 122),
+	(7384, 0, 122),
+	(4110, 0, 122),
+	(4115, 0, 122),
+	(2391, 0, 122),
+	(2837, 0, 122),
+	(4117, 0, 122),
+	(16161, 0, 122),
+	(8733, 0, 122),
+	(8863, 0, 122),
+	(10627, 0, 122);
+
+-- add missing gossip_menu_option_trainer for High Level Blacksmithing
+insert into gossip_menu_option_trainer
+(MenuId, OptionIndex, TrainerId)
+values (2781, 0, 58),
+	(2783, 0, 58),
+	(2749, 0, 58),
+	(593, 0, 58),
+	(597, 0, 58),
+	(1043, 0, 58),
+	(1042, 0, 58),
+	(1041, 0, 58),
+	(3203, 0, 58),
+	(3202, 0, 58),
+	(7256, 0, 58),
+	(8760, 0, 58),
+	(7809, 0, 58),
+	(9131, 0, 58),
+	(9132, 0, 58),
+	(8254, 0, 58),
+	(9459, 0, 58);
+
+-- add missing gossip_menu_option_trainer for High Level Enchanters
+insert into gossip_menu_option_trainer
+(MenuId, OptionIndex, TrainerId)
+values (4169, 0, 63),
+	(4156, 0, 63),
+	(4166, 0, 63),
+	(4171, 0, 63),
+	(4170, 0, 63),
+	(7524, 0, 63),
+	(8731, 0, 63),
+	(8866, 0, 63),
+	(10365, 0, 63),
+	(33676, 0, 63);
+
+-- add missing gossip_menu_option_trainer for High Level Tailors
+insert into gossip_menu_option_trainer
+(MenuId, OptionIndex, TrainerId)
+values (4261, 0, 163);
 
 -- add missing gossip_menu_option_trainer for Riding Trainers
 insert into gossip_menu_option_trainer
@@ -428,12 +543,101 @@ insert into gossip_menu_option_trainer
 values (8553, 0, 386),
 	(8275, 0, 386);
 
+-- herbalism generic gossips
+update creature_template set gossip_menu_Id = 7691 where entry = 908;
+update creature_template set gossip_menu_Id = 7691 where entry = 1473;
+update creature_template set gossip_menu_Id = 7691 where entry = 2114;
+update creature_template set gossip_menu_Id = 7691 where entry = 2390;
+update creature_template set gossip_menu_Id = 7691 where entry = 2856;
+update creature_template set gossip_menu_Id = 7691 where entry = 3185;
+update creature_template set gossip_menu_Id = 7691 where entry = 3604;
+update creature_template set gossip_menu_Id = 7691 where entry = 3965;
+update creature_template set gossip_menu_Id = 7691 where entry = 4898;
+update creature_template set gossip_menu_Id = 7691 where entry = 5502;
+update creature_template set gossip_menu_Id = 7691 where entry = 12025;
+update creature_template set gossip_menu_Id = 7691 where entry = 17983;
+update creature_template set gossip_menu_Id = 7691 where entry = 26994;
+update creature_template set gossip_menu_Id = 7691 where entry = 26958;
+update creature_template set gossip_menu_Id = 7691 where entry = 26974;
+update creature_template set gossip_menu_Id = 7691 where entry = 28704;
+-- mining wotlk gossips
+update creature_template set gossip_menu_Id = 7690 where entry = 4598;
+-- mining generic gossips
+update creature_template set gossip_menu_Id = 7690 where entry = 3175;
+update creature_template set gossip_menu_Id = 7690 where entry = 3555;
+update creature_template set gossip_menu_Id = 7690 where entry = 6297;
+update creature_template set gossip_menu_Id = 7690 where entry = 8128;
+update creature_template set gossip_menu_Id = 7690 where entry = 1384;
+update creature_template set gossip_menu_Id = 7690 where entry = 26999;
+update creature_template set gossip_menu_Id = 7690 where entry = 26912;
+update creature_template set gossip_menu_Id = 7690 where entry = 26962;
+update creature_template set gossip_menu_Id = 7690 where entry = 26976;
+update creature_template set gossip_menu_Id = 7690 where entry = 28698;
+update creature_template set gossip_menu_Id = 7690 where entry = 52170;
+update creature_template set gossip_menu_Id = 7690 where entry = 53409;
+-- skinning generic gossips
+update creature_template set gossip_menu_Id = 7842 where entry = 6287;
+update creature_template set gossip_menu_Id = 7842 where entry = 6288;
+update creature_template set gossip_menu_Id = 7842 where entry = 6289;
+update creature_template set gossip_menu_Id = 7842 where entry = 6290;
+update creature_template set gossip_menu_Id = 7842 where entry = 6291;
+update creature_template set gossip_menu_Id = 7842 where entry = 6292;
+update creature_template set gossip_menu_Id = 7842 where entry = 6295;
+update creature_template set gossip_menu_Id = 7842 where entry = 6306;
+update creature_template set gossip_menu_Id = 7842 where entry = 6387;
+update creature_template set gossip_menu_Id = 7842 where entry = 7087;
+update creature_template set gossip_menu_Id = 7842 where entry = 7088;
+update creature_template set gossip_menu_Id = 7842 where entry = 7089;
+update creature_template set gossip_menu_Id = 7842 where entry = 8144;
+update creature_template set gossip_menu_Id = 7842 where entry = 12030;
+update creature_template set gossip_menu_Id = 7842 where entry = 16273;
+update creature_template set gossip_menu_Id = 7842 where entry = 27000;
+update creature_template set gossip_menu_Id = 7842 where entry = 26913;
+update creature_template set gossip_menu_Id = 7842 where entry = 26963;
+update creature_template set gossip_menu_Id = 7842 where entry = 26986;
+update creature_template set gossip_menu_Id = 7842 where entry = 28696;
+update creature_template set gossip_menu_Id = 7842 where entry = 44782;
+update creature_template set gossip_menu_Id = 7842 where entry = 53437;
+-- alchemy generic gossips
+update creature_template set gossip_menu_Id = 10359 where entry = 7690;
+update creature_template set gossip_menu_Id = 10359 where entry = 3184;
+update creature_template set gossip_menu_Id = 10359 where entry = 26987;
+update creature_template set gossip_menu_Id = 10359 where entry = 26903;
+update creature_template set gossip_menu_Id = 10359 where entry = 26951;
+update creature_template set gossip_menu_Id = 10359 where entry = 26975;
+update creature_template set gossip_menu_Id = 10359 where entry = 27023;
+update creature_template set gossip_menu_Id = 10359 where entry = 27029;
+update creature_template set gossip_menu_Id = 10359 where entry = 33588;
+-- blacksmithing wotlk gossips
+update creature_template set gossip_menu_Id = 1022 where entry = 4596;
+-- blacksmithing generic gossips
+update creature_template set gossip_menu_Id = 8521 where entry = 4888;
+update creature_template set gossip_menu_Id = 8521 where entry = 16724;
+update creature_template set gossip_menu_Id = 8521 where entry = 26988;
+update creature_template set gossip_menu_Id = 8521 where entry = 26904;
+update creature_template set gossip_menu_Id = 8521 where entry = 26924;
+update creature_template set gossip_menu_Id = 8521 where entry = 26981;
+update creature_template set gossip_menu_Id = 8521 where entry = 27034;
+update creature_template set gossip_menu_Id = 8521 where entry = 28694;
+update creature_template set gossip_menu_Id = 8521 where entry = 29505;
+update creature_template set gossip_menu_Id = 8521 where entry = 29506;
+update creature_template set gossip_menu_Id = 8521 where entry = 29924;
+update creature_template set gossip_menu_Id = 8521 where entry = 33591;
+update creature_template set gossip_menu_Id = 8521 where entry = 37072;
+update creature_template set gossip_menu_Id = 8521 where entry = 45548;
+update creature_template set gossip_menu_Id = 8521 where entry = 55684;
+-- enchanting generic gossips
+update creature_template set gossip_menu_Id = 8866 where entry = 19251;
+update creature_template set gossip_menu_Id = 8866 where entry = 26990;
+update creature_template set gossip_menu_Id = 8866 where entry = 26906;
+update creature_template set gossip_menu_Id = 8866 where entry = 26954;
+update creature_template set gossip_menu_Id = 8866 where entry = 26980;
+update creature_template set gossip_menu_Id = 8866 where entry = 28693;
+update creature_template set gossip_menu_Id = 8866 where entry = 33583;
 -- correct cooking trainer entry
 update creature_template set gossip_menu_Id = 5853 where entry = 6286;
 -- correct leatherworking trainer entry
 update creature_template set gossip_menu_Id = 4242 where entry = 16278;
--- correct mining trainer entry
-update creature_template set gossip_menu_Id = 7690 where entry = 3175;
 -- remove the repairer mouseover
 update creature_template set npcflag = 80 where entry = 16278;
 -- correct a mount trainer npcflag
