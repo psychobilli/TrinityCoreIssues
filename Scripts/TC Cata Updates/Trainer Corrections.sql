@@ -242,7 +242,6 @@ values (4683, 0, 16),
 	(11045, 0, 40),
 	(10814, 0, 40),
 	(10549, 0, 40),
-	(4092, 0, 40),
 	(4138, 0, 40),
 	(12835, 0, 40),
 	(4694, 0, 40),
@@ -276,7 +275,6 @@ values (4683, 0, 16),
 	(4559, 0, 3),
 	(4558, 0, 3),
 	(4560, 0, 3),
-	(4523, 0, 3),
 	(3643, 0, 3),
 	(4801, 0, 3),
 	(3642, 0, 3),
@@ -329,7 +327,6 @@ values (4683, 0, 16),
 	(2522, 0, 154),
 	(12845, 0, 154),
 	(10373, 0, 39),
-	(21228, 0, 39),
 	(4646, 0, 39),
 	(4687, 0, 39),
 	(11997, 0, 39),
@@ -376,8 +373,6 @@ update creature_template set gossip_menu_id = 4540 where entry = 4583;
 update creature_template set gossip_menu_id = 4541 where entry = 4584;
 update creature_template set gossip_menu_id = 4562 where entry = 5166;
 -- rogue generic gossips
-update creature_template set gossip_menu_id = 436 where entry = 16759;
-update creature_template set gossip_menu_id = 436 where entry = 49730;
 update creature_template set gossip_menu_id = 436 where entry = 49909;
 update creature_template set gossip_menu_id = 436 where entry = 49949;
 update creature_template set gossip_menu_id = 436 where entry = 51998;
@@ -456,9 +451,6 @@ values (4136, 0, 3, 'Train me in Engineering.', 0, 5, 16),
 insert into gossip_menu_option
 (MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag)
 values (4208, 0, 3, 'Train me in Leatherworking.', 0, 5, 16),
-	(4186, 0, 3, 'Train me in Leatherworking.', 0, 5, 16),
-	(7866, 0, 3, 'Train me in Leatherworking.', 0, 5, 16),
-	(7870, 0, 3, 'Train me in Leatherworking.', 0, 5, 16),
 	(4842, 0, 3, 'Train me in Leatherworking.', 0, 5, 16),
 	(4244, 0, 3, 'Train me in Leatherworking.', 0, 5, 16);
 
@@ -466,12 +458,11 @@ values (4208, 0, 3, 'Train me in Leatherworking.', 0, 5, 16),
 insert into gossip_menu_option
 (MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag)
 values (4356, 0, 3, 'Train me in Tailoring.', 0, 5, 16),
-	(4263, 0, 3, 'Train me in Tailoring.', 0, 5, 16),
 	(10138, 0, 3, 'Train me in Tailoring.', 0, 5, 16);
 
 -- correct trainer flags in gossip menu options
 update gossip_menu_option set OptionType = 5, OptionNpcflag = 16 where OptionIcon = 3
-and MenuId in (4361, 4134, 4129, 4164, 9084, 7817)
+and MenuId in (4361, 4134, 4129, 4164, 7817)
 
 -- add missing gossip_menu_option_trainer for Apprentice Blacksmiths
 insert into gossip_menu_option_trainer
@@ -572,7 +563,6 @@ values (4145, 0, 407),
 	(7512, 0, 407),
 	(7513, 0, 407),
 	(7820, 0, 407),
-	(9084, 0, 407),
 	(10363, 0, 407);
 
 -- add missing gossip_menu_option_trainer for High Level Inscription
@@ -597,10 +587,7 @@ insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
 values (4108, 0, 56),
 	(4172, 0, 56),
-	(4206, 0, 56),
-	(4186, 0, 56),
 	(7866, 0, 56),
-	(3072, 0, 56),
 	(10361, 0, 56),
 	(4842, 0, 56),
 	(4843, 0, 56),
@@ -617,7 +604,6 @@ values (4261, 0, 163),
 	(4348, 0, 163),
 	(4270, 0, 163),
 	(4267, 0, 163),
-	(4263, 0, 163),
 	(4354, 0, 163),
 	(4844, 0, 163),
 	(7524, 0, 163),
@@ -642,9 +628,7 @@ update creature_template set gossip_menu_Id = 7691 where entry = 2390;
 update creature_template set gossip_menu_Id = 7691 where entry = 2856;
 update creature_template set gossip_menu_Id = 7691 where entry = 3185;
 update creature_template set gossip_menu_Id = 7691 where entry = 3604;
-update creature_template set gossip_menu_Id = 7691 where entry = 3965;
 update creature_template set gossip_menu_Id = 7691 where entry = 4898;
-update creature_template set gossip_menu_Id = 7691 where entry = 5502;
 update creature_template set gossip_menu_Id = 7691 where entry = 12025;
 update creature_template set gossip_menu_Id = 7691 where entry = 17983;
 update creature_template set gossip_menu_Id = 7691 where entry = 26994;
@@ -656,9 +640,7 @@ update creature_template set gossip_menu_Id = 7690 where entry = 4598;
 -- mining generic gossips
 update creature_template set gossip_menu_Id = 7690 where entry = 3175;
 update creature_template set gossip_menu_Id = 7690 where entry = 3555;
-update creature_template set gossip_menu_Id = 7690 where entry = 6297;
 update creature_template set gossip_menu_Id = 7690 where entry = 8128;
-update creature_template set gossip_menu_Id = 7690 where entry = 1384;
 update creature_template set gossip_menu_Id = 7690 where entry = 26999;
 update creature_template set gossip_menu_Id = 7690 where entry = 26912;
 update creature_template set gossip_menu_Id = 7690 where entry = 26962;
@@ -668,14 +650,12 @@ update creature_template set gossip_menu_Id = 7690 where entry = 52170;
 update creature_template set gossip_menu_Id = 7690 where entry = 53409;
 -- skinning generic gossips
 update creature_template set gossip_menu_Id = 7842 where entry = 6287;
-update creature_template set gossip_menu_Id = 7842 where entry = 6288;
 update creature_template set gossip_menu_Id = 7842 where entry = 6289;
 update creature_template set gossip_menu_Id = 7842 where entry = 6290;
 update creature_template set gossip_menu_Id = 7842 where entry = 6291;
 update creature_template set gossip_menu_Id = 7842 where entry = 6292;
 update creature_template set gossip_menu_Id = 7842 where entry = 6295;
 update creature_template set gossip_menu_Id = 7842 where entry = 6306;
-update creature_template set gossip_menu_Id = 7842 where entry = 6387;
 update creature_template set gossip_menu_Id = 7842 where entry = 7087;
 update creature_template set gossip_menu_Id = 7842 where entry = 7088;
 update creature_template set gossip_menu_Id = 7842 where entry = 7089;
@@ -730,7 +710,6 @@ update creature_template set gossip_menu_Id = 4149 where entry = 11031;
 -- engineering generic gossips
 update creature_template set gossip_menu_Id = 8867 where entry = 10993;
 update creature_template set gossip_menu_Id = 8867 where entry = 18752;
-update creature_template set gossip_menu_Id = 8867 where entry = 24868;
 update creature_template set gossip_menu_Id = 8867 where entry = 26991;
 update creature_template set gossip_menu_Id = 8867 where entry = 25277;
 update creature_template set gossip_menu_Id = 8867 where entry = 26907;
