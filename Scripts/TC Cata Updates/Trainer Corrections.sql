@@ -1,18 +1,59 @@
 -- Correct low level class trainers.
--- No record of Drill Sergeant Steamcrank's text, so use warrior text that's generic.
-set @warriorMenuId = 4645;
-set @DrillSergeantSteamcrank = 42324;
-update creature_template set gossip_menu_id = @warriorMenuId where entry = @DrillSergeantSteamcrank;
 
--- No record of Nekali's text, so use the only low level shaman text that seems to exist.
-set @shamanMenuId = 10684;
-set @Nekali = 38242;
-update creature_template set gossip_menu_id = @shamanMenuId where entry = @Nekali;
+-- The current data model prevents low level, start area class trainers from sharing a gossip menu
+-- with those trainers who list the full spell list.  This was not an issue with the 335 branch data model.
+-- This adversly affects Sunwalker Helaku (37737), Delios Silverblade (43010), and Ruada (17480)
+-- Update Sunwalker Helaku to new gossip_menu_id
+set @SunwalkerGossip := 57020;
+set @SunwalkerHelaku := 37737;
+update creature_template set gossip_menu_id = @SunwalkerGossip where entry = @SunwalkerHelaku;
 
--- Use generic NPC text for "Doc" Cogspin
-set @greetingsText = 384;
-set @DocCogspinMenu = 11617;
-insert into gossip_menu (MenuId, TextId, VerifiedBuild) values (@DocCogspinMenu, @greetingsText, 0);
+-- Insert gossip_menu for Tauren Paladin trainer with low level spell list.
+insert into gossip_menu
+(MenuId, TextId, VerifiedBuild)
+values (@SunwalkerGossip, 16490, 0);
+
+-- Insert gossip menu options to trainers with no options using generic text.
+insert into gossip_menu_option
+(MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag, VerifiedBuild)
+values (@SunwalkerGossip,'0','3','I would like to train.', '8221', '5', '16', '0'),
+	(@SunwalkerGossip,'1','0','I wish to unlearn my talents.', '62295', '16', '16', '0'),
+	(@SunwalkerGossip,'2','0','I wish to know about Dual Talent Specialization.', '33762', '20', '1', '0');
+
+-- Update Delios Silverblade to new gossip_menu_id
+set @BloodElfWarriorGossip := 57021;
+set @DeliosSilverblade := 43010;
+update creature_template set gossip_menu_id = @DraeneiWarriorGossip where entry = @Ruada;
+
+-- Insert gossip_menu for Blood Elf Warrior trainer with low level spell list.
+insert into gossip_menu
+(MenuId, TextId, VerifiedBuild)
+values (@BloodElfWarriorGossip, 16540, 0);
+
+-- Insert gossip menu options to trainers with no options using generic text.
+insert into gossip_menu_option
+(MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag, VerifiedBuild)
+values (@BloodElfWarriorGossip,'0','3','I require warrior training.', '3147', '5', '16', '0'),
+	(@BloodElfWarriorGossip,'1','0','I wish to unlearn my talents.', '62295', '16', '16', '0'),
+	(@BloodElfWarriorGossip,'2','0','I wish to know about Dual Talent Specialization.', '33762', '20', '1', '0');
+
+-- Update Ruada to new gossip_menu_id
+set @DraeneiWarriorGossip := 57022;
+set @Ruada := 17480;
+update creature_template set gossip_menu_id = @DraeneiWarriorGossip where entry = @Ruada;
+
+-- Insert gossip_menu for Draenei Warrior trainer with low level spell list.
+insert into gossip_menu
+(MenuId, TextId, VerifiedBuild)
+values (@DraeneiWarriorGossip, 8587, 0),
+	(@DraeneiWarriorGossip, 8588, 0);
+
+-- Insert gossip menu options to trainers with no options using generic text.
+insert into gossip_menu_option
+(MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag, VerifiedBuild)
+values (@DraeneiWarriorGossip,'0','3','I require warrior training.', '3147', '5', '16', '0'),
+	(@DraeneiWarriorGossip,'1','0','I wish to unlearn my talents.', '62295', '16', '16', '0'),
+	(@DraeneiWarriorGossip,'2','0','I wish to know about Dual Talent Specialization.', '33762', '20', '1', '0');
 
 -- Insert gossip menu options to trainers with no options using generic text.
 insert into gossip_menu_option
@@ -48,31 +89,33 @@ update gossip_menu_option set OptionType = 5, OptionNpcflag = 16 where MenuId = 
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
 values (4684, 0, 145),
-	(14137, 0, 168),
-	(4676, 0, 17),
-	(4655, 0, 32),
-	(4643, 0, 32),
-	(4692, 0, 127),
-	(4679, 0, 127),
-	(7263, 0, 145),
-	(7522, 0, 134),
-	(4652, 0, 134),
+	(@BloodElfWarriorGossip, 0, 145),
+	(@DraeneiWarriorGossip, 0, 145),
+	(14137, 0, 168),	
+	(@SunwalkerGossip, 0, 168),
 	(14141, 0, 15),
 	(10675, 0, 15),
 	(10697, 0, 15),
 	(11185, 0, 15),
+	(4676, 0, 17),
 	(10686, 0, 17),
 	(10699, 0, 17),
 	(10985, 0, 17),
 	(14140, 0, 17),
 	(11621, 0, 17),
+	(4692, 0, 127),
+	(4679, 0, 127),
 	(14139, 0, 127),
 	(11617, 0, 127),
+	(7522, 0, 134),
+	(4652, 0, 134),
 	(10879, 0, 134),
 	(10878, 0, 44),
 	(14136, 0, 44),
 	(11620, 0, 44),
 	(11810, 0, 44),
+	(4655, 0, 32),
+	(4643, 0, 32),
 	(14138, 0, 32),
 	(11645, 0, 32),
 	(11831, 0, 32),
@@ -83,16 +126,17 @@ update gossip_menu_option_trainer set TrainerId = 17 where MenuId = 85;
 update gossip_menu_option_trainer set TrainerId = 127 where MenuId = 7349;
 update gossip_menu_option_trainer set TrainerId = 127 where MenuId = 13921;
 
+-- give Drill Sergeant Steamcrank a low level gossip
+update creature_template set gossip_menu_id = 4645 where entry = 42324;
+-- give Nekali a low level gossip
+update creature_template set gossip_menu_id = 10684 where entry = 38242;
 -- switch numerous trainers to low level gossip menus
--- warrior
-update creature_template set gossip_menu_id = 7263 where entry = 43010;
 -- paladin
 update creature_template set gossip_menu_id = 4663 where entry = 16501;
 -- hunter
 update creature_template set gossip_menu_id = 4647 where entry = 16499;
 -- rogue
-update creature_template set gossip_menu_id = 6650 where entry = 3155;
-update creature_template set gossip_menu_id = 6650 where entry = 15285;
+update creature_template set gossip_menu_id = 14140 where entry = 3155;
 -- priest
 update creature_template set gossip_menu_id = 4679 where entry = 37724;
 update creature_template set gossip_menu_id = 10685 where entry = 2123;
@@ -105,48 +149,8 @@ update creature_template set gossip_menu_id = 10698 where entry = 16500;
 -- warlock
 update creature_template set gossip_menu_id = 10702 where entry = 36652;
 
+
 -- Correct remaining class trainers
--- No record of Shernon the Footpad's or Marion Call's text, so use rogue text that's generic.
-set @rogueMenuId = 436;
-set @ShernonTheFootpad = 48615;
-update creature_template set gossip_menu_id = @rogueMenuId where entry = @ShernonTheFootpad;
-set @MarionCall = 39100;
-update creature_template set gossip_menu_id = @priestMenuId where entry = @DedlowWormwood;
-
--- No record of Dark Cleric Claressa's text, so use priest text that's generic.
-set @priestMenuId = 3645;
-set @DarkClericClaressa = 48614;
-update creature_template set gossip_menu_id = @priestMenuId where entry = @DarkClericClaressa;
-
--- No record of Dedlow Wormwood's text, so use rogue text that's generic.
-set @hunterMenuId = 4101;
-set @DedlowWormwood = 39100;
-update creature_template set gossip_menu_id = @hunterMenuId where entry = @DedlowWormwood;
-
--- Update all Tauren Paladin trainers to new gossip_menu_id
-set @SunwalkerGossip := 57020;
-set @SunwalkerSaern := 8664;
-set @SunwalkerReha := 43001;
-set @SunwalkerIopi := 43013;
-set @AponiBrightmane := 43795;
-set @SunwalkerAtohmo := 44725;
-set @SunwalkerLonaki := 50035;
-update creature_template set gossip_menu_id = @SunwalkerGossip where entry in (
-@SunwalkerSaern, @SunwalkerReha, @SunwalkerIopi, @AponiBrightmane, @SunwalkerAtohmo, @SunwalkerLonaki);
-
--- Update Rogue trainers to correct gossip_menu_id
-set @Tannaria := 16279;
-set @Zelanis := 16684;
-set @Elara := 16685;
-set @Nerisen := 16686;
-set @PathstalkerRislar := 50147;
-update creature_template set gossip_menu_id = 14140 where entry in (
-@PathstalkerKariel, @Tannaria, @Zelanis, @Elara, @Nerisen, @PathstalkerRislar);
-
--- Insert gossip_menu for Tauren Paladin trainers with full spell list.
-insert into gossip_menu
-(MenuId, TextId, VerifiedBuild)
-values (@SunwalkerGossip, 16490, 0);
 
 -- Insert gossip menu options to trainers with no options using generic text.
 insert into gossip_menu_option
@@ -154,9 +158,6 @@ insert into gossip_menu_option
 values ('11824','0','3','I require training.', '2756', '5', '16', '0'),
 	('11906','0','3','I require training.', '2756', '5', '16', '0'),
 	('4608','0','3','I require training.', '2756', '5', '16', '0'),
-	(@SunwalkerGossip,'0','3','I would like to train.', '8221', '5', '16', '0'),
-	(@SunwalkerGossip,'1','0','I wish to unlearn my talents.', '62295', '16', '16', '0'),
-	(@SunwalkerGossip,'2','0','I wish to know about Dual Talent Specialization.', '33762', '20', '16', '0'),
 	('14144','0','3','I require training.', '2756', '5', '16', '0'),
 	('10555','0','3','I require training.', '2756', '5', '16', '0'),
 	('11052','0','3','I require training.', '2756', '5', '16', '0'),
@@ -225,6 +226,7 @@ values (4683, 0, 16),
 	(4526, 0, 16),
 	(4525, 0, 16),
 	(4527, 0, 16),
+	(7263, 0, 16),
 	(12513, 0, 16),
 	(12523, 0, 16),
 	(12532, 0, 16),
@@ -232,7 +234,6 @@ values (4683, 0, 16),
 	(12925, 0, 16),
 	(12533, 0, 16),
 	(12513, 0, 16),
-	(@SunwalkerGossip, 0, 164),
 	(4662, 0, 164),
 	(12516, 0, 164),
 	(12527, 0, 164),
@@ -334,8 +335,8 @@ values (4683, 0, 16),
 	(12755, 0, 39);
 	
 -- change low level gossip_menu_option_trainer to standard class trainer.
-update gossip_menu_option_trainer set TrainerId = 164 where MenuId = 6647;
-update gossip_menu_option_trainer set TrainerId = 33 where MenuId = 14140;
+update gossip_menu_option_trainer set TrainerId = 164 where MenuId in (6647, 11767);
+update gossip_menu_option_trainer set TrainerId = 33 where MenuId = 6650;
 
 -- change trainer type
 update creature_template set trainer_class = 4 where entry = 16279;
@@ -354,37 +355,42 @@ update creature_template set gossip_menu_Id = 10835 where entry = 38467;
 update creature_template set gossip_menu_id = 10838 where entry = 44468;
 update creature_template set gossip_menu_id = 10834 where entry = 35873;
 
--- switch numerous trainers to standard class trainer gossip menus
--- warrior generic gossips
-update creature_template set gossip_menu_id = 14199 where entry = 3169;
-update creature_template set gossip_menu_id = 14199 where entry = 17480;
+-- switch numerous trainers to generic class trainer gossip menus
+-- warrior wotlk gossips
+update creature_template set gossip_menu_id = 523 where entry = 3169;
 update creature_template set gossip_menu_id = 4548 where entry = 4593;
-update creature_template set gossip_menu_id = 4548 where entry = 4594;
-update creature_template set gossip_menu_id = 4548 where entry = 4595;
+update creature_template set gossip_menu_id = 4546 where entry = 4594;
+update creature_template set gossip_menu_id = 4547 where entry = 4595;
+-- warrior generic gossips
+update creature_template set gossip_menu_id = 14199 where entry = 17480;
 update creature_template set gossip_menu_id = 4548 where entry = 49955;
 -- paladin generic gossips
 update creature_template set gossip_menu_id = 6647 where entry = 49954;
 -- hunter generic gossips
 update creature_template set gossip_menu_id = 4647 where entry = 39116;
 update creature_template set gossip_menu_id = 4647 where entry = 49946;
+update creature_template set gossip_menu_id = 4647 where entry = 39100;
 -- rogue wotlk gossips
 update creature_template set gossip_menu_id = 4542 where entry = 4582;
 update creature_template set gossip_menu_id = 4540 where entry = 4583;
 update creature_template set gossip_menu_id = 4541 where entry = 4584;
 update creature_template set gossip_menu_id = 4562 where entry = 5166;
+update creature_template set gossip_menu_id = 85 where entry = 2130;
 -- rogue generic gossips
 update creature_template set gossip_menu_id = 436 where entry = 49909;
 update creature_template set gossip_menu_id = 436 where entry = 49949;
 update creature_template set gossip_menu_id = 436 where entry = 51998;
+update creature_template set gossip_menu_id = 436 where entry = 48615;
 -- priest wotlk gossips
 update creature_template set gossip_menu_id = 4544 where entry = 4606;
-update creature_template set gossip_menu_id = 4543 where entry = 4607;
+update creature_template set gossip_menu_id = 4545 where entry = 4607;
 update creature_template set gossip_menu_id = 4543 where entry = 4608;
 -- Sister Almyra gossips
 update creature_template set gossip_menu_id = 10838 where entry = 38466;
 -- priest generic gossips
 update creature_template set gossip_menu_id = 4680 where entry = 49901;
 update creature_template set gossip_menu_id = 4680 where entry = 49950;
+update creature_template set gossip_menu_id = 4680 where entry = 48614;
 -- mage wotlk gossips
 update creature_template set gossip_menu_id = 4583 where entry = 4567;
 update creature_template set gossip_menu_id = 4537 where entry = 4568;
