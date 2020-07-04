@@ -441,9 +441,37 @@ values (4169, 0, 3, 'Train me in Enchanting.', 0, 5, 16),
 	(4171, 0, 3, 'Train me in Enchanting.', 0, 5, 16),
 	(4170, 0, 3, 'Train me in Enchanting.', 0, 5, 16);
 
+-- add missing gossip_menu_option for Engineers.
+insert into gossip_menu_option
+(MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag)
+values (4136, 0, 3, 'Train me in Engineering.', 0, 5, 16),
+	(1469, 0, 3, 'Train me in Engineering.', 0, 5, 16),
+	(1465, 0, 3, 'Train me in Engineering.', 0, 5, 16),
+	(7512, 0, 3, 'Train me in Engineering.', 0, 5, 16),
+	(7513, 0, 3, 'Train me in Engineering.', 0, 5, 16),
+	(7820, 0, 3, 'Train me in Engineering.', 0, 5, 16),
+	(10363, 0, 3, 'Train me in Engineering.', 0, 5, 16);
+
+-- add missing gossip_menu_option for Leatherworkers.
+insert into gossip_menu_option
+(MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag)
+values (4208, 0, 3, 'Train me in Leatherworking.', 0, 5, 16),
+	(4186, 0, 3, 'Train me in Leatherworking.', 0, 5, 16),
+	(7866, 0, 3, 'Train me in Leatherworking.', 0, 5, 16),
+	(7870, 0, 3, 'Train me in Leatherworking.', 0, 5, 16),
+	(4842, 0, 3, 'Train me in Leatherworking.', 0, 5, 16),
+	(4244, 0, 3, 'Train me in Leatherworking.', 0, 5, 16);
+
+-- add missing gossip_menu_option for Tailors.
+insert into gossip_menu_option
+(MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag)
+values (4356, 0, 3, 'Train me in Tailoring.', 0, 5, 16),
+	(4263, 0, 3, 'Train me in Tailoring.', 0, 5, 16),
+	(10138, 0, 3, 'Train me in Tailoring.', 0, 5, 16);
+
 -- correct trainer flags in gossip menu options
 update gossip_menu_option set OptionType = 5, OptionNpcflag = 16 where OptionIcon = 3
-and MenuId in (4361, 4134, 4129, 4164)
+and MenuId in (4361, 4134, 4129, 4164, 9084, 7817)
 
 -- add missing gossip_menu_option_trainer for Apprentice Blacksmiths
 insert into gossip_menu_option_trainer
@@ -532,10 +560,73 @@ values (4169, 0, 63),
 	(10365, 0, 63),
 	(33676, 0, 63);
 
+-- add missing gossip_menu_option_trainer for High Level Engineers
+insert into gossip_menu_option_trainer
+(MenuId, OptionIndex, TrainerId)
+values (4145, 0, 407),
+	(4136, 0, 407),
+	(1469, 0, 407),
+	(1465, 0, 407),
+	(4149, 0, 407),
+	(8656, 0, 407),
+	(7512, 0, 407),
+	(7513, 0, 407),
+	(7820, 0, 407),
+	(9084, 0, 407),
+	(10363, 0, 407);
+
+-- add missing gossip_menu_option_trainer for High Level Inscription
+insert into gossip_menu_option_trainer
+(MenuId, OptionIndex, TrainerId)
+values (9879, 0, 63);
+
+-- add missing gossip_menu_option_trainer for High Level Jewelcrafting
+insert into gossip_menu_option_trainer
+(MenuId, OptionIndex, TrainerId)
+values (12848, 0, 31),
+	(8376, 0, 31),
+	(8380, 0, 31),
+	(8382, 0, 31),
+	(9892, 0, 31),
+	(9894, 0, 31),
+	(9895, 0, 31),
+	(9873, 0, 31);
+
+-- add missing gossip_menu_option_trainer for High Level Leatherworkering
+insert into gossip_menu_option_trainer
+(MenuId, OptionIndex, TrainerId)
+values (4108, 0, 56),
+	(4172, 0, 56),
+	(4206, 0, 56),
+	(4186, 0, 56),
+	(7866, 0, 56),
+	(3072, 0, 56),
+	(10361, 0, 56),
+	(4842, 0, 56),
+	(4843, 0, 56),
+	(4244, 0, 56),
+	(8732, 0, 56),
+	(7816, 0, 56),
+	(12852, 0, 56);
+
 -- add missing gossip_menu_option_trainer for High Level Tailors
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
-values (4261, 0, 163);
+values (4261, 0, 163),
+	(4356, 0, 163),
+	(4348, 0, 163),
+	(4270, 0, 163),
+	(4267, 0, 163),
+	(4263, 0, 163),
+	(4354, 0, 163),
+	(4844, 0, 163),
+	(7524, 0, 163),
+	(8868, 0, 163),
+	(10114, 0, 163),
+	(10116, 0, 163),
+	(10117, 0, 163),
+	(10138, 0, 163),
+	(10364, 0, 163);
 
 -- add missing gossip_menu_option_trainer for Riding Trainers
 insert into gossip_menu_option_trainer
@@ -634,6 +725,60 @@ update creature_template set gossip_menu_Id = 8866 where entry = 26954;
 update creature_template set gossip_menu_Id = 8866 where entry = 26980;
 update creature_template set gossip_menu_Id = 8866 where entry = 28693;
 update creature_template set gossip_menu_Id = 8866 where entry = 33583;
+-- engineering wotlk gossips
+update creature_template set gossip_menu_Id = 4149 where entry = 11031;
+-- engineering generic gossips
+update creature_template set gossip_menu_Id = 8867 where entry = 10993;
+update creature_template set gossip_menu_Id = 8867 where entry = 18752;
+update creature_template set gossip_menu_Id = 8867 where entry = 24868;
+update creature_template set gossip_menu_Id = 8867 where entry = 26991;
+update creature_template set gossip_menu_Id = 8867 where entry = 25277;
+update creature_template set gossip_menu_Id = 8867 where entry = 26907;
+update creature_template set gossip_menu_Id = 8867 where entry = 26955;
+update creature_template set gossip_menu_Id = 8867 where entry = 28697;
+update creature_template set gossip_menu_Id = 8867 where entry = 29513;
+update creature_template set gossip_menu_Id = 8867 where entry = 29514;
+update creature_template set gossip_menu_Id = 8867 where entry = 33586;
+update creature_template set gossip_menu_Id = 8867 where entry = 45545;
+-- inscription generic gossips
+update creature_template set gossip_menu_Id = 9879 where entry = 30721;
+update creature_template set gossip_menu_Id = 9879 where entry = 30713;
+update creature_template set gossip_menu_Id = 9879 where entry = 28702;
+update creature_template set gossip_menu_Id = 9879 where entry = 30706;
+update creature_template set gossip_menu_Id = 9879 where entry = 30709;
+update creature_template set gossip_menu_Id = 9879 where entry = 30710;
+update creature_template set gossip_menu_Id = 9879 where entry = 30711;
+update creature_template set gossip_menu_Id = 9879 where entry = 30715;
+update creature_template set gossip_menu_Id = 9879 where entry = 30716;
+update creature_template set gossip_menu_Id = 9879 where entry = 30717;
+update creature_template set gossip_menu_Id = 9879 where entry = 30722;
+update creature_template set gossip_menu_Id = 9879 where entry = 33603;
+update creature_template set gossip_menu_Id = 9879 where entry = 46716;
+-- jewelcrafting generic gossips
+update creature_template set gossip_menu_Id = 11861 where entry = 33590;
+update creature_template set gossip_menu_Id = 11861 where entry = 52586;
+update creature_template set gossip_menu_Id = 11861 where entry = 52587;
+-- leatherworking wotlk gossips
+update creature_template set gossip_menu_Id = 4210 where entry = 4588;
+-- leatherworking generic gossips
+update creature_template set gossip_menu_Id = 10361 where entry = 7871;
+update creature_template set gossip_menu_Id = 10361 where entry = 16728;
+update creature_template set gossip_menu_Id = 10361 where entry = 21087;
+update creature_template set gossip_menu_Id = 10361 where entry = 26998;
+update creature_template set gossip_menu_Id = 10361 where entry = 26911;
+update creature_template set gossip_menu_Id = 10361 where entry = 26961;
+update creature_template set gossip_menu_Id = 10361 where entry = 26996;
+update creature_template set gossip_menu_Id = 10361 where entry = 28700;
+update creature_template set gossip_menu_Id = 10361 where entry = 29507;
+update creature_template set gossip_menu_Id = 10361 where entry = 29508;
+update creature_template set gossip_menu_Id = 10361 where entry = 29509;
+update creature_template set gossip_menu_Id = 10361 where entry = 33581;
+-- tailoring wotlk gossips
+update creature_template set gossip_menu_Id = 4267 where entry = 3523;
+update creature_template set gossip_menu_Id = 4354 where entry = 4576;
+-- talioring generic gossips
+update creature_template set gossip_menu_Id = 8519 where entry = 4578;
+update creature_template set gossip_menu_Id = 8519 where entry = 33580;
 -- correct cooking trainer entry
 update creature_template set gossip_menu_Id = 5853 where entry = 6286;
 -- correct leatherworking trainer entry
