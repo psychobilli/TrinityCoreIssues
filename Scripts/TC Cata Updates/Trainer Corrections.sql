@@ -2,7 +2,7 @@
 
 -- The current data model prevents low level, start area class trainers from sharing a gossip menu
 -- with those trainers who list the full spell list.  This was not an issue with the 335 branch data model.
--- This adversly affects Sunwalker Helaku (37737), Delios Silverblade (43010), and Ruada (17480)
+-- This adversly affects Sunwalker Helaku (37737), Delios Silverblade (43010), Frang (3153), and Kore (16503)
 -- Update Sunwalker Helaku to new gossip_menu_id
 set @SunwalkerGossip := 57020;
 set @SunwalkerHelaku := 37737;
@@ -23,7 +23,7 @@ values (@SunwalkerGossip,'0','3','I would like to train.', '8221', '5', '16', '0
 -- Update Delios Silverblade to new gossip_menu_id
 set @BloodElfWarriorGossip := 57021;
 set @DeliosSilverblade := 43010;
-update creature_template set gossip_menu_id = @DraeneiWarriorGossip where entry = @Ruada;
+update creature_template set gossip_menu_id = @BloodElfWarriorGossip where entry = @DeliosSilverblade;
 
 -- Insert gossip_menu for Blood Elf Warrior trainer with low level spell list.
 insert into gossip_menu
@@ -37,10 +37,28 @@ values (@BloodElfWarriorGossip,'0','3','I require warrior training.', '3147', '5
 	(@BloodElfWarriorGossip,'1','0','I wish to unlearn my talents.', '62295', '16', '16', '0'),
 	(@BloodElfWarriorGossip,'2','0','I wish to know about Dual Talent Specialization.', '33762', '20', '1', '0');
 
--- Update Ruada to new gossip_menu_id
-set @DraeneiWarriorGossip := 57022;
-set @Ruada := 17480;
-update creature_template set gossip_menu_id = @DraeneiWarriorGossip where entry = @Ruada;
+-- Update Frang to new gossip_menu_id
+set @OrcWarriorGossip := 57022;
+set @Frang := 3153;
+update creature_template set gossip_menu_id = @OrcWarriorGossip where entry = @Frang;
+
+-- Insert gossip_menu for Blood Elf Warrior trainer with low level spell list.
+insert into gossip_menu
+(MenuId, TextId, VerifiedBuild)
+values (@OrcWarriorGossip, 1040, 0),
+	(@OrcWarriorGossip, 4985, 0);
+
+-- Insert gossip menu options to trainers with no options using generic text.
+insert into gossip_menu_option
+(MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag, VerifiedBuild)
+values (@OrcWarriorGossip,'0','3','I require warrior training.', '3147', '5', '16', '0'),
+	(@OrcWarriorGossip,'1','0','I wish to unlearn my talents.', '62295', '16', '16', '0'),
+	(@OrcWarriorGossip,'2','0','I wish to know about Dual Talent Specialization.', '33762', '20', '1', '0');
+
+-- Update Kore to new gossip_menu_id
+set @DraeneiWarriorGossip := 57023;
+set @Kore := 16503;
+update creature_template set gossip_menu_id = @DraeneiWarriorGossip where entry = @Kore;
 
 -- Insert gossip_menu for Draenei Warrior trainer with low level spell list.
 insert into gossip_menu
@@ -89,6 +107,7 @@ update gossip_menu_option set OptionType = 5, OptionNpcflag = 16 where MenuId = 
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
 values (4684, 0, 145),
+	(@OrcWarriorGossip, 0, 145),
 	(@BloodElfWarriorGossip, 0, 145),
 	(@DraeneiWarriorGossip, 0, 145),
 	(14137, 0, 168),	
@@ -196,6 +215,7 @@ values ('11824','0','3','I require training.', '2756', '5', '16', '0'),
 	('12543','0','3','I require training.', '2756', '5', '16', '0'),
 	('12564','0','3','I require training.', '2756', '5', '16', '0'),
 	('4560','0','3','I require training.', '2756', '5', '16', '0'),
+	('4583','0','3','I require training.', '2756', '5', '16', '0'),
 	('12004','0','3','I require training.', '2756', '5', '16', '0'),
 	('12841','0','3','I require training.', '2756', '5', '16', '0'),
 	('12049','0','3','I require training.', '2756', '5', '16', '0'),
@@ -209,6 +229,8 @@ values ('11824','0','3','I require training.', '2756', '5', '16', '0'),
 	('2522','0','3','I require training.', '2756', '5', '16', '0'),
 	('12845','0','3','I require training.', '2756', '5', '16', '0'),
 	('10373','0','3','I require training.', '2756', '5', '16', '0'),
+	('11878','0','3','I require training.', '2756', '5', '16', '0'),
+	('11972','0','3','I require training.', '2756', '5', '16', '0'),
 	('11997','0','3','I require training.', '2756', '5', '16', '0');
 	
 -- Correct flags on numerous trainers.
@@ -241,6 +263,7 @@ values (4683, 0, 16),
 	(12835, 0, 40),
 	(4694, 0, 40),
 	(4674, 0, 40),
+	(4621, 0, 40),
 	(12528, 0, 40),
 	(12535, 0, 40),
 	(12924, 0, 40),
@@ -294,6 +317,7 @@ values (4683, 0, 16),
 	(4538, 0, 135),
 	(4537, 0, 135),
 	(4553, 0, 135),
+	(4583, 0, 135),
 	(12049, 0, 135),
 	(12233, 0, 135),
 	(12525, 0, 135),
@@ -319,17 +343,27 @@ values (4683, 0, 16),
 	(2522, 0, 154),
 	(12845, 0, 154),
 	(10373, 0, 39),
+	(4605, 0, 39),
 	(4646, 0, 39),
 	(4687, 0, 39),
 	(11997, 0, 39),
 	(12755, 0, 39);
+
+-- add missing gossip_menu_option_trainer for Portal Trainers
+insert into gossip_menu_option_trainer
+(MenuId, OptionIndex, TrainerId)
+values (11972, 0, 149),
+	(4827, 0, 149);
 	
 -- change low level gossip_menu_option_trainer to standard class trainer.
-update gossip_menu_option_trainer set TrainerId = 164 where MenuId in (6647, 11767);
+update gossip_menu_option_trainer set TrainerId = 164 where MenuId = 6647;
 update gossip_menu_option_trainer set TrainerId = 33 where MenuId = 6650;
 
 -- change trainer type
 update creature_template set trainer_class = 4 where entry = 16279;
+
+-- correct creature_template npcflag for class trainer
+update creature_template set npcflag = 49 where entry = 50716;
 	
 -- switch numerous trainers to correct gossip menus.
 -- gnome mage trainers
@@ -360,6 +394,7 @@ update creature_template set gossip_menu_id = 6647 where entry = 49954;
 update creature_template set gossip_menu_id = 4647 where entry = 39116;
 update creature_template set gossip_menu_id = 4647 where entry = 49946;
 update creature_template set gossip_menu_id = 4647 where entry = 39100;
+update creature_template set gossip_menu_id = 4647 where entry = 50609;
 -- rogue wotlk gossips
 update creature_template set gossip_menu_id = 4542 where entry = 4582;
 update creature_template set gossip_menu_id = 4540 where entry = 4583;
@@ -384,6 +419,7 @@ update creature_template set gossip_menu_id = 4680 where entry = 48614;
 -- mage wotlk gossips
 update creature_template set gossip_menu_id = 4583 where entry = 4567;
 update creature_template set gossip_menu_id = 4537 where entry = 4568;
+update creature_template set gossip_menu_id = 4485 where entry = 5497;
 update creature_template set gossip_menu_id = 63 where entry = 	23103;
 -- mage generic gossips
 update creature_template set gossip_menu_id = 14136 where entry = 49952;
@@ -396,6 +432,10 @@ update creature_template set gossip_menu_id = 2383 where entry = 4563;
 update creature_template set gossip_menu_id = 4609 where entry = 4564;
 -- warlock generic gossips
 update creature_template set gossip_menu_id = 4610 where entry = 49945;
+update creature_template set gossip_menu_id = 4610 where entry = 50729;
+-- tauren druid generic gossip
+update creature_template set gossip_menu_id = 4605 where entry = 44726;
+
 
 
 -- Correct Profession Trainers
@@ -493,8 +533,8 @@ values (4361, 0, 49),
 -- add missing gossip_menu_option_trainer for Skinners
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
-values (7429, 0, 83)
-	,(10360, 0, 83);
+values (7429, 0, 83),
+	(10360, 0, 83);
 	
 -- add missing gossip_menu_option_trainer for Illustrious Grand Master Alchemists
 -- because the other alchemy spell lists are incomplete.
@@ -520,6 +560,7 @@ values (2781, 0, 58),
 	(2749, 0, 58),
 	(593, 0, 58),
 	(597, 0, 58),
+	(1022, 0, 58),
 	(1043, 0, 58),
 	(1042, 0, 58),
 	(1041, 0, 58),
@@ -536,14 +577,14 @@ values (2781, 0, 58),
 -- add missing gossip_menu_option_trainer for High Level Enchanters
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
-values (4169, 0, 63),
-	(4166, 0, 63),
-	(4171, 0, 63),
-	(4170, 0, 63),
-	(8731, 0, 63),
-	(8866, 0, 63),
-	(10365, 0, 63),
-	(33676, 0, 63);
+values (4169, 0, 62),
+	(4166, 0, 62),
+	(4171, 0, 62),
+	(4170, 0, 62),
+	(8731, 0, 62),
+	(8866, 0, 62),
+	(10365, 0, 62),
+	(33676, 0, 62);
 
 -- add missing gossip_menu_option_trainer for High Level Engineers
 insert into gossip_menu_option_trainer
@@ -567,20 +608,21 @@ values (9879, 0, 63);
 -- add missing gossip_menu_option_trainer for High Level Jewelcrafting
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
-values (12848, 0, 31),
-	(8376, 0, 31),
-	(8380, 0, 31),
-	(8382, 0, 31),
-	(9892, 0, 31),
-	(9894, 0, 31),
-	(9895, 0, 31),
-	(9873, 0, 31);
+values (12848, 0, 29),
+	(8376, 0, 29),
+	(8380, 0, 29),
+	(8382, 0, 29),
+	(9892, 0, 29),
+	(9894, 0, 29),
+	(9895, 0, 29),
+	(9873, 0, 29);
 
 -- add missing gossip_menu_option_trainer for High Level Leatherworkering
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
 values (4108, 0, 56),
 	(4172, 0, 56),
+	(4210, 0, 56),
 	(7866, 0, 56),
 	(10361, 0, 56),
 	(4842, 0, 56),
@@ -608,12 +650,30 @@ values (4261, 0, 163),
 	(10138, 0, 163),
 	(10364, 0, 163);
 
+-- add missing gossip_menu_option_trainer for First Aid Trainers
+insert into gossip_menu_option_trainer
+(MenuId, OptionIndex, TrainerId)
+values (4761, 0, 107);
+
+-- add missing gossip_menu_option_trainer for Fishing Trainers
+insert into gossip_menu_option_trainer
+(MenuId, OptionIndex, TrainerId)
+values (12887, 0, 10);
+
 -- add missing gossip_menu_option_trainer for Riding Trainers
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
-values (8553, 0, 386),
-	(8275, 0, 386);
+values (8553, 0, 46),
+	(8275, 0, 46),
+	(4019, 0, 46);
 
+-- correct trainer npcFlags
+update creature_template set npcflag = 81 where entry = 30711;
+update creature_template set npcflag = 81 where entry = 4578;
+update creature_template set npcflag = 81 where entry = 7087;
+update creature_template set npcflag = 81 where entry = 16742;
+update creature_template set npcflag = 81 where entry = 30716;
+update creature_template set npcflag = 81 where entry = 19775;
 -- herbalism generic gossips
 update creature_template set gossip_menu_Id = 7691 where entry = 908;
 update creature_template set gossip_menu_Id = 7691 where entry = 1473;
@@ -735,6 +795,7 @@ update creature_template set gossip_menu_Id = 11861 where entry = 52587;
 update creature_template set gossip_menu_Id = 4210 where entry = 4588;
 -- leatherworking generic gossips
 update creature_template set gossip_menu_Id = 10361 where entry = 7871;
+update creature_template set gossip_menu_Id = 4242 where entry = 16278;
 update creature_template set gossip_menu_Id = 10361 where entry = 16728;
 update creature_template set gossip_menu_Id = 10361 where entry = 21087;
 update creature_template set gossip_menu_Id = 10361 where entry = 26998;
@@ -752,10 +813,10 @@ update creature_template set gossip_menu_Id = 4354 where entry = 4576;
 -- talioring generic gossips
 update creature_template set gossip_menu_Id = 8519 where entry = 4578;
 update creature_template set gossip_menu_Id = 8519 where entry = 33580;
--- correct cooking trainer entry
+-- first aid wotlk gossips
+update creature_template set gossip_menu_Id = 5856 where entry = 4591;
+-- cooking trainer generic gossips
 update creature_template set gossip_menu_Id = 5853 where entry = 6286;
--- correct leatherworking trainer entry
-update creature_template set gossip_menu_Id = 4242 where entry = 16278;
 -- remove the repairer mouseover
 update creature_template set npcflag = 80 where entry = 16278;
 -- correct a mount trainer npcflag
