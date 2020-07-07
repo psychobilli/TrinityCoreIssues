@@ -1,83 +1,9 @@
 -- Correct low level class trainers.
 
--- The current data model prevents low level, start area class trainers from sharing a gossip menu
--- with those trainers who list the full spell list.  This was not an issue with the 335 branch data model.
--- This adversly affects Sunwalker Helaku (37737), Delios Silverblade (43010), Frang (3153), and Kore (16503)
--- Update Sunwalker Helaku to new gossip_menu_id
-set @SunwalkerGossip := 57020;
-set @SunwalkerHelaku := 37737;
-update creature_template set gossip_menu_id = @SunwalkerGossip where entry = @SunwalkerHelaku;
-
--- Insert gossip_menu for Tauren Paladin trainer with low level spell list.
-insert into gossip_menu
-(MenuId, TextId, VerifiedBuild)
-values (@SunwalkerGossip, 16490, 0);
-
 -- Insert gossip menu options to trainers with no options using generic text.
 insert into gossip_menu_option
 (MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag, VerifiedBuild)
-values (@SunwalkerGossip,'0','3','I would like to train.', '8221', '5', '16', '0'),
-	(@SunwalkerGossip,'1','0','I wish to unlearn my talents.', '62295', '16', '16', '0'),
-	(@SunwalkerGossip,'2','0','I wish to know about Dual Talent Specialization.', '33762', '20', '1', '0');
-
--- Update Delios Silverblade to new gossip_menu_id
-set @BloodElfWarriorGossip := 57021;
-set @DeliosSilverblade := 43010;
-update creature_template set gossip_menu_id = @BloodElfWarriorGossip where entry = @DeliosSilverblade;
-
--- Insert gossip_menu for Blood Elf Warrior trainer with low level spell list.
-insert into gossip_menu
-(MenuId, TextId, VerifiedBuild)
-values (@BloodElfWarriorGossip, 16540, 0);
-
--- Insert gossip menu options to trainers with no options using generic text.
-insert into gossip_menu_option
-(MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag, VerifiedBuild)
-values (@BloodElfWarriorGossip,'0','3','I require warrior training.', '3147', '5', '16', '0'),
-	(@BloodElfWarriorGossip,'1','0','I wish to unlearn my talents.', '62295', '16', '16', '0'),
-	(@BloodElfWarriorGossip,'2','0','I wish to know about Dual Talent Specialization.', '33762', '20', '1', '0');
-
--- Update Frang to new gossip_menu_id
-set @OrcWarriorGossip := 57022;
-set @Frang := 3153;
-update creature_template set gossip_menu_id = @OrcWarriorGossip where entry = @Frang;
-
--- Insert gossip_menu for Blood Elf Warrior trainer with low level spell list.
-insert into gossip_menu
-(MenuId, TextId, VerifiedBuild)
-values (@OrcWarriorGossip, 1040, 0),
-	(@OrcWarriorGossip, 4985, 0);
-
--- Insert gossip menu options to trainers with no options using generic text.
-insert into gossip_menu_option
-(MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag, VerifiedBuild)
-values (@OrcWarriorGossip,'0','3','I require warrior training.', '3147', '5', '16', '0'),
-	(@OrcWarriorGossip,'1','0','I wish to unlearn my talents.', '62295', '16', '16', '0'),
-	(@OrcWarriorGossip,'2','0','I wish to know about Dual Talent Specialization.', '33762', '20', '1', '0');
-
--- Update Kore to new gossip_menu_id
-set @DraeneiWarriorGossip := 57023;
-set @Kore := 16503;
-update creature_template set gossip_menu_id = @DraeneiWarriorGossip where entry = @Kore;
-
--- Insert gossip_menu for Draenei Warrior trainer with low level spell list.
-insert into gossip_menu
-(MenuId, TextId, VerifiedBuild)
-values (@DraeneiWarriorGossip, 8587, 0),
-	(@DraeneiWarriorGossip, 8588, 0);
-
--- Insert gossip menu options to trainers with no options using generic text.
-insert into gossip_menu_option
-(MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag, VerifiedBuild)
-values (@DraeneiWarriorGossip,'0','3','I require warrior training.', '3147', '5', '16', '0'),
-	(@DraeneiWarriorGossip,'1','0','I wish to unlearn my talents.', '62295', '16', '16', '0'),
-	(@DraeneiWarriorGossip,'2','0','I wish to know about Dual Talent Specialization.', '33762', '20', '1', '0');
-
--- Insert gossip menu options to trainers with no options using generic text.
-insert into gossip_menu_option
-(MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag, VerifiedBuild)
-values('14136','0','3','I require training.', '2756', '5', '16', '0'),
-	('14137','0','3','I require training.', '2756', '5', '16', '0'),
+values('14137','0','3','I require training.', '2756', '5', '16', '0'),
 	('14138','0','3','I require training.', '2756', '5', '16', '0'),
 	('14139','0','3','I require training.', '2756', '5', '16', '0'),
 	('14140','0','3','I require training.', '2756', '5', '16', '0'),
@@ -107,11 +33,7 @@ update gossip_menu_option set OptionType = 5, OptionNpcflag = 16 where MenuId = 
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
 values (4684, 0, 145),
-	(@OrcWarriorGossip, 0, 145),
-	(@BloodElfWarriorGossip, 0, 145),
-	(@DraeneiWarriorGossip, 0, 145),
-	(14137, 0, 168),	
-	(@SunwalkerGossip, 0, 168),
+	(14137, 0, 168),
 	(14141, 0, 15),
 	(10675, 0, 15),
 	(10697, 0, 15),
@@ -130,7 +52,6 @@ values (4684, 0, 145),
 	(4652, 0, 134),
 	(10879, 0, 134),
 	(10878, 0, 44),
-	(14136, 0, 44),
 	(11620, 0, 44),
 	(11810, 0, 44),
 	(4655, 0, 32),
@@ -141,7 +62,6 @@ values (4684, 0, 145),
 	(10702, 0, 32);
 	
 -- change three trainers to low level trainers.
-update gossip_menu_option_trainer set TrainerId = 17 where MenuId = 85;
 update gossip_menu_option_trainer set TrainerId = 127 where MenuId = 7349;
 update gossip_menu_option_trainer set TrainerId = 127 where MenuId = 13921;
 
@@ -152,8 +72,6 @@ update creature_template set gossip_menu_id = 10684 where entry = 38242;
 -- switch numerous trainers to low level gossip menus
 -- paladin
 update creature_template set gossip_menu_id = 4663 where entry = 16501;
--- hunter
-update creature_template set gossip_menu_id = 4647 where entry = 16499;
 -- rogue
 update creature_template set gossip_menu_id = 14140 where entry = 3155;
 -- priest
@@ -163,6 +81,8 @@ update creature_template set gossip_menu_id = 4679 where entry = 35870;
 update creature_template set gossip_menu_id = 4679 where entry = 44468;
 -- shaman
 update creature_template set gossip_menu_id = 4652 where entry = 3062;
+-- mage wotlk gossip
+update creature_template set gossip_menu_id = 6648 where entry = 15279;
 -- mage
 update creature_template set gossip_menu_id = 10698 where entry = 16500;
 -- warlock
@@ -174,7 +94,8 @@ update creature_template set gossip_menu_id = 10702 where entry = 36652;
 -- Insert gossip menu options to trainers with no options using generic text.
 insert into gossip_menu_option
 (MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag, VerifiedBuild)
-values ('11824','0','3','I require training.', '2756', '5', '16', '0'),
+values ('14136','0','3','I require training.', '2756', '5', '16', '0'),
+	('11824','0','3','I require training.', '2756', '5', '16', '0'),
 	('11906','0','3','I require training.', '2756', '5', '16', '0'),
 	('4608','0','3','I require training.', '2756', '5', '16', '0'),
 	('14144','0','3','I require training.', '2756', '5', '16', '0'),
@@ -318,6 +239,7 @@ values (4683, 0, 16),
 	(4537, 0, 135),
 	(4553, 0, 135),
 	(4583, 0, 135),
+	(14136, 0, 135),
 	(12049, 0, 135),
 	(12233, 0, 135),
 	(12525, 0, 135),
@@ -356,7 +278,9 @@ values (11972, 0, 149),
 	(4827, 0, 149);
 	
 -- change low level gossip_menu_option_trainer to standard class trainer.
-update gossip_menu_option_trainer set TrainerId = 164 where MenuId = 6647;
+update gossip_menu_option_trainer set TrainerId = 16 where MenuId = 523;
+update gossip_menu_option_trainer set TrainerId = 164 where MenuId in (6647,11767);
+update gossip_menu_option_trainer set TrainerId = 40 where MenuId = 4647;
 update gossip_menu_option_trainer set TrainerId = 33 where MenuId = 6650;
 
 -- change trainer type
@@ -436,7 +360,94 @@ update creature_template set gossip_menu_id = 4610 where entry = 50729;
 -- tauren druid generic gossip
 update creature_template set gossip_menu_id = 4605 where entry = 44726;
 
+-- correct low level class trainers who share gossips with standard class trainers.
+set @Frang := 3153;
+set @MenuId := (select gossip_menu_id from creature_template where entry = @Frang);
+set @trainingGossipOptionIndex := (select OptionIndex from gossip_menu_option where OptionIcon = 3 and MenuId = @MenuId and OptionType = 5 and OptionNpcFlag = 16);
+set @newGossipMenuOptionIndex := (select max(OptionIndex) + 1 from gossip_menu_option where MenuId = @MenuId);
+insert into gossip_menu_option (MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag, VerifiedBuild)
+select @MenuId, @newGossipMenuOptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcFlag, VerifiedBuild from gossip_menu_option where MenuId = @MenuId and OptionIndex = @trainingGossipOptionIndex;
+insert into gossip_menu_option_trainer (MenuId, OptionIndex, TrainerId) values (@MenuId, @newGossipMenuOptionIndex, 145);
+insert into conditions (SourceTypeOrReferenceId, SourceGroup, SourceEntry, SourceId, ConditionTypeOrReference, ConditionTarget, ConditionValue1, ConditionValue2, ConditionValue3, NegativeCondition, Comment)
+values (15, @MenuId, @newGossipMenuOptionIndex, 0, 29, 0, @Frang, 5, 0, 0, 'Show gossip when Frang is present'),
+	(15, @MenuId, 0, 0, 29, 0, @Frang, 5, 0, 1, 'Show gossip when Frang is not present');
+	
+set @DeliosSilverBlade := 43010;
+set @MenuId := (select gossip_menu_id from creature_template where entry = @DeliosSilverBlade);
+set @trainingGossipOptionIndex := (select OptionIndex from gossip_menu_option where OptionIcon = 3 and MenuId = @MenuId and OptionType = 5 and OptionNpcFlag = 16);
+set @newGossipMenuOptionIndex := (select max(OptionIndex) + 1 from gossip_menu_option where MenuId = @MenuId);
+insert into gossip_menu_option (MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag, VerifiedBuild)
+select @MenuId, @newGossipMenuOptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcFlag, VerifiedBuild from gossip_menu_option where MenuId = @MenuId and OptionIndex = @trainingGossipOptionIndex;
+insert into gossip_menu_option_trainer (MenuId, OptionIndex, TrainerId) values (@MenuId, @newGossipMenuOptionIndex, 145);
+insert into conditions (SourceTypeOrReferenceId, SourceGroup, SourceEntry, SourceId, ConditionTypeOrReference, ConditionTarget, ConditionValue1, ConditionValue2, ConditionValue3, NegativeCondition, Comment)
+values (15, @MenuId, @newGossipMenuOptionIndex, 0, 29, 0, @DeliosSilverBlade, 5, 0, 0, 'Show gossip when Delios Silver Blade is present'),
+	(15, @MenuId, 0, 0, 29, 0, @DeliosSilverBlade, 5, 0, 1, 'Show gossip when Delios Silver Blade is not present');
 
+set @Kore := 16503;
+set @MenuId := (select gossip_menu_id from creature_template where entry = @Kore);
+set @trainingGossipOptionIndex := (select OptionIndex from gossip_menu_option where OptionIcon = 3 and MenuId = @MenuId and OptionType = 5 and OptionNpcFlag = 16);
+set @newGossipMenuOptionIndex := (select max(OptionIndex) + 1 from gossip_menu_option where MenuId = @MenuId);
+insert into gossip_menu_option (MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag, VerifiedBuild)
+select @MenuId, @newGossipMenuOptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcFlag, VerifiedBuild from gossip_menu_option where MenuId = @MenuId and OptionIndex = @trainingGossipOptionIndex;
+insert into gossip_menu_option_trainer (MenuId, OptionIndex, TrainerId) values (@MenuId, @newGossipMenuOptionIndex, 145);
+insert into conditions (SourceTypeOrReferenceId, SourceGroup, SourceEntry, SourceId, ConditionTypeOrReference, ConditionTarget, ConditionValue1, ConditionValue2, ConditionValue3, NegativeCondition, Comment)
+values (15, @MenuId, @newGossipMenuOptionIndex, 0, 29, 0, @Kore, 5, 0, 0, 'Show gossip when Kore is present'),
+	(15, @MenuId, 0, 0, 29, 0, @Kore, 5, 0, 1, 'Show gossip when Kore is not present');
+	
+set @SunwalkerHelaku := 37737;
+set @MenuId := (select gossip_menu_id from creature_template where entry = @SunwalkerHelaku);
+set @trainingGossipOptionIndex := (select OptionIndex from gossip_menu_option where OptionIcon = 3 and MenuId = @MenuId and OptionType = 5 and OptionNpcFlag = 16);
+set @newGossipMenuOptionIndex := (select max(OptionIndex) + 1 from gossip_menu_option where MenuId = @MenuId);
+insert into gossip_menu_option (MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag, VerifiedBuild)
+select @MenuId, @newGossipMenuOptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcFlag, VerifiedBuild from gossip_menu_option where MenuId = @MenuId and OptionIndex = @trainingGossipOptionIndex;
+insert into gossip_menu_option_trainer (MenuId, OptionIndex, TrainerId) values (@MenuId, @newGossipMenuOptionIndex, 168);
+insert into conditions (SourceTypeOrReferenceId, SourceGroup, SourceEntry, SourceId, ConditionTypeOrReference, ConditionTarget, ConditionValue1, ConditionValue2, ConditionValue3, NegativeCondition, Comment)
+values (15, @MenuId, @newGossipMenuOptionIndex, 0, 29, 0, @SunwalkerHelaku, 5, 0, 0, 'Show gossip when Sunwalker Helaku is present'),
+	(15, @MenuId, 0, 0, 29, 0, @SunwalkerHelaku, 5, 0, 1, 'Show gossip when Sunwalker Helaku is not present');
+	
+set @Keilnei := 16499;
+set @MenuId := (select gossip_menu_id from creature_template where entry = @Keilnei);
+set @trainingGossipOptionIndex := (select OptionIndex from gossip_menu_option where OptionIcon = 3 and MenuId = @MenuId and OptionType = 5 and OptionNpcFlag = 16);
+set @newGossipMenuOptionIndex := (select max(OptionIndex) + 1 from gossip_menu_option where MenuId = @MenuId);
+insert into gossip_menu_option (MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag, VerifiedBuild)
+select @MenuId, @newGossipMenuOptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcFlag, VerifiedBuild from gossip_menu_option where MenuId = @MenuId and OptionIndex = @trainingGossipOptionIndex;
+insert into gossip_menu_option_trainer (MenuId, OptionIndex, TrainerId) values (@MenuId, @newGossipMenuOptionIndex, 15);
+insert into conditions (SourceTypeOrReferenceId, SourceGroup, SourceEntry, SourceId, ConditionTypeOrReference, ConditionTarget, ConditionValue1, ConditionValue2, ConditionValue3, NegativeCondition, Comment)
+values (15, @MenuId, @newGossipMenuOptionIndex, 0, 29, 0, @Keilnei, 5, 0, 0, 'Show gossip when Keilnei is present'),
+	(15, @MenuId, 0, 0, 29, 0, @Keilnei, 5, 0, 1, 'Show gossip when Keilnei is not present');
+	
+set @LankaFarshot := 3061;
+set @MenuId := (select gossip_menu_id from creature_template where entry = @LankaFarshot);
+set @trainingGossipOptionIndex := (select OptionIndex from gossip_menu_option where OptionIcon = 3 and MenuId = @MenuId and OptionType = 5 and OptionNpcFlag = 16);
+set @newGossipMenuOptionIndex := (select max(OptionIndex) + 1 from gossip_menu_option where MenuId = @MenuId);
+insert into gossip_menu_option (MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag, VerifiedBuild)
+select @MenuId, @newGossipMenuOptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcFlag, VerifiedBuild from gossip_menu_option where MenuId = @MenuId and OptionIndex = @trainingGossipOptionIndex;
+insert into gossip_menu_option_trainer (MenuId, OptionIndex, TrainerId) values (@MenuId, @newGossipMenuOptionIndex, 15);
+insert into conditions (SourceTypeOrReferenceId, SourceGroup, SourceEntry, SourceId, ConditionTypeOrReference, ConditionTarget, ConditionValue1, ConditionValue2, ConditionValue3, NegativeCondition, Comment)
+values (15, @MenuId, @newGossipMenuOptionIndex, 0, 29, 0, @LankaFarshot, 5, 0, 0, 'Show gossip when Lanka Farshot is present'),
+	(15, @MenuId, 0, 0, 29, 0, @LankaFarshot, 5, 0, 1, 'Show gossip when Lanka Farshot is not present');
+	
+set @DavidTrias := 2122;
+set @MenuId := (select gossip_menu_id from creature_template where entry = @DavidTrias);
+set @trainingGossipOptionIndex := (select OptionIndex from gossip_menu_option where OptionIcon = 3 and MenuId = @MenuId and OptionType = 5 and OptionNpcFlag = 16);
+set @newGossipMenuOptionIndex := (select max(OptionIndex) + 1 from gossip_menu_option where MenuId = @MenuId);
+insert into gossip_menu_option (MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag, VerifiedBuild)
+select @MenuId, @newGossipMenuOptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcFlag, VerifiedBuild from gossip_menu_option where MenuId = @MenuId and OptionIndex = @trainingGossipOptionIndex;
+insert into gossip_menu_option_trainer (MenuId, OptionIndex, TrainerId) values (@MenuId, @newGossipMenuOptionIndex, 17);
+insert into conditions (SourceTypeOrReferenceId, SourceGroup, SourceEntry, SourceId, ConditionTypeOrReference, ConditionTarget, ConditionValue1, ConditionValue2, ConditionValue3, NegativeCondition, Comment)
+values (15, @MenuId, @newGossipMenuOptionIndex, 0, 29, 0, @DavidTrias, 5, 0, 0, 'Show gossip when David Trias is present'),
+	(15, @MenuId, 0, 0, 29, 0, @DavidTrias, 5, 0, 1, 'Show gossip when David Trias is not present');
+
+set @JuliaSunstriker := 15279;
+set @MenuId := (select gossip_menu_id from creature_template where entry = @JuliaSunstriker);
+set @trainingGossipOptionIndex := (select OptionIndex from gossip_menu_option where OptionIcon = 3 and MenuId = @MenuId and OptionType = 5 and OptionNpcFlag = 16);
+set @newGossipMenuOptionIndex := (select max(OptionIndex) + 1 from gossip_menu_option where MenuId = @MenuId);
+insert into gossip_menu_option (MenuId, OptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcflag, VerifiedBuild)
+select @MenuId, @newGossipMenuOptionIndex, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcFlag, VerifiedBuild from gossip_menu_option where MenuId = @MenuId and OptionIndex = @trainingGossipOptionIndex;
+insert into gossip_menu_option_trainer (MenuId, OptionIndex, TrainerId) values (@MenuId, @newGossipMenuOptionIndex, 44);
+insert into conditions (SourceTypeOrReferenceId, SourceGroup, SourceEntry, SourceId, ConditionTypeOrReference, ConditionTarget, ConditionValue1, ConditionValue2, ConditionValue3, NegativeCondition, Comment)
+values (15, @MenuId, @newGossipMenuOptionIndex, 0, 29, 0, @JuliaSunstriker, 5, 0, 0, 'Show gossip when Julia Sunstriker is present'),
+	(15, @MenuId, 0, 0, 29, 0, @JuliaSunstriker, 5, 0, 1, 'Show gossip when Julia Sunstriker is not present');
 
 -- Correct Profession Trainers
 
