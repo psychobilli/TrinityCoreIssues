@@ -128,6 +128,7 @@ values ('14136','0','3','I require training.', '2756', '5', '16', '0'),
 	('12525','0','3','I require training.', '2756', '5', '16', '0'),
 	('10702','0','3','I require training.', '2756', '5', '16', '0'),
 	('12053','0','3','I require training.', '2756', '5', '16', '0'),
+	('10840','0','3','I require training.', '2756', '5', '16', '0'),
 	('12526','0','3','I require training.', '2756', '5', '16', '0'),
 	('12921','0','3','I require training.', '2756', '5', '16', '0'),
 	('4602','0','3','I require training.', '2756', '5', '16', '0'),
@@ -286,7 +287,6 @@ update creature_template set gossip_menu_id = 4540 where entry = 2130;
 
 -- update Gilneans to standard class trainers.
 update creature_template set gossip_menu_Id = 10835 where entry = 38467;
-update creature_template set gossip_menu_id = 10838 where entry = 44468;
 update creature_template set gossip_menu_id = 10834 where entry = 35873;
 
 -- switch numerous trainers to generic class trainer gossip menus
