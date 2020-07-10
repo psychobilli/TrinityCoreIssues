@@ -61,7 +61,7 @@ values (4684, 0, 145),
 	(11831, 0, 32),
 	(10702, 0, 32);
 	
--- change two trainers to low level trainers.
+-- change three trainers to low level trainers.
 update gossip_menu_option_trainer set TrainerId = 127 where MenuId = 7349;
 update gossip_menu_option_trainer set TrainerId = 127 where MenuId = 13921;
 update gossip_menu_option_trainer set TrainerId = 127 where MenuId = 10700;
@@ -582,7 +582,7 @@ values (8522, 0, 3, 'Train me in First Aide.', 0, 5, 16);
 
 -- correct trainer flags in gossip menu options
 update gossip_menu_option set OptionType = 5, OptionNpcflag = 16 where OptionIcon = 3
-and MenuId in (4361, 4134, 4129, 4164, 7455, 7817, 9084, 12846, 8460, 6087, 10437, 51997);
+and MenuId in (4361, 4134, 4129, 4164, 7455, 7817, 9084, 12846, 8460, 6087, 10437, 2021, 51997);
 
 -- add missing gossip_menu_option_trainer for Apprentice Blacksmiths
 insert into gossip_menu_option_trainer
@@ -790,23 +790,17 @@ update creature_template set gossip_menu_Id = 7691 where entry = 1473;
 update creature_template set gossip_menu_Id = 7691 where entry = 2114;
 update creature_template set gossip_menu_Id = 7691 where entry = 2390;
 update creature_template set gossip_menu_Id = 7691 where entry = 2856;
-update creature_template set gossip_menu_Id = 7691 where entry = 3185;
-update creature_template set gossip_menu_Id = 7691 where entry = 3604;
-update creature_template set gossip_menu_Id = 7691 where entry = 4898;
 update creature_template set gossip_menu_Id = 7691 where entry = 12025;
-update creature_template set gossip_menu_Id = 7691 where entry = 17983;
 update creature_template set gossip_menu_Id = 7691 where entry = 26910;
 update creature_template set gossip_menu_Id = 7691 where entry = 26958;
 update creature_template set gossip_menu_Id = 7691 where entry = 26974;
 update creature_template set gossip_menu_Id = 7691 where entry = 26994;
-update creature_template set gossip_menu_Id = 7691 where entry = 28704;
 -- mining wotlk gossips
 update creature_template set gossip_menu_Id = 7690 where entry = 4598;
 -- mining generic gossips
 update creature_template set gossip_menu_Id = 7690 where entry = 3175;
 update creature_template set gossip_menu_Id = 7690 where entry = 3555;
 update creature_template set gossip_menu_Id = 7690 where entry = 8128;
-update creature_template set gossip_menu_Id = 7690 where entry = 26999;
 update creature_template set gossip_menu_Id = 7690 where entry = 26912;
 update creature_template set gossip_menu_Id = 7690 where entry = 26962;
 update creature_template set gossip_menu_Id = 7690 where entry = 26976;
@@ -814,29 +808,17 @@ update creature_template set gossip_menu_Id = 7690 where entry = 28698;
 update creature_template set gossip_menu_Id = 7690 where entry = 52170;
 update creature_template set gossip_menu_Id = 7690 where entry = 53409;
 -- skinning generic gossips
-update creature_template set gossip_menu_Id = 7842 where entry = 6287;
-update creature_template set gossip_menu_Id = 7842 where entry = 6289;
-update creature_template set gossip_menu_Id = 7842 where entry = 6290;
-update creature_template set gossip_menu_Id = 7842 where entry = 6291;
-update creature_template set gossip_menu_Id = 7842 where entry = 6292;
 update creature_template set gossip_menu_Id = 7842 where entry = 6295;
 update creature_template set gossip_menu_Id = 7842 where entry = 6306;
 update creature_template set gossip_menu_Id = 7842 where entry = 7087;
-update creature_template set gossip_menu_Id = 7842 where entry = 7088;
-update creature_template set gossip_menu_Id = 7842 where entry = 7089;
 update creature_template set gossip_menu_Id = 7842 where entry = 8144;
 update creature_template set gossip_menu_Id = 7842 where entry = 12030;
-update creature_template set gossip_menu_Id = 7842 where entry = 16273;
 update creature_template set gossip_menu_Id = 7842 where entry = 27000;
 update creature_template set gossip_menu_Id = 7842 where entry = 26913;
-update creature_template set gossip_menu_Id = 7842 where entry = 26963;
 update creature_template set gossip_menu_Id = 7842 where entry = 26986;
 update creature_template set gossip_menu_Id = 7842 where entry = 28696;
-update creature_template set gossip_menu_Id = 7842 where entry = 44782;
 update creature_template set gossip_menu_Id = 7842 where entry = 53437;
 -- alchemy generic gossips
-update creature_template set gossip_menu_Id = 10359 where entry = 7690;
-update creature_template set gossip_menu_Id = 10359 where entry = 3184;
 update creature_template set gossip_menu_Id = 10359 where entry = 26987;
 update creature_template set gossip_menu_Id = 10359 where entry = 26903;
 update creature_template set gossip_menu_Id = 10359 where entry = 26951;
@@ -848,57 +830,36 @@ update creature_template set gossip_menu_Id = 10359 where entry = 33588;
 update creature_template set gossip_menu_Id = 1022 where entry = 4596;
 update creature_template set gossip_menu_Id = 1022 where entry = 26952;
 -- blacksmithing generic gossips
--- vendor -- update creature_template set gossip_menu_Id = 8521 where entry = 4888;
 update creature_template set gossip_menu_Id = 8521 where entry = 16724;
 update creature_template set gossip_menu_Id = 8521 where entry = 26988;
 update creature_template set gossip_menu_Id = 8521 where entry = 26904;
 update creature_template set gossip_menu_Id = 8521 where entry = 26924;
-update creature_template set gossip_menu_Id = 8521 where entry = 26981;
 update creature_template set gossip_menu_Id = 8521 where entry = 27034;
 update creature_template set gossip_menu_Id = 8521 where entry = 28694;
 update creature_template set gossip_menu_Id = 8521 where entry = 29505;
 update creature_template set gossip_menu_Id = 8521 where entry = 29506;
-update creature_template set gossip_menu_Id = 8521 where entry = 29924;
 update creature_template set gossip_menu_Id = 8521 where entry = 33591;
-update creature_template set gossip_menu_Id = 8521 where entry = 37072;
-update creature_template set gossip_menu_Id = 8521 where entry = 45548;
--- vendor -- update creature_template set gossip_menu_Id = 8521 where entry = 55684;
 -- enchanting generic gossips
 update creature_template set gossip_menu_Id = 8866 where entry = 19251;
 update creature_template set gossip_menu_Id = 8866 where entry = 26990;
 update creature_template set gossip_menu_Id = 8866 where entry = 26906;
 update creature_template set gossip_menu_Id = 8866 where entry = 26954;
 update creature_template set gossip_menu_Id = 8866 where entry = 26980;
-update creature_template set gossip_menu_Id = 8866 where entry = 28693;
 update creature_template set gossip_menu_Id = 8866 where entry = 33583;
 -- engineering wotlk gossips
 update creature_template set gossip_menu_Id = 4149 where entry = 11031;
 -- engineering generic gossips
 update creature_template set gossip_menu_Id = 8867 where entry = 10993;
--- vendor -- update creature_template set gossip_menu_Id = 8867 where entry = 18752;
 update creature_template set gossip_menu_Id = 8867 where entry = 26991;
 update creature_template set gossip_menu_Id = 8867 where entry = 25277;
 update creature_template set gossip_menu_Id = 8867 where entry = 26907;
-update creature_template set gossip_menu_Id = 8867 where entry = 26955;
-update creature_template set gossip_menu_Id = 8867 where entry = 28697;
-update creature_template set gossip_menu_Id = 8867 where entry = 29513;
-update creature_template set gossip_menu_Id = 8867 where entry = 29514;
 update creature_template set gossip_menu_Id = 8867 where entry = 33586;
-update creature_template set gossip_menu_Id = 8867 where entry = 45545;
 -- inscription generic gossips
 update creature_template set gossip_menu_Id = 9879 where entry = 30721;
-update creature_template set gossip_menu_Id = 9879 where entry = 30713;
-update creature_template set gossip_menu_Id = 9879 where entry = 28702;
-update creature_template set gossip_menu_Id = 9879 where entry = 30706;
-update creature_template set gossip_menu_Id = 9879 where entry = 30709;
 update creature_template set gossip_menu_Id = 9879 where entry = 30710;
 update creature_template set gossip_menu_Id = 9879 where entry = 30711;
 update creature_template set gossip_menu_Id = 9879 where entry = 30715;
 update creature_template set gossip_menu_Id = 9879 where entry = 30716;
-update creature_template set gossip_menu_Id = 9879 where entry = 30717;
-update creature_template set gossip_menu_Id = 9879 where entry = 30722;
-update creature_template set gossip_menu_Id = 9879 where entry = 33603;
-update creature_template set gossip_menu_Id = 9879 where entry = 46716;
 -- jewelcrafting generic gossips
 update creature_template set gossip_menu_Id = 11861 where entry = 33590;
 update creature_template set gossip_menu_Id = 11861 where entry = 52586;
@@ -908,15 +869,10 @@ update creature_template set gossip_menu_Id = 4210 where entry = 4588;
 update creature_template set gossip_menu_Id = 4242 where entry = 16278;
 -- leatherworking generic gossips
 update creature_template set gossip_menu_Id = 10361 where entry = 7869;
-update creature_template set gossip_menu_Id = 10361 where entry = 7871;
 update creature_template set gossip_menu_Id = 10361 where entry = 16728;
-update creature_template set gossip_menu_Id = 10361 where entry = 21087;
 update creature_template set gossip_menu_Id = 10361 where entry = 26998;
 update creature_template set gossip_menu_Id = 10361 where entry = 26911;
-update creature_template set gossip_menu_Id = 10361 where entry = 26961;
 update creature_template set gossip_menu_Id = 10361 where entry = 26996;
-update creature_template set gossip_menu_Id = 10361 where entry = 28700;
-update creature_template set gossip_menu_Id = 10361 where entry = 29507;
 update creature_template set gossip_menu_Id = 10361 where entry = 29508;
 update creature_template set gossip_menu_Id = 10361 where entry = 29509;
 update creature_template set gossip_menu_Id = 10361 where entry = 33581;
@@ -929,11 +885,8 @@ update creature_template set gossip_menu_Id = 8519 where entry = 33580;
 -- first aid wotlk gossips
 update creature_template set gossip_menu_Id = 5856 where entry = 4591;
 -- first aid generic gossips
--- vendor -- update creature_template set gossip_menu_Id = 5856 where entry = 18990;
--- vendor -- update creature_template set gossip_menu_Id = 5856 where entry = 18991;
 update creature_template set gossip_menu_Id = 5856 where entry = 26956;
 -- cooking trainer generic gossips
-update creature_template set gossip_menu_Id = 5853 where entry = 6286;
 update creature_template set gossip_menu_Id = 5853 where entry = 19369;
 update creature_template set gossip_menu_Id = 5853 where entry = 33587;
 update creature_template set gossip_menu_Id = 5853 where entry = 34785;
