@@ -291,7 +291,7 @@ update creature_template set gossip_menu_id = 4540 where entry = 2130;
 update creature_template set gossip_menu_Id = 10835 where entry = 38467;
 update creature_template set gossip_menu_id = 10834 where entry = 35873;
 
--- switch numerous trainers to generic class trainer gossip menus
+-- switch trainers who do nothing to either wotlk or generic gossips
 -- warrior wotlk gossips
 update creature_template set gossip_menu_id = 523 where entry = 3169;
 update creature_template set gossip_menu_id = 4548 where entry = 4593;
@@ -620,7 +620,7 @@ insert into gossip_menu_option_trainer
 values (7429, 0, 83),
 	(10360, 0, 83);
 	
--- add missing gossip_menu_option_trainer for High Level Alchemists
+-- add missing gossip_menu_option_trainer for Alchemists
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
 values (4111, 0, 122),
@@ -638,7 +638,7 @@ values (4111, 0, 122),
 	(8863, 0, 122),
 	(10627, 0, 122);
 
--- add missing gossip_menu_option_trainer for High Level Blacksmithing
+-- add missing gossip_menu_option_trainer for Blacksmiths
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
 values (2781, 0, 58),
@@ -660,7 +660,7 @@ values (2781, 0, 58),
 	(8254, 0, 58),
 	(9459, 0, 58);
 
--- add missing gossip_menu_option_trainer for High Level Enchanters
+-- add missing gossip_menu_option_trainer for Enchanters
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
 values (4169, 0, 62),
@@ -672,7 +672,7 @@ values (4169, 0, 62),
 	(10365, 0, 62),
 	(33676, 0, 62);
 
--- add missing gossip_menu_option_trainer for High Level Engineers
+-- add missing gossip_menu_option_trainer for Engineers
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
 values (4145, 0, 407),
@@ -687,12 +687,12 @@ values (4145, 0, 407),
 	(9084, 0, 407),
 	(10363, 0, 407);
 
--- add missing gossip_menu_option_trainer for High Level Inscription
+-- add missing gossip_menu_option_trainer for Scribes
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
 values (9879, 0, 63);
 
--- add missing gossip_menu_option_trainer for High Level Jewelcrafting
+-- add missing gossip_menu_option_trainer for Jewelcrafters
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
 values (12848, 0, 29),
@@ -704,7 +704,7 @@ values (12848, 0, 29),
 	(9895, 0, 29),
 	(9873, 0, 29);
 
--- add missing gossip_menu_option_trainer for High Level Leatherworkering
+-- add missing gossip_menu_option_trainer for Leatherworkers
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
 values (4108, 0, 56),
@@ -721,7 +721,7 @@ values (4108, 0, 56),
 	(7816, 0, 56),
 	(12852, 0, 56);
 
--- add missing gossip_menu_option_trainer for High Level Tailors
+-- add missing gossip_menu_option_trainer for Tailors
 insert into gossip_menu_option_trainer
 (MenuId, OptionIndex, TrainerId)
 values (4261, 0, 163),
@@ -783,6 +783,8 @@ update creature_template set npcflag = 81 where entry = 19775;
 update creature_template set npcflag = 81 where entry = 26956;
 update creature_template set npcflag = 81 where entry = 33587;
 update creature_template set npcflag = 81 where entry = 34785;
+
+-- give trainers who do nothing generic gossips
 -- herbalism generic gossips
 update creature_template set gossip_menu_Id = 7691 where entry = 908;
 update creature_template set gossip_menu_Id = 7691 where entry = 1473;
@@ -894,11 +896,11 @@ update creature_template set gossip_menu_Id = 5853 where entry = 34786;
 update creature_template set gossip_menu_Id = 5665 where entry = 26993;
 update creature_template set gossip_menu_Id = 5665 where entry = 26909;
 update creature_template set gossip_menu_Id = 5665 where entry = 26957;
+
 -- remove the repairer mouseover
 update creature_template set npcflag = 80 where entry = 16278;
--- correct a mount trainer npcflag
+-- correct mount trainer npcflags
 update creature_template set npcflag = 81 where entry = 3175;
--- correct a mount trainer npcflag
 update creature_template set npcflag = 83 where entry = 16280;
 	
 -- correct a few innkeepers
