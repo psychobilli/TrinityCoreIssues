@@ -185,14 +185,16 @@ ACHERUS
 	Q - Where Kings Walk (13188) - Portal to Stormwind does not work. NPCs do not throw fruit.  Varian does not give the speech.
 	
 TELDRASSIL
-	N - Rhyanda (43006) - No gossips, does not offer mage training.
-	N - Shanda (3595) - Does not offer Priest training.
 	Q - Arcane Missiles (26940) - Not offered by mage trainer.
 	N - Training Dummies follow player like mobs.  They're not rooted.
 	N - Syral Bladeleaf (2083) - Quest availability is suspect.
+	N - Corithas Moonrage (3515) - Does not offer Teldrassil: The Refusal of the Aspects (929)
+	Q - The Crown of Earth (934) - Be sure it's not obtainable.
 	C - Gnarlpine Shaman (2009) - Runs on aggro.
 	Q - Mist (938) - Quest does not complete on return to base.
 	
+	N - Rhyanda (43006) - No gossips, does not offer mage training.
+	N - Shanda (3595) - Does not offer Priest training.
 	N - Irriende (43005) - Does not offer mage training.
 	N - Laurna Morninglight (3600) - Does not offer priest training.
 	
