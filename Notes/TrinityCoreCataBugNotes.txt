@@ -192,6 +192,8 @@ TELDRASSIL
 	Q - The Crown of Earth (934) - Be sure it's not obtainable.
 	C - Gnarlpine Shaman (2009) - Runs on aggro.
 	Q - Mist (938) - Quest does not complete on return to base.
+	N - Nyoma (4265) - Has no Vendor gossips.
+	N - Draelan (44030) - Has no Vendor gossips.
 	
 	N - Rhyanda (43006) - No gossips, does not offer mage training.
 	N - Shanda (3595) - Does not offer Priest training.
