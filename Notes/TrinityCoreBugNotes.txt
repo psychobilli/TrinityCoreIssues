@@ -160,7 +160,31 @@ Black Temple - 100985 A Distraction for Akama, cannot turn in quest. Sometimes.
 Sunwell Plateau - Kalecgos evades when phasing, unable to kill him.
 	Killing Brutallus does not drop the fire barrier, gobject 50442, 
 		because the Felmyst Encounter doesn't begin.
-Zul'Drak item 41390 - Stefan's Horn - Stephan spawns but does not land.
+Borean Tundra 11661 - Orabus the Helmsman - NPC does not spawn.
+	11652 - The Plains of Nasam - Unable to restore vehicle mana.
+	11681 - Rescuing Evanor - Takes a long time to reset for next player.
+	11969 - Springing the Trap - Player dropped in the wrong location.  Should 
+		be near x 3784, y 6517, z 177, o1.14
+Howling Fjord npc 23728 - Guard Captain Zorek - Does not summon taxi after completing 
+	(11427) Meet Lieutenant Icehammer...
+	11421 - It Goes to 11... - Unable to use harpoon gun.
+	11494 - Lightning Infused Relics - Golem's 3rd spell, Bluff, doesn't work correctly.
+	11567 - The Ancient Armor of the Kvaldir - Bomber seems slow, should probably
+		be flying mount speed.
+	11390 - I've got A Flying Machine! - Unable to drop off relics.
+	npc 24473 - Lead Archaeologist Malzie - Gives a level 50 quest.
+	11154 - Scare the Guano Out of Them! - Requires a second cast of fireworks to
+		get the guano to drop.
+Dragonblight - 12321 - A Righteous Sermon - Does not yield group credit.
+	12352 - Into Hostile Territory - Gryphon Commander Urik does not offer taxi.
+	12098 - Search Indu'le Village - Mages near ley line should not be alive.
+	12498 - On Ruby Wings - Necrolord Antiok does not spawn after killing the giant.
+Dalaran - 12790 - Learning to Leave and Return: the Magical Way - Teleport Crystal
+		doesn't work for multiple players.
+Grizzly Hills - 12255 - The Thame of Voidrune - May be out of sequence.
+	12070 - Rallying the Troops - Unable to get credit for buffing giants.
+Zul'Drak item 12919 - The Storm King's Vengeance - Killing mobs and healing is buggy.
+	41390 - Stefan's Horn - Stephan spawns but does not land.
 	12673 - It Rolls Downhill - Controlled Geists do not path to crystals.
 	12686 - Zero Tolerance - Controlled pet will not attacked named.
 	12676 - Sabotage - Destroying wagons does not yield credit.
@@ -169,8 +193,13 @@ Zul'Drak item 41390 - Stefan's Horn - Stephan spawns but does not land.
 	12710 - Disclosure - Quest does not yield credit.
 	12713 - Betrayal - Pet cannot auto attack, can use spells.  Encounter
 		doesn't feel right.
-Sholazar Basin - 12805 - Salvaging Life's Strength - Quest feels out of
+	12622 - The Leaders at Jin'Alai - Chulo the Mad does not spawn like the others.
+	12646 - My Prophet, My Enemy - Prophet should not be alive.
+Sholazar Basin - 12536 - Rough Ride - Crocolisk doesn't always provide taxi.
+	12805 - Salvaging Life's Strength - Quest feels out of
 		sequence.  Should probably be offered with 12612 - The Fallen Pillar
+	12575 - The Lost Mistwhisper Treasure - Completing objectives doesn't always 
+		allow turn in.
 Storm Peaks - 13005 - The Earthen Oath - Mobs do not correctly yield
 		credit.
 	12980 - The Armor's Secrets - Attendant Tock paths northward, through
@@ -193,8 +222,9 @@ The Nexus - Missing spawns in frozen mobs hall.
 	Dryads and Trents have no waypoints.
 	Intense Cold does not register correctly.
 Azjol Nerub - First and Second bosses both reset at random.
+Ahn'Kahet - 13204 - Funky Fungi - Drop rate should be 100%.
 Drak'Tharon - Oh Novos achievement doesn't proc.
-	Better of Dread achievement doesn't tally correctly.
+	Better off Dread achievement doesn't tally correctly.
 Halls of Stone - Tribunal does not correctly stop attacking at event end.
 Dungeons L 80 - Many mobs do not yield dungeon reputation.
 Utgarde Pinnacle - Skadi the Ruthless does not dismount correctly.
@@ -202,6 +232,7 @@ Culling of Stratholme - Chromie's pathing is weird at the end.
 	Arthas reappears at the end after leaving.
 	The Infinite Corruptor timer doesn't get removed if Arthas dies.
 	Zomies should spawn slowly, not all at once.
+Halls of Stone - 13207 - Halls of Stone - Brann does not spawn in boss room.
 Trial of the Champion - Champions do not get trampled correctly.
 	Champions run too fast to claim a new mount.
 	Vehicles from opposing faction incorrectly trample player
@@ -223,8 +254,13 @@ Ulduar - Dwarfageddon doesn't proc.
 	Keepers despawn inappropriately after releasing them from control.
 	Yogg-Saron encounter doens't end at player death.
 	
--- Solo Craft bugs
-Characters sometimes fail to get stat boosts, possibly after death/crash.
+ACHIEVEMENTS
+	First Human achievemnt did not proc.
+	First paladin achievement did not proc.
+	First death knight achievement did not proc.
+	
+LOVE IS IN THE AIR
+	Romantic Picnic Basket (34480) - Does not proc heart, Lonely achievement can't be completed.
 
 -- COULD BE RESTORED
 Alliance Onyxia quest line.
