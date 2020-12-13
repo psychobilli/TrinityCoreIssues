@@ -163,8 +163,11 @@ Sunwell Plateau - Kalecgos evades when phasing, unable to kill him.
 Borean Tundra 11661 - Orabus the Helmsman - NPC does not spawn.
 	11652 - The Plains of Nasam - Unable to restore vehicle mana.
 	11681 - Rescuing Evanor - Takes a long time to reset for next player.
+	11957 - Sargosa's End - Keristraza does not offer teleport after turn-in.
+	11919 - Drake Hunt - Drake casts nether breath while tethered, should be pacified.
 	11969 - Springing the Trap - Player dropped in the wrong location.  Should 
 		be near x 3784, y 6517, z 177, o1.14
+	11633 - Blending In - Shroud stops working on quest complete.
 Howling Fjord npc 23728 - Guard Captain Zorek - Does not summon taxi after completing 
 	(11427) Meet Lieutenant Icehammer...
 	11421 - It Goes to 11... - Unable to use harpoon gun.
@@ -177,11 +180,25 @@ Howling Fjord npc 23728 - Guard Captain Zorek - Does not summon taxi after compl
 		get the guano to drop.
 Dragonblight - 12321 - A Righteous Sermon - Does not yield group credit.
 	12352 - Into Hostile Territory - Gryphon Commander Urik does not offer taxi.
+	11930 - Across Transborea - Accepting as group does not create second escort.
+	12140 - All Hail Roanauk! - Overlord Agmar bugs for 5 minutes before event
+		continues.  Sometimes.
 	12098 - Search Indu'le Village - Mages near ley line should not be alive.
+	12260 - The Perfect Dissemblance - Does not yield quest credit.
+	12274 - A Fall from Grace - Raven Priest Image (48761, 48763) does not make
+		mobs friendly.
+	12097 - Sarathstra, Scourge of the North - Unable to summon named.  
+		Ally version works.
 	12498 - On Ruby Wings - Necrolord Antiok does not spawn after killing the giant.
+	12500 - Return to Angrathar - Turn in does not play movie.
 Dalaran - 12790 - Learning to Leave and Return: the Magical Way - Teleport Crystal
 		doesn't work for multiple players.
 Grizzly Hills - 12255 - The Thame of Voidrune - May be out of sequence.
+	12427 - The Conquest Pit: Bear Wrestling! - Does not give group credit.
+	12428 - The Conquest Pit: Mad Furbolg Fighting - Does not give group credit.
+	12429 - The Conquest Pit: Blood and Metal - Does not give group credit.
+	12430 - The Conquest Pit: Death is Likely - Does not give group credit.
+	12431 - The Conquest Pit: Final Showdown - Does not give group credit.
 	12070 - Rallying the Troops - Unable to get credit for buffing giants.
 Zul'Drak item 12919 - The Storm King's Vengeance - Killing mobs and healing is buggy.
 	41390 - Stefan's Horn - Stephan spawns but does not land.
@@ -261,6 +278,9 @@ ACHIEVEMENTS
 	
 LOVE IS IN THE AIR
 	Romantic Picnic Basket (34480) - Does not proc heart, Lonely achievement can't be completed.
+
+ROGUE
+	Hack and Slash may trigger PVP.
 
 -- COULD BE RESTORED
 Alliance Onyxia quest line.
