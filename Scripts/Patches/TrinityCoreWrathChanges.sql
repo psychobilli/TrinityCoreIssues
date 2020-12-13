@@ -1,4 +1,3 @@
-use world_schema;
 -- reduce the respawn on Dark Iron Pillows.
 update gameobject
 set spawntimesecs = 90
