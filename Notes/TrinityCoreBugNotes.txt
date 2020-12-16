@@ -193,8 +193,7 @@ Dragonblight - 12321 - A Righteous Sermon - Does not yield group credit.
 	12500 - Return to Angrathar - Turn in does not play movie.
 Dalaran - 12790 - Learning to Leave and Return: the Magical Way - Teleport Crystal
 		doesn't work for multiple players.
-Grizzly Hills - 12255 - The Thame of Voidrune - May be out of sequence.
-	12427 - The Conquest Pit: Bear Wrestling! - Does not give group credit.
+Grizzly Hills - 12427 - The Conquest Pit: Bear Wrestling! - Does not give group credit.
 	12428 - The Conquest Pit: Mad Furbolg Fighting - Does not give group credit.
 	12429 - The Conquest Pit: Blood and Metal - Does not give group credit.
 	12430 - The Conquest Pit: Death is Likely - Does not give group credit.
@@ -212,7 +211,9 @@ Zul'Drak item 12919 - The Storm King's Vengeance - Killing mobs and healing is b
 		doesn't feel right.
 	12622 - The Leaders at Jin'Alai - Chulo the Mad does not spawn like the others.
 	12646 - My Prophet, My Enemy - Prophet should not be alive.
-Sholazar Basin - 12536 - Rough Ride - Crocolisk doesn't always provide taxi.
+Sholazar Basin - 12614 - Post-partum Aggression - Broodmother does not always 
+		yield credit.
+	12536 - Rough Ride - Crocolisk doesn't always provide taxi.
 	12805 - Salvaging Life's Strength - Quest feels out of
 		sequence.  Should probably be offered with 12612 - The Fallen Pillar
 	12575 - The Lost Mistwhisper Treasure - Completing objectives doesn't always 
@@ -271,11 +272,6 @@ Ulduar - Dwarfageddon doesn't proc.
 	Keepers despawn inappropriately after releasing them from control.
 	Yogg-Saron encounter doens't end at player death.
 	
-ACHIEVEMENTS
-	First Human achievemnt did not proc.
-	First paladin achievement did not proc.
-	First death knight achievement did not proc.
-	
 LOVE IS IN THE AIR
 	Romantic Picnic Basket (34480) - Does not proc heart, Lonely achievement can't be completed.
 
@@ -293,6 +289,8 @@ Alliance Onyxia quest line.
 Most respawns for items in quests with timers >25 sec have been reduced
 
 -- NOT BLIZZ LIKE
+Grizzly Hills - 12255 - The Thame of Voidrune - May be out of sequence.
+
 Violet Hold - Mobs do not yield dungeon rep.
 Gundrak - Spitting Cobra does not give rep.
 Culling of Stratholme - Unplayable.
