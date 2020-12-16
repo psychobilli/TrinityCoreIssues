@@ -12,6 +12,11 @@ BEGIN
 	
 	insert into results
 	select 1, count(c.guid), 'creature world location reaults', entryInput from creature c where c.id = entryInput;
+	
+	insert into results
+	select 1, rowCount, 'creature_trainer records for creature with trainer', 
+    case when rowCount > 0 then (select TrainerId from creature_trainer ctr where ctr.CreatureId = entryInput) else -1 end
+	from (select count(ctr.CreatureId) as rowCount from creature_trainer ctr where ctr.CreatureId = entryInput) x;
     
     insert into results
     select 2, ct.entry, 'creature_template npcFlag and flag test', concat(ct.npcFlag, ', test: ', case when (npcFlag >> 4) % 2 = 1 then 'true' else 'false' end) from creature_template ct
@@ -55,20 +60,20 @@ BEGIN
     where gmo.MenuId = @Menu_Id and OptionIcon = 3 and (gmo.OptionType != 5 or gmo.OptionNpcflag != 16) group by OptionIndex;
     
     insert into results
-    select 7, count(*), 'gossip_menu_option_trainer records with OptionType 5 and OptionNpcFlag 16 at OptionIndex', concat('OptionIndex: ', gmo.OptionIndex, ', OptionType: ', OptionType, ', OptionNpcFlag: ', OptionNpcFlag)
-    from gossip_menu_option_trainer gmot join gossip_menu_option gmo on gmo.MenuId = gmot.MenuId and gmo.OptionIndex = gmot.OptionIndex
+    select 7, count(*), 'creature_trainer records with OptionType 5 and OptionNpcFlag 16 at OptionIndex', concat('OptionIndex: ', gmo.OptionIndex, ', OptionType: ', OptionType, ', OptionNpcFlag: ', OptionNpcFlag)
+    from creature_trainer ctr join gossip_menu_option gmo on gmo.MenuId = ctr.MenuId and gmo.OptionIndex = ctr.OptionIndex
     where gmo.OptionType = 5 and gmo.OptionNpcflag = 16 and gmo.MenuId = @Menu_Id group by gmo.OptionIndex;
     
     insert into results
-    select 7, count(*), 'gossip_menu_option_trainer records with OptionIcon 3 and incorrect Tyoe or Flag', gmo.OptionIndex 
-    from gossip_menu_option_trainer gmot join gossip_menu_option gmo on gmo.MenuId = gmot.MenuId and gmo.OptionIndex = gmot.OptionIndex
+    select 7, count(*), 'creature_trainer records with OptionIcon 3 and incorrect Tyoe or Flag', gmo.OptionIndex 
+    from creature_trainer ctr join gossip_menu_option gmo on gmo.MenuId = ctr.MenuId and gmo.OptionIndex = ctr.OptionIndex
     where gmo.MenuId = @Menu_Id and OptionIcon = 3 and not exists (select 1 from gossip_menu_option sub 
 	where sub.MenuId = gmo.MenuId and sub.OptionType = 5 and sub.OptionNpcflag = 16) group by OptionIndex;
     
     create temporary table trainers (MenuId int, trainerId int, optionIndex int, description text);
     
     insert into trainers (MenuId, trainerId, OptionIndex, description)
-    select gmot.MenuId, gmot.trainerId, gmot.OptionIndex, case when gmot.trainerId in (16)
+    select ctr.MenuId, ctr.trainerId, ctr.OptionIndex, case when ctr.trainerId in (16)
 					   then '(1) warrior'
                        when trainerId in (145)
 					   then '(1) warrior low level'
@@ -242,12 +247,11 @@ BEGIN
 						then 'Journeyman Miner'
 						when TrainerId = 427
 						then 'Apprentice Fishing'
-			end from gossip_menu_option_trainer gmot 
-			join gossip_menu_option gmo on gmo.MenuId = gmot.MenuId and gmo.OptionIndex = gmot.OptionIndex
-            where gmo.OptionNpcflag = 16 and gmo.OptionType = 5 and gmo.MenuId = @Menu_Id;
+			end from creature_trainer ctr
+			where ctr.CreatureID = entryInput;
 			
     insert into results
-    select 8, t.OptionIndex, 'OptionIndex for creature_template with trainer_class and gossip_menu_option_trainer', 
+    select 8, t.OptionIndex, 'OptionIndex for creature_template with trainer_class and creature_trainer', 
 		concat('ct trainer_class: ', ct.trainer_class, ', trainer conversion:', t.description)
     from creature_template ct left join trainers t on t.MenuId = ct.gossip_menu_id where ct.entry = entryInput;
     

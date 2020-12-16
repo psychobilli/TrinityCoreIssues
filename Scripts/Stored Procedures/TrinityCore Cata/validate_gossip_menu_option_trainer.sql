@@ -26,24 +26,24 @@ BEGIN
 						then 'low level'
                         else ''
 			end;
-	-- check gossip_menu_option_trainer for missing gossip_menu_option
-	select count(*) as 'gossip_menu_option_trainer missing gossip_menu_option', trainer, @lowlevel from gossip_menu_option_trainer gmot 
+	-- check creature_trainer for missing gossip_menu_option
+	select count(*) as 'creature_trainer missing gossip_menu_option', trainer, @lowlevel from creature_trainer ctr
 	where not exists 
-		(select 1 from gossip_menu_option gmo where gmo.MenuId = gmot.MenuId and gmo.OptionIndex = gmot.OptionIndex) 
-	  and gmot.trainerId = trainer;
+		(select 1 from gossip_menu_option gmo where gmo.MenuId = ctr.MenuId and gmo.OptionIndex = ctr.OptionIndex) 
+	  and ctr.trainerId = trainer;
 
 	-- check gossip_menu_option for incorrect OptionType flags on trainers.
 	select count(*) as 'gossip_menu_option incorrect OptionType flags on trainer', trainer, @lowlevel from gossip_menu_option gmo 
 	where exists 
-		(select 1 from gossip_menu_option_trainer gmot 
-			where gmot.MenuId = gmo.MenuId and gmot.OptionIndex = gmo.OptionIndex and gmot.trainerId = trainer) 
+		(select 1 from creature_trainer ctr
+			where ctr.MenuId = gmo.MenuId and ctr.OptionIndex = gmo.OptionIndex and ctr.trainerId = trainer) 
 	and OptionType != 5; 
 
 	-- check gossip_menu_option for incorrect OptionNpcFlag flags on trainers.
 	select count(*) as 'gossip_menu_option incorrect OptionNpcFlag flags on trainer', trainer, @lowlevel from gossip_menu_option gmo 
 	where exists 
-		(select 1 from gossip_menu_option_trainer gmot 
-			where gmot.MenuId = gmo.MenuId and gmot.OptionIndex = gmo.OptionIndex and gmot.trainerId = trainer) 
+		(select 1 from creature_trainer ctr 
+			where ctr.MenuId = gmo.MenuId and ctr.OptionIndex = gmo.OptionIndex and ctr.trainerId = trainer) 
 	and OptionNpcFlag != 16;
 
 	-- check gossip_menu_option for missing gossip_menus
@@ -55,15 +55,15 @@ BEGIN
 	-- check creature_template for trainers with incorrect npcFlag.
 	select count(*) as 'creature_template trainers with incorrect npcFlag', trainer, @lowlevel from creature_template ct 
 	where exists 
-		(select 1 from gossip_menu_option_trainer gmot 
-			where gmot.MenuId = ct.gossip_menu_id and gmot.trainerId = trainer) 
+		(select 1 from creature_trainer ctr 
+			where ctr.MenuId = ct.gossip_menu_id and ctr.trainerId = trainer) 
 	and (ct.npcFlag >> 4) % 2 != 1;
 
 	-- check creature_template for trainers with incorrect class type.
 	select count(*) as 'creature_template trainers with incorrect class type', trainer, @lowlevel from creature_template ct 
 	where exists 
-		(select 1 from gossip_menu_option_trainer gmot 
-			where gmot.MenuId = ct.gossip_menu_id and gmot.trainerId = trainer) 
+		(select 1 from creature_trainer ctr
+			where ctr.MenuId = ct.gossip_menu_id and ctr.trainerId = trainer) 
 	and ct.trainer_class != @class;
 END //
 DELIMITER ;

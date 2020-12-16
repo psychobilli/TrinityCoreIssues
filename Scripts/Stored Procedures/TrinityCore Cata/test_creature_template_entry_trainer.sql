@@ -16,6 +16,8 @@ BEGIN
             set @fail := (select case when count(*) > 0 then 0 else -1 end from results where item = 1 and keyfield = entryInput);
             set @fail := (select case when @fail != 0 then @fail when count(*) > 0 then 0 else -1 end from results
                             where item = 1 and keyfield > 0 and message like '%creature world%');
+			set @fail := (select case when @fail != 0 then @fail when keyfield > 0 then 0 else -2 end from results
+							where item = 1 and message like '%creature_trainer records%');
             set @fail := (select case when @fail != 0 then @fail when count(*) > 0 then 0 else 1 end from results
                             where item = 2 and details like '%true%');
             set @fail := (select case when @fail != 0 then @fail when count(*) > 0 then 0 else 1 end from results
@@ -32,13 +34,11 @@ BEGIN
                             where item = 7 and keyfield > 0 and length(details) > 19);
             set @fail := (select case when @fail != 0 then @fail when count(*) > 0 then 0 else 1 end from results
                             where item = 8);
-                            
-            set @fail := (select case when @fail = 1 and count(*) > 0 then -2 else @fail end from creature_default_trainer where CreatureId = entryInput);
 
             insert into testResults select entryInput,
             case when @fail = 0 then 'All tests pass'
             when @fail = -1 then concat('Creature not in world ', entryInput)
-            when @fail = -2 then concat('Creature uses old trainer set up ', entryInput)
+			when @fail = -2 then 'Creature missing creature_trainer record'
             else concat('Test failure for ',entryInput) end as result;
             delete from entries where entry = entryInput;
             drop temporary table results;
