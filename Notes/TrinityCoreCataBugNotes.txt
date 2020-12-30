@@ -142,6 +142,10 @@ ELWYNN FOREST
 	P - Hunter Pet Actions not available.
 	N - Priestess Anetta (375) - Offers wrong Priest spell list.
 	
+	Q - The Power of the Light (26918) - Objectives cannot be completed.
+	N - Jorik Kerridan (915) - Does not offer Eviscerate quest.
+	Q - Healing the Wounded (26919) - Objectives cannot be completed.
+	
 	N - Lien Farnet (47384) - Does not train professions.
 	N - Kitta Firewind (11072) - Does not train Enchanting.
 	N - Eldrin (1103) - Does not train Tailoring.
@@ -185,14 +189,14 @@ ACHERUS
 	Q - Where Kings Walk (13188) - Portal to Stormwind does not work. NPCs do not throw fruit.  Varian does not give the speech.
 	
 TELDRASSIL
-	Q - Arcane Missiles (26940) - Not offered by mage trainer.
-	N - Training Dummies follow player like mobs.  They're not rooted.
-	N - Syral Bladeleaf (2083) - Quest availability is suspect.
-	N - Corithas Moonrage (3515) - Does not offer Teldrassil: The Refusal of the Aspects (929)
-	Q - The Crown of Earth (934) - Be sure it's not obtainable.
-	C - Gnarlpine Shaman (2009) - Runs on aggro.
-	Q - Mist (938) - Quest does not complete on return to base.
-	N - Nyoma (4265) - Has no Vendor gossips.
+	- Q - Arcane Missiles (26940) - Not offered by mage trainer.
+	- N - Training Dummies follow player like mobs.  They're not rooted.
+	- N - Syral Bladeleaf (2083) - Quest availability is suspect.
+	- N - Corithas Moonrage (3515) - Does not offer Teldrassil: The Refusal of the Aspects (929)
+	- C - Gnarlpine Shaman (2009) - Runs on aggro.
+	- C - Gnarlpine Augur (2011) - Enrages and runs on low health.
+	- Q - Mist (938) - Quest does not complete on return to base.
+	- N - Nyoma (4265) - Has no Vendor gossips.
 	N - Draelan (44030) - Has no Vendor gossips.
 	
 	N - Rhyanda (43006) - No gossips, does not offer mage training.
