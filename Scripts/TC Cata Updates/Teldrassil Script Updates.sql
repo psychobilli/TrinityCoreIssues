@@ -18,9 +18,9 @@ UPDATE `quest_template_addon` SET `PrevQuestID` = @RefusalOfTheAspects WHERE `ID
 -- update Sentinel Huntress scripts to assist in combat.
 
 SET @SentinelHuntress := 34249;
--- DELETE FROM `smart_scripts` WHERE `entryorguid` = @SentinelHuntress AND `source_type` = 0 AND `id` IN (13,14,15);
--- INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`event_param5`,`action_type`,`action_param1`,`action_param2`,`action_param3`,`action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,`target_y`,`target_z`,`target_o`,`comment`) VALUES 
--- (@SentinelHuntress,0,13,0,4,0,100,512,1000,1000,2000,2000,0,20,1,0,0,0,0,0,2,0,0,0,0,0,0,0,'Sentinel Huntress - IC - Auto Attack'),
+DELETE FROM `smart_scripts` WHERE `entryorguid` = @SentinelHuntress AND `source_type` = 0 AND `id` IN (13,14,15);
+INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`event_param5`,`action_type`,`action_param1`,`action_param2`,`action_param3`,`action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,`target_y`,`target_z`,`target_o`,`comment`) VALUES 
+(@SentinelHuntress,0,13,0,54,0,100,512,0,0,0,0,0,8,3,0,0,0,0,0,1,0,0,0,0,0,0,0,'Sentinel Huntress - IC - Set Assist');
 -- (@SentinelHuntress,0,14,0,4,0,100,512,5000,8000,10000,10000,0,11,66032,0,0,0,0,0,2,0,0,0,0,0,0,0,'Sentinel Huntress - IC - Cast Net'),
 -- (@SentinelHuntress,0,15,0,0,12,100,512,1,20,0,0,0,11,66031,0,0,0,0,0,7,0,0,0,0,0,0,0,'Sentinel Huntress - Target Health Low - Cast Bandage');
 -- correct Gnarlpine Shaman flee script - run at 15% health, not 30000%
@@ -43,6 +43,7 @@ UPDATE `smart_scripts` SET `action_param3` = 1 WHERE `source_type` = 0 AND `entr
 UPDATE `smart_scripts` SET `target_param1` = 1 WHERE `source_type` = 0 AND `entryorguid` = @Mist AND `id` = 2;
 UPDATE `smart_scripts` SET `action_param1` = 10 WHERE `source_type` = 0 AND `entryorguid` = @Mist AND `id` = 3;
 UPDATE `smart_scripts` SET `action_param1` = 1 WHERE `source_type` = 9 AND `entryorguid` = @MistAction0 AND `id` = 0;
+UPDATE `smart_scripts` SET `action_param1` = 3, comment = 'Mist - Actionlist - React Assist' WHERE `source_type` = 9 AND `entryorguid` = @MistAction0 AND `id` = 2;
 UPDATE `smart_scripts` SET `action_type` = 45, `action_param1` = 1, `action_param2` = 1, `target_param2` = 0 WHERE `source_type` = 9 AND `entryorguid` = @MistAction1 AND `id` = 1;
 UPDATE `smart_scripts` SET `event_param1` = 1000, `event_param2` = 1000, `target_param1` = 1 WHERE `source_type` = 9 AND `entryorguid` = @MistAction1 AND `id` = 2;
 UPDATE `smart_scripts` SET `event_param1` = 6000, `event_param2` = 6000 WHERE `source_type` = 9 AND `entryorguid` = @MistAction1 AND `id` = 3;
@@ -57,6 +58,25 @@ INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type
 (@CloudsbreakAction0,9,2,0,0,0,100,0,2000,2000,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,'Sentinel Arynia Cloudsbreak - On Script - Say Line 0'),
 (@CloudsbreakAction0,9,3,0,0,0,100,0,5000,5000,0,0,0,91,8,0,0,0,0,0,1,0,0,0,0,0,0,0,'Sentinel Arynia Cloudsbreak - On Script - Remove Flag Standstate ''Kneel'''),
 (@CloudsbreakAction0,9,4,0,0,0,100,0,0,0,0,0,0,66,0,0,0,0,0,0,1,0,0,0,0,0,0,0,'Sentinel Arynia Cloudsbreak - On Script - Set Orientation');
+
+-- Correct Nyoma Gossip Option
+SET @NyomaGossipMenu := 11778;
+SET @VendorOptionIndex := 0;
+UPDATE `gossip_menu_option` SET `optiontype` = 3, `optionnpcflag` = 128 WHERE `menuId` = @NyomaGossipMenu AND `optionIndex` = @VendorOptionIndex;
+
+-- Add enchanting item for vendor Draelan 
+DELETE FROM `npc_vendor` WHERE `entry` = 44030;
+INSERT INTO `npc_vendor` (`entry`, `slot`, `item`, `maxcount`, `incrtime`, `ExtendedCost`, `type`, `VerifiedBuild`) VALUES
+(44030, 1745, 4470, 0, 0, 0, 1, 0),
+(44030, 1742, 6217, 0, 0, 0, 1, 0),
+(44030, 1744, 10938, 1, 7200, 0, 1, 0),
+(44030, 1743, 10940, 4, 7200, 0, 1, 0),
+(44030, 1746, 11291, 0, 0, 0, 1, 0),
+(44030, 1748, 20752, 0, 0, 0, 1, 0),
+(44030, 1749, 20753, 0, 0, 0, 1, 0),
+(44030, 1747, 20758, 0, 0, 0, 1, 0),
+(44030, 1750, 22307, 0, 0, 0, 1, 0),
+(44030, 1741, 38682, 0, 0, 0, 1, 0);
 
 -- clear duplicate spawns in Starbreeze Village
 DELETE FROM `creature` WHERE `guid` IN (312857, 312679, 312804, 312442, 312440, 312674, 312438, 312435, 312437, 312825);
