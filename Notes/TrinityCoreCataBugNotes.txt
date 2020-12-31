@@ -415,3 +415,4 @@ EXAMPLE DATA
 	Q - Warlord Sriss'tiz (9515) - NPC's play event, then offer quest.
 	Q - Preparations for the Underworld (12666), Seek the Wind Serpent Goddess (12667) - 
 			Causes player to enter an area under a new phase/spell for a time.
+			One Last Thing (12675) and Blood of a Dead God (12684) remove it.
