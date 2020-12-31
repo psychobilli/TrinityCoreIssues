@@ -413,3 +413,5 @@ EXAMPLE DATA
 	Q - Last Stand (14222) - Correctly plays movie and relocates player.
 	Q - A Cry For Help (9528) - A correctly functioning escort quest.
 	Q - Warlord Sriss'tiz (9515) - NPC's play event, then offer quest.
+	Q - Preparations for the Underworld (12666), Seek the Wind Serpent Goddess (12667) - 
+			Causes player to enter an area under a new phase/spell for a time.
