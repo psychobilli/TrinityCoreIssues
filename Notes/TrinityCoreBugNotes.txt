@@ -253,11 +253,13 @@ Storm Peaks - 12820 - A Delicate Touch - Mobs do not path, using mines does not
 		restored when leaving and returning. Event does not start. Can be manually
 		started, unable to exit vehicles correctly.
 	12915 - Mending Fences - Summoned mobs do not generate enough threat.
-	12967 - Battling the Elements - mobs do not yield quest credit.  Players
-		can aggro frost giants. Gobject Snowdrift (192075) does nothing.
+	12967 - Battling the Elements - does not offer group credit,
+		Seething Revanents respawn is too long.
+	13051 - Territorial Trespass - Does not yield group credit.
 	13005 - The Earthen Oath - Mobs do not correctly yield credit.
 	12980 - The Armor's Secrets - Attendant Tock paths northward, through
 		walls after interaction.
+	12981 - Hot and Cold - Not enough Brittle Revanents, Essence of Ice too rare.
 	13007 - The Iron Colossus - Cannot mount tamed Jormungar
 	13274 - The Core's Keeper - Quest item is not group lootable.
 Icecrown - 13216 - Battle of Valhalas: The Return of Sigrid Iceborn -
