@@ -260,6 +260,9 @@ Storm Peaks - 12820 - A Delicate Touch - Mobs do not path, using mines does not
 	12980 - The Armor's Secrets - Attendant Tock paths northward, through
 		walls after interaction.
 	12981 - Hot and Cold - Not enough Brittle Revanents, Essence of Ice too rare.
+	13006 - Polishing the Helm - Hibernal Cave still masks player as a Hyldnir,
+		but that should no longer apply when phased for this quest.
+	13005 - The Earthen Oath - Kill Credit is not awarded consistently.
 	13007 - The Iron Colossus - Cannot mount tamed Jormungar
 	13274 - The Core's Keeper - Quest item is not group lootable.
 Icecrown - 13216 - Battle of Valhalas: The Return of Sigrid Iceborn -

@@ -6,3 +6,5 @@ echo "* * * 2020_12_30_dungeon_rep.sql"
 mysql -u jenkins -p'' world_test -s < '../TrinityCore 335 Mod/sql/updates/world/3.3.5/2020_12_30_dungeon_rep.sql'
 echo "* * * 2021_01_01_00_hodir_quests.sql"
 mysql -u jenkins -p'' world_test -s < '../TrinityCore 335 Mod/sql/updates/world/3.3.5/2021_01_01_00_hodir_quests.sql'
+echo "* * * 2021_01_06_00_Dungeon_iLevel_Req.sql"
+mysql -u jenkins -p'' world_test -s < '../TrinityCore 335 Mod/sql/updates/world/3.3.5/2021_01_06_00_Dungeon_iLevel_Req.sql'
