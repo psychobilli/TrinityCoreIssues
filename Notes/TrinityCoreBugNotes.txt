@@ -265,7 +265,10 @@ Storm Peaks - 12820 - A Delicate Touch - Mobs do not path, using mines does not
 	13005 - The Earthen Oath - Kill Credit is not awarded consistently.
 	13007 - The Iron Colossus - Cannot mount tamed Jormungar
 	13274 - The Core's Keeper - Quest item is not group lootable.
-Icecrown - 13216 - Battle of Valhalas: The Return of Sigrid Iceborn -
+Icecrown - 13418 - Preparations for War - Does not taxi to airship.
+	13419 - Preparations for War - Does not taxi to airship.
+	12893 - Free Your Mind - Quest does not yield group credit.
+	13216 - Battle of Valhalas: The Return of Sigrid Iceborn -
 		unable to attacked named mob.
 	13136 - Jagged Shards - Unable to start quest when item drops, later
 		completion is not possible.  The entire questline is incorrectly
