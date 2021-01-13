@@ -4,72 +4,137 @@ CREATE PROCEDURE scan_creature_template_entry_trainer(IN entryInput int)
 BEGIN
 
 	create temporary table if not exists results
-    (item decimal, keyfield int, message text, details text);
+    (test char(10), item int, keyfield int, message text, details text);
     
     insert into results
-    select 1, ct.entry, 'creature_template results', concat(ct.name, ' gossip_menu_id ', ct.gossip_menu_id) from creature_template ct
+    select 'passed', 1, ct.entry, 'creature_template results', concat(ct.name, ' gossip_menu_id ', ct.gossip_menu_id) from creature_template ct
     where ct.entry = entryInput;
 	
 	insert into results
-	select 1, count(c.guid), 'creature world location reaults', entryInput from creature c where c.id = entryInput;
+	select 'passed', 1, entryInput, 'creature world location results', concat('rowCount: ',count(c.guid)) from creature c where c.id = entryInput;
 	
 	insert into results
-	select 1, rowCount, 'creature_trainer records for creature with trainer', 
-    case when rowCount > 0 then (select TrainerId from creature_trainer ctr where ctr.CreatureId = entryInput) else -1 end
-	from (select count(ctr.CreatureId) as rowCount from creature_trainer ctr where ctr.CreatureId = entryInput) x;
+	select 'failed', 1, entryInput, 'creature not in world.', entryInput from creature_template ct 
+	where ct.entry = entryInput and not exists (select 1 from creature where id = ct.entry);
+	
+	insert into results
+	select 'passed', 2, entryInput, 'creature_trainer records for creature with trainer', concat('rowCount: ', count(*))
+	from creature_template ct join creature_trainer ctr on ctr.CreatureId = ct.entry where ct.entry = entryInput;
+    
+	insert into results
+	select 'failed', 2, 0, 'missing creature_trainer record', concat('entry: ', entryInput) from creature_template ct
+	where not exists (select 1 from creature_trainer where CreatureId = ct.entry) and ct.entry = entryInput;
+	
+    insert into results
+    select 'passed', 3, ct.entry, 'creature_template npcFlag and flag test', concat(ct.npcFlag, ', test: passed') from creature_template ct
+    where ct.entry = entryInput and (npcFlag & 1) > case when trainer_type = 1 then -1 else 0 end
+	  and (npcFlag & 16) > 0 and case when trainer_type in (0,3) then (npcFlag & 32) when trainer_type = 2 then (npcFlag & 64) else 1 end > 0;
     
     insert into results
-    select 2, ct.entry, 'creature_template npcFlag and flag test', concat(ct.npcFlag, ', test: ', case when (npcFlag >> 4) % 2 = 1 then 'true' else 'false' end) from creature_template ct
-    where ct.entry = entryInput;
+    select 'failed', 3, ct.entry, 'missing gossip flag (1) from creature_template npcFlag', concat(ct.npcFlag, ', test: failed') from creature_template ct
+    where ct.entry = entryInput and (npcFlag & 1) = 0 and trainer_type != 1;
     
     insert into results
-    select 3, ct.entry, 'creature_template trainer with trainer_type value', 
+    select 'failed', 3, ct.entry, 'missing trainer flag (16) from creature_template npcFlag', concat(ct.npcFlag, ', test: failed') from creature_template ct
+    where ct.entry = entryInput and (npcFlag & 16) = 0;
+    
+    insert into results
+    select 'failed', 3, ct.entry, 'missing class or profession trainer flag (32,64) from creature_template npcFlag', concat(ct.npcFlag, ', test: failed') from creature_template ct
+    where ct.entry = entryInput and case when trainer_type in (0,3) then (npcFlag & 32) when trainer_type = 2 then (npcFlag & 64) else 1 end = 0;
+    
+    insert into results
+    select 'passed', 4, ct.entry, 'creature_template trainer with trainer_type value', 
     case when ct.trainer_type = 0 then 'class trainer' when ct.trainer_type = 1 then 'mount trainer' when ct.trainer_type = 2 then 'profession trainer' else 'pet trainer' end 
     from creature_template ct where ct.entry = entryInput;
     
     insert into results
-    select 3.5, ct.entry, 'creature_template trainer with trainer_class value', case when ct.trainer_class > 0 then 'true' else 'false' end 
-    from creature_template ct where ct.entry = entryInput;
+    select 'failed', 4, ct.entry, 'class and pet trainers require flags 16 and 32', concat('trainer_type: ',trainer_type,', npcFlag: ',npcFlag)
+    from creature_template ct where ct.entry = entryInput and trainer_type in (0,3) and ((npcFlag & 16) = 0 or (npcFlag & 32) = 0);
+	
+    insert into results
+    select 'failed', 4, ct.entry, 'profession trainers require flags 16 and 64', concat('trainer_type: ',trainer_type,', npcFlag: ',npcFlag)
+    from creature_template ct where ct.entry = entryInput and trainer_class = 2 and ((npcFlag & 16) = 0 or (npcFlag & 64) = 0);
+	
+    insert into results
+    select 'failed', 4, ct.entry, 'riding trainers require flag 16', concat('trainer_type: ',trainer_type,', npcFlag: ',npcFlag)
+    from creature_template ct where ct.entry = entryInput and trainer_class = 1 and (npcFlag & 16) = 0;
+	
+    insert into results
+    select 'failed', 4, ct.entry, 'riding trainers cannot have flag 1', concat('trainer_type: ',trainer_type,', npcFlag: ',npcFlag)
+    from creature_template ct where ct.entry = entryInput and trainer_class = 1 and (npcFlag & 1) > 0;
+	
+	insert into results
+	select 'failed', 4, ct.entry, 'class trainers must have a valid trainer_class set', concat('trainer_type: ',trainer_type,', trainer_class: ',trainer_class)
+	from creature_template ct where ct.entry = entryInput and trainer_type in (0,3) and trainer_class not in (1,2,3,4,5,6,7,8,9,10,11);
+	
+	insert into results
+	select 'passed', 5, ct.entry, 'creature_template.gossip_menu_id and creature_trainer.MenuId match', concat(ct.gossip_menu_id,' - ',ctr.MenuId)
+	from creature_template ct join creature_trainer ctr on ctr.CreatureId = ct.entry where ct.entry = entryInput and ctr.MenuId = ct.gossip_menu_id;
+	
+	insert into results
+	select 'failed', 5, ct.entry, 'creature_template.gossip_menu_id and creature_trainer.MenuId do not match', concat(ct.gossip_menu_id,' - ',ctr.MenuId)
+	from creature_template ct join creature_trainer ctr on ctr.CreatureId = ct.entry where ct.entry = entryInput and ctr.MenuId != ct.gossip_menu_id;
     
 	-- get gossip_menu_id for creature
     set @Menu_Id := (select gossip_menu_id from creature_template ct where ct.entry = entryInput);
     
     insert into results
-    select 4, gm.MenuId, 'gossip_menu for gossip_menu_id', nt.text0_0 from gossip_menu gm left join npc_text nt on nt.Id = gm.TextId where gm.MenuID = @Menu_id;
+    select 'passed', 6, gm.MenuId, 'gossip_menu for gossip_menu_id', nt.text0_0 
+	from gossip_menu gm join npc_text nt on nt.Id = gm.TextId where gm.MenuID = @Menu_id;
+	
+	insert into results
+	select 'failed', 6, gm.MenuId, 'gossip_menu missing npc_text', 'no data'
+	from gossip_menu gm where gm.MenuId = @Menu_id and not exists (select 1 from npc_text where Id = gm.TextId);
     
     insert into results
-    select 4.5, gm.MenuId, 'gossip_menu conditions', c.Comment from gossip_menu gm 
+    select 'passed', 6, gm.MenuId, 'gossip_menu conditions', c.Comment from gossip_menu gm 
     join conditions c on c.SourceGroup = gm.MenuID and c.SourceEntry = gm.TextId
     where c.SourceTypeOrReferenceId = 14 and gm.MenuId = @Menu_Id;
     
     insert into results
-    select 5, count(*), 'gossip_menu_option records with MenuId ', @Menu_Id as details from gossip_menu_option gmo 
+    select 'passed', 7, @Menu_Id, 'gossip_menu_option records with MenuId ', concat('record count ', count(*)) as details from gossip_menu_option gmo 
     where gmo.MenuId = @Menu_Id;
     
     insert into results
-    select 5.5, gmo.MenuId, 'gossip_menu_option conditions', c.Comment from gossip_menu_option gmo
+    select 'passed', 7, gmo.MenuId, 'gossip_menu_option conditions', c.Comment from gossip_menu_option gmo
     join conditions c on c.SourceGroup = gmo.MenuId and c.SourceEntry = gmo.OptionIndex
     where c.SourceTypeOrReferenceId = 15 and gmo.MenuId = @Menu_Id;
     
-    insert into results
-    select 6, count(*), 'gossip_menu_option records with OptionType 5 and OptionNpcFlag 16 at OptionIndex', OptionIndex from gossip_menu_option gmo 
-    where gmo.MenuId = @Menu_Id and gmo.OptionType = 5 and gmo.OptionNpcflag = 16 group by OptionIndex;
+	insert into results
+	select 'failed', 7, @Menu_Id, 'missing gossip_menu_options',concat('CreatureId: ',ct.entry) from creature_template ct left join gossip_menu_option gmo on gmo.MenuId = ct.gossip_menu_id
+	where ct.entry = entryInput and gmo.MenuId is null;
     
     insert into results
-    select 6, count(*), 'gossip_menu_option records with OptionIcon 3 and incorrect Tyoe or Flag', concat('OptionIndex: ', OptionIndex, ', OptionType: ', OptionType, ', OptionNpcFlag: ', OptionNpcFlag) from gossip_menu_option gmo 
+    select 'passed', 8, @Menu_Id, 'gossip_menu_option records with OptionType 5 and OptionNpcFlag 16 at OptionIndex', concat('OptionIndex: ',OptionIndex,', record count: ',count(*))
+	from gossip_menu_option gmo where gmo.MenuId = @Menu_Id and gmo.OptionType = 5 and gmo.OptionNpcflag = 16 group by OptionIndex;
+    
+    insert into results
+    select 'failed', 8, count(*), 'incorrect Tyoe or Flag on gossip_menu_option records with OptionIcon 3', concat('OptionIndex: ', OptionIndex, ', OptionType: ', OptionType, ', OptionNpcFlag: ', OptionNpcFlag) from gossip_menu_option gmo 
     where gmo.MenuId = @Menu_Id and OptionIcon = 3 and (gmo.OptionType != 5 or gmo.OptionNpcflag != 16) group by OptionIndex;
-    
+	
     insert into results
-    select 7, count(*), 'creature_trainer records with OptionType 5 and OptionNpcFlag 16 at OptionIndex', concat('OptionIndex: ', gmo.OptionIndex, ', OptionType: ', OptionType, ', OptionNpcFlag: ', OptionNpcFlag)
+    select 'passed', 9, count(*), 'creature_trainer records with OptionType 5 and OptionNpcFlag 16 at OptionIndex', concat('OptionIndex: ', gmo.OptionIndex, ', OptionType: ', OptionType, ', OptionNpcFlag: ', OptionNpcFlag)
     from creature_trainer ctr join gossip_menu_option gmo on gmo.MenuId = ctr.MenuId and gmo.OptionIndex = ctr.OptionIndex
     where gmo.OptionType = 5 and gmo.OptionNpcflag = 16 and gmo.MenuId = @Menu_Id group by gmo.OptionIndex;
+	
+	insert into results
+	select 'passed', 9, count(*), 'creature_trainer OptionNpcFlag and OptionIndex irrelevant when MenuID is 0', concat('MenuId: ', ctr.MenuId)
+	from creature_trainer ctr join gossip_menu_option gmo on gmo.MenuId = ctr.MenuId and gmo.OptionIndex = ctr.OptionIndex
+	where ctr.MenuId = 0;
     
     insert into results
-    select 7, count(*), 'creature_trainer records with OptionIcon 3 and incorrect Tyoe or Flag', gmo.OptionIndex 
+    select 'failed', 9, count(*), 'incorrect Type or Flag on creature_trainer records with OptionIcon 3', gmo.OptionIndex 
     from creature_trainer ctr join gossip_menu_option gmo on gmo.MenuId = ctr.MenuId and gmo.OptionIndex = ctr.OptionIndex
-    where gmo.MenuId = @Menu_Id and OptionIcon = 3 and not exists (select 1 from gossip_menu_option sub 
+    where ctr.MenuId = @Menu_Id and OptionIcon = 3 and not exists (select 1 from gossip_menu_option sub 
 	where sub.MenuId = gmo.MenuId and sub.OptionType = 5 and sub.OptionNpcflag = 16) group by OptionIndex;
     
+    insert into results
+    select 'failed', 9, count(*), 'incorrect OptionIndex between creature_trainer and gossip_menu_option records with OptionIcon 3', 
+	concat('creature_trainer - gossip_menu_option: ',ctr.OptionIndex,' - ',gmo.OptionIndex)
+    from creature_trainer ctr join gossip_menu_option gmo on gmo.MenuId = ctr.MenuId
+    where gmo.MenuId = @Menu_Id and OptionIcon = 3 and gmo.OptionIndex != ctr.OptionIndex and @Menu_Id != 0
+	group by gmo.OptionIndex;
+	
     create temporary table trainers (MenuId int, trainerId int, optionIndex int, description text);
     
     insert into trainers (MenuId, trainerId, OptionIndex, description)
@@ -251,12 +316,12 @@ BEGIN
 			where ctr.CreatureID = entryInput;
 			
     insert into results
-    select 8, t.OptionIndex, 'OptionIndex for creature_template with trainer_class and creature_trainer', 
+    select 'passed', 10, t.OptionIndex, 'OptionIndex for creature_template with trainer_class and creature_trainer', 
 		concat('ct trainer_class: ', ct.trainer_class, ', trainer conversion:', t.description)
     from creature_template ct left join trainers t on t.MenuId = ct.gossip_menu_id where ct.entry = entryInput;
     
     insert into results
-    select 9, count(*), 'creature_template records sharing same menuId', @Menu_Id from creature_template 
+    select 'passed', 11, count(*), 'creature_template records sharing same menuId', @Menu_Id from creature_template 
     where gossip_menu_id = @Menu_Id;
     
     drop temporary table trainers;
