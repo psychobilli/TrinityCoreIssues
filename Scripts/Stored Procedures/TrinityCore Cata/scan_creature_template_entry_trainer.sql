@@ -27,12 +27,21 @@ BEGIN
 	
     insert into results
     select 'passed', 3, ct.entry, 'creature_template npcFlag and flag test', concat(ct.npcFlag, ', test: passed') from creature_template ct
-    where ct.entry = entryInput and (npcFlag & 1) > case when trainer_type = 1 then -1 else 0 end
+    where ct.entry = entryInput and gossip_menu_id > 0 and (npcFlag & 1) > case when trainer_type = 1 then -1 else 0 end
 	  and (npcFlag & 16) > 0 and case when trainer_type in (0,3) then (npcFlag & 32) when trainer_type = 2 then (npcFlag & 64) else 1 end > 0;
     
     insert into results
+    select 'passed', 3, ct.entry, 'creature_template npcFlag and flag test', concat(ct.npcFlag, ', test: passed') from creature_template ct
+    where ct.entry = entryInput and gossip_menu_id = 0 and (npcFlag & 16) > 0 
+	  and case when trainer_type in (0,3) then (npcFlag & 32) when trainer_type = 2 then (npcFlag & 64) else 1 end > 0;
+    
+    insert into results
     select 'failed', 3, ct.entry, 'missing gossip flag (1) from creature_template npcFlag', concat(ct.npcFlag, ', test: failed') from creature_template ct
-    where ct.entry = entryInput and (npcFlag & 1) = 0 and trainer_type != 1;
+    where ct.entry = entryInput and (npcFlag & 1) = 0 and trainer_type != 1 and gossip_menu_id > 0;
+	
+    insert into results
+    select 'failed', 3, ct.entry, 'unacceptable gossip flag (1) from creature_template npcFlag where gossip_menu_id is 0', concat(ct.npcFlag, ', test: failed') from creature_template ct
+    where ct.entry = entryInput and (npcFlag & 1) = 1 and trainer_type != 1 and gossip_menu_id = 0;
     
     insert into results
     select 'failed', 3, ct.entry, 'missing trainer flag (16) from creature_template npcFlag', concat(ct.npcFlag, ', test: failed') from creature_template ct
@@ -45,7 +54,7 @@ BEGIN
     insert into results
     select 'passed', 4, ct.entry, 'creature_template trainer with trainer_type value', 
     case when ct.trainer_type = 0 then 'class trainer' when ct.trainer_type = 1 then 'mount trainer' when ct.trainer_type = 2 then 'profession trainer' else 'pet trainer' end 
-    from creature_template ct where ct.entry = entryInput;
+    from creature_template ct where ct.entry = entryInput and (trainer_type in (0,3) and (npcFlag & 32) > 0 or trainer_type = 2 and (npcFlag & 64) > 0);
     
     insert into results
     select 'failed', 4, ct.entry, 'class and pet trainers require flags 16 and 32', concat('trainer_type: ',trainer_type,', npcFlag: ',npcFlag)
@@ -53,15 +62,15 @@ BEGIN
 	
     insert into results
     select 'failed', 4, ct.entry, 'profession trainers require flags 16 and 64', concat('trainer_type: ',trainer_type,', npcFlag: ',npcFlag)
-    from creature_template ct where ct.entry = entryInput and trainer_class = 2 and ((npcFlag & 16) = 0 or (npcFlag & 64) = 0);
+    from creature_template ct where ct.entry = entryInput and trainer_type = 2 and ((npcFlag & 16) = 0 or (npcFlag & 64) = 0);
 	
     insert into results
-    select 'failed', 4, ct.entry, 'riding trainers require flag 16', concat('trainer_type: ',trainer_type,', npcFlag: ',npcFlag)
-    from creature_template ct where ct.entry = entryInput and trainer_class = 1 and (npcFlag & 16) = 0;
+    select 'failed', 4, ct.entry, 'trainers with gossip_menu_id 0 require flag 16', concat('trainer_type: ',trainer_type,', npcFlag: ',npcFlag)
+    from creature_template ct where ct.entry = entryInput and gossip_menu_id = 0 and trainer_class = 1 and (npcFlag & 16) = 0;
 	
     insert into results
-    select 'failed', 4, ct.entry, 'riding trainers cannot have flag 1', concat('trainer_type: ',trainer_type,', npcFlag: ',npcFlag)
-    from creature_template ct where ct.entry = entryInput and trainer_class = 1 and (npcFlag & 1) > 0;
+    select 'failed', 4, ct.entry, 'trainers with gossip_menu_id 0 cannot have flag 1', concat('trainer_type: ',trainer_type,', npcFlag: ',npcFlag)
+    from creature_template ct where ct.entry = entryInput and gossip_menu_id = 0 and (npcFlag & 1) > 0;
 	
 	insert into results
 	select 'failed', 4, ct.entry, 'class trainers must have a valid trainer_class set', concat('trainer_type: ',trainer_type,', trainer_class: ',trainer_class)
@@ -132,7 +141,7 @@ BEGIN
     select 'failed', 9, count(*), 'incorrect OptionIndex between creature_trainer and gossip_menu_option records with OptionIcon 3', 
 	concat('creature_trainer - gossip_menu_option: ',ctr.OptionIndex,' - ',gmo.OptionIndex)
     from creature_trainer ctr join gossip_menu_option gmo on gmo.MenuId = ctr.MenuId
-    where gmo.MenuId = @Menu_Id and OptionIcon = 3 and gmo.OptionIndex != ctr.OptionIndex and @Menu_Id != 0
+    where ctr.CreatureId = entryInput and gmo.MenuId = @Menu_Id and OptionIcon = 3 and gmo.OptionIndex != ctr.OptionIndex and @Menu_Id != 0
 	group by gmo.OptionIndex;
 	
     create temporary table trainers (MenuId int, trainerId int, optionIndex int, description text);
