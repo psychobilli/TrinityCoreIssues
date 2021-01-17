@@ -1,4 +1,11 @@
 Test trainers identified in bug notes.
+
+Danlaar Nightstride has multiple gossip options.
+
+Summoner Fanorad - Tranquillen Lock
+	
+drop temporary table if exists results;
+drop temporary table if exists entries;
 create temporary table entries (entry int);
 insert into entries select entry from creature_template where entry in 
    (915, 37724, 3062, 43013, 43015, 47419, 39214, 3155, 3157, 3156, 38244, 38242, 42618, 3169, 3170, 5880, 3172, 44380, 50006, 50004, 50015, 50011, 49998, 49997, 3175, 
@@ -8,31 +15,85 @@ insert into entries select entry from creature_template where entry in
     35870, 35872, 35869, 50247, 36632, 35839, 36651, 38793,44455, 35874, 38467, 38798, 36629, 44461, 35871, 38796, 44464, 36630, 35870, 36632, 44468, 38466, 38795, 35872, 36631, 38794,
     38465, 44465, 44459, 38799, 36628, 35873, 35869, 36652, 38797, 44469, 50247, 50574, 50567, 16503, 16501, 16499, 16502, 17089, 16500, 17480, 17482, 17212, 47431, 17215, 17222, 17441,
     17442, 20914);
-call test_creature_template_entry_trainer(3169);
+call test_creature_template_entry_trainer(0);
 
-resume working on -- switch trainers who do nothing to either wotlk or generic gossips.
+-- test menu flags
+select * from gossip_menu_option where (optionType != 5 or optionnpcflag != 16)
+  and optionIndex = 0
+  and MenuId in (
+	select gossip_menu_id from creature_template where entry in 
+    (913,914,985,1229,1901,2131,3041,3042,3043,3063,3169,3353,3354,3408,3598,4087,4089,4593,4594,4595,5113,5114,5479,5480,7315,8141,16771,17120,17480,17504,1403,4992,5959,5966,5967,10291,36857,35807,36525,36651,36699,38518,38793,43009,43012,44128,44129,44455,44723,45019,45709,46667,48616,49720,49736,49781,49902,49923,49955,49961,50018,50025,50033,50149,50155,50500)
+);
 
-WARRIOR TRAINERS
+-- test menu options
+select distinct MenuId
+	, concat(',\n(',MenuID,',0,3,''I require training.'', 2756, 5, 16, 0),\n(',MenuID,',1,0,''I wish to unlearn my talents.'',62295,16,16,0),\n(',MenuId,',2,0,''I wish to know about Dual Talent Specialization.'',33762,20,1,0)') as sqlcode from gossip_menu gm
+where not exists (select 1 from gossip_menu_option where MenuID = gm.MenuID)
+  and MenuId in (
+	select gossip_menu_id from creature_template where entry in 
+    (913,914,985,1229,1901,2131,3041,3042,3043,3063,3169,3353,3354,3408,3598,4087,4089,4593,4594,4595,5113,5114,5479,5480,7315,8141,16771,17120,17480,17504,1403,4992,5959,5966,5967,10291,36857,35807,36525,36651,36699,38518,38793,43009,43012,44128,44129,44455,44723,45019,45709,46667,48616,49720,49736,49781,49902,49923,49955,49961,50018,50025,50033,50149,50155,50500)
+);
+
+
+-- change gossip_menu_id where 0
+select concat('UPDATE `creature_template` SET `gossip_menu_id` = ? WHERE `entry` = ',entry,';')
+from creature_template
+where gossip_menu_id = 0
+  and exists (
+	select 1 from creature where id = entry
+  )
+  and entry in
+	(913,914,985,1229,1901,2131,3041,3042,3043,3063,3169,3353,3354,3408,3598,4087,4089,4593,4594,4595,5113,5114,5479,5480,7315,8141,16771,17120,17480,17504,1403,4992,5959,5966,5967,10291,36857,35807,36525,36651,36699,38518,38793,43009,43012,44128,44129,44455,44723,45019,45709,46667,48616,49720,49736,49781,49902,49923,49955,49961,50018,50025,50033,50149,50155,50500)
+;
+
+-- test npcFlags
+select entry, npcFlag, CONCAT('`creature_template` SET `npcflag` = ',npcFlag + 32,' WHERE `entry` = ',entry,';') as sqlCode
+from creature_template
+where (npcFlag >> 4) % 2 != 1  
+  and exists (
+	select 1
+    from creature
+    where id = entry
+  )
+  and entry in 
+	(987,1231,1404,3038,3039,3040,3065,3154,3171,3352,3406,3407,3601,3963,4138,4146,4205,4892,5115,5116,5117,5501,5515,5516,5517,8308,10930,16270,16672,16673,16674,16738,17110,17122,17505,2218,4986,5000,897,34600,35758,36518,36629,36664,36705,38122,38467,38798,39100,39116,43008,43011,43277,43278,43909,44247,44249,44250,44461,44743,45023,45713,46983,47767,47788,48618,49713,49806,49894,49927,49946,49958,49966,50004,50007,50020,50032,50144,50157,50497,50609)
+;
+
+resume working on -- Correct Profession Trainers
+script was in the TC Cata repo
+
+WARRIOR TRAINERS - LOW LEVEL
 	Llane Beshere (911)
 	Thran Khorman (912)
+	Dannal Stern (2119)
+	Harutt Thunderhorn (3059)
+	Frang (3153)
+	Alyissia (3593)
+	Kore (16503)
+	Warrior-Matic NX-01 (34697)
+	Sergeant Cleese (35839)
+	Nortet (38037)
+	Drill Sergeant Steamcrank (42324)
+	Delios Silverblade (43010)
+	Yeniss (50006)
+	
+	(911,912,2119,3059,3153,3593,16503,34697,35839,38037,42324,43010,50006)
+	
+WARRIOR TRAINERS
 	Lyria Du Lac (913)
 	Ander Germaine (914)
 	Malosh (985)
 	Granis Swiftaxe (1229)
 	Kelstrum Stonebreaker (1901)
-	Dannal Stern (2119)
 	Austil de Mon (2131)
 	Torm Ragetotem (3041)
 	Sark Ragetotem (3042)
 	Ker Ragetotem (3043)
-	Harutt Thunderhorn (3059)
 	Krang Stonehoof (3063)
-	Frang (3153)
 	Tarshaw Jaggedscar (3169)
 	Grezz Ragefist (3353)
 	Sorek (3354)
 	Zel'mak (3408)
-	Alyissia (3593)
 	Kyra Windblade (3598)
 	Arias'ta Bladesinger (4087)
 	Sildanair (4089)
@@ -45,7 +106,6 @@ WARRIOR TRAINERS
 	Ilsa Corbin (5480)
 	Darnath Bladesinger (7315)
 	Captain Evencane (8141)
-	Kore (16503)
 	Ahonan (16771)
 	Behomat (17120)
 	Ruada (17480)
@@ -57,18 +117,13 @@ WARRIOR TRAINERS
 	World Dwarf Female Warrior Trainer (5967)
 	Krysteea (10291)
 	Blood Elf Warrior (36857)
-	Warrior-Matic NX-01 (34697)
 	Warrior-Matic NX-01 (35807)
-	Sergeant Cleese (35839)
 	Warrior-Matic NX-01 (36525)
 	Sergeant Cleese (36651)
 	Brave Sharphorn (36699)
-	Nortet (38037)
 	Warrior-Matic NX-01 (38518)
 	Sergeant Cleese (38793)
-	Drill Sergeant Steamcrank (42324)
 	Alsudar the Bastion (43009)
-	Delios Silverblade (43010)
 	Lothan Silverblade (43012)
 	Sarithra (44128)
 	Beldis (44129)
@@ -85,7 +140,6 @@ WARRIOR TRAINERS
 	Sentinel Moonwing (49923)
 	Leonic Truehair (49955)
 	Viik (49961)
-	Yeniss (50006)
 	Tarlhir (50018)
 	Bratu (50025)
 	Ging (50033)
@@ -93,9 +147,18 @@ WARRIOR TRAINERS
 	Naseev (50155)
 	Sergeant Cleese (50500)
 	
-PALADIN TRAINERS
+	(913,914,985,1229,1901,2131,3041,3042,3043,3063,3169,3353,3354,3408,3598,4087,4089,4593,4594,4595,5113,5114,5479,5480,7315,8141,16771,17120,17480,17504,1403,4992,5959,5966,5967,10291,36857,35807,36525,36651,36699,38518,38793,43009,43012,44128,44129,44455,44723,45019,45709,46667,48616,49720,49736,49781,49902,49923,49955,49961,50018,50025,50033,50149,50155,50500)
+	
+PALADIN TRAINERS - LOW LEVEL
 	Brother Sammuel (925)
 	Bromos Grummner (926)
+	Jesthenis Sunstriker (15280)
+	Aurelon (16501)
+	Sunwalker Helaku (37737)
+	
+	(925,926,15280,16501,37737)
+
+PALADIN TRAINERS
 	Brother Wilhelm (927)
 	Lord Grayson Shadowbreaker (928)
 	Azar Stronghammer (1232)
@@ -106,9 +169,7 @@ PALADIN TRAINERS
 	Katherine the Pure (5492)
 	Brother Karman (8140)
 	Sunwalker Saern (8664)
-	Jesthenis Sunstriker (15280)
 	Noellene (16275)
-	Aurelon (16501)
 	Osselan (16679)
 	Ithelis (16680)
 	Champion Bachi (16681)
@@ -121,7 +182,6 @@ PALADIN TRAINERS
 	Master Pyreanor (23128)
 	Rukua (35281)
 	[DELETE ME]Bowe Dawnhorn (36702)
-	Sunwalker Helaku (37737)
 	Sunwalker Reha (43001)
 	Sunwalker Iopi (43013)
 	Aponi Brightmane (43795)
@@ -137,22 +197,35 @@ PALADIN TRAINERS
 	Nelur Lightsown (50150)
 	Rulen Lightsreap (50160)
 	
-HUNTER TRAINERS
+	(927,928,1232,5147,5148,5149,5491,5492,8140,8664,16275,16679,16680,16681,16761,17121,17483,17509,20406,4988,23128,35281,36702,43001,43013,43795,44725,49741,49793,49916,49954,49957,50012,50023,50035,50150,50160)
+
+HUNTER TRAINERS - LOW LEVEL
 	Thorgas Grimson (895)
+	Lanka Farshot (3061)
+	Ayanna Everstride (3596)
+	Ranger Sallina (15513)
+	Keilnei (16499)
+	Bamm Megabomb (34673)
+	Huntsman Blake (35874)
+	Ortezza (38247)
+	Xavier the Huntsman (38911)
+	Karranisha (39214)
+	
+	(895,3061,3596,15513,16499,34673,35874,38247,38911,39214)
+	
+HUNTER TRAINERS
 	Ogromm (987)
 	Grif Wildheart (1231)
 	Kragg (1404)
 	Kary Thunderhorn (3038)
 	Holt Thunderhorn (3039)
 	Urek Thunderhorn (3040)
-	Lanka Farshot (3061)
 	Yaw Sharpmane (3065)
 	Jen'shan (3154)
 	Thotar (3171)
 	Ormak Grimshot (3352)
 	Xor'juul (3406)
 	Sian'dur (3407)
-	Ayanna Everstride (3596)
 	Dazalar (3601)
 	Danlaar Nightstride (3963)
 	Jeen'ra Nightrunner (4138)
@@ -168,9 +241,7 @@ HUNTER TRAINERS
 	Thorfin Stoneshield (5517)
 	Alenndaar Lapidaar (8308)
 	Dargh Trueaim (10930)
-	Ranger Sallina (15513)
 	Hannovia (16270)
-	Keilnei (16499)
 	Tana (16672)
 	Oninath (16673)
 	Zandine (16674)
@@ -183,21 +254,16 @@ HUNTER TRAINERS
 	World Hunter Beast Trainer (5000)
 	[UNUSED] Brannon Aybara (TEMP) (897)
 	Alenndaar Lapidaar (34600)
-	Bamm Megabomb (34673)
 	Bamm Megabomb (35758)
-	Huntsman Blake (35874)
 	Bamm Megabomb (36518)
 	Huntsman Blake (36629)
 	Romo's Test Hunter Trainer (36664)
 	Honu Staghunter (36705)
 	Bamm Megabomb (38122)
-	Ortezza (38247)
 	Huntsman Blake (38467)
 	Huntsman Blake (38798)
-	Xavier the Huntsman (38911)
 	Dedlow Wormwood (39100)
 	Apolos (39116)
-	Karranisha (39214)
 	Raven Hollister (43008)
 	Lyndsay Hollister (43011)
 	Don Omar (43277)
@@ -230,21 +296,32 @@ HUNTER TRAINERS
 	Huntsman Blake (50497)
 	Nathanos Blightcaller (50609)
 	
-ROGUE TRAINERS
+	(987,1231,1404,3038,3039,3040,3065,3154,3171,3352,3406,3407,3601,3963,4138,4146,4205,4892,5115,5116,5117,5501,5515,5516,5517,8308,10930,16270,16672,16673,16674,16738,17110,17122,17505,2218,4986,5000,897,34600,35758,36518,36629,36664,36705,38122,38467,38798,39100,39116,43008,43011,43277,43278,43909,44247,44249,44250,44461,44743,45023,45713,46983,47767,47788,48618,49713,49806,49894,49927,49946,49958,49966,50004,50007,50020,50032,50144,50157,50497,50609)
+
+ROGUE TRAINERS - LOW LEVEL
 	Jorik Kerridan (915)
 	Solm Hargrin (916)
+	David Trias (2122)
+	Rwag (3155)
+	Frahun Shadewhisper (3594)
+	Pathstalker Kariel (15285)
+	Slinky Sharpshiv (34693)
+	Loren the Fence (35871)
+	Legati (38244)
+	Kelsey Steelspark (42366)
+	
+	(915,916,2122,3155,3594,15285,34693,35871,38244,42366)
+
+ROGUE TRAINERS
 	Keryn Sylvius (917)
 	Osborne the Night Man (918)
 	Hogral Bakkan (1234)
 	Ian Strom (1411)
-	David Trias (2122)
 	Marion Call (2130)
-	Rwag (3155)
 	Kaplak (3170)
 	Gest (3327)
 	Ormok (3328)
 	Shenthul (3401)
-	Frahun Shadewhisper (3594)
 	Jannok Breezesong (3599)
 	Syurna (4163)
 	Erion Shadewhisper (4214)
@@ -256,7 +333,6 @@ ROGUE TRAINERS
 	Ormyr Flinteye (5166)
 	Fenthwick (5167)
 	Lord Tony Romano (13283)
-	Pathstalker Kariel (15285)
 	Tannaria (16279)
 	Zelanis (16684)
 	Elara (16685)
@@ -266,15 +342,11 @@ ROGUE TRAINERS
 	World Human Female Rogue Trainer (5968)
 	Saran Nozzlevolt (16759)
 	Calia Hastings (23566)
-	Slinky Sharpshiv (34693)
 	Slinky Sharpshiv (35806)
-	Loren the Fence (35871)
 	Slinky Sharpshiv (36524)
 	Loren the Fence (36630)
-	Legati (38244)
 	Slinky Sharpshiv (38517)
 	Loren the Fence (38796)
-	Kelsey Steelspark (42366)
 	Loren the Fence (44464)
 	Night-Stalker Ku'nanji (45095)
 	Vish the Sneak (45717)
@@ -295,19 +367,32 @@ ROGUE TRAINERS
 	Pathstalker Ralsir (50158)
 	Loren the Fence (50498)
 	Arthur Huwe (51998)
+	
+	(917,918,1234,1411,2130,3170,3327,3328,3401,3599,4163,4214,4215,4582,4583,4584,5165,5166,5167,13283,16279,16684,16685,16686,4990,5960,5968,16759,23566,35806,36524,36630,38517,38796,44464,45095,45717,47233,48615,49730,49745,49782,49870,49909,49939,49949,50015,50016,50027,50127,50147,50158,50498,51998)
+
+PRIEST TRAINERS - LOW LEVEL
+	Priestess Anetta (375)
+	Branstock Khalder (837)
+	Dark Cleric Duesten (2123)
+	Shanda (3595)
+	Matron Arena (15284)
+	Zalduun (16502)
+	Sister Goldskimmer (34692)
+	Sister Almyra (35870)
+	Seer Ravenfeather (37724)
+	Tunari (38245)
+	"Doc" Cogspin (42323)
+	
+	(375,837,2123,3595,15284,16502,34692,35870,37724,38245,42323)
 
 PRIEST TRAINERS
-	Priestess Anetta (375)
 	High Priestess Laurena (376)
 	Priestess Josetta (377)
-	Branstock Khalder (837)
 	Maxan Anvol (1226)
-	Dark Cleric Duesten (2123)
 	Dark Cleric Beryl (2129)
 	Miles Welsh (3044)
 	Malakai Cross (3045)
 	Father Cobb (3046)
-	Shanda (3595)
 	Laurna Morninglight (3600)
 	Tai'jin (3706)
 	Ken'jai (3707)
@@ -327,9 +412,7 @@ PRIEST TRAINERS
 	Nara Meideros (11397)
 	Priestess Alathea (11401)
 	High Priest Rohan (11406)
-	Matron Arena (15284)
 	Ponaris (16276)
-	Zalduun (16502)
 	Aldrae (16658)
 	Lotheolan (16659)
 	Belestra (16660)
@@ -341,18 +424,13 @@ PRIEST TRAINERS
 	World Undead Male Priest Trainer (5964)
 	World Undead Female Priest Trainer (5973)
 	Nuolla Dawncaller (19247)
-	Sister Goldskimmer (34692)
 	Sister Goldskimmer (35805)
-	Sister Almyra (35870)
 	Sister Goldskimmer (36523)
 	Sister Almyra (36632)
 	Seer Skyhoof (36704)
-	Seer Ravenfeather (37724)
-	Tunari (38245)
 	Sister Almyra (38466)
 	Sister Goldskimmer (38516)
 	Sister Almyra (38795)
-	"Doc" Cogspin (42323)
 	Seer Kaya (43004)
 	Seer Alsoomse (43015)
 	Tahu Sagewind (43796)
@@ -380,22 +458,31 @@ PRIEST TRAINERS
 	Matron Alesso (50163)
 	Sister Almyra (50501)
 	Allen Bright (53403)
+	
+	(376,377,1226,2129,3044,3045,3046,3600,3706,3707,4090,4091,4092,4606,4607,4608,5141,5142,5143,5484,5489,6014,6018,11397,11401,11406,16276,16658,16659,16660,16756,17482,17510,17511,4989,5964,5973,19247,35805,36523,36632,36704,38466,38516,38795,43004,43015,43796,43870,44468,44735,45137,45306,45337,45339,45347,48614,49715,49749,49784,49901,49940,49950,49962,50001,50013,50024,50031,50148,50163,50501,53403)
 
 DEATH KNIGHT TRAINERS
+
+SHAMAN TRAINERS - LOW LEVEL
+	Meela Dawnstrider (3062)
+	Shikrik (3157)
+	Firmanvaar (17089)
+	Maxx Avalanche (34695)
+	Teo Hammerstorm (37115)
+	Nekali (38242)
+
+	(3062,3157,17089,34695,37115,38242)
 
 SHAMAN TRAINERS
 	Haromm (986)
 	Siln Skychaser (3030)
 	Tigor Skychaser (3031)
 	Beram Skychaser (3032)
-	Meela Dawnstrider (3062)
 	Narm Skychaser (3066)
-	Shikrik (3157)
 	Swart (3173)
 	Kardris Dreamseeker (3344)
 	Sian'tsu (3403)
 	Sagorne Creststrider (13417)
-	Firmanvaar (17089)
 	Farseer Nobundo (17204)
 	Tuluun (17212)
 	Sulaa (17219)
@@ -413,12 +500,9 @@ SHAMAN TRAINERS
 	Kruugall (18270)
 	[UNUSED] Grall Twomoons (354)
 	[UNUSED] [PH] Berail Spiritwhisper (919)
-	Maxx Avalanche (34695)
 	Maxx Avalanche (35786)
 	Maxx Avalanche (36521)
 	Miira Thunderhoof (36700)
-	Teo Hammerstorm (37115)
-	Nekali (38242)
 	Maxx Avalanche (38515)
 	Halbin Frosthammer (43464)
 	Bolner Hammerbeak (44393)
@@ -444,13 +528,28 @@ SHAMAN TRAINERS
 	Ghura (52299)
 	Mahala Cloudsong (52317)
 	Raedra Windhammer (53405)
+	
+	(986,3030,3031,3032,3066,3173,3344,3403,13417,17204,17212,17219,17519,17520,20407,23127,373,1406,2219,4991,5965,5971,16661,18270,354,919,35786,36521,36700,38515,43464,44393,44394,44740,45029,45718,49808,49900,49964,50011,50019,50022,50130,50153,50174,51637,51638,51639,51640,52290,52292,52299,52317,53405)
+
+MAGE TRAINERS - LOW LEVEL
+	Khelden Bremen (198)
+	Isabella (2124)
+	Julia Sunstriker (15279)
+	Valaatu (16500)
+	Fizz Lighter (34689)
+	Myriam Spellwaker (35872)
+	Teegli Merrowith (37121)
+	Soratha (38246)
+	Acrypha (39206)
+	Bipsi Frostflinger (42331)
+	Rhyanda (43006)
+	
+	(198,2124,15279,16500,34689,35872,37121,38246,39206,42331,43006)
 
 MAGE TRAINERS
-	Khelden Bremen (198)
 	Zaldimar Wefhellt (328)
 	Marryk Nurribit (944)
 	Magis Sparkmantle (1228)
-	Isabella (2124)
 	Cain Firesong (2128)
 	Archmage Shymm (3047)
 	Ursyn Ghull (3048)
@@ -470,9 +569,7 @@ MAGE TRAINERS
 	Deino (5885)
 	Uthel'nay (7311)
 	Dink (7312)
-	Julia Sunstriker (15279)
 	Garridel (16269)
-	Valaatu (16500)
 	Zaedana (16651)
 	Quithas (16652)
 	Inethven (16653)
@@ -488,20 +585,13 @@ MAGE TRAINERS
 	Horace Alder (27704)
 	Warcaster Fanoraithe (28956)
 	Jessa Weaver (28958)
-	Fizz Lighter (34689)
 	Fizz Lighter (35780)
-	Myriam Spellwaker (35872)
 	Fizz Lighter (36520)
 	Myriam Spellwaker (36631)
-	Teegli Merrowith (37121)
-	Soratha (38246)
 	Myriam Spellwaker (38465)
 	Fizz Lighter (38514)
 	Myriam Spellwaker (38794)
-	Acrypha (39206)
-	Bipsi Frostflinger (42331)
 	Irriende (43005)
-	Rhyanda (43006)
 	Myriam Spellwaker (44465)
 	Conjurer Mixli (45714)
 	Ureda (47246)
@@ -529,15 +619,26 @@ MAGE TRAINERS
 	Flarna Flametongue (50717)
 	Lainda Gemgold (50720)
 	
-WARLOCK TRAINERS
+	(328,944,1228,2128,3047,3048,3049,4566,4567,4568,5144,5145,5146,5497,5498,5880,5882,5883,5884,5885,7311,7312,16269,16651,16652,16653,16749,17481,17513,17514,4987,5961,5969,7488,23103,27704,28956,28958,35780,36520,36631,38465,38514,38794,43005,44465,45714,47246,47247,47248,48613,49716,49760,49786,49896,49952,49959,49968,50002,50010,50021,50029,50151,50166,50499,50690,50714,50715,50716,50717,50720)
+
+WARLOCK TRAINERS - LOW LEVEL
 	Drusilla La Salle (459)
 	Alamar Grimm (460)
-	Demisette Cloyce (461)
 	Maximillian Crowe (906)
+	Nartok (3156)
+	Summoner Teli'Larien (15283)
+	Evol Fingers (34696)
+	Voldreka (42618)
+	Saripal Smolderbrew (43455)
+	Vitus Darkwalker (44469)
+	
+	(459,460,906,3156,15283,34696,42618,43455,44469)
+	
+WARLOCK TRAINERS
+	Demisette Cloyce (461)
 	Kartosh (988)
 	Maximillion (2126)
 	Rupert Boch (2127)
-	Nartok (3156)
 	Dhugru Gorelust (3172)
 	Grol'dar (3324)
 	Mirket (3325)
@@ -551,7 +652,6 @@ WARLOCK TRAINERS
 	Ursula Deline (5495)
 	Sandahl (5496)
 	Gimrizz Shadowcog (5612)
-	Summoner Teli'Larien (15283)
 	Celoenus (16266)
 	Alamma (16646)
 	Talionia (16647)
@@ -564,19 +664,15 @@ WARLOCK TRAINERS
 	World Orc Female Warlock Trainer (5970)
 	Exodar Warlock Trainer (16770)
 	[UNUSED] Lexin Haze (1230)
-	Evol Fingers (34696)
 	Evol Fingers (35778)
 	Vitus Darkwalker (35869)
 	Evol Fingers (36519)
 	Vitus Darkwalker (36652)
 	Evol Fingers (38513)
 	Vitus Darkwalker (38797)
-	Voldreka (42618)
-	Saripal Smolderbrew (43455)
 	Delano Morisett (43881)
 	Jensen Thomasson (43883)
 	Morairania Horton (43892)
-	Vitus Darkwalker (44469)
 	Unjari Feltongue (45138)
 	Kazrali the Witch (45720)
 	Maressa Milner (48612)
@@ -598,13 +694,21 @@ WARLOCK TRAINERS
 	Larn Caverndeep (50732)
 	Redia Vaunt (53404)
 	
+	(461,988,2126,2127,3172,3324,3325,3326,4563,4564,4565,5171,5172,5173,5495,5496,5612,16266,16646,16647,16648,23534,1408,4993,5039,5962,5970,16770,1230,35778,35869,36519,36652,38513,38797,43881,43883,43892,45138,45720,48612,49718,49769,49791,49895,49945,49963,49998,50017,50028,50128,50142,50156,50502,50723,50729,50732,53404)
+
+DRUID TRAINERS - LOW LEVEL
+	Gart Mistrunner (3060)
+	Mardant Strongoak (3597)
+	Celestine of the Harvest (35873)
+	Zen'tabra (38243)
+	
+	(3060,3597,35873,38243)
+	
 DRUID TRAINERS
 	Turak Runetotem (3033)
 	Sheal Runetotem (3034)
 	Kym Wildmane (3036)
-	Gart Mistrunner (3060)
 	Gennia Runetotem (3064)
-	Mardant Strongoak (3597)
 	Kal (3602)
 	Mathrengyl Bearwalker (4217)
 	Denatharion (4218)
@@ -624,10 +728,8 @@ DRUID TRAINERS
 	World Druid Trainer (4985)
 	World Tauren Male Druid Trainer (5963)
 	World Tauren Female Druid Trainer (5972)
-	Celestine of the Harvest (35873)
 	Celestine of the Harvest (36628)
 	Keshu Treehoof (36703)
-	Zen'tabra (38243)
 	Celestine of the Harvest (38799)
 	Jabul (44380)
 	Celestine of the Harvest (44395)
@@ -650,6 +752,59 @@ DRUID TRAINERS
 	Naremdil Gladewalker (52318)
 	Mala Skywatcher (52319)
 	Dareth (52335)
+	
+	(3033,3034,3036,3064,3602,4217,4218,4219,5504,5505,5506,8142,9465,12042,13476,16655,16721,542,1409,2217,4985,5963,5972,36628,36703,38799,44380,44395,44396,44459,44726,44978,49915,49942,49997,50034,50136,50137,50152,50171,50492,50505,50506,50507,52318,52319,52335)
+	
+ALLIANCE PORTAL TRAINERS
+	Larimaine Purdue (2485)
+	Milstaff Stormeye (2489)
+	Elissa Dumas (4165)
+	Lunaraa (16755)
+	Ysuria (27703)
+	
+	(2485,2489,4165,16755,27703)
+
+HORDE PORTAL TRAINERS
+	Lexington Mortaim (2492)
+	Birgitte Cranston (5957)
+	Narinth (16654)
+	Lorrin Foxfire (27705)
+	Zirazi the Star-Gazer (45139)
+	Rundok (47253)
+	
+	(2492,5957,16654,27705,45139,47253)
+	
+NEUTRAL PORTAL TRAINERS
+	Mi'irku Farstep (19340)
+	Iorioa (20791)
+	Archmage Celindra (29156)
+	
+	(19340,20791,29156)
+
+PORTAL TRAINERS
+	Larimaine Purdue (2485)
+	Milstaff Stormeye (2489)
+	Lexington Mortaim (2492)
+	Elissa Dumas (4165)
+	Birgitte Cranston (5957)
+	Thuul (5958)
+	Narinth (16654)
+	Lunaraa (16755)
+	Mi'irku Farstep (19340)
+	Iorioa (20791)
+	World Portal: Darnassus Trainer (5018)
+	World Portal: Ironforge Trainer (5019)
+	World Portal: Orgrimmar Trainer (5020)
+	World Portal: Stormwind Trainer (5021)
+	World Portal: Thunder Bluff Trainer (5022)
+	World Portal: Undercity Trainer (5023)
+	Ysuria (27703)
+	Lorrin Foxfire (27705)
+	Archmage Celindra (29156)
+	Zirazi the Star-Gazer (45139)
+	Rundok (47253)
+	
+	(2485,2489,2492,4165,5957,5958,16654,16755,19340,20791,5018,5019,5020,5021,5022,5023,27703,27705,29156,45139,47253)
 
 HERBALISM TRAINERS
 	Alma Jainrose (812)
@@ -692,7 +847,10 @@ HERBALISM TRAINERS
 	Dorothy Egan (28704)
 	Botanist Alaenra (33639)
 	Jijia (33678)
+	William Saldean (33996)
 	Muraga (46741)
+	
+	(812,908,1218,1458,1473,2114,2390,2856,3013,3185,3404,3604,3965,4204,4614,4898,5137,5502,5566,8146,12025,16367,16644,16736,17434,17983,18748,18776,4998,16527,1546,2133,3071,26994,26910,26958,26974,28704,33639,33678,33996,46741)
 	
 MINING TRAINERS
 	Brock Stoneseeker (1681)
@@ -730,6 +888,8 @@ MINING TRAINERS
 	Foreman Pernic (52642)
 	"Kobold" Kerik (53409)
 	
+	(1681,1701,3001,3137,3175,3357,3555,4254,4598,5392,5513,6297,8128,16663,16752,17488,18747,18779,1384,2222,4999,12035,26999,26912,26962,26976,28698,33640,33682,43431,46357,52170,52642,53409)
+	
 SKINNING TRAINERS
 	Maris Granger (1292)
 	Radnaal Maneweaver (6287)
@@ -764,6 +924,8 @@ SKINNING TRAINERS
 	Dremm (33683)
 	Rento (44782)
 	Humbert Tanwell (53437)
+	
+	(1292,6287,6288,6289,6290,6291,6292,6295,6306,6387,7087,7088,7089,8144,12030,16273,16692,16763,17441,18755,18777,19180,6242,8777,27000,26913,26963,26986,28696,33641,33683,44782,53437)
 	
 ALCHEMY TRAINERS
 	Alchemist Mallory (1215)
@@ -804,6 +966,8 @@ ALCHEMY TRAINERS
 	Crystal Brightspark (33588)
 	Aelthin (33630)
 	Alchemist Kanhu (33674)
+	
+	(1215,1386,1470,2132,2391,2837,3009,3184,3347,3603,3964,4160,4611,4900,5177,5499,7948,16161,16588,16642,16723,17215,18802,19052,5032,12020,16487,3070,26987,26903,26951,26975,27023,27029,28703,33588,33630,33674)
 	
 BLACKSMITHING TRAINERS
 	Smith Argus (514)
@@ -860,6 +1024,8 @@ BLACKSMITHING TRAINERS
 	Rolf Karner (52640)
 	Jordan Smith (55684)
 	
+	(514,1241,2836,2998,3136,3174,3355,3478,3557,4258,4596,4888,5164,5511,6299,7230,7231,7232,11146,11177,11178,15400,16583,16669,16724,16823,17245,19341,20124,20125,21209,5033,7174,16265,26988,26564,26904,26952,26981,27034,28694,29505,29506,29924,33591,33631,33675,37072,43429,44781,45548,52640,55684)
+	
 ENCHANTING TRAINERS
 	Lucan Cordell (1317)
 	Teg Dawnstrider (3011)
@@ -893,6 +1059,8 @@ ENCHANTING TRAINERS
 	Zurii (33676)
 	Cataclysm Shard Vendor (48685)
 	Lissah Spellwick (53410)
+	
+	(1317,3011,3345,3606,4213,4616,5157,5695,7949,11072,11073,11074,16160,16633,16725,18753,18773,19251,19252,19540,5038,16190,26990,26906,26954,26980,28693,33583,33633,33676,48685,53410)
 	
 ENGINEERING TRAINERS
 	Finbus Geargrind (1676)
@@ -939,6 +1107,8 @@ ENGINEERING TRAINERS
 	Tana Lentner (52636)
 	Engineer Palehoof (52651)
 	
+	(1676,1702,3290,3494,4941,5174,5518,7406,7944,8126,8736,8738,10993,11017,11025,11031,11037,16667,16726,17222,17634,17637,18752,18775,19576,5037,8676,8677,24868,25099,26991,25277,26907,26955,28697,29513,29514,33586,33634,33677,45545,52636,52651)
+	
 INSCRIPTION TRAINERS
 	Michael Schwan (30721)
 	Catarina Stanford (30713)
@@ -961,6 +1131,8 @@ INSCRIPTION TRAINERS
 	Recorder Lidio (33679)
 	Nerog (46716)
 	Theoden Manners (53415)
+	
+	(30721,30713,26995,25263,26916,26959,26977,28702,30706,30709,30710,30711,30715,30716,30717,30722,33603,33638,33679,46716,53415)
 	
 JEWELCRAFTING TRAINERS
 	Ingo Woolybush (5388)
@@ -986,6 +1158,8 @@ JEWELCRAFTING TRAINERS
 	Neller Fayne (52587)
 	Aessa Silverdew (52645)
 	Nahari Cloudchaser (52657)
+	
+	(5388,15501,18751,18774,19063,19539,19775,19778,15465,26997,26915,26960,26982,28701,33590,33637,33680,44582,46675,52586,52587,52645,52657)
 	
 LEATHERWORKING TRAINERS
 	Brawn (1385)
@@ -1037,6 +1211,8 @@ LEATHERWORKING TRAINERS
 	Korim (33681)
 	Eustace Tanwell (53436)
 
+	(1385,1632,3007,3069,3365,3549,3605,3703,3967,4212,4588,5127,5564,5784,7866,7867,7868,7869,7870,7871,8153,11097,11098,16278,16688,16728,17442,18754,18771,19187,21087,5040,7526,26998,26911,26961,26996,28400,28700,29507,29508,29509,33581,33635,33681,53436)
+
 TAILORING TRAINERS
 	Eldrin (1103)
 	Georgio Bolero (1346)
@@ -1076,6 +1252,8 @@ TAILORING TRAINERS
 	Hiwahi Three-Feathers (44783)
 	Nivi Weavewell (45559)
 	
+	(1103,1346,2399,2627,3004,3363,3484,3523,3704,4159,4193,4576,4578,5153,9584,11052,16366,16640,16729,17487,18749,18772,996,5041,16000,27001,26914,26964,26969,28699,33580,33636,33684,40389,43428,44783,45559)
+	
 FIRST AID TRAINERS
 	Thamner Pol (2326)
 	Shaina Fuller (2327)
@@ -1100,6 +1278,22 @@ FIRST AID TRAINERS
 	Aresella (18991)
 	Mildred Fletcher (19184)
 	Fera Palerunner (19478)
+	Anchorite Ensham (22477)
+	Undead First Aid Trainer (2325)
+	World First Aid Trainer (5024)
+	Brynna Wilson (26992)
+	Anchorite Yazmina (23734)
+	Sally Tompkins (26956)
+	Olisarra the Kind (28706)
+	Nurse Applewood (29233)
+	Joseph Wilson (33589)
+	Doc Zapnozzle (36615)
+	Krenk Choplimb (45540)
+	Doc Zapnozzle (49879)
+	Amelia Atherton (50574)
+	Angela Leifeld (56796)
+	
+	(2326,2327,2329,2798,3181,3373,4211,4591,5150,5759,5939,5943,6094,12939,16272,16662,16731,17214,17424,18990,18991,19184,19478,22477,2325,5024,26992,23734,26956,28706,29233,33589,36615,45540,49879,50574,56796)
 	
 COOKING TRAINERS
 	Cook Ghilm (1355)
@@ -1151,6 +1345,8 @@ COOKING TRAINERS
 	Fielding Chesterhill (50567)
 	Mrs. Gant (54232)
 	
+	(1355,1382,1430,1699,3026,3067,3087,3399,4210,4552,4894,5159,5482,6286,8306,16253,16277,16676,16719,17246,18987,18988,18993,19185,19369,3966,5036,26989,26905,26953,26972,28705,29631,33587,34710,34708,34711,34785,34712,34713,34714,34786,45550,46709,47405,49789,50567,54232)
+	
 FISHING TRAINERS
 	Lee Brown (1651)
 	Matthew Hooper (1680)
@@ -1189,29 +1385,82 @@ FISHING TRAINERS
 	Whilsey Bottomtooth (50570)
 	Steven Stagnaro (56068)
 	
-ALLIANCE PORTAL TRAINERS
+	(1651,1680,1683,1700,2367,2834,3028,3179,3332,3607,4156,4573,5161,5493,5690,5938,5941,7946,12032,12961,14740,16774,16780,17101,18018,18911,4997,23896,26993,26909,26957,28742,32474,44975,50570,56068)
 
-HORDE PORTAL TRAINERS
+ARCHAEOLOGY TRAINERS
+	Doktor Professor Ironpants (39718)
+	Harrison Jones (44238)
+	Elynara (47346)
+	Adam Hossack (47382)
+	Ian Thomas Wall (47568)
+	Hammon the Jaded (47569)
+	Diya (47570)
+	Belloc Brightblade (47571)
+	Otoh Greyhide (47572)
+	Sirabel (47573)
+	Gerdra Fardelve (47574)
+	Boduro the Seeker (47575)
+	Falda Fardelve (47576)
+	Lindarel (47577)
+	Hugen Goldwise (47578)
+	Dariness the Learned (47579)
+	Lady Ironpants (47683)
+	Stephanie Krutsick (51997)
+	Faena Woolybush (53421)
+	
+	(39718,44238,47346,47382,47568,47569,47570,47571,47572,47573,47574,47575,47576,47577,47578,47579,47683,51997,53421)
 
-PORTAL TRAINERS
-	Larimaine Purdue (2485)
-	Milstaff Stormeye (2489)
-	Lexington Mortaim (2492)
-	Elissa Dumas (4165)
-	Birgitte Cranston (5957)
-	Thuul (5958)
-	Narinth (16654)
-	Lunaraa (16755)
-	Mi'irku Farstep (19340)
-	Iorioa (20791)
-	World Portal: Darnassus Trainer (5018)
-	World Portal: Ironforge Trainer (5019)
-	World Portal: Orgrimmar Trainer (5020)
-	World Portal: Stormwind Trainer (5021)
-	World Portal: Thunder Bluff Trainer (5022)
-	World Portal: Undercity Trainer (5023)
-	Ysuria (27703)
-	Lorrin Foxfire (27705)
-	Archmage Celindra (29156)
-	Zirazi the Star-Gazer (45139)
-	Rundok (47253)
+PROFESSION TRAINERS
+	KTC Train-a-Tron Deluxe (45286)
+	[PH] Jack of all Trades (46999)
+	Lien Farner (47384)
+	Wembil Taskwidget (47396)
+	Nedric Sallow (47400)
+	Runda (47418)
+	Lalum Darkmane (47419)
+	Iranis Shadebloom (47420)
+	Saren (47421)
+	Valn (47431)
+	Therisa Sallow (48619)
+	KTC Train-a-Tron Deluxe (49885)
+	Jack "All-Trades" Derrington (50247)
+	
+	(45286,46999,47384,47396,47400,47418,47419,47420,47421,47431,48619,49885,50247)
+	
+RIDING TRAINERS
+	Kar Stormsinger (3690)
+	Randal Hunter (4732)
+	Kildar (4752)
+	Jartsam (4753)
+	Ultham Ironhorn (4772)
+	Velma Warnam (4773)
+	Xar'Ti (7953)
+	Binjy Featherwhistle (7954)
+	Perascamin (16280)
+	Aalun (20914)
+	World Ram Riding Trainer (5028)
+	World Wolf Riding Trainer (5031)
+	World Undead Horse Riding Trainer (7743)
+	World Raptor Riding Trainer (7745)
+	World Mechastrider Riding Trainer (7746)
+	World Flying Mount Trainer (19490)
+	Darlene Stokx (43693)
+	Revi Ramrod (48513)
+	Sansha MacVince (53407)
+
+	(3690,4732,4752,4753,4772,4773,7953,7954,16280,20914,5028,5031,7743,7745,7746,19490,43693,48513,53407)
+
+WEAPONS TRAINERS
+	Ansekhwa (11869)
+	Archibald (11870)
+	Bixi Wobblebonk (13084)
+	Buliwyf Stonehand (11865)
+	Duelist Larenis (17005)
+	Hanashi (2704)
+	Handiir (16773)
+	Ileda (16621)
+	Ilyenia Moonfire (11866)
+	Sayoc (11868)
+	Woo Ping (11867)
+	
+	(11869,11870,13084,11865,17005,2704,16773,16621,11866,11868,11867)
