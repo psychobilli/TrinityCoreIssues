@@ -142,6 +142,7 @@ BEGIN
 	concat('creature_trainer - gossip_menu_option: ',ctr.OptionIndex,' - ',gmo.OptionIndex)
     from creature_trainer ctr join gossip_menu_option gmo on gmo.MenuId = ctr.MenuId
     where ctr.CreatureId = entryInput and gmo.MenuId = @Menu_Id and OptionIcon = 3 and gmo.OptionIndex != ctr.OptionIndex and @Menu_Id != 0
+	  and not exists (select 1 from gossip_menu_option where MenuId = ctr.MenuId and OptionIndex = ctr.OptionIndex)
 	group by gmo.OptionIndex;
 	
     create temporary table trainers (MenuId int, trainerId int, optionIndex int, description text);
