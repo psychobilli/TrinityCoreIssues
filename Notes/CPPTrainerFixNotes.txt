@@ -1,9 +1,3 @@
-Test trainers identified in bug notes.
-
-Danlaar Nightstride has multiple gossip options.
-
-Summoner Fanorad - Tranquillen Lock
-	
 drop temporary table if exists results;
 drop temporary table if exists entries;
 create temporary table entries (entry int);
@@ -47,20 +41,60 @@ where gossip_menu_id = 0
 ;
 
 -- test npcFlags
-select entry, npcFlag, CONCAT('`creature_template` SET `npcflag` = ',npcFlag + 32,' WHERE `entry` = ',entry,';') as sqlCode
+select entry, name, trainer_type, npcFlag, 
+	concat('UPDATE `creature_template` SET `npcFlag` = ', 
+		npcFlag + case when gossip_menu_id = 0 and (npcFlag & 1) = 1 then -1 
+						when gossip_menu_id != 0 and (npcFlag & 1) = 0 then 1
+                        else 0 end
+				 + case when (npcFlag & 16) = 0 then 16 else 0 end
+				 + case when trainer_type in (0,3) and (npcFlag & 32) = 0 then 32 else 0 end
+				 + case when trainer_type = 2 and (npcFlag & 64) = 0 then 64 else 0 end
+					,' WHERE `entry` = ',entry,';')
 from creature_template
-where (npcFlag >> 4) % 2 != 1  
+where ((gossip_menu_id = 0 and (npcFlag & 1) = 1) or (gossip_menu_id != 0 and (npcFlag & 1) = 0) 
+	or (npcFlag & 16) = 0 or (trainer_type in (0,3) and (npcFlag & 32) = 0 or trainer_type = 2 and (npcFlag & 64) = 0))
+  and entry in 
+	(3690,4732,4752,4753,4772,4773,7953,7954,16280,20914,5028,5031,7743,7745,7746,19490,43693,48513,53407)
+  and exists (
+	select 1 from creature where id = entry
+  )
+;
+select entry, name, gossip_menu_id, concat('(',entry,',',
+	case when gmo.OptionIndex = 0
+		 then '122'
+         when gmo.OptionIndex = 1
+         then '80'
+         when gmo.OptionIndex = 2
+         then '51'
+         when gmo.OptionIndex = 3
+         then '102'
+         when gmo.OptionIndex = 4
+         then '388'
+         when gmo.OptionIndex = 5
+         then '63'
+         when gmo.OptionIndex = 6
+         then '48'
+         when gmo.OptionIndex = 7
+         then '103'
+         when gmo.OptionIndex = 8
+         then '389'
+         when gmo.OptionIndex = 9
+         then '390'
+         when gmo.OptionIndex = 10
+         then '117'
+	  end
+    ,',',gossip_menu_id,',',OptionIndex,'),') as sqlStatement
+from creature_template ct
+  join gossip_menu_option gmo on gmo.MenuId = ct.gossip_menu_id
+where entry in (45286,46999,47384,47396,47400,47418,47419,47420,47421,47431,48619,49885,50247)
+  and gmo.OptionIndex between 0 and 10
+  and ct.gossip_menu_id != 0
   and exists (
 	select 1
-    from creature
-    where id = entry
-  )
-  and entry in 
-	(987,1231,1404,3038,3039,3040,3065,3154,3171,3352,3406,3407,3601,3963,4138,4146,4205,4892,5115,5116,5117,5501,5515,5516,5517,8308,10930,16270,16672,16673,16674,16738,17110,17122,17505,2218,4986,5000,897,34600,35758,36518,36629,36664,36705,38122,38467,38798,39100,39116,43008,43011,43277,43278,43909,44247,44249,44250,44461,44743,45023,45713,46983,47767,47788,48618,49713,49806,49894,49927,49946,49958,49966,50004,50007,50020,50032,50144,50157,50497,50609)
-;
-
-resume working on -- Correct Profession Trainers
-script was in the TC Cata repo
+    from gossip_menu_option
+    where MenuId = gmo.MenuId
+      and OptionIndex = 12
+  );
 
 WARRIOR TRAINERS - LOW LEVEL
 	Llane Beshere (911)
