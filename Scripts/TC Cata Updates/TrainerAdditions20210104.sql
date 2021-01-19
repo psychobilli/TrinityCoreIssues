@@ -235,12 +235,6 @@ INSERT INTO `gossip_menu_option` (`MenuId`, `OptionIndex`, `OptionIcon`, `Option
 (12845,1,0,'I wish to unlearn my talents.',62295,16,16,0),
 (12845,2,0,'I wish to know about Dual Talent Specialization.',33762,20,1,0);
 
--- warlock generic gossips
-UPDATE `creature_template` SET `gossip_menu_id` = 2384 WHERE `entry` = 50732;
-
--- correct creature_trainer
-UPDATE `creature_trainer` SET `MenuId` = 2384 WHERE `CreatureId` = 50732;
-
 -- Insert gossip menu options to druid trainers with no options using generic text.
 DELETE FROM `gossip_menu_option` WHERE `OptionIndex` IN (0,1,2) AND `MenuId` IN (10373,11997);
 INSERT INTO `gossip_menu_option` (`MenuId`, `OptionIndex`, `OptionIcon`, `OptionText`, `OptionBroadcastTextId`, `OptionType`, `OptionNpcflag`, `VerifiedBuild`) VALUES
@@ -306,8 +300,33 @@ DELETE FROM `gossip_menu_option` WHERE `OptionIndex` IN (0) AND `MenuId` IN (852
 INSERT INTO `gossip_menu_option` (`MenuId`, `OptionIndex`, `OptionIcon`, `OptionText`, `OptionBroadcastTextId`, `OptionType`, `OptionNpcflag`, `VerifiedBuild`) VALUES
 (8522,0,3,'Train me.', 3266, 5, 16, 0);
 
--- first aid generic gossips
-UPDATE `creature_template` SET `gossip_menu_id` = 5856 WHERE `entry` = 28706;
- 
--- correct creature_trainer
-UPDATE `creature_trainer` SET `MenuId` = 5856 WHERE `CreatureId` = 28706;
+-- Insert gossip menu options to first aid trainers with no options using generic text.
+DELETE FROM `gossip_menu_option` WHERE `OptionIndex` IN (2,5) AND `MenuId` IN (12180);
+INSERT INTO `gossip_menu_option` (`MenuId`, `OptionIndex`, `OptionIcon`, `OptionText`, `OptionBroadcastTextId`, `OptionType`, `OptionNpcflag`, `VerifiedBuild`) VALUES
+(12180,2,3,'Train me in Enchanting.', 0, 5, 16, 0),
+(12180,5,3,'Train me in Inscription.', 0, 5, 16, 0);
+
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (45286,47384,47396,47400,47418,47419,47420,47421,47431,48619,50247) AND `OptionIndex` IN (2,5);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES
+(45286,51,12180,2), -- enchanting
+(45286,63,12180,5), -- inscription
+(47384,51,12180,2),
+(47384,63,12180,5),
+(47396,51,12180,2),
+(47396,63,12180,5),
+(47400,51,12180,2),
+(47400,63,12180,5),
+(47418,51,12180,2),
+(47418,63,12180,5),
+(47419,51,12180,2),
+(47419,63,12180,5),
+(47420,51,12180,2),
+(47420,63,12180,5),
+(47421,51,12180,2),
+(47421,63,12180,5),
+(47431,51,12180,2),
+(47431,63,12180,5),
+(48619,51,12180,2),
+(48619,63,12180,5),
+(50247,51,12180,2),
+(50247,63,12180,5);

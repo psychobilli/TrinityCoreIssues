@@ -20,14 +20,15 @@ INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionInde
 (37737,168,11767,0);
 
 -- add `creature_trainer` records for low level hunter trainers.
-DELETE FROM `creature_trainer` WHERE `CreatureId` IN (895,3061,34673,35874,38247,39214);
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (895,3061,34673,35874,38247,39214,43278);
 INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES 
 (895,15,4675,0),
 (3061,15,4647,0),
 (34673,15,10675,0),
 (35874,15,10697,0),
 (38247,15,10988,0),
-(39214,15,11185,0);
+(39214,15,11185,0),
+(43278,15,14200,0);
 
 -- add `creature_trainer` records for low level rogue trainers.
 DELETE FROM `creature_trainer` WHERE `CreatureId` IN (916,34693,35871,38244,42366);
@@ -102,7 +103,7 @@ UPDATE `creature_trainer` SET `TrainerId` = 127 WHERE `CreatureId` = 16502;
 UPDATE `creature_template` SET `npcFlag` = 51 WHERE `entry` = 38037;
 UPDATE `creature_template` SET `npcFlag` = 50 WHERE `entry` = 42324;
 -- low level shaman
-UPDATE `creature_template` SET `npcFlag` = 50 WHERE `entry` = 38242;
+UPDATE `creature_template` SET `npcFlag` = 50, `trainer_class` = 7 WHERE `entry` = 38242;
 
 -- Correct remaining class trainers
 
@@ -188,7 +189,7 @@ INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionInde
 (50160,164,12516,0);
 
 -- add `creature_trainer` records for hunter trainers.
-DELETE FROM `creature_trainer` WHERE `CreatureId` IN (1231,1404,3038,3039,3040,3171,3352,3601,3963,4138,4146,4205,5115,5116,5501,5515,5516,8308,10930,16270,16672,16673,16674,16738,17110,17122,17505,35758,36518,36629,38122,38467,38798,39116,43011,43278,44461,44743,45023,45713,46983,47767,47788,48618,49806,49894,49927,49946,49958,49966,50004,50007,50020,50032,50144,50157,50497,50609);
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (1231,1404,3038,3039,3040,3171,3352,3601,3963,4138,4146,4205,5115,5116,5501,5515,5516,8308,10930,16270,16672,16673,16674,16738,17110,17122,17505,35758,36518,36629,38122,38467,38798,39116,43011,44461,44743,45023,45713,46983,47767,47788,48618,49806,49894,49927,49946,49958,49966,50004,50007,50020,50032,50144,50157,50497,50609);
 INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES 
 (1231,40,4007,0),
 (1404,40,4657,0),
@@ -225,7 +226,6 @@ INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionInde
 (38798,40,10835,0),
 (39116,40,0,0),
 (43011,40,11817,0),
-(43278,40,14200,0),
 (44461,40,10697,0),
 (44743,40,11879,0),
 (45023,40,11913,0),
@@ -511,7 +511,7 @@ INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionInde
 (16721,39,7567,0),
 (36628,39,10834,0),
 (44459,39,10696,0),
-(44726,39,4463,0),
+(44726,39,0,0),
 (44978,39,11906,0),
 (49942,39,12539,0),
 (49997,39,11906,0),
@@ -548,12 +548,15 @@ INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionInde
 (29156,148,9777,0);
 
 -- change trainer type
-UPDATE `creature_template` SET `trainer_class` = 3 WHERE `entry` = 16279;
+UPDATE `creature_template` SET `trainer_class` = 4 WHERE `entry` = 16279;
 UPDATE `creature_template` SET `trainer_class` = 8 WHERE `entry` = 45139;
 UPDATE `creature_template` SET `trainer_class` = 8 WHERE `entry` = 47253;
 
 -- change a hunter trainer's gossip menu to match the creature_trainer record.
 UPDATE `creature_template` SET `gossip_menu_id` = 11154 WHERE `entry` = 39100;
+
+-- change remove mage trainer gossips from a druid trainer.
+UPDATE `creature_template` SET `gossip_menu_id` = 0 WHERE `entry` = 44726;
 
 -- correct creature_template npcflag for class trainer
 
@@ -609,6 +612,8 @@ UPDATE `creature_template` SET `npcFlag` = 48 WHERE `entry` = 4564;
 UPDATE `creature_template` SET `npcFlag` = 48 WHERE `entry` = 49945;
 UPDATE `creature_template` SET `npcFlag` = 48 WHERE `entry` = 50723;
 UPDATE `creature_template` SET `npcFlag` = 48 WHERE `entry` = 50729;
+-- druid with gossip_menu_id 0
+UPDATE `creature_template` SET `npcFlag` = 50 WHERE `entry` = 44726;
 -- alliance portal trainer with complete gossip menu
 UPDATE `creature_template` SET `npcFlag` = 49 WHERE `entry` = 2485;
 UPDATE `creature_template` SET `npcFlag` = 49 WHERE `entry` = 4165;
@@ -883,7 +888,7 @@ INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionInde
 (52657,29,7815,0);
 
 -- add missing creature_trainer for Leatherworkers.
-DELETE FROM `creature_trainer` WHERE `CreatureId` IN (1385,1632,3007,3069,3365,3549,3605,3703,3967,4212,4588,5127,7869,8153,11097,11098,16688,16728,17442,18754,18771,19187,26911,26996,26998,29508,29509,33581,33635,33681,53436);
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (1385,1632,3007,3069,3365,3549,3605,3703,3967,4212,4588,5127,7869,8153,11097,11098,16688,16728,17442,18754,18771,19187,26911,26996,26998,28400,29508,29509,33581,33635,33681,53436);
 INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES
 (1385,56,4208,0),
 (1632,56,4172,0),
@@ -1066,7 +1071,6 @@ INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionInde
 
 -- correct existing creature_trainer
 UPDATE `creature_trainer` SET `MenuId` = 10138 WHERE `CreatureId` = 28699;
-UPDATE `creature_trainer` SET `TrainerId` = 136 WHERE `CreatureId` = 16279;
 
 -- change a cooking trainer's gossip menu to match the creature_trainer record.
 UPDATE `creature_template` SET `gossip_menu_id` = 10569 WHERE `entry` = 34786;
@@ -1074,45 +1078,139 @@ UPDATE `creature_template` SET `gossip_menu_id` = 10569 WHERE `entry` = 34786;
 -- correct trainer npcFlags
 -- herbalism
 UPDATE `creature_template` SET `npcFlag` = 81 WHERE `entry` = 812;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 908;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 1473;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 2114;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 2390;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 2856;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 3185;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 3604;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 3965;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 4898;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 12025;
 UPDATE `creature_template` SET `npcFlag` = 83 WHERE `entry` = 17434;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 17983;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26910;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26958;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26974;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26994;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 28704;
 UPDATE `creature_template` SET `npcFlag` = 209 WHERE `entry` = 33639;
 -- mining
 UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 3175;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 3555;
 UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 4598;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 8128;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26912;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26962;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26976;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26999;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 28698;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 52170;
 UPDATE `creature_template` SET `npcFlag` = 208 WHERE `entry` = 53409;
 -- skinning
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 6287;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 6288;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 6289;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 6290;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 6291;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 6292;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 6295;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 6306;
 UPDATE `creature_template` SET `npcFlag` = 82 WHERE `entry` = 6387;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 7087;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 7088;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 7089;
 UPDATE `creature_template` SET `npcFlag` = 82 WHERE `entry` = 8144;
 UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 12030;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 16273;
 UPDATE `creature_template` SET `npcFlag` = 81 WHERE `entry` = 16692;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26913;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26963;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26986;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 27000;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 28696;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 44782;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 53437;
 -- alchemy
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 2132;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 3184;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 3603;
 UPDATE `creature_template` SET `npcFlag` = 83 WHERE `entry` = 5177;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26903;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26951;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26975;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26987;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 27023;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 27029;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 33588;
 UPDATE `creature_template` SET `npcFlag` = 3281 WHERE `entry` = 33630;
 -- blacksmithing
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 4258;
 UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 4596;
 UPDATE `creature_template` SET `npcFlag` = 4304 WHERE `entry` = 4888;
+UPDATE `creature_template` SET `npcFlag` = 82 WHERE `entry` = 5164;
 UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 7230;
 UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 7231;
 UPDATE `creature_template` SET `npcFlag` = 81 WHERE `entry` = 7232;
 UPDATE `creature_template` SET `npcFlag` = 82 WHERE `entry` = 11146;
+UPDATE `creature_template` SET `npcFlag` = 82 WHERE `entry` = 11177;
 UPDATE `creature_template` SET `npcFlag` = 82 WHERE `entry` = 11178;
 UPDATE `creature_template` SET `npcFlag` = 4307 WHERE `entry` = 15400;
 UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 16724;
 UPDATE `creature_template` SET `npcFlag` = 4305 WHERE `entry` = 17245;
 UPDATE `creature_template` SET `npcFlag` = 83 WHERE `entry` = 26564;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26904;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26952;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26981;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26988;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 27034;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 28694;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 29505;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 29506;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 29924;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 33591;
 UPDATE `creature_template` SET `npcFlag` = 209 WHERE `entry` = 33631;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 37072;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 45548;
 UPDATE `creature_template` SET `npcFlag` = 4304 WHERE `entry` = 55684;
 -- enchanting
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 19251;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26906;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26954;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26980;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26990;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 28693;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 33583;
 UPDATE `creature_template` SET `npcFlag` = 2257 WHERE `entry` = 33676;
 -- engineering
 UPDATE `creature_template` SET `npcFlag` = 83 WHERE `entry` = 5174;
 UPDATE `creature_template` SET `npcFlag` = 82 WHERE `entry` = 11031;
 UPDATE `creature_template` SET `npcFlag` = 208 WHERE `entry` = 18752;
 UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 24868;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 25277;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26907;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26955;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26991;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 28697;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 29513;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 29514;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 33586;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 45545;
 -- inscription
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 28702;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 30706;
+UPDATE `creature_template` SET `npcFlag` = 82 WHERE `entry` = 30709;
 UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 30710;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 30711;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 30713;
 UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 30715;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 30716;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 30717;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 30721;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 30722;
 UPDATE `creature_template` SET `npcFlag` = 209 WHERE `entry` = 33679;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 46716;
 UPDATE `creature_template` SET `npcFlag` = 209 WHERE `entry` = 53415;
 -- jewelcrafting
 UPDATE `creature_template` SET `npcFlag` = 211 WHERE `entry` = 5388;
@@ -1120,28 +1218,57 @@ UPDATE `creature_template` SET `npcFlag` = 81 WHERE `entry` = 15501;
 UPDATE `creature_template` SET `npcFlag` = 209 WHERE `entry` = 18751;
 UPDATE `creature_template` SET `npcFlag` = 81 WHERE `entry` = 19063;
 UPDATE `creature_template` SET `npcFlag` = 81 WHERE `entry` = 19775;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 33590;
 UPDATE `creature_template` SET `npcFlag` = 209 WHERE `entry` = 33680;
 UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 52586;
 UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 52587;
 -- leatherworking
 UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 4588;
+UPDATE `creature_template` SET `npcFlag` = 82 WHERE `entry` = 7869;
+UPDATE `creature_template` SET `npcFlag` = 82 WHERE `entry` = 7871;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 16278;
 UPDATE `creature_template` SET `npcFlag` = 81 WHERE `entry` = 16688;
 UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 16728;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 21087;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26911;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26961;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26996;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26998;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 28700;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 29507;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 29508;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 29509;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 33581;
 UPDATE `creature_template` SET `npcFlag` = 209 WHERE `entry` = 53436;
 -- tailoring
 UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 3523;
 UPDATE `creature_template` SET `npcFlag` = 82 WHERE `entry` = 4576;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 4578;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 9584;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 33580;
 -- first aid
 UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 4591;
 UPDATE `creature_template` SET `npcFlag` = 208 WHERE `entry` = 18990;
 UPDATE `creature_template` SET `npcFlag` = 208 WHERE `entry` = 18991;
-UPDATE `creature_template` SET `npcFlag` = 83 WHERE `entry` = 28706;
+UPDATE `creature_template` SET `npcFlag` = 82 WHERE `entry` = 28706;
 UPDATE `creature_template` SET `npcFlag` = 82 WHERE `entry` = 45540;
+-- cooking
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 19369;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 33587;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 34785;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 45550;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 46709;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 47405;
 -- fishing
 UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 7946;
 UPDATE `creature_template` SET `npcFlag` = 209 WHERE `entry` = 18911;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26909;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26957;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 26993;
+UPDATE `creature_template` SET `npcFlag` = 80 WHERE `entry` = 32474;
 -- riding
 UPDATE `creature_template` SET `npcFlag` = 82 WHERE `entry` = 4753;
+UPDATE `creature_template` SET `npcFlag` = 83 WHERE `entry` = 16280;
 UPDATE `creature_template` SET `npcFlag` = 82 WHERE `entry` = 20914;
 
 -- change trainer type
@@ -1152,20 +1279,118 @@ UPDATE `creature_template` SET `trainer_type` = 2 WHERE `entry` = 44975;
 -- update gossip_menu_option flags
 UPDATE `gossip_menu_option` SET `OptionType` = 5, `OptionNpcflag` = 16 WHERE `MenuId` = 10569 AND `OptionIndex` = 0;
 
--- remove the repairer mouseover
--- UPDATE `creature_template` SET `npcflag` = 80 WHERE `entry` = 16278;
--- correct mount trainer npcflags
--- UPDATE `creature_template` SET `npcflag` = 83 WHERE `entry` = 16280;
+
+-- correct the profession trainers
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (45286,47384,47396,47400,47418,47419,47420,47421,47431,48619,50247) AND `OptionIndex` IN (0,1,3,4,6,7,8,9,10);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES
+(45286,122,12180,0), -- alchemy
+(45286,80,12180,1), -- blacksmithing
+(45286,102,12180,3), -- engineering
+(45286,388,12180,4), -- herbalism
+(45286,48,12180,6), -- jewelcrafting
+(45286,103,12180,7), -- leatherworking
+(45286,389,12180,8), -- mining
+(45286,390,12180,9), -- skinning
+(45286,117,12180,10), -- tailoring
+(47384,122,12180,0),
+(47384,80,12180,1),
+(47384,102,12180,3),
+(47384,388,12180,4),
+(47384,48,12180,6),
+(47384,103,12180,7),
+(47384,389,12180,8),
+(47384,390,12180,9),
+(47384,117,12180,10),
+(47396,122,12180,0),
+(47396,80,12180,1),
+(47396,102,12180,3),
+(47396,388,12180,4),
+(47396,48,12180,6),
+(47396,103,12180,7),
+(47396,389,12180,8),
+(47396,390,12180,9),
+(47396,117,12180,10),
+(47400,122,12180,0),
+(47400,80,12180,1),
+(47400,102,12180,3),
+(47400,388,12180,4),
+(47400,48,12180,6),
+(47400,103,12180,7),
+(47400,389,12180,8),
+(47400,390,12180,9),
+(47400,117,12180,10),
+(47418,122,12180,0),
+(47418,80,12180,1),
+(47418,102,12180,3),
+(47418,388,12180,4),
+(47418,48,12180,6),
+(47418,103,12180,7),
+(47418,389,12180,8),
+(47418,390,12180,9),
+(47418,117,12180,10),
+(47419,122,12180,0),
+(47419,80,12180,1),
+(47419,102,12180,3),
+(47419,388,12180,4),
+(47419,48,12180,6),
+(47419,103,12180,7),
+(47419,389,12180,8),
+(47419,390,12180,9),
+(47419,117,12180,10),
+(47420,122,12180,0),
+(47420,80,12180,1),
+(47420,102,12180,3),
+(47420,388,12180,4),
+(47420,48,12180,6),
+(47420,103,12180,7),
+(47420,389,12180,8),
+(47420,390,12180,9),
+(47420,117,12180,10),
+(47421,122,12180,0),
+(47421,80,12180,1),
+(47421,102,12180,3),
+(47421,388,12180,4),
+(47421,48,12180,6),
+(47421,103,12180,7),
+(47421,389,12180,8),
+(47421,390,12180,9),
+(47421,117,12180,10),
+(47431,122,12180,0),
+(47431,80,12180,1),
+(47431,102,12180,3),
+(47431,388,12180,4),
+(47431,48,12180,6),
+(47431,103,12180,7),
+(47431,389,12180,8),
+(47431,390,12180,9),
+(47431,117,12180,10),
+(48619,122,12180,0),
+(48619,80,12180,1),
+(48619,102,12180,3),
+(48619,388,12180,4),
+(48619,48,12180,6),
+(48619,103,12180,7),
+(48619,389,12180,8),
+(48619,390,12180,9),
+(48619,117,12180,10),
+(50247,122,12180,0),
+(50247,80,12180,1),
+(50247,102,12180,3),
+(50247,388,12180,4),
+(50247,48,12180,6),
+(50247,103,12180,7),
+(50247,389,12180,8),
+(50247,390,12180,9),
+(50247,117,12180,10);
+
+-- correct types and flags on training gossips for initial menu.
+UPDATE `gossip_menu_option` SET `OptionType` = 5, `OptionNpcflag` = 16 WHERE `MenuId` = 12180 AND `OptionIndex` BETWEEN 0 AND 10;
 
 -- correct a few innkeepers
--- UPDATE `gossip_menu_option` SET `OptionType` = 8, `OptionNpcflag` = 65536 WHERE `MenuId` = 1297 AND `OptionIndex` = 1;
--- UPDATE `gossip_menu_option` SET `OptionType` = 3, `OptionNpcflag` = 128 WHERE `MenuId` = 1297 AND `OptionIndex` = 2;
--- DELETE FROM `gossip_menu_option_action` WHERE `MenuId` = 1297 AND `OptionIndex` = 0;
--- INSERT INTO `gossip_menu_option_action` (`MenuId`, `OptionIndex`, `ActionMenuId`, `ActionPoiId`) VALUES (1297, 0, 1221, 0);
--- UPDATE `gossip_menu_option` SET `OptionType` = 1, `OptionNpcflag` = 1 WHERE `MenuId` = 1293 AND `OptionIndex` = 0;
--- UPDATE `gossip_menu_option` SET `OptionType` = 8, `OptionNpcflag` = 65536 WHERE `MenuId` = 1293 AND `OptionIndex` = 1;
--- UPDATE `gossip_menu_option` SET `OptionType` = 3, `OptionNpcflag` = 128 WHERE `MenuId` = 1293 AND `OptionIndex` = 2;
--- DELETE FROM `gossip_menu_option_action` WHERE `MenuId` = 1293 AND `OptionIndex` = 0;
--- INSERT INTO `gossip_menu_option_action` (`MenuId`, `OptionIndex`, `ActionMenuId`, `ActionPoiId`) VALUES (1293, 0, 1221, 0);
--- UPDATE `gossip_menu_option` SET `OptionIcon` = 0, `OptionText` = 'What can I do at an inn?', `OptionBroadcastTextId` = 4308 WHERE `MenuId` = 1294 AND `OptionIndex` = 2;
--- UPDATE `gossip_menu_option` SET `OptionIcon` = 0, `OptionText` = 'What can I do at an inn?', `OptionBroadcastTextId` = 4308 WHERE `MenuId` = 7468 AND `OptionIndex` = 2;
+UPDATE `gossip_menu_option` SET `OptionType` = 8, `OptionNpcflag` = 65536 WHERE `MenuId` = 1297 AND `OptionIndex` = 1;
+UPDATE `gossip_menu_option` SET `OptionType` = 3, `OptionNpcflag` = 128 WHERE `MenuId` = 1297 AND `OptionIndex` = 2;
+UPDATE `gossip_menu_option` SET `OptionType` = 1, `OptionNpcflag` = 1 WHERE `MenuId` = 1293 AND `OptionIndex` = 0;
+UPDATE `gossip_menu_option` SET `OptionType` = 8, `OptionNpcflag` = 65536 WHERE `MenuId` = 1293 AND `OptionIndex` = 1;
+UPDATE `gossip_menu_option` SET `OptionType` = 3, `OptionNpcflag` = 128 WHERE `MenuId` = 1293 AND `OptionIndex` = 2;
+UPDATE `gossip_menu_option` SET `OptionIcon` = 0, `OptionText` = 'What can I do at an inn?', `OptionBroadcastTextId` = 4308 WHERE `MenuId` = 1294 AND `OptionIndex` = 2;
+UPDATE `gossip_menu_option` SET `OptionIcon` = 0, `OptionText` = 'What can I do at an inn?', `OptionBroadcastTextId` = 4308 WHERE `MenuId` = 7468 AND `OptionIndex` = 2;
