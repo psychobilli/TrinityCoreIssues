@@ -442,3 +442,15 @@ where name = 'Atal''ai Deathwalker''s Spirit';
 update quest_template_addon
 set PrevQuestId = 0 -- was 4023
 where Id = 4024;
+
+-- add all eternal discoveries to other eternal transmutes
+insert into skill_discovery_template
+select sdt.spellId
+	, sdt2.spellId
+    , sdt.reqSkillValue
+    , sdt.chance
+from skill_discovery_template sdt
+  join skill_discovery_template sdt2 on sdt2.reqSpell = sdt.reqSpell
+					and sdt2.spellId != sdt.spellId
+where sdt.reqSpell = 60350
+  and sdt.reqSkillValue = 400;
