@@ -60,12 +60,11 @@ INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionInde
 (38242,134,0,0);
 
 -- add `creature_trainer` records for low level mage trainers.
-DELETE FROM `creature_trainer` WHERE `CreatureId` IN (198,15279,16500,35872,37121,38246,42331,43006);
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (198,15279,16500,37121,38246,42331,43006);
 INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES 
 (198,44,4660,0),
 (15279,44,14136,0),
 (16500,44,7264,0),
-(35872,44,10698,0),
 (37121,44,10878,0),
 (38246,44,10987,0),
 (42331,44,11620,0),
@@ -388,7 +387,7 @@ INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionInde
 (53405,124,12529,0);
 
 -- add `creature_trainer` records for mage trainers.
-DELETE FROM `creature_trainer` WHERE `CreatureId` IN (328,1228,2128,3047,3048,3049,4566,4567,4568,5144,5145,5146,5880,7311,7312,16269,16651,16652,16653,16749,17481,17513,17514,23103,27704,28956,28958,35780,36520,36631,38465,38514,38794,43005,44465,45714,47246,47247,47248,48613,49716,49760,49786,49896,49952,49959,49968,50002,50010,50029,50499,50690,50714,50715,50716,50717,50720);
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (328,1228,2128,3047,3048,3049,4566,4567,4568,5144,5145,5146,5880,7311,7312,16269,16651,16652,16653,16749,17481,17513,17514,23103,27704,28956,28958,35780,36520,36631,38465,38514,38794,43005,45714,47246,47247,47248,48613,49716,49760,49786,49896,49952,49959,49968,50002,50010,50029,50499,50690,50714,50715,50716,50717,50720);
 INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES
 (328,135,4661,0),
 (1228,135,4463,0),
@@ -424,7 +423,6 @@ INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionInde
 (38514,135,12572,0),
 (38794,135,10837,0),
 (43005,135,12606,0),
-(44465,135,10698,0),
 (45714,135,12049,0),
 (47246,135,12233,0),
 (47247,135,12233,0),
@@ -555,7 +553,7 @@ UPDATE `creature_template` SET `trainer_class` = 8 WHERE `entry` = 47253;
 -- change a hunter trainer's gossip menu to match the creature_trainer record.
 UPDATE `creature_template` SET `gossip_menu_id` = 11154 WHERE `entry` = 39100;
 
--- change remove mage trainer gossips from a druid trainer.
+-- remove mage trainer gossips from a druid trainer.
 UPDATE `creature_template` SET `gossip_menu_id` = 0 WHERE `entry` = 44726;
 
 -- correct creature_template npcflag for class trainer
@@ -624,14 +622,12 @@ UPDATE `creature_template` SET `npcFlag` = 49 WHERE `entry` = 45139;
 UPDATE `creature_template` SET `npcFlag` = 49 WHERE `entry` = 47253;
 
 -- remove duplicate gossip_menu indexes
-DELETE FROM `gossip_menu_option` WHERE `MenuId` = 10694 AND `OptionIndex` = 1;
-DELETE FROM `gossip_menu_option` WHERE `MenuId` = 10698 AND `OptionIndex` = 1;
 DELETE FROM `gossip_menu_option` WHERE `MenuId` = 10696 AND `OptionIndex` = 1;
 
 -- Correct Profession Trainers
 
 -- Correct flags on numerous profession trainer gossip_options.
-UPDATE `gossip_menu_option` SET `OptionType` = 5, `OptionNpcflag` = 16 WHERE `OptionIcon` = 3 AND `MenuId` IN (4361,4134,4129,8540,2741,4164,4156,1468,12846,9084,7817,4356,7455,2021,8460,6087,10437,12725,9581,12235,10555,11875,12344,12151,10835,10838,11879,11913,12048,12341,12050,12010,12537,12920,12714,10684);
+UPDATE `gossip_menu_option` SET `OptionType` = 5, `OptionNpcflag` = 16 WHERE `OptionIcon` = 3 AND `MenuId` IN (4361,4134,4129,8540,2741,4164,4156,1468,12846,9084,7817,4356,7455,2021,8460,6087,10437,12725,9581,12235,10555,11875,12344,12151,10835,10838,11879,11913,12048,12341,12050,12010,12537,12920,12714,10684,10696);
 
 -- add missing creature_trainer for Herbalists.
 DELETE FROM `creature_trainer` WHERE `CreatureId` IN (812,908,1218,1458,1473,2390,2856,3013,3404,3965,4204,4614,5137,8146,12025,16367,16644,16736,17434,18748,18776,26910,26958,26974,26994,33639,33678,33996,46741);
