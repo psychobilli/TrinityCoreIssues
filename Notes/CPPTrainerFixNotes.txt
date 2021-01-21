@@ -94,7 +94,28 @@ where entry in (45286,46999,47384,47396,47400,47418,47419,47420,47421,47431,4861
     from gossip_menu_option
     where MenuId = gmo.MenuId
       and OptionIndex = 12
-  );
+  )
+;
+-- generate profession trainer creature_trainer entries.
+drop temporary table if exists gossips;
+create temporary table gossips (MenuId int, OptionIndex int, TrainerId int);
+insert into gossips
+values (12188,11,388), -- herbalism
+	(12189,8,389), -- mining
+	(12190,9,390), -- skinning
+	(12191,0,122), -- alchemy
+	(12192,1,80), -- blacksmithing
+	(12193,2,51), -- enchanting
+	(12195,3,102), -- engineering
+	(12196,5,63), -- inscription
+	(12197,6,48), -- jewelcrafting
+	(12198,7,103), -- leatherworking
+	(12199, 10, 117); -- tailoring
+select name
+	, concat('(',entry,',',g.MenuId,',',g.OptionIndex,',',g.TrainerId,'),') as sqlQuery
+from creature_template ct
+  cross join gossips g
+where ct.entry in (45286,47384,47396,47400,47418,47419,47420,47421,47431,48619,50247);
 
 WARRIOR TRAINERS - LOW LEVEL
 	Llane Beshere (911)
