@@ -1,14 +1,11 @@
 drop temporary table if exists results;
 drop temporary table if exists entries;
 create temporary table entries (entry int);
-insert into entries select entry from creature_template where entry in 
-   (915, 37724, 3062, 43013, 43015, 47419, 39214, 3155, 3157, 3156, 38244, 38242, 42618, 3169, 3170, 5880, 3172, 44380, 50006, 50004, 50015, 50011, 49998, 49997, 3175, 
-	3174, 11025, 47418, 37115, 912, 916, 837, 37121, 43455, 1229, 1234, 1226, 1228, 47396, 1241, 375, 47384, 11072, 1103, 2122, 2123, 2126, 48615, 48614, 48612, 39100, 2130, 2127, 48619,
-    47400, 43006, 3595, 43005, 3600, 47420, 3603, 6286, 6094, 34673, 34693, 34692, 34689, 35807, 36525, 38518, 38122, 36518, 35758, 35806, 38517, 36524, 35805, 38516, 36523, 35786, 36521,
-    38515, 35780, 36520, 38514, 35778, 36519, 38513, 36615, 45286, 43010, 15280, 15513, 15285, 15284, 15279, 15283, 16275, 16270, 16279, 16269, 47421, 16280, 16278, 35839, 35874, 35871,
-    35870, 35872, 35869, 50247, 36632, 35839, 36651, 38793,44455, 35874, 38467, 38798, 36629, 44461, 35871, 38796, 44464, 36630, 35870, 36632, 44468, 38466, 38795, 35872, 36631, 38794,
-    38465, 44465, 44459, 38799, 36628, 35873, 35869, 36652, 38797, 44469, 50247, 50574, 50567, 16503, 16501, 16499, 16502, 17089, 16500, 17480, 17482, 17212, 47431, 17215, 17222, 17441,
-    17442, 20914);
+insert into entries select entry from creature_template where subname like '%warrior%trainer%' or subname like '%paladin%trainer%' or subname like '%hunter%trainer%' or subname like '%rogue%trainer%';
+-- insert into entries select entry from creature_template where subname like '%priest%trainer%' or subname like '%shaman%trainer%' or subname like '%mage%trainer%' or subname like '%warlock%trainer%' or subname like '%druid%trainer%';
+-- insert into entries select entry from creature_template where subname like '%alchemy%trainer%' or subname like '%blacksmith%trainer%' or subname like '%enchant%trainer%' or subname like '%engineer%trainer%' or subname like '%inscrip%trainer%';
+-- insert into entries select entry from creature_template where subname like '%jewelcr%trainer%' or subname like '%leather%trainer%' or subname like '%tailor%trainer%' or subname like '%herbalism%trainer%' or subname like '%skinning%trainer%';
+-- insert into entries select entry from creature_template where subname like '%mining%trainer%' or subname like '%cooking%trainer%' or subname like '%fishing%trainer%' or subname like '%first%aid%trainer%' or subname like '%riding%trainer%';
 call test_creature_template_entry_trainer(0);
 
 -- test menu flags
