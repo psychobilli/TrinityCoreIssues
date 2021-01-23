@@ -38,15 +38,13 @@ where gossip_menu_id = 0
 ;
 
 -- test npcFlags
-select entry, name, trainer_type, npcFlag, 
-	concat('UPDATE `creature_template` SET `npcFlag` = ', 
-		npcFlag + case when gossip_menu_id = 0 and (npcFlag & 1) = 1 then -1 
-						when gossip_menu_id != 0 and (npcFlag & 1) = 0 then 1
-                        else 0 end
-				 + case when (npcFlag & 16) = 0 then 16 else 0 end
-				 + case when trainer_type in (0,3) and (npcFlag & 32) = 0 then 32 else 0 end
-				 + case when trainer_type = 2 and (npcFlag & 64) = 0 then 64 else 0 end
-					,' WHERE `entry` = ',entry,';')
+select entry, name, gossip_menu_id, trainer_type, trainer_class, npcFlag, 
+	concat('UPDATE `creature_template` SET `npcFlag` = `npcFlag`', 
+			case when gossip_menu_id = 0 then ' &~ 0x01' else ' | 0x01' end,
+			' | 0x10',
+			case when trainer_type in (0,3) then ' | 0x20' else '' end,
+			case when trainer_type = 2 then ' | 0x40' else '' end,
+			' WHERE `entry` = ',entry,';')
 from creature_template
 where ((gossip_menu_id = 0 and (npcFlag & 1) = 1) or (gossip_menu_id != 0 and (npcFlag & 1) = 0) 
 	or (npcFlag & 16) = 0 or (trainer_type in (0,3) and (npcFlag & 32) = 0 or trainer_type = 2 and (npcFlag & 64) = 0))
