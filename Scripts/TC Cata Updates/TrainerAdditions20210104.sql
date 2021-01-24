@@ -299,3 +299,215 @@ INSERT INTO `gossip_menu_option` (`MenuId`, `OptionIndex`, `OptionIcon`, `Option
 DELETE FROM `gossip_menu_option` WHERE `OptionIndex` IN (0) AND `MenuId` IN (8522);
 INSERT INTO `gossip_menu_option` (`MenuId`, `OptionIndex`, `OptionIcon`, `OptionText`, `OptionBroadcastTextId`, `OptionType`, `OptionNpcflag`, `VerifiedBuild`) VALUES
 (8522,0,3,'Train me.', 3266, 5, 16, 0);
+
+-- Correct existing creature_trainer records
+UPDATE `creature_trainer` SET `MenuId` = 14141 WHERE `CreatureId` = 15513;
+UPDATE `creature_trainer` SET `MenuId` = 14140 WHERE `CreatureId` = 15285;
+UPDATE `creature_trainer` SET `MenuId` = 10373 WHERE `CreatureId` = 4219;
+
+UPDATE `creature_trainer` SET `MenuId` = 10138 WHERE `CreatureId` = 28699;
+
+-- add `creature_trainer` records for low level paladin trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (15280);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES 
+(15280,168,14137,0);
+
+-- add `creature_trainer` records for low level hunter trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (34673,35874,39214);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES 
+(34673,15,10675,0),
+(35874,15,10697,0),
+(39214,15,11185,0);
+
+-- add `creature_trainer` records for low level rogue trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (34693,35871,38244);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES 
+(34693,17,10686,0),
+(35871,33,10699,0),
+(38244,17,10985,0);
+
+-- add `creature_trainer` records for low level shaman trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (37115);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES
+(37115,134,10879,0);
+
+-- add `creature_trainer` records for low level priest trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (15284,42323);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES 
+(15284,127,14139,0),
+(42323,127,11617,0);
+
+-- add `creature_trainer` records for low level mage trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (15279,37121,42331,43006);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES 
+(15279,135,14136,0),
+(37121,135,10878,0),
+(42331,135,11620,0),
+(43006,135,11810,0);
+
+-- add `creature_trainer` records for low level warlock trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (15283,35869,42618,43455);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES 
+(15283,32,14138,0),
+(35869,32,10702,0),
+(42618,32,11645,0),
+(43455,32,11831,0);
+
+-- add `creature_trainer` records for warrior trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (38518,42366,49736,49902,49923,50018,50155,50500);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES 
+(38518,16,11052,0),
+(42366,33,11621,0),
+(49736,16,12513,0),
+(49902,16,12532,0),
+(49923,16,12533,0),
+(50018,16,12925,0),
+(50155,16,12533,0),
+(50500,16,12513,0);
+
+-- add `creature_trainer` records for paladin trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (50012);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES 
+(50012,164,12926,0);
+
+-- add `creature_trainer` records for hunter trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (4892,16270,35758,36518,38122,44461,49806,49927,50007,50157);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES 
+(4892,40,12835,0),
+(16270,40,14144,0),
+(35758,40,10549,0),
+(36518,40,10814,0),
+(38122,40,11045,0),
+(44461,40,10697,0),
+(49806,40,12528,0),
+(49927,40,12535,0),
+(50007,40,12924,0),
+(50157,40,12535,0);
+
+-- add `creature_trainer` records for rogue trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (23566,35806,36524,36630,38517,38796,44464,45717,49745,49782,49870,49939,50016,50027,50127,50158,50498);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES 
+(23566,33,12517,0),
+(35806,33,10554,0),
+(36524,33,10819,0),
+(36630,33,10843,0),
+(38517,33,11051,0),
+(38796,33,10843,0),
+(44464,33,10699,0),
+(45717,33,12051,0),
+(49745,33,12517,0),
+(49782,33,12524,0),
+(49870,33,12531,0),
+(49939,33,12536,0),
+(50016,33,12928,0),
+(50027,33,12543,0),
+(50127,33,12564,0),
+(50158,33,12536,0),
+(50498,33,12517,0);
+
+-- add `creature_trainer` records for priest trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (5143,35805,36523,38516,45306,53403);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES 
+(5143,3,4560,0),
+(35805,3,10553,0),
+(36523,3,10818,0),
+(38516,3,11050,0),
+(45306,3,12004,0),
+(53403,3,12841,0);
+
+-- add `creature_trainer` records for shaman trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (38515);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES 
+(38515,124,11049,0);
+
+-- add `creature_trainer` records for mage trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (35780,36520,38514,45714,49786,49896);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES 
+(35780,135,10551,0),
+(36520,135,10816,0),
+(38514,135,12572,0),
+(45714,135,12049,0),
+(49786,135,12525,0),
+(49896,135,12049,0);
+
+-- add `creature_trainer` records for warlock trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (36652,38797,43892,45720,48612,49718,49791,49895,50017,50028,50502,50732,53404);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES 
+(36652,154,10840,0),
+(38797,154,10840,0),
+(43892,154,12821,0),
+(45720,154,12053,0),
+(48612,154,4608,0),
+(49718,154,4608,0),
+(49791,154,12526,0),
+(49895,154,12053,0),
+(50017,154,12921,0),
+(50028,154,4602,0),
+(50502,154,12882,0),
+(50732,154,2522,0),
+(53404,154,12845,0);
+
+-- add `creature_trainer` records for druid trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (13476);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES
+(13476,39,11997,0);
+
+-- add `creature_trainer` records for portal trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (45139);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES
+(45139,149,11972,0);
+
+-- add `creature_trainer` records for alchemy trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (3964,16723);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES
+(3964,122,4117,0),
+(16723,122,8863,0);
+
+-- add `creature_trainer` records for blacksmithing trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (3557,7232,16583,19341,20124,20125,21209);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES
+(3557,58,2749,0),
+(7232,58,1041,0),
+(16583,58,8760,0),
+(19341,58,7809,0),
+(20124,58,9131,0),
+(20125,58,9132,0),
+(21209,58,8254,0);
+
+-- add `creature_trainer` records for enchanting trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (11072,11073,11074);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES
+(11072,62,4169,0),
+(11073,62,4171,0),
+(11074,62,4170,0);
+
+-- add `creature_trainer` records for engineering trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (3290,7406,8126,8738,17634,17637,18775,33634,33677);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES
+(3290,407,4136,0),
+(7406,407,1467,0),
+(8126,407,1469,0),
+(8738,407,1465,0),
+(17634,407,7512,0),
+(17637,407,7513,0),
+(18775,407,7820,0),
+(33634,407,10363,0),
+(33677,407,10363,0);
+
+-- add `creature_trainer` records for leatherworking trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (1385,8153,11098);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES
+(1385,56,4208,0),
+(8153,56,4842,0),
+(11098,56,4244,0);
+
+-- add `creature_trainer` records for tailoring trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (28699);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES
+(28699,163,10138,0);
+
+-- add `creature_trainer` records for first aid trainers.
+DELETE FROM `creature_trainer` WHERE `CreatureId` IN (19184,22477);
+INSERT INTO `creature_trainer` (`CreatureId`, `TrainerId`, `MenuId`, `OptionIndex`) VALUES
+(19184,107,8522,0),
+(22477,107,8522,0);
