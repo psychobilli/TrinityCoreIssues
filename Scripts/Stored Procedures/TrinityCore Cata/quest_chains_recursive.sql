@@ -11,6 +11,7 @@ BEGIN
 		, ID
 	from quest_template_addon qta
 	where ID = questIdInput
+	  and questIdInput > 0
 	  and not exists (
 		select 1
 		from testResults
@@ -24,6 +25,7 @@ BEGIN
 		, NextQuestId
 	from quest_template_addon qta
 	where ID = questIdInput
+	  and questIdInput > 0
 	  and not exists (
 		select 1
 		from testResults
@@ -36,6 +38,7 @@ BEGIN
 		, ID
 	from quest_template_addon qta
 	where PrevQuestId = questIdInput
+	  and questIdInput > 0
 	  and not exists (
 		select 1
 		from testResults
