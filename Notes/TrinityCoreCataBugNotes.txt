@@ -88,6 +88,7 @@ DUROTAR
 	
 ORGRIMMAR
 	C - Garrosh Hellscream (31256) - "Placeholder" as gossip text.
+	N - Yelmak (3347) - Incorrectly offers Alchemy Specialization quests.
 	
 DUN MOROGH
 	N - Teo Hammerstorm (37115) - Does not offer Shaman training.
@@ -149,6 +150,9 @@ ELWYNN FOREST
 	N - Lien Farnet (47384) - Does not train professions.
 	N - Kitta Firewind (11072) - Does not train Enchanting.
 	N - Eldrin (1103) - Does not train Tailoring.
+	
+STORMWIND
+	N - Lilyssia Nightbreeze (5499) - Incorrectly offers Alchemy Specialization quests.
 
 TIRISFAL GLADES
 	P - Undead Mages do not start laying down.
@@ -223,8 +227,26 @@ BROKEN ISLES
 	N - Fizz Lighter (34689) - Does not offer Mage training.
 	Q - Off to the Bank (26712)(26711) - Incorrectly offered to wrong gender, not dependent on Rolling with My Homies (14071).
 	Q - Life of the Party (14113)(14153) - May be gender accurate, but not dependent on Give Sassy the News (24520)
-	Q - Rolling with My Homies (14071) - Unable to enter Hot Rod.
+	Q - Rolling with My Homies (14071) - Unable to enter Hot Rod (34840).
+			Item Keys to the Hot Rod correctly summons Hot Rod (34840), but it should also cast spell Hot Rod (66392)
+			and mount the player into a vehicle.	
+	Q - Keys to the Hot Rod (28607)(28606) - Should be repeatable and only available while Rolling with My Homies is active, 
+			and probably around the final quests of the area.
 	Q - Necessary Roughness (24502) - Shreddar is not present, event does not start.
+			Bilgewater Buccaneer (48526) is a vehicle, Bilgewater Buccaneer (70065) must be in npc_spellclick_spell. using vechicleId 55
+			Bilgewater Buccaneer is invisible until spells are cast on the player.
+				Generic Quest Invisibility Detection 4 (90161) is cast on player when accepting The Replacements (24488)
+				Generic Quest Invisibility Detection 4 (90161) is removed when boarding Bilgewater Buccaneer (48526)(37213)(37179)
+				Generic Quest Invisibility Detection 4 (90161) is cast on player when exiting Bilgewater Buccaneer (48526)(37213)(37179)
+				Generic Quest Invisibility Detection 4 (90161) is removed when Sassy Hardwrench's next quest is rewarded.
+				Generic Quest Invisibility Detection 5 (94566) is cast on player when exiting Bilgewater Buccaneer (48526)(37213)(37179)
+				Generic Quest Invisibility Detection 5 (94566) is removed when Fourth and Goal (24503)(28414) is accepted.
+				Generic Quest Invisibility Detection 5 (94566) is cast on player when boarding Bilgewater Buccaneer (48526)(37213)(37179)
+				Generic Quest Invisibility Detection 6 (94567) is cast on player when Deathwing event is started as part of this quest line
+				Generic Quest Invisibility Detection 6 (94567) is removed when Give Sassy the News (24520) is accepted.
+				Generic Quest Invisibility Detection 7 (94568) is cast on player when boarding Bilgewater Buccaneer (37213)
+				Generic Quest Invisibility Detection 7 (94566) is cast on player when exiting Bilgewater Buccaneer (37213)
+				Generic Quest Invisibility Detection 7 (94567) is cast on player when Deathwing event is started as part of this quest line
 	Q - Fourth and Goal (28414)(24503) - Event does not start.
 	Q - The New You (14109)(14110) - NPCs are missing gossip text.
 	Q - Life of the Party (14113) - Does not enter correct phase.  Party items do not work on guests.
@@ -236,6 +258,7 @@ BROKEN ISLES
 	Q - Waltz Right In (14123) - Completeable, but there's no apparent challenge.
 	O - Last Chance Yacht Boarding Mortar (223085,207355) - Does nothing.
 	Q - Life Savings (14126) - Correctly plays movie on completion.  Player does not arrive in Broken Isles after.
+			select * from conditions where ConditionTypeOrReference = 8 and ConditionValue1 in (14222); -- Worgen equivalent
 	
 	Data Validation
 	N - Warrior-Matic NX-01 (35807) - Warrior Trainer

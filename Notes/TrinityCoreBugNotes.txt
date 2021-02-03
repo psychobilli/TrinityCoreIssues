@@ -300,7 +300,7 @@ Trial of the Champion - Champions do not get trampled correctly.
 Halls of Reflection - Escape Arthas event doesn't work correctly 
 	unless you take your time in clearing the trash.
 Argent Tournament - Valiant and Champion jousting tend to evade bug.
-	Boneguard Footmen do not get Trampled
+	Boneguard Footmen do not get Trampled - shouldSuse Ride Vehicle (63221) for Trample scourge aura
 	Chillmaw drops his adds late or not at all.
 	Kvaldir on boats don't respawn properly. Disproportionate mob types.
 	Get Kraken doesn't register hits or grant tooth on death.
