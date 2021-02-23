@@ -1,0 +1,1 @@
+mysql -u trinity -p'' -s < ~/sql_integration/drop_create_cata_world.sql
