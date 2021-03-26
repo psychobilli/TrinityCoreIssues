@@ -33,7 +33,7 @@ BEGIN
 	select qt.Id, QuestLevel, LogTitle, entry as QuestGiverEntry, name as QuestGiverName, QuestSortId, PrevQuestID, NextQuestID, tr.questChain, tr.sortOrder
 	from testResults tr
       join quest_template qt on qt.Id = tr.questId
-	  join quest_template_addon qta on qta.ID = qt.ID
+	  left join quest_template_addon qta on qta.ID = qt.ID
 	  left join creature_queststarter cqs on cqs.quest = qt.Id
 	  left join creature_template ct on ct.entry = cqs.id
 	order by tr.questChain, tr.sortOrder;
