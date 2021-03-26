@@ -63,8 +63,11 @@ INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,
 DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 14 AND `SourceGroup` IN (10620,10622,10624) AND `SourceEntry` IN (14697,14699,14700,14701,14703,14704);
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES
 (14,10620,14697,0,0,1,0,90814,0,0,0,0,0,'','Gappy Silvertooth show gossip text with aura ''The New You Cat''s Mark - Gappy Silvertooth'''),
+(14,10620,14699,0,0,1,0,90814,0,0,1,0,0,'','Gappy Silvertooth show gossip text with aura ''The New You Cat''s Mark - Gappy Silvertooth'''),
 (14,10622,14700,0,0,1,0,90816,0,0,0,0,0,'','Szabo show gossip text with aura ''The New You Cat''s Mark - Szabo'''),
-(14,10624,14703,0,0,1,0,90818,0,0,0,0,0,'','Missa Spekkies show gossip text with aura ''The New You Cat''s Mark - Missa Spekkies''');
+(14,10622,14701,0,0,1,0,90816,0,0,1,0,0,'','Szabo show gossip text with aura ''The New You Cat''s Mark - Szabo'''),
+(14,10624,14703,0,0,1,0,90818,0,0,0,0,0,'','Missa Spekkies show gossip text with aura ''The New You Cat''s Mark - Missa Spekkies'''),
+(14,10624,14704,0,0,1,0,90818,0,0,1,0,0,'','Missa Spekkies show gossip text with aura ''The New You Cat''s Mark - Missa Spekkies''');
 
 DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 15 AND `SourceGroup` IN (10620,10622,10624);
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES
