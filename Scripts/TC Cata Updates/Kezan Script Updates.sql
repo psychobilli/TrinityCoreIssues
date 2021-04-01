@@ -125,3 +125,66 @@ DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 19 AND `SourceEntry` 
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES
 (19,0,14113,0,0,20,0,0,0,0,0,0,0,'','Show quest Life of the Party (14113) for Males only.'),
 (19,0,14153,0,0,20,1,0,0,0,0,0,0,'','Show quest Life of the Party (14153) for Females only.');
+
+DELETE FROM `phase_area` WHERE `AreaId` = 4765 AND `PhaseId` IN (169,379);
+INSERT INTO `phase_area` (`AreaId`,`PhaseId`,`Comment`) VALUES
+(4765, 169, 'Kezan starting phase'),
+(4765, 379, 'Kezan ''Life of the Party''');
+
+DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 26 AND `SourceGroup` IN (379,169) AND `SourceEntry` = 4765;
+INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES
+(26,169,4765,0,0,47,0,14153,10,0,0,0,0,'','Kezan ''Life of the Party'' quest in progrss or completed set Phase 169'),
+(26,379,4765,0,0,47,0,14153,10,0,0,0,0,'','Kezan ''Life of the Party'' quest in progrss or completed set Phase 379'),
+(26,169,4765,0,1,47,0,14113,10,0,0,0,0,'','Kezan ''Life of the Party'' quest in progrss or completed set Phase 169'),
+(26,379,4765,0,1,47,0,14113,10,0,0,0,0,'','Kezan ''Life of the Party'' quest in progrss or completed set Phase 379');
+
+UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` = 35175;
+DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 22 AND `SourceEntry` IN (35175,35186);
+INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES
+(22,1,35175,0,0,1,1,75042,0,0,0,0,0,'','Kezan Partygoer has aura ''Bubbly'' use smart script.'),
+(22,2,35175,0,0,1,1,75044,0,0,0,0,0,'','Kezan Partygoer has aura ''Bucket'' use smart script.'),
+(22,3,35175,0,0,1,1,75046,0,0,0,0,0,'','Kezan Partygoer has aura ''Dance'' use smart script.'),
+(22,4,35175,0,0,1,1,75048,0,0,0,0,0,'','Kezan Partygoer has aura ''Fireworks'' use smart script.'),
+(22,5,35175,0,0,1,1,75050,0,0,0,0,0,'','Kezan Partygoer has aura ''Hors D''oeuvres'' use smart script.'),
+(22,13,35186,0,0,1,1,75042,0,0,0,0,0,'','Kezan Partygoer has aura ''Bubbly'' use smart script.'),
+(22,14,35186,0,0,1,1,75044,0,0,0,0,0,'','Kezan Partygoer has aura ''Bucket'' use smart script.'),
+(22,15,35186,0,0,1,1,75046,0,0,0,0,0,'','Kezan Partygoer has aura ''Dance'' use smart script.'),
+(22,16,35186,0,0,1,1,75048,0,0,0,0,0,'','Kezan Partygoer has aura ''Fireworks'' use smart script.'),
+(22,17,35186,0,0,1,1,75050,0,0,0,0,0,'','Kezan Partygoer has aura ''Hors D''oeuvres'' use smart script.');
+
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (35175) AND `source_type` = 0;
+INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`event_param5`,`action_type`,`action_param1`,`action_param2`,`action_param3`,`action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,`target_y`,`target_z`,`target_o`,`comment`) VALUES
+(35175,0,0,5,8,0,100,512,66909,0,0,0,0,33,35175,0,0,0,0,0,7,0,0,0,0,0,0,0,'Kezan Partygoer - Spell Hit ''Bubbly''  KC ''Life of the Party'''),
+(35175,0,1,5,8,0,100,512,66910,0,0,0,0,33,35175,0,0,0,0,0,7,0,0,0,0,0,0,0,'Kezan Partygoer - Spell Hit ''Bucket''  KC ''Life of the Party'''),
+(35175,0,2,5,8,0,100,512,66911,0,0,0,0,33,35175,0,0,0,0,0,7,0,0,0,0,0,0,0,'Kezan Partygoer - Spell Hit ''Dance''  KC ''Life of the Party'''),
+(35175,0,3,5,8,0,100,512,66912,0,0,0,0,33,35175,0,0,0,0,0,7,0,0,0,0,0,0,0,'Kezan Partygoer - Spell Hit ''Fireworks''  KC ''Life of the Party'''),
+(35175,0,4,5,8,0,100,512,66913,0,0,0,0,33,35175,0,0,0,0,0,7,0,0,0,0,0,0,0,'Kezan Partygoer - Spell Hit ''Hors D''oeuvres''  KC ''Life of the Party'''),
+(35175,0,5,6,61,0,100,512,0,0,0,0,0,28,0,0,0,0,0,0,1,0,0,0,0,0,0,0,'Kezan Partygoer - Link from Spell Hit Remove All Auras'),
+(35175,0,6,7,61,0,100,512,0,0,0,0,0,75,66916,0,0,0,0,0,1,0,0,0,0,0,0,0,'Kezan Partygoer - Link from Spell Hit Apply Aura ''Happy Partygoer'''),
+(35175,0,7,0,61,0,100,512,0,0,0,0,0,87,3517500,3517501,3517502,3517503,3517504,0,1,0,0,0,0,0,0,0,'Kezan Partygoer - Run random script.');
+
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (35186) AND `source_type` = 0 AND `id` IN (12,13,14,15,16,17,18,19);
+INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`event_param5`,`action_type`,`action_param1`,`action_param2`,`action_param3`,`action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,`target_y`,`target_z`,`target_o`,`comment`) VALUES
+(35186,0,12,17,8,0,100,512,66909,0,0,0,0,33,35175,0,0,0,0,0,7,0,0,0,0,0,0,0,'Kezan Partygoer - Spell Hit ''Bubbly''  KC ''Life of the Party'''),
+(35186,0,13,17,8,0,100,512,66910,0,0,0,0,33,35175,0,0,0,0,0,7,0,0,0,0,0,0,0,'Kezan Partygoer - Spell Hit ''Bucket''  KC ''Life of the Party'''),
+(35186,0,14,17,8,0,100,512,66911,0,0,0,0,33,35175,0,0,0,0,0,7,0,0,0,0,0,0,0,'Kezan Partygoer - Spell Hit ''Dance''  KC ''Life of the Party'''),
+(35186,0,15,17,8,0,100,512,66912,0,0,0,0,33,35175,0,0,0,0,0,7,0,0,0,0,0,0,0,'Kezan Partygoer - Spell Hit ''Fireworks''  KC ''Life of the Party'''),
+(35186,0,16,17,8,0,100,512,66913,0,0,0,0,33,35175,0,0,0,0,0,7,0,0,0,0,0,0,0,'Kezan Partygoer - Spell Hit ''Hors D''oeuvres''  KC ''Life of the Party'''),
+(35186,0,17,18,61,0,100,512,0,0,0,0,0,28,0,0,0,0,0,0,1,0,0,0,0,0,0,0,'Kezan Partygoer - Link from Spell Hit Remove All Auras'),
+(35186,0,18,19,61,0,100,512,0,0,0,0,0,75,66916,0,0,0,0,0,1,0,0,0,0,0,0,0,'Kezan Partygoer - Link from Spell Hit Apply Aura ''Happy Partygoer'''),
+(35186,0,19,0,61,0,100,512,0,0,0,0,0,87,3517500,3517501,3517502,3517503,3517504,0,1,0,0,0,0,0,0,0,'Kezan Partygoer - Run random script.');
+
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (3517500,3517501,3517502,3517503,3517504) AND `source_type` = 9;
+INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`event_param5`,`action_type`,`action_param1`,`action_param2`,`action_param3`,`action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,`target_y`,`target_z`,`target_o`,`comment`) VALUES
+(3517500,9,0,0,0,0,100,0,300000,300000,0,0,0,28,0,0,0,0,0,0,1,0,0,0,0,0,0,0,'Kezan Partygoer - Action List 0 - Remove All Auras'),
+(3517500,9,1,0,0,0,100,0,0,0,0,0,0,75,75042,0,0,0,0,0,1,0,0,0,0,0,0,0,'Kezan Partygoer - Action List 0 - Apply Aura ''Bubbly'''),
+(3517501,9,0,0,0,0,100,0,300000,300000,0,0,0,28,0,0,0,0,0,0,1,0,0,0,0,0,0,0,'Kezan Partygoer - Action List 0 - Remove All Auras'),
+(3517501,9,1,0,0,0,100,0,0,0,0,0,0,75,75044,0,0,0,0,0,1,0,0,0,0,0,0,0,'Kezan Partygoer - Action List 0 - Apply Aura ''Bucket'''),
+(3517501,9,2,0,0,0,100,0,0,0,0,0,0,75,46957,0,0,0,0,0,1,0,0,0,0,0,0,0,'Kezan Partygoer - Action List 0 - Apply Aura ''Cosmetic - Stun (Permanent)'''),
+(3517501,9,3,0,0,0,100,0,0,0,0,0,0,75,55664,0,0,0,0,0,1,0,0,0,0,0,0,0,'Kezan Partygoer - Action List 0 - Apply Aura ''Cosmetic - DrunkenIintoxication (Visual Only)'''),
+(3517502,9,0,0,0,0,100,0,300000,300000,0,0,0,28,0,0,0,0,0,0,1,0,0,0,0,0,0,0,'Kezan Partygoer - Action List 0 - Remove All Auras'),
+(3517502,9,1,0,0,0,100,0,0,0,0,0,0,75,75046,0,0,0,0,0,1,0,0,0,0,0,0,0,'Kezan Partygoer - Action List 0 - Apply Aura ''Dance'''),
+(3517503,9,0,0,0,0,100,0,300000,300000,0,0,0,28,0,0,0,0,0,0,1,0,0,0,0,0,0,0,'Kezan Partygoer - Action List 0 - Remove All Auras'),
+(3517503,9,1,0,0,0,100,0,0,0,0,0,0,75,75048,0,0,0,0,0,1,0,0,0,0,0,0,0,'Kezan Partygoer - Action List 0 - Apply Aura ''Fireworks'''),
+(3517504,9,0,0,0,0,100,0,300000,300000,0,0,0,28,0,0,0,0,0,0,1,0,0,0,0,0,0,0,'Kezan Partygoer - Action List 0 - Remove All Auras'),
+(3517504,9,1,0,0,0,100,0,0,0,0,0,0,75,75050,0,0,0,0,0,1,0,0,0,0,0,0,0,'Kezan Partygoer - Action List 0 - Apply Aura ''Hors D''oeuvres''');
