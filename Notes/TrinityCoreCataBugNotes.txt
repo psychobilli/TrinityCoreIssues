@@ -250,6 +250,7 @@ BROKEN ISLES
 	Q - Fourth and Goal (28414)(24503) - Event does not start.
 	Q - The New You (14109)(14110) - NPCs are missing gossip text.
 	Q - Life of the Party (14113) - Does not enter correct phase.  Party items do not work on guests.
+			Life of the Party - Outfit Secondary (66985) aura must be removed on quest complete.
 	Q - Pirate Party Crashers (14115) - Does not enter correct phase.  Pirates to not aggro correctly.
 	Q - The Uninvited Guest (14116) - Trade Prince Gallywix is not present.
 	Q - Liberate the Kaja'mite (14124) - May not enter correct phase, Kaja'mite does not break apart.
