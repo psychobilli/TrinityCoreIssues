@@ -72,3 +72,35 @@ INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type
 (3548605,9,0,0,0,0,100,512,5000,5000,0,0,0,1,8,0,0,0,0,0,1,0,0,0,0,0,0,0,'First Bank of Kezan - On Script - Say Line 8'),
 (3548605,9,1,0,0,0,100,512,2000,2000,0,0,0,1,9,0,0,0,0,0,1,0,0,0,0,0,0,0,'First Bank of Kezan - On Script - Say Line 9'),
 (3548605,9,2,0,0,0,100,512,0,0,0,0,0,63,1,1,0,0,0,0,1,0,0,0,0,0,0,0,'First Bank of Kezan - On Script - Increment Counter');
+
+-- 447
+UPDATE `creature_template` SET `VehicleId` = 590 WHERE `entry` = 37598;
+
+DELETE FROM `spell_scripts` WHERE `id` = 70253;
+INSERT INTO `spell_scripts` (`id`,`effIndex`,`delay`,`command`,`datalong`,`datalong2`,`dataint`,`x`,`y`,`z`,`o`) VALUES
+(70253,0,0,15,70252,0,0,0,0,0,0);
+
+UPDATE `gameobject_template` SET `AIName` = 'SmartGameObjectAI' WHERE `entry` = 201736;
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (201736) AND `source_type` = 1;
+INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`event_param5`,`action_type`,`action_param1`,`action_param2`,`action_param3`,`action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,`target_y`,`target_z`,`target_o`,`comment`) VALUES
+(201736,1,0,1,64,0,100,512,1,0,0,0,0,64,1,0,0,0,0,0,7,0,0,0,0,0,0,0,'Gasbot Control Panel - On Gossip Hello Store Target List'),
+(201736,1,1,0,61,0,100,512,0,0,0,0,0,67,1,5000,5000,0,0,100,7,0,0,0,0,0,0,0,'Gasbot Control Panel - Gossip Hello Create Timed Event'),
+(201736,1,2,3,59,0,100,512,1,0,0,0,0,33,37598,0,0,0,0,0,12,1,0,0,0,0,0,0,'Gasbot Control Panel - Timed Event Triggered KC 447'),
+(201736,1,3,0,61,0,100,512,0,0,0,0,0,75,49416,0,0,0,0,0,12,1,0,0,0,0,0,0,'Gasbot Control Panel - Timed Event Triggered Add Aura ''Generic Quest Invisibility Detection 1''');
+	
+UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` = 37598;
+INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`event_param5`,`action_type`,`action_param1`,`action_param2`,`action_param3`,`action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,`target_y`,`target_z`,`target_o`,`comment`) VALUES
+(37598,0,0,1,54,0,100,512,0,0,0,0,0,53,1,37598,0,0,0,0,1,0,0,0,0,0,0,0,'Gasbot- On Summoned Start WP'),
+(37598,0,1,0,61,0,100,512,0,0,0,0,0,75,70256,0,0,0,0,0,1,0,0,0,0,0,0,0,'Gasbot- On Summoned Start WP');
+
+DELETE FROM `waypoints` WHERE `entry` = 37598;
+INSERT INTO `waypoints` (`entry`,`pointid`,`position_x`,`position_y`,`position_z`,`point_comment`) VALUES
+(37598,1,-8424.21, 1342.95, 102.41,''),
+(37598,2,-8424.27, 1346.94, 104.66,''),
+(37598,3,-8423.88, 1365.72, 104.68,''),
+(37598,4,-8412.07, 1364.56, 104.71,'');
+
+-- Life Savings
+DELETE FROM `spell_scripts` WHERE `id` = 92629;
+INSERT INTO `spell_scripts` (`id`,`effIndex`,`delay`,`command`,`datalong`,`datalong2`,`dataint`,`x`,`y`,`z`,`o`) VALUES
+(92629,0,0,6,648,0,0,-7849.25,1838.15,7.72742,1.56003);

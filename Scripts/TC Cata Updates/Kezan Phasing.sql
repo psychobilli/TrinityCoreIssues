@@ -45,12 +45,15 @@ INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,
 (26,383,4737,0,0,47,0,14122,74,0,0,0,0,'','Kezan ''The Great Bank Heist'' quest taken, completed or rewarded set Phase 383'),
 (26,381,4765,0,0,47,0,14122,74,0,1,0,0,'','Kezan ''The Great Bank Heist'' quest taken, completed or rewarded remove Phase 381');
 
-DELETE FROM `phase_area` WHERE `AreaId` = 4765 AND `PhaseId` IN (384);
+DELETE FROM `phase_area` WHERE `AreaId` = 4737 AND `PhaseId` IN (384);
 INSERT INTO `phase_area` (`AreaId`,`PhaseId`,`Comment`) VALUES
-(4765, 384, 'Kezan ''447''');
+(4737, 384, 'Kezan ''447''');
 
-DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 26 AND `SourceGroup` IN (383,169,384) AND `SourceEntry` = 4765 AND `ConditionValue1` = 14125;
+DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 26 AND `SourceGroup` IN (384) AND `SourceEntry` = 4737 AND `ConditionValue1` = 14125;
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES
-(26,384,4765,0,0,47,0,14125,74,0,0,0,0,'','Kezan ''447'' quest taken, completed, or rewarded set Phase 384'),
+(26,384,4737,0,0,47,0,14125,74,0,0,0,0,'','Kezan ''447'' quest taken, completed, or rewarded set Phase 384');
+
+DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 26 AND `SourceGroup` IN (383) AND `SourceEntry` = 4765 AND `ConditionValue1` = 14125;
+INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES
 -- (26,169,4765,0,0,47,0,14125,74,0,0,0,0,'','Kezan ''447'' quest taken, completed or rewarded set Phase 169'),
 (26,383,4765,0,0,47,0,14125,64,0,1,0,0,'','Kezan ''447'' quest rewarded remove Phase 383');
