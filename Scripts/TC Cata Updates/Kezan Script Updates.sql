@@ -5,6 +5,40 @@ DELETE FROM `npc_spellclick_spells` WHERE `npc_entry` = 34840 AND `spell_id` = 6
 INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES
 (34840, 66392, 1, 0);
 
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (34840);
+INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`event_param5`,`action_type`,`action_param1`,`action_param2`,`action_param3`,`action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,`target_y`,`target_z`,`target_o`,`comment`) VALUES
+(34840,0,0,0,75,0,100,512,0,35234,12,1,0,11,66301,0,0,0,0,0,7,0,0,0,0,0,0,0,'Hot Rod - On Creature ''Hired Looter'' Near Cast ''Hot Rod Knockback'''),
+(34840,0,1,0,75,0,100,512,0,35063,12,1,0,11,66301,0,0,0,0,0,7,0,0,0,0,0,0,0,'Hot Rod - On Creature ''Kezan Citizen'' Near Cast ''Hot Rod Knockback'''),
+(34840,0,2,0,75,0,100,512,0,35075,12,1,0,11,66301,0,0,0,0,0,7,0,0,0,0,0,0,0,'Hot Rod - On Creature ''Kezan Citizen'' Near Cast ''Hot Rod Knockback''');
+
+UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` = 34890;
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (34890);
+INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`event_param5`,`action_type`,`action_param1`,`action_param2`,`action_param3`,`action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,`target_y`,`target_z`,`target_o`,`comment`) VALUES
+(34890,0,0,1,10,0,100,512,1,5,30,30,0,33,34959,0,0,0,0,0,7,0,0,0,0,0,0,0,'Izzy - On LOS KC ''Rolling with my Homies'''),
+(34890,0,1,0,61,0,100,512,0,0,0,0,0,134,66600,0,0,0,0,0,7,0,0,0,0,0,0,0,'Izzy - On LOS Cast ''Rolling with my Homies: Summon Izzy''');
+UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` = 34892;
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (34892);
+INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`event_param5`,`action_type`,`action_param1`,`action_param2`,`action_param3`,`action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,`target_y`,`target_z`,`target_o`,`comment`) VALUES
+(34892,0,0,1,10,0,100,512,1,5,30,30,0,33,34957,0,0,0,0,0,7,0,0,0,0,0,0,0,'Ace - On LOS KC ''Rolling with my Homies'''),
+(34892,0,1,0,61,0,100,512,0,0,0,0,0,134,66697,0,0,0,0,0,7,0,0,0,0,0,0,0,'Ace - On LOS Cast ''Rolling with my Homies: Summon Ace''');
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (34954);
+INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`event_param5`,`action_type`,`action_param1`,`action_param2`,`action_param3`,`action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,`target_y`,`target_z`,`target_o`,`comment`) VALUES
+(34954,0,0,1,10,0,100,512,1,5,30,30,0,33,34958,0,0,0,0,0,7,0,0,0,0,0,0,0,'Gobber - On LOS KC ''Rolling with my Homies'''),
+(34954,0,1,0,61,0,100,512,0,0,0,0,0,134,66599,0,0,0,0,0,7,0,0,0,0,0,0,0,'Gobber - On LOS Cast ''Rolling with my Homies: Summon Gobber''');
+
+DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 22 AND `SourceGroup` IN (2) AND `SourceEntry` IN (34890);
+INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES
+(22,2,34890,0,1,47,0,14071,8,0,0,0,0,'','Izzy trigger script while quest ''Rolling with my Homies'' in progress'),
+(22,2,34890,0,1,29,0,34959,7,0,1,0,0,'','Izzy trigger script while npc is not near');
+DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 22 AND `SourceGroup` IN (2) AND `SourceEntry` IN (34892);
+INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES
+(22,2,34892,0,1,47,0,14071,8,0,0,0,0,'','Ace trigger script while quest ''Rolling with my Homies'' in progress'),
+(22,2,34892,0,1,29,0,34957,7,0,1,0,0,'','Ace trigger script while npc is not near');
+DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 22 AND `SourceGroup` IN (2) AND `SourceEntry` IN (34894);
+INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES
+(22,2,34894,0,1,47,0,14071,8,0,0,0,0,'','Gobber trigger script while quest ''Rolling with my Homies'' in progress'),
+(22,2,34894,0,1,29,0,34958,7,0,1,0,0,'','Gobber trigger script while npc is not near');
+
 -- make Keys to the Hot Rod (28607) repeatable.
 UPDATE `quest_template_addon` SET `SpecialFlags` = 1 WHERE `Id` = 28607;
 
@@ -194,12 +228,6 @@ INSERT INTO `creature` (`id`,`map`,`zoneId`,`areaId`,`spawnMask`,`phaseUseFlags`
 (35222,648,4737,4765,1,0,1,382,0,-1,0,0,-8423.75,1362.25,116.86,4.67,120,0,0,0,0,0,0,0,0,'',0);
 
 -- The Great Bank Heist, Robbing Hoods and Waltz Right In
-DELETE FROM `smart_scripts` WHERE `entryorguid` IN (34840);
-INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`event_param5`,`action_type`,`action_param1`,`action_param2`,`action_param3`,`action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,`target_y`,`target_z`,`target_o`,`comment`) VALUES
-(34840,0,0,0,75,0,100,512,0,35234,12,1,0,11,66301,0,0,0,0,0,7,0,0,0,0,0,0,0,'Hot Rod - On Creature ''Hired Looter'' Near Cast ''Hot Rod Knockback'''),
-(34840,0,1,0,75,0,100,512,0,35063,12,1,0,11,66301,0,0,0,0,0,7,0,0,0,0,0,0,0,'Hot Rod - On Creature ''Kezan Citizen'' Near Cast ''Hot Rod Knockback'''),
-(34840,0,2,0,75,0,100,512,0,35075,12,1,0,11,66301,0,0,0,0,0,7,0,0,0,0,0,0,0,'Hot Rod - On Creature ''Kezan Citizen'' Near Cast ''Hot Rod Knockback''');
-
 DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 22 AND `SourceGroup` IN (1) AND `SourceEntry` = 35234;
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES
 (22,1,35234,0,0,47,0,14121,8,0,0,0,0,'','''Robbing Hoods'' quest state in progress run script.');
