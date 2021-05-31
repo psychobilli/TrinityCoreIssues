@@ -15,10 +15,24 @@ EVERSONG WOODS
 	unexpected business (8488) - does not yield group credit
 SILVERMOON CITY - PALADIN
 	the first trial (9678) - unable to turn in quest with completed criteria
+MULGORE
+	Demon Scarred Cloak (770) - Quest item is not destroyed with turn in.
 BARRENS
 	deep cover (2458) - unable to interact with quest giver 7233
+	Samoplange (900) - unable to interact with valves.
 WESTFALL
 	the defias brotherhood (155) - does not yield group credit
+REDRIDGE MOUNTAINS
+	Rethban Ore (347) - Ore has a very low drop rate from mobs.
+DARKSHORE
+	Therylune's Escape (945) - Does not yield group credit.
+BLOODMYST ISLE 
+	Razormaw(9689) - Razormaw does not path to mountain.
+STONETALON MOUNTAINS
+	Covert Ops - Alpha (1079) - Explosive wagon does not distract mobs.
+	Covert Ops - Beta (1080) - Explosive wagon does not distract mobs.
+ASHENVALE
+	Stonetalon Standstill (25) - Tideress (12759) does not path to gazebo.
 BOOTY BAY
 	gnomer-gooone (2843) - doesn't reward if another player picks up the quest
 	goblin transponder doesn't work.
@@ -26,17 +40,23 @@ THOUSAND NEEDLES
 	protect kanati greyclound (4966) - centaur spawn but don't path
 		kanati dies, though the quest completes and he respawns immediately.
 DESOLACE
-	body guard for hire (5821) - quest is always available, escort doesn't
-		appear to be scripted.
-	gizelton caravan (5943) -  quest is always available, escort doesn't
-		appear to be scripted.
+	Body Guard for Hire (5821) - Quest does not offer group credit.
+	Gizelton Caravan (5943) -  Quest does not offer group credit.
 STANGLETHORN VALE
 	encrusted tail fins (1107) - mobs have insane spawn times
 	pearl diving (705) - gameobject 2744 has long spawn times.
-DUSTWALLOW SWAMP
+	Jungle Secrets (215) - Is not offered correctly.  Seems to be revoked when accepting 
+		The Second Rebellion (203).
+	Enchanted Azsharite Fel Weaponry (3625) - Two players turning in the quest bugs quest credit.
+DUSTWALLOW MARSH
 	cleansing witch hill (11183) - event runs twice with 2 players in group
 	stinky's escape (1270) - does not yield group credit
 	take down tethyr! - tethyr cannot be damaged with cannons
+ARATHI HIGHLANDS
+	Favor for Krazek (627) - Bloodstone Veins not present in cave.
+SWAMP OF SORROWS
+TANARIS
+	Rescue OOX-17/TN! (648) - Does not yield group credit.
 MAGE
 	items of power (1948) - bramble can never be looted.
 	mana surges (1957) - half of the mobs don't spawn.
@@ -47,6 +67,18 @@ SEARING GORGE
 	suntar stones (3368) - does not yield group credit
 BURNING STEPPS
 	gaining acceptance(13662) - not repeatable
+BLASTED LANDS
+	The Stones that Bind Us (2681) - Some spawns are too far from their stones.
+SILITHUS
+	Glyph Chasing (8309) - Rubbings require a respawn before group members can loot.
+WINTERSPRING
+	Shy-Rotam (5056) - Quest does not correctly grant credit for all group members.
+	Past Endeavors (5057) - Incorrectly offered to Alliance.
+WESTERN PLAGUELANDS
+	Locked Away (5060) - Farmer Dalson sometimes does not appear, though he does attack.
+	In Dreams (5944) In Dreams escort does not work.
+EASTERN PLAGUELANDS
+	Writ of Safe Passage (9165) - Field Marshal Chambers does not spawn.
 DK START - Eye of Acherus moves far too slowly.  Maybe.
 ZUL'FARRAK - Ghaz'Rilla is unattackable, sometimes.
 SUNKEN TEMPLE - Atal'ai Deathwalker Spirit moves too fast.
@@ -60,13 +92,14 @@ UBRS - Rend event does not spawn waves correctly.
 	Drakkisath death does not open doors.
 Scholomance - Dawn's Gamit event doesn't work.
 Statholme - Fras Siabi can't be summoned.
-Plaguelands - 5944 - In Dreams escort does not work.
 Dire Maul - 
-	Pylons do not shatter correctly.
-	Immol'thar is not correctly accessible.
+	Old Ironbark (11491) does not offer gossip to open door. 
+		The doors were open, this might be right.
+	King of the Gordok - Guards do not buff player.
 	Prince does not move or aggro after Immol'thar death.
 	Chest for Unfinished Gordok Business does not become lootable.
 	Knot is in the wrong spot.
+	Captain Kromcrush does not path to correct spot.
 	x = 581.066040, y = 523.055725, z = -25.403263, o = 2.760699
 HELLFIRE PENINSULA
 	A Spirit Guide (9410) - Ghost Wolf has no escort scripts.

@@ -1,0 +1,78 @@
+To translate the data into points on a scatter chart, 
+transpose the x and y axis then multiply the horizontal axis by -1
+
+-- query to get gameobjects within a range.
+select distinct case when id = 189973
+			then concat(id, ': goldthorn')
+            when id = 191303
+            then concat(id, ': firethorn')
+            when id = 190170
+            then concat(id, ': talandra''s rose')
+            when id = 190169
+            then concat(id, ': tiger lily')
+            when id = 190173
+            then concat(id, ': frozen herb 1')
+            when id = 190175
+            then concat(id, ': frozen herb 2')
+            when id = 191019
+            then concat(id, ': adder''s tongue')
+            when id = 190171
+            then concat(id, ': lich bloom')
+            when id = 190172
+            then concat(id, ': icethorn')
+			else id
+		end as herbs
+	, position_x
+	, position_y
+    , position_z
+from gameobject go
+where id in (189980,189981,195036,191133) -- saronite and titanium veins
+-- where id in (189973,191303,190170,190169,190173,190175,190171,191019,190172) -- herbs
+  and position_x between 4592.24 and 6818.39
+  and position_y between 3379.37 and 6219.45
+order by position_x;
+
+Saronite Deposit (189980)
+Rich Saronite Deposit (189981)
+Pure Saronite Deposit (195036)
+Titanium Vein: (191133)
+
+Borean Tundra:
+	x between 1173.65 and 4731.91
+	y between 3102.82 and 7589.94
+	
+Howling Fjord:
+	x between  and
+	y between  and
+	
+Dragonblight:
+	x between 2667.47 and 5196.64
+	y between -1629.33 and 3261.36
+	
+Grizzly Hills:
+	x between  and
+	y between  and
+	
+Zul'Drak:
+	x between  and
+	y between  and
+	
+Cystalsong Forest:
+	x between 4834.33 and 6330.50
+	y between -1229.80 and 1433.04
+	
+Sholazar Basin: 
+	x betweem 4592.24 and 6818.39
+	y betweem 3379.37 and 6219.45
+	
+Storm Peaks:
+	x between 5670.32 and 9737.71
+	y between -4215.06 and 521.31
+	
+Icecrown:
+	x between 5229.54 and 9262.38
+	y between -93.71 and 5215.31
+	
+Wintergrasp:
+	x between 3935.44 and 5590.00
+	y between 1600.00 and 3379.37
