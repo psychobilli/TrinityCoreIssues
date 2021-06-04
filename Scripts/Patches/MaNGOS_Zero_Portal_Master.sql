@@ -26,7 +26,7 @@ DELETE FROM creature_template_addon WHERE Entry = @ENTRY;
 DELETE FROM gameobject_template WHERE entry = @ENTRY;
 DELETE FROM gossip_menu WHERE entry BETWEEN @GOSSIP_MENU AND @GOSSIP_MENU+8;
 DELETE FROM npc_text WHERE ID BETWEEN @TEXT_ID AND @TEXT_ID+4;
-DELETE FROM conditions WHERE condition_entry BETWEEN @CONDITIONID AND @CONDITIONID+97;
+DELETE FROM conditions WHERE condition_entry BETWEEN @CONDITIONID AND @CONDITIONID+101;
 DELETE FROM gossip_menu_option WHERE menu_id BETWEEN @GOSSIP_MENU AND @GOSSIP_MENU+8;
 DELETE FROM db_scripts WHERE id BETWEEN @GOSSIP_SCRIPT AND @GOSSIP_SCRIPT+134 AND script_type = 2;
 DELETE FROM creature WHERE ID = @ENTRY;
@@ -128,9 +128,14 @@ INSERT INTO conditions (condition_entry, type, value1, value2) VALUES
 -- (@CONDITIONID+91, -1, 4, 2003),
 -- (@CONDITIONID+92, -1, 3, 168),
 -- (@CONDITIONID+93, -1, 4, @CONDITIONID+28),
-(@CONDITIONID+94, -1, 3, @CONDITIONID+28)
+(@CONDITIONID+94, -1, 3, @CONDITIONID+28),
 -- (@CONDITIONID+95, -1, 3, @CONDITIONID+30),
 -- (@CONDITIONID+96, -1, 3, @CONDITIONID+31)
+(@CONDITIONID+97, 8, 9121, 0),
+(@CONDITIONID+98, 8, 9122, 0),
+(@CONDITIONID+99, 8, 9123, 0),
+(@CONDITIONID+100, -2, @CONDITIONID+98, @CONDITIONID+99),
+(@CONDITIONID+101, -2, @CONDITIONID+97, @CONDITIONID+100)
 ;
 
 INSERT INTO gossip_menu_option (menu_id, id, option_icon, option_text, option_id, npc_option_npcflag, action_menu_id, action_poi_id, action_script_id, box_coded, box_money, box_text, condition_id) VALUES
@@ -145,7 +150,7 @@ INSERT INTO gossip_menu_option (menu_id, id, option_icon, option_text, option_id
 (@GOSSIP_MENU, 8, 3, "Eastern Kingdoms 1-35", 1, 1, @GOSSIP_MENU+4, 0, 0, 0, 0, NULL, 0),
 (@GOSSIP_MENU, 9, 3, "Eastern Kingdoms 35-60", 1, 1, @GOSSIP_MENU+5, 0, 0, 0, 0, NULL, 2007),
 (@GOSSIP_MENU, 10, 3, "Kalimdor 1-40", 1, 1, @GOSSIP_MENU+6, 0, 0, 0, 0, NULL, 0),
-(@GOSSIP_MENU, 11, 3, "Kalimdor 40-60", 1, 1, @GOSSIP_MENU+7, 0, 0, 0, 0, NULL, 0),
+(@GOSSIP_MENU, 11, 3, "Kalimdor 40-60", 1, 1, @GOSSIP_MENU+7, 0, 0, 0, 0, NULL, 179),
 (@GOSSIP_MENU, 12, 9, "Dungeons 1-40", 1, 1, @GOSSIP_MENU+1, 0, 0, 0, 0, NULL, 2001),
 (@GOSSIP_MENU, 13, 9, "Dungeons 40-60", 1, 1, @GOSSIP_MENU+2, 0, 0, 0, 0, NULL, 179),
 (@GOSSIP_MENU, 14, 9, "Raid Teleports", 1, 1, @GOSSIP_MENU+3, 0, 0, 0, 0, NULL, @CONDITIONID+43),
@@ -181,8 +186,8 @@ INSERT INTO gossip_menu_option (menu_id, id, option_icon, option_text, option_id
 (@GOSSIP_MENU+3, 3, 2, "Ruins of Ahn'Qiraj", 1, 1, 0, 0, @GOSSIP_SCRIPT+63, 0, 0, "Are you sure, that you want to go to Ruins of Ahn'Qiraj?", @CONDITIONID+46),
 (@GOSSIP_MENU+3, 4, 2, "Temple of Ahn'Qiraj", 1, 1, 0, 0, @GOSSIP_SCRIPT+66, 0, 0, "Are you sure, that you want to go to Temple of Ahn'Qiraj?", @CONDITIONID+46),
 (@GOSSIP_MENU+3, 5, 2, "Zul'Gurub", 1, 1, 0, 0, @GOSSIP_SCRIPT+72, 0, 0, "Are you sure, that you want to go to Zul'Gurub?", @CONDITIONID+43),
-(@GOSSIP_MENU+3, 6, 7, "Back..", 1, 1, @GOSSIP_MENU, 0, 0, 0, 0, NULL, 0),
--- (@GOSSIP_MENU+3, 7, 2, "Naxxramas", 1, 1, 0, 0, @GOSSIP_SCRIPT+61, 0, 0, "Are you sure, that you want to go to Naxxramas?", 185),
+(@GOSSIP_MENU+3, 6, 2, "Naxxramas", 1, 1, 0, 0, @GOSSIP_SCRIPT+61, 0, 0, "Are you sure, that you want to go to Naxxramas?", @CONDITIONID+101),
+(@GOSSIP_MENU+3, 7, 7, "Back..", 1, 1, @GOSSIP_MENU, 0, 0, 0, 0, NULL, 0),
 
 (@GOSSIP_MENU+4, 0, 2, "Elwynn Forest", 1, 1, 0, 0, @GOSSIP_SCRIPT+74, 0, 0, "Are you sure, that you want to go to Elwynn Forest?", 4),
 (@GOSSIP_MENU+4, 1, 2, "Dun Morogh", 1, 1, 0, 0, @GOSSIP_SCRIPT+76, 0, 0, "Are you sure, that you want to go to Dun Morogh?", 4),
@@ -269,7 +274,7 @@ INSERT INTO db_scripts (id, script_type, delay, command, datalong, x, y, z, o, c
 (@GOSSIP_SCRIPT+53, 2, 0, 6, 1, -8177.89, -4181.23, -167.552, 0.913338, ""),
 (@GOSSIP_SCRIPT+59, 2, 0, 6, 0, -11118.9, -2010.33, 47.0819, 0.649895, ""),
 (@GOSSIP_SCRIPT+60, 2, 0, 6, 230, 1126.64, -459.94, -102.535, 3.46095, ""),
--- (@GOSSIP_SCRIPT+61, 2, 0, 6, 571, 3668.72, -1262.46, 243.622, 4.785, ""),
+(@GOSSIP_SCRIPT+61, 2, 0, 6, 0, 3117.88, -3722.88, 136.59, 5.76732, ""),
 (@GOSSIP_SCRIPT+62, 2, 0, 6, 1, -4708.27, -3727.64, 54.5589, 3.72786, ""),
 (@GOSSIP_SCRIPT+63, 2, 0, 6, 1, -8409.82, 1499.06, 27.7179, 2.51868, ""),
 (@GOSSIP_SCRIPT+66, 2, 0, 6, 1, -8240.09, 1991.32, 129.072, 0.941603, ""),
