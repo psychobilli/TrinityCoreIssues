@@ -3,7 +3,7 @@ select 'Death Squad', max(totaltime) as totalTime
 from zero_character.characters
 where guid in (1,2,3,4,5)
 union
-select 'Strike Team', max(totaltime)
+select 'Elite Force', max(totaltime)
 from zero_character.characters
 where guid in (6,7,8,9,10);
 
@@ -24,7 +24,7 @@ values (1,400),(11,8800),(21,25200),(31,50800),(41,95800),(51,153900),
 (9,6500),(19,21300),(29,44300),(39,85700),(49,141200),(59,209800),
 (10,7600),(20,23200),(30,47400),(40,90700),(50,147500),(60,217400);
 
-select c.name, c.level, c.xp, c.xp/vl.xp as pct
+select 'Death Squad', c.name, c.level, c.xp, c.xp/vl.xp as pct
 from zero_character.characters c
   join vanilla_levels vl on vl.lvl = level
 where guid between 1 and 5
@@ -40,7 +40,7 @@ where guid between 1 and 5
       and level = c.level
   )
 union
-select c.name, c.level, c.xp, c.xp/vl.xp as pct
+select 'Elite Force', c.name, c.level, c.xp, c.xp/vl.xp as pct
 from zero_character.characters c
   join vanilla_levels vl on vl.lvl = level
 where guid between 6 and 10
@@ -54,4 +54,4 @@ where guid between 6 and 10
     from zero_character.characters
     where guid between 6 and 10
       and level = c.level
-  )
+  );
