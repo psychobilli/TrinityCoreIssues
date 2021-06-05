@@ -1,11 +1,29 @@
 -- Total time for Vanilla teams
-select 'Death Squad', max(totaltime) as totalTime
-from zero_character.characters
-where guid in (1,2,3,4,5)
-union
-select 'Elite Force', max(totaltime)
-from zero_character.characters
-where guid in (6,7,8,9,10);
+select title
+	, seconds as totalTime
+	, days
+    , hours - (days * 24) as hours
+    , minutes - (hours * 60) as minutes
+    , minutesFrac as seconds
+from (
+	select 'Death Squad' as title
+		, ((max(totaltime) div 60) div 60) div 24 as days
+		, (max(totaltime) div 60) div 60 as hours
+		, max(totaltime) div 60 as minutes
+        , max(totaltime) mod 60 as minutesFrac
+		, max(totaltime) as seconds
+	from zero_character.characters
+	where guid in (1,2,3,4,5)
+	union
+	select 'Elite Force'
+		, ((max(totaltime) div 60) div 60) div 60
+		, (max(totaltime) div 60) div 60
+		, max(totaltime) div 60
+        , max(totaltime) mod 60
+		, max(totaltime)
+	from zero_character.characters
+	where guid in (6,7,8,9,10)
+) totalTime;
 
 -- Lowest level for Vanilla teams
 drop temporary table if exists vanilla_levels;
