@@ -1,0 +1,240 @@
+//-----------------------------------------------------------
+// PRESS CTRL R TO RENAME WOW'S IF YOU LAUNCH THEM MANUALLY.
+//-----------------------------------------------------------
+<Hotkey ScrollLockOn Ctrl R>
+    <SendPC Local>
+        <RenameWin "World of Warcraft" WoW1> 
+        <RenameWin "World of Warcraft" WoW2> 
+        <RenameWin "World of Warcraft" WoW3> 
+        <RenameWin "World of Warcraft" WoW4>        
+        <RenameWin "World of Warcraft" WoW5>
+
+<Hotkey ScrollLockOn Ctrl T>
+	<SendPC Local>
+		<RenameWin WoW1 "World of Warcraft">
+		<RenameWin WoW2 "World of Warcraft">
+		<RenameWin WoW3 "World of Warcraft">
+		<RenameWin WoW4 "World of Warcraft">
+		<RenameWin WoW5 "World of Warcraft">
+	
+//-----------------------------------------------------------
+// WINDOW POSITIONS
+//-----------------------------------------------------------
+<Command Primary>
+	<TargetWin %1%>
+		<Wait 100>
+		<SetWinPos -8 0>
+		<SetWinSize 1934 1050>
+		<SetForegroundWin>
+		<UpdateWin>
+		
+<Command Secondary>
+	<TargetWin %1%>
+		<Wait 100>
+		<SetWinPos 1913 0>
+		<SetWinSize 1934 1050>
+		<SetForegroundWin>
+		<UpdateWin>
+		
+<Command Secondary_1>
+	<TargetWin %1%>
+		<Wait 100>
+		<SetWinPos 1913 0>
+		<SetWinSize 975 531>
+        <SetForegroundWin>
+		
+<Command Secondary_2>
+	<TargetWin %1%>
+		<Wait 100>
+		<SetWinPos 2873 0>
+		<SetWinSize 975 531>
+        <SetForegroundWin>
+		
+<Command Secondary_3>
+	<TargetWin %1%>
+		<Wait 100>
+		<SetWinPos 1913 523>
+		<SetWinSize 975 531>
+        <SetForegroundWin>
+		
+<Command Secondary_4>
+	<TargetWin %1%>
+		<Wait 100>
+		<SetWinPos 2873 523>
+		<SetWinSize 975 531>
+        <SetForegroundWin>
+
+//-----------------------------------------------------------
+// Initial window positions
+//-----------------------------------------------------------
+<Command SetF1Pos>
+	<TargetWin %5%>
+		<Secondary_4 %5%>
+	<TargetWin %4%>
+		<Secondary_3 %4%>
+	<TargetWin %3%>
+		<Secondary_2 %3%>
+	<TargetWin %2%>
+		<Secondary_1 %2%>
+	<TargetWin %1%>
+		<Primary %1%>
+
+//-----------------------------------------------------------
+// SUBROUTINE TO LAUNCH AND RENAME A COPY OF WOW.
+//-----------------------------------------------------------
+<Command RenameWindows>
+	<SendPC Local>
+		<RenameWin "World of Warcraft" %1%>
+
+<Command Login>
+	<SendPC %1%>
+		<Wait 200>
+		<Text %2%>
+		<Wait 500>
+		<Key Tab>
+		<Wait 500>
+		<Text %3%>
+		<Key Enter>
+		
+<Command LaunchAndRename>
+	<SendPC %1%>
+		<Run "E:\Games\World of Warcraft Van\WoW.exe">
+		<RenameWindows %2%>
+		<Login %1% %3% %4%>
+ 
+//-----------------------------------------------------------
+// HOTKEY TO LAUNCH AND RENAME BOTH WOW'S.
+//-----------------------------------------------------------
+<Hotkey ScrollLockOn Alt Ctrl L>
+    <LaunchAndRename Local WoW1 DS1 t>
+    <LaunchAndRename Local WoW2 DS2 t>
+    <LaunchAndRename Local WoW3 DS3 t>
+    <LaunchAndRename Local WoW4 DS4 t>
+    <LaunchAndRename Local WoW5 DS5 t>
+	<SetF1Pos WoW1 WoW2 WoW3 WoW4 WoW5>
+ 
+//-----------------------------------------------------------
+// LOGIN ACCOUNTS
+//-----------------------------------------------------------
+<Hotkey ScrollLockOn RCtrl L>
+	<TargetWin WoW5>
+		<Wait 200>
+        <SetForegroundWin>
+		<Login Local DS5 t>
+	<TargetWin WoW4>
+        <SetForegroundWin>
+		<Login Local DS4 t>
+	<TargetWin WoW3>
+        <SetForegroundWin>
+		<Login Local DS3 t>
+	<TargetWin WoW2>
+        <SetForegroundWin>
+		<Login Local DS2 t>
+	<TargetWin WoW1>
+        <SetForegroundWin>
+		<Login Local DS1 t>
+  
+//-----------------------------------------------------------
+// DEFINE MAIL LABELS FOR SENDING KEY STROKES.
+//-----------------------------------------------------------
+<Label w1 Local SendWinM WoW1>
+<Label w2 Local SendWinM WoW2>
+<Label w3 Local SendWinM WoW3>
+<Label w4 Local SendWinM WoW4>
+<Label w5 Local SendWinM WoW5>
+
+//----------------------------------------------------------------
+// SET STANDARD WINDOW POSITIONS, DEFINED ABOVE
+//----------------------------------------------------------------
+<Hotkey ScrollLockOn RCtrl F1>
+	<SetF1Pos WoW1 WoW2 WoW3 WoW4 WoW5>
+<Hotkey ScrollLockOn RCtrl F2>
+	<Toggle>
+		<Secondary WoW2>
+	<Toggle>
+		<Secondary_1 WoW2>
+<Hotkey ScrollLockOn RCtrl F3>
+	<Toggle>
+		<Secondary WoW3>
+	<Toggle>
+		<Secondary_2 WoW3>
+<Hotkey ScrollLockOn RCtrl F4>
+	<Toggle>
+		<Secondary WoW4>
+	<Toggle>
+		<Secondary_3 WoW4>
+<Hotkey ScrollLockOn RCtrl F5>
+	<Toggle>
+		<Secondary WoW5>
+	<Toggle>
+		<Secondary_4 WoW5>
+  
+//-----------------------------------------------------------
+// DEFINE HOTKEYS FOR ALL KEY COMBINATIONS TO SEND TO EACH
+// WINDOW. SET UP A MACRO SYSTEM FOR EACH CHARACTER.
+//-----------------------------------------------------------
+// Start Rotation
+<Hotkey ScrollLockOn LShift D>
+// Short term Buffs
+<Hotkey ScrollLockOn LShift LCtrl V>
+// Buff All
+<Hotkey ScrollLockOn LShift LCtrl B>
+	<SendLabel w3>
+		<Key 9>
+// Cancel All and Auto Follow
+<Hotkey ScrollLockOn LShift F>
+	<SendLabel w2,w3,w4,w5>
+		<Key LShift 1>
+		<Cancel>
+		<Key d>
+		<Wait 10>
+		<Key 1>
+// Cancel All and Reverse Auto Follow
+<Hotkey ScrollLockOn LCtrl LShift F>
+	<SendLabel w1>
+		<Key LShift 1>
+		<Cancel>
+		<Key d>
+		<Wait 10>
+		<Key 1>
+// Cancel and Stop Follow
+<Hotkey ScrollLockOn LShift C>
+	<SendLabel w2,w3,w4,w5>
+		<Key LShift 1>
+		<Cancel>
+		<Key d>
+		<Wait 10>
+// Call Ground Mount
+<Hotkey ScrollLockOn LShift H>
+	<SendLabel w1,w2,w3,w4,w5>
+		<Key LShift 2>
+		<Key 1>
+		<Key LShift 1>
+// Set Auto Run
+<Hotkey ScrollLockOn LShift LCtrl Button4>
+	<SendLabel w2,w3,w4,w5>
+		<Key w>
+		<Key Shift Up>
+// Trinity Core Full Heal
+<Hotkey ScrollLockOn LShift Z>
+	<SendLabel w1,w2,w3,w4,w5>
+		<Cancel>
+		<Key LShift Z>
+//-----------------------------------------------------------
+// BROADCAST MOUSE CLICKS. HOLD DOWN OEM3 (ON U.S. KEYBOARDS,
+// THAT'S THE SQUIGGLE KEY IN UPPPER LEFT CORNER) WHEN YOU
+// WANT TO BROADCAST.
+//-----------------------------------------------------------
+<UseKeyAsModifier Oem3>
+ 
+<Hotkey ScrollLockOn Oem3 LButton, MButton, RButton, Button4, Button5>
+   <SendLabel w1, w2, w3, w4, w5>
+      <ClickMouse %TriggerMainKey%>
+                <RestoreMousePos>
+
+//----------------------------------------------------------------
+// Escape, Enter, Space, Bags All
+//----------------------------------------------------------------
+<Hotkey ScrollLockOn RCtrl Esc, Enter, Space, b>
+	<SendLabel w1, w2, w3, w4, w5>
+		<Key %Trigger%>

@@ -1,0 +1,290 @@
+//================================================================
+// SAMPLE SCRIPT FOR TWO WOW'S ON ONE PC
+//
+// Instructions: Copy this entire script (all the blue writing
+// on gray background including comments). Save it in a file.
+// Load it into HotkeyNet.
+//
+// Toggle the scroll lock key to turn hotkeys off and on. (You
+// can change this if you want, just like you can change
+// everything else with HotkeyNet.)
+//
+// Requires HotkeyNet build 147 or higher.
+//
+// For more info, go to www.hotkeynet.com
+//================================================================
+ 
+//-----------------------------------------------------------
+// PRESS CTRL R TO RENAME WOW'S IF YOU LAUNCH THEM MANUALLY
+//-----------------------------------------------------------
+<Hotkey ScrollLockOn Ctrl R>
+    <SendPC local>
+        <RenameWin "World of Warcraft" WoW1>
+        <RenameWin "World of Warcraft" WoW2>
+
+<Hotkey ScrollLockOn Ctrl T>
+	<SendPC local>
+		<RenameWin WoW1 "World of Warcraft">
+		<RenameWin WoW2 "World of Warcraft">
+	
+//-----------------------------------------------------------
+// WINDOW POSITIONS
+//-----------------------------------------------------------
+<Command Primary>
+	<TargetWin %1%>
+		<Wait 100>
+		<SetWinPos -8 0>
+		<SetWinSize 1934 1050>
+		<SetForegroundWin>
+		<UpdateWin>
+		
+<Command Secondary>
+	<TargetWin %1%>
+		<Wait 100>
+		<SetWinPos 1913 0>
+		<SetWinSize 1934 1050>
+		<SetForegroundWin>
+		<UpdateWin>	
+
+//-----------------------------------------------------------
+// INITIAL WINDOW POSITIONS
+//-----------------------------------------------------------
+<Command SetStandardWindows>
+	<TargetWin %2%>
+		<Secondary %2%>
+	<TargetWin %1%>
+		<Primary %1%>
+ 
+//-----------------------------------------------------------
+// SUBROUTINE TO LAUNCH AND RENAME A COPY OF WOW.
+//-----------------------------------------------------------
+<Command RenameWindows>
+	<SendPC Local>
+		<RenameWin "World of Warcraft" %1%>
+
+<Command Login>
+	<SendPC %1%>
+		<Wait 200>
+		<Text %2%>
+		<Wait 500>
+		<Key Tab>
+		<Wait 500>
+		<Text %3%>
+		<Key Enter>
+		
+<Command LaunchAndRename>
+	<SendPC %1%>
+		<Run "E:\Games\World of Warcraft WotLK\Wow.exe">
+		<RenameWindows %2%>
+		<Login %1% %3% %4%>
+ 
+//-----------------------------------------------------------
+// HOTKEY TO LAUNCH AND RENAME BOTH WOW'S.
+//-----------------------------------------------------------
+<Hotkey ScrollLockOn Alt Ctrl L>
+    <LaunchAndRename Local WoW1 S t>
+    <LaunchAndRename Local WoW2 Z t>
+	<SetStandardWindows WoW1 WoW2>
+	
+//-----------------------------------------------------------
+// DEFINE MAIL LABELS FOR SENDING KEY STROKES
+//-----------------------------------------------------------
+<Label w1 Local SendWinM WoW1>
+<Label w2 Local SendWinM WoW2>
+
+//----------------------------------------------------------------
+// SET STANDARD WINDOW POSITIONS, DEFINED ABOVE
+//----------------------------------------------------------------
+<Hotkey ScrollLockOn RCtrl F1>
+	<SetStandardWindows WoW1 WoW2>
+ 
+//-----------------------------------------------------------
+// DEFINE HOTKEYS FOR ALL KEY COMBINATIONS TO SEND TO EACH
+// WINDOW. SET UP A MACRO SYSTEM FOR EACH CHARACTER.
+//-----------------------------------------------------------
+//<Hotkey ScrollLockOn A-Z, 0-9, Numpad0-Numpad9, Tab, Esc, LShift, Space, Plus, Minus, F1-F12 except W, A, S, D; ScrollLockOn Shift A-Z; ScrollLockOn Shift 0-9>
+//<Hotkey ScrollLockOn Ctrl 0-9, Minus, Plus, Space>
+//<DoHotkey Hotkey 0-9, Minus, Plus, Space>
+//Wrath Volley
+<Hotkey ScrollLockOn LShift D>
+	<SendLabel w2>
+		<Key LShift 1>
+		<Key 1>
+		<Key d>
+		<Wait 100>
+		<Key 2>
+		<Wait 1700>
+		<Key 2>
+		<Wait 1700>
+		<Key 2>
+//Faerie Fire, Moonfire, Insect Swarm
+<Hotkey ScrollLockOn LShift LCtrl D>
+	<SendLabel w2>
+		<Key LShift 1>
+		<Key 1>
+		<Key d>
+		<Wait 100>
+		<Key Plus>
+		<Wait 1700>
+		<Key 3>
+		<Wait 1700>
+		<Key 5>
+//Starfire rotation
+<Hotkey ScrollLockOn LShift S>
+	<SendLabel w2>
+		<Key LShift 1>
+		<Key 1>
+		<Key d>
+		<Wait 100>
+		<Key 4>
+		<Wait 3100>
+		<Key 4>
+// Moonfire Insect Swarm
+<Hotkey ScrollLockOn LShift LCtrl S>
+	<SendLabel w2>
+		<Key LShift 1>
+		<Key 1>
+		<Key d>
+		<Wait 100>
+		<Key 3>
+		<Wait 1700>
+		<Key 5>
+// Force of Nature
+<Hotkey ScrollLockOn LShift A>
+	<SendLabel w2>
+		<Key d>
+		<Wait 100>
+		<Key Numpad 9>
+// Hurricane
+<Hotkey ScrollLockOn LShift LCtrl A>
+	<SendLabel w2>
+		<Key d>
+		<Wait 100>
+		<Key LShift 2>
+		<Key 7>
+		<Key LShift 1>
+// Self Heal
+<Hotkey ScrollLockOn LShift G>
+	<SendLabel w2>
+		<Key F1>
+		<Key 0>
+// Heal Ally
+<Hotkey ScrollLockOn LShift V>
+	<SendLabel w2>
+		<Key F1>
+		<Wait 100>
+		<Key F2>
+		<Key 0>
+// Heal Ally Pet
+<Hotkey ScrollLockOn LShift LCtrl V>
+	<SendLabel w2>
+		<Key F1>
+		<Wait 100>
+		<Key F2>
+		<Wait 100>
+		<Key F2>
+		<Key 0>
+// Moonkin Form
+<Hotkey ScrollLockOn LShift X>
+	<SendLabel w2>
+		<Key LShift Y>
+// Innervate Self
+<Hotkey ScrollLockOn LShift LCtrl X>
+	<SendLabel w2>
+		<Key F1>
+		<Key NumpadMinus>
+// Buff All
+<Hotkey ScrollLockOn LShift LCtrl B>
+	<SendLabel w2>
+		<Key F1>
+		<Key Numpad4>
+		<Wait 1700>
+		<Key F2>
+		<Key Numpad4>
+		<Wait 1700>
+		<Key F2>
+		<Key Numpad4>
+		<Wait 1700>
+		<Key 1>
+		<Key 1>
+// Cancel All and Auto Follow
+<Hotkey ScrollLockOn LShift F>
+	<SendLabel w2>
+		<Key LShift 1>
+		<Cancel>
+		<Key d>
+		<Wait 10>
+		<Key 1>
+// Cancel All and Reverse Auto Follow
+<Hotkey ScrollLockOn LCtrl LShift F>
+	<SendLabel w1>
+		<Key LShift 1>
+		<Cancel>
+		<Key d>
+		<Wait 10>
+		<Key 1>
+// Cancel and Stop Follow
+<Hotkey ScrollLockOn LShift C>
+	<SendLabel w2>
+		<Key LShift 1>
+		<Cancel>
+		<Key d>
+		<Wait 10>
+// Call Ground Mount
+<Hotkey ScrollLockOn LShift H>
+	<SendLabel w1,w2>
+		<Key LShift 2>
+		<Key 1>
+		<Key LShift 1>
+// Call Flying Mount
+<Hotkey ScrollLockOn LShift N>
+	<SendLabel w1>
+		<Key LShift 2>
+		<Key 2>
+		<Key LShift 1>
+	<SendLabel w2>
+		<Key LShift T>
+// Set Auto Run
+<Hotkey ScrollLockOn LShift LCtrl Button4>
+	<SendLabel w2>
+		<Key w>
+		<Key Shift Up>
+// Interact with Target
+<Hotkey ScrollLockOn LCtrl RButton>
+	<SendLabel w2>
+		<Key 1>
+	<Wait 100>
+	<SendLabel w1,w2>
+		<Key LShift U>
+// Trinity Core Full Heal
+<Hotkey ScrollLockOn LShift Z>
+	<SendLabel w1,w2>
+		<Cancel>
+		<Key LShift Z>
+ 
+//-----------------------------------------------------------
+// DEFINE MOVEMENT KEYS THAT WILL GET SENT TO BOTH WOW'S.
+// ADD MORE KEYS IF YOU WANT.
+//-----------------------------------------------------------
+//<MovementHotkey ScrollLockOn W, A, S, D>
+//<SendLabel w1, w2>
+//<Key %Trigger%>
+ 
+//-----------------------------------------------------------
+// BROADCAST MOUSE CLICKS. HOLD DOWN OEM3 (ON U.S. KEYBOARDS,
+// THAT'S THE SQUIGGLE KEY IN UPPPER LEFT CORNER) WHEN YOU
+// WANT TO BROADCAST.
+//-----------------------------------------------------------
+<UseKeyAsModifier Oem3>
+ 
+<Hotkey ScrollLockOn Oem3 LButton, MButton, RButton, Button4, Button5>
+   <SendLabel w1, w2>
+      <ClickMouse %TriggerMainKey%>
+                <RestoreMousePos>
+
+//----------------------------------------------------------------
+// Escape, Enter, Jump, Bags, QuestLog All
+//----------------------------------------------------------------
+<Hotkey ScrollLockOn RCtrl Esc, Enter, Space, b, l>
+	<SendLabel w1, w2>
+		<Key %Trigger%>

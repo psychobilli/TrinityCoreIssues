@@ -1,0 +1,35 @@
+//-----------------------------------------------------------
+// PRESS CTRL R TO RENAME WOW'S IF YOU LAUNCH THEM MANUALLY.
+//-----------------------------------------------------------
+<Hotkey ScrollLockOn Ctrl R>
+    <SendPC Local>
+        <RenameWin "World of Warcraft" WoW1> 
+        <RenameWin "World of Warcraft" WoW2>
+
+<Hotkey ScrollLockOn Ctrl T>
+	<SendPC Local>
+		<RenameWin WoW1 "World of Warcraft">
+		<RenameWin WoW2 "World of Warcraft">
+  
+//-----------------------------------------------------------
+// DEFINE MAIL LABELS FOR SENDING KEY STROKES.
+//-----------------------------------------------------------
+<Label w1 Local SendWinM WoW1>
+<Label w2 Local SendWinM WoW2>
+		
+//-----------------------------------------------------------
+// DEFINE HOTKEYS FOR ALL KEY COMBINATIONS TO SEND TO EACH
+// WINDOW. SET UP A MACRO SYSTEM FOR EACH CHARACTER.
+//-----------------------------------------------------------
+// Start Rotation
+<Hotkey ScrollLockOn LShift D>
+	<SendLabel w2>
+		<KeyDown Up>
+		<Wait 1500>
+		<KeyUp Up>
+		<Wait 200>
+		<KeyDown LShift>
+		<Wait 500>
+		<Key 1>
+		<KeyUp LShift>
+		<Key 1>

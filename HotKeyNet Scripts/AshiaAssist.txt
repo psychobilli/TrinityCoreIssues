@@ -1,0 +1,205 @@
+//================================================================
+// SAMPLE SCRIPT FOR TWO WOW'S ON ONE PC
+//
+// Instructions: Copy this entire script (all the blue writing
+// on gray background including comments). Save it in a file.
+// Load it into HotkeyNet.
+//
+// Toggle the scroll lock key to turn hotkeys off and on. (You
+// can change this if you want, just like you can change
+// everything else with HotkeyNet.)
+//
+// Requires HotkeyNet build 147 or higher.
+//
+// For more info, go to www.hotkeynet.com
+//================================================================
+ 
+//-----------------------------------------------------------
+// PRESS CTRL R TO RENAME WOW'S IF YOU LAUNCH THEM MANUALLY
+//-----------------------------------------------------------
+
+<Hotkey ScrollLockOn Ctrl R>
+    <SendPC local>
+        <RenameWin "World of Warcraft" WoW1>
+        <RenameWin "World of Warcraft" WoW2>
+
+<Hotkey ScrollLockOn Ctrl T>
+<SendPC local>
+<RenameWin WoW1 "World of Warcraft">
+<RenameWin WoW2 "World of Warcraft">
+ 
+//-----------------------------------------------------------
+// SUBROUTINE TO LAUNCH AND RENAME A COPY OF WOW.
+//-----------------------------------------------------------
+<Command LaunchAndRename>
+   <SendPC %1%>
+      <Run "E:\Games\World of Warcraft WotLK\Wow.exe">
+        <RenameTargetWin %2%>
+ 
+//-----------------------------------------------------------
+// HOTKEY TO LAUNCH AND RENAME BOTH WOW'S.
+//-----------------------------------------------------------
+<Hotkey ScrollLockOn Alt Ctrl L>
+    <LaunchAndRename Local WoW1>
+    <LaunchAndRename Local WoW2>
+ 
+//-----------------------------------------------------------
+// DEFINE MAIL LABELS FOR SENDING KEY STROKES
+//-----------------------------------------------------------
+<Label w1 Local SendWinM WoW1>
+<Label w2 Local SendWinM WoW2>
+ 
+//-----------------------------------------------------------
+// DEFINE HOTKEYS FOR ALL KEY COMBINATIONS THAT WILL GET
+// SENT TO BOTH WOWS. ADD MORE KEY COMBO'S IF YOU WANT.
+//-----------------------------------------------------------
+//<Hotkey ScrollLockOn A-Z, 0-9, Numpad0-Numpad9, Tab, Esc, LShift, Space, Plus, Minus, F1-F12 except W, A, S, D; ScrollLockOn Shift A-Z; ScrollLockOn Shift 0-9>
+//<Hotkey ScrollLockOn Ctrl 0-9, Minus, Plus, Space>
+//<DoHotkey Hotkey 0-9, Minus, Plus, Space>
+// Dot target.
+<Hotkey ScrollLockOn LShift D>
+	<SendLabel w2>
+		<Key LShift 1>
+		<Key 1>
+		<Key d>
+		<Key r>
+		<Key 6>
+		<Wait 1600>
+		<Key 5>
+// Curse target.
+<Hotkey ScrollLockOn LShift LCtrl D>
+	<SendLabel w2>
+		<Key LShift 1>
+		<Key 1>
+		<Key d>
+		<Key r>
+		<Key Plus>
+// Chaos Bolt Incinerate volley
+<Hotkey ScrollLockOn LShift S>
+	<SendLabel w2>
+		<Key LShift 1>
+		<Key 1>
+		<Key d>
+		<Wait 100>
+		<Key 2>
+		<Wait 2000>
+		<Key 3>
+		<Wait 2200>
+		<Key 3>
+// Conflagerate
+<Hotkey ScrollLockOn LShift LCtrl S>
+	<SendLabel w2>
+		<Key LShift 1>
+		<Key 1>
+		<Key d>
+		<Wait 100>
+		<Key 4>
+// Select Rain of Fire
+<Hotkey ScrollLockOn LShift LCtrl A>
+	<SendLabel w2>
+		<Key d>
+		<Wait 100>
+		<Key NumpadMinus>
+// Drain Health
+<Hotkey ScrollLockOn LShift A>
+	<SendLabel w2>
+		<Key LShift 1>
+		<Key 1>
+		<Key d>
+		<Wait 100>
+		<Key 9>
+// Life Tap Round
+<Hotkey ScrollLockOn LShift G>
+	<SendLabel w2>
+		<Key LShift 1>
+		<Key Multiply>
+		<Wait 1600>
+		<Key Multiply>
+		<Wait 1600>
+		<Key Multiply>
+// Cancel All and Auto Follow
+<Hotkey ScrollLockOn LShift F>
+	<SendLabel w2>
+		<Key LShift 1>
+		<Cancel>
+		<Key Ctrl 0>
+		<Key d>
+		<Wait 10>
+		<Key 1>
+// Cancel All and Reverse Auto Follow
+<Hotkey ScrollLockOn LCtrl LShift F>
+	<SendLabel w1>
+		<Key LShift 1>
+		<Cancel>
+		<Key Ctrl 0>
+		<Key d>
+		<Wait 10>
+		<Key 1>
+// Cancel and Stop Follow
+<Hotkey ScrollLockOn LShift C>
+	<SendLabel w2>
+		<Key LShift 1>
+		<Cancel>
+		<Key Ctrl 0>
+		<Key d>
+		<Wait 10>
+// Call Ground Mount
+<Hotkey ScrollLockOn LShift H>
+	<SendLabel w1,w2>
+		<Key LShift 2>
+		<Key 1>
+		<Key LShift 1>
+// Call Flying Mount/Flight Form
+<Hotkey ScrollLockOn LShift N>
+	<SendLabel w2>
+		<Key LShift 2>
+		<Key 2>
+		<Key LShift 1>
+	<SendLabel w1>
+		<Key LShift T>
+// Call Flying Mount
+<Hotkey ScrollLockOn LShift LCtrl N>
+	<SendLabel w1,w2>
+		<Key LShift 2>
+		<Key 2>
+		<Key LShift 1>
+// Set Auto Run
+<Hotkey ScrollLockOn LShift LCtrl Button4>
+	<SendLabel w2>
+		<Key w>
+		<Key Shift Up>
+// Trinity Core Full Heal
+<Hotkey ScrollLockOn LShift Z>
+	<SendLabel w2>
+		<Cancel>
+		<Key LShift Z>
+	<SendLabel w1>
+		<Cancel>
+		<Key LShift Z>
+		<Wait 100>
+		<Key LShift G>
+//<Hotkey ScrollLockOn Space>
+//	<SendLabel w2>
+//		<Key Space>
+//	<SendLabel w1>
+//		<Key Space>
+ 
+//-----------------------------------------------------------
+// DEFINE MOVEMENT KEYS THAT WILL GET SENT TO BOTH WOW'S.
+// ADD MORE KEYS IF YOU WANT.
+//-----------------------------------------------------------
+//<MovementHotkey ScrollLockOn W, A, S, D>
+//<SendLabel w1, w2>
+//<Key %Trigger%>
+ 
+//-----------------------------------------------------------
+// BROADCAST MOUSE CLICKS. HOLD DOWN OEM3 (ON U.S. KEYBOARDS,
+// THAT'S THE SQUIGGLE KEY IN UPPPER LEFT CORNER) WHEN YOU
+// WANT TO BROADCAST.
+//-----------------------------------------------------------
+<UseKeyAsModifier Oem3>
+ 
+<Hotkey ScrollLockOn Oem3 LButton, MButton, RButton, Button4, Button5>
+   <SendLabel w1, w2>
+      <ClickMouse %TriggerMainKey%>
+                <RestoreMousePos>
