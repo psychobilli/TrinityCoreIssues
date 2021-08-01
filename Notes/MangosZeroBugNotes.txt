@@ -1,0 +1,34 @@
+STORMWIND CITY
+	The Attack! (434) - Conversation criteria does not yield group credit.
+THE BARRENS
+	Counterattack! (4021) - Gameobject despawns after a single looting.
+WAILING CAVERNS
+	Awaken Naralax Event - Mobs spawn too fast, corpses despawn too fast.
+RAZORFEN KRAUL
+	Blueleaf Tubers (1221) - Tubers are not lootable.
+		Seems to work fine for Horde.
+GNOMEREGAN
+	Nogg's Ring Redo (2950) - Not accessible to level 32 players.  Should
+		be level 34, Req 28
+THOUSAND NEEDLES
+	The Swarm Grows (1147) - Only 1 Silithid Invader spawns.  Workers are
+		not hostile.
+DESOLACE
+	Body Guard for Hire (5821) - Caravan does not path with Cork, event does
+		not start.
+ARATHI HIGHLANDS
+	The Real Threat (680) - Or'Kalar respawns too quickly, before group can
+		loot the corpse.
+WARRIOR
+	Chimeric Horn (1844) - Unable to accept, requirements not met.
+	Brutal Legguards (1847) - Saw grey ! at 28, should require level 20.
+
+GUILDS
+	Guild Tabards do not display correctly for guild members until relogging.
+
+REPUTATION
+	Reputation transition from Neutral to Unfriendly makes mobs unattackable.
+	Toggle at war to resolve.  Appears to impact the at war boolean on the
+	back end.  Tested against Gelkis Clan Centaur.  Problems resolved at Hostile.
+	
+	
