@@ -4,12 +4,11 @@ UPDATE `creature_template` SET `npcflag` = 16777216, `vehicleId` = 448, `AIName`
 DELETE FROM `npc_spellclick_spells` WHERE `npc_entry` = 34840 AND `spell_id` = 66392;
 INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES
 (34840, 66392, 1, 0);
-
 DELETE FROM `smart_scripts` WHERE `entryorguid` IN (34840);
 INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`event_param5`,`action_type`,`action_param1`,`action_param2`,`action_param3`,`action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,`target_y`,`target_z`,`target_o`,`comment`) VALUES
-(34840,0,0,0,75,0,100,512,0,35234,12,1,0,11,66301,0,0,0,0,0,7,0,0,0,0,0,0,0,'Hot Rod - On Creature ''Hired Looter'' Near Cast ''Hot Rod Knockback'''),
-(34840,0,1,0,75,0,100,512,0,35063,12,1,0,11,66301,0,0,0,0,0,7,0,0,0,0,0,0,0,'Hot Rod - On Creature ''Kezan Citizen'' Near Cast ''Hot Rod Knockback'''),
-(34840,0,2,0,75,0,100,512,0,35075,12,1,0,11,66301,0,0,0,0,0,7,0,0,0,0,0,0,0,'Hot Rod - On Creature ''Kezan Citizen'' Near Cast ''Hot Rod Knockback''');
+(34840,0,0,0,75,0,100,512,0,35234,15,1,0,11,66301,0,0,0,0,0,7,0,0,0,0,0,0,0,'Hot Rod - On Creature ''Hired Looter'' Near Cast ''Hot Rod Knockback'''),
+(34840,0,1,0,75,0,100,512,0,35063,15,1,0,11,66301,0,0,0,0,0,7,0,0,0,0,0,0,0,'Hot Rod - On Creature ''Kezan Citizen'' Near Cast ''Hot Rod Knockback'''),
+(34840,0,2,0,75,0,100,512,0,35075,15,1,0,11,66301,0,0,0,0,0,7,0,0,0,0,0,0,0,'Hot Rod - On Creature ''Kezan Citizen'' Near Cast ''Hot Rod Knockback''');
 
 UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` = 34890;
 DELETE FROM `smart_scripts` WHERE `entryorguid` IN (34890);
@@ -57,28 +56,27 @@ INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type
 UPDATE `creature_template` SET `npcflag` = 16777216, `flags_extra` = 8192 WHERE `entry` = 48526;
 UPDATE `creature_template` SET `vehicleId` = 582 WHERE `entry` = 37179;
 UPDATE `creature_template` SET `vehicleId` = 579 WHERE `entry` = 37213;
-DELETE FROM `npc_spellclick_spells` WHERE `npc_entry` = 48526 AND `spell_id` in (70015,70065,70075);
+DELETE FROM `npc_spellclick_spells` WHERE `npc_entry` = 48526 AND `spell_id` in (70015,70075);
 INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES
 (48526, 70015, 1, 0),
-(48526, 70065, 1, 0),
 (48526, 70075, 1, 0);
--- DELETE FROM `npc_spellclick_spells` WHERE `npc_entry` = 37213 AND `spell_id` in (63151,94566);
--- INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES
--- (37213, 63151, 1, 0),
--- (37213, 94566, 1, 0);
+DELETE FROM `npc_spellclick_spells` WHERE `npc_entry` = 37213 AND `spell_id` in (70065,46598);
+INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES
+(37213, 70065, 1, 0),
+(37213, 46598, 1, 0);
 -- only use Bilgewater Buccaneer (37179) when Necessary Roughness: On Quest Aura (69990) is active.
 DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 18 AND `SourceGroup` = 48526 AND `SourceEntry` = 70015 AND `ConditionValue1` = 69990;
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES
 (18,48526,70015,0,0,1,0,69990,0,0,0,0,0,'','Required aura ''Necessary Roughness: On Quest Aura'' for spellclick');
 -- only use Bilgewater Buccaneer (37213) when Necessary Roughness: On Quest Aura (69990) is not active.
-DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 18 AND `SourceGroup` = 48526 AND `SourceEntry` = 70075 AND `ConditionValue1` = 70086;
+DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 18 AND `SourceGroup` = 48526 AND `SourceEntry` = 70075 AND `ConditionValue1` = 69990;
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES
-(18,48526,70075,0,0,1,0,70086,0,0,1,0,0,'','Required aura ''Fourth and Goal: Cat''s Mark Aura & Invis'' for spellclick');
--- apply Necessary Roughness: On Quest Aura (69990) on accepting Necessary Roughness  (24502), then remove it on quest reward
+(18,48526,70075,0,0,1,0,69990,0,0,1,0,0,'','Required aura negative condition ''Necessary Roughness: On Quest Aura'' for spellclick');
+-- apply Necessary Roughness: On Quest Aura (69990) on accepting Necessary Roughness  (24502), then remove it on accepting Fourth and Goal (28414)
 DELETE FROM `smart_scripts` WHERE `entryorguid` = 37106 AND `source_type` = 0 AND `id` IN (4,5);
 INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`event_param5`,`action_type`,`action_param1`,`action_param2`,`action_param3`,`action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,`target_y`,`target_z`,`target_o`,`comment`) VALUES
 (37106,0,4,0,19,0,100,0,24502,0,0,0,0,75,69990,0,0,0,0,0,7,0,0,0,0,0,0,0,'Coach Crosscheck - On Quest ''Necessary Roughness'' Taken Apply Aura ''Necessary Roughness: On Quest Aura'''),
-(37106,0,5,0,20,0,100,0,24502,0,0,0,0,28,69990,1,0,0,0,0,7,0,0,0,0,0,0,0,'Coach Crosscheck - On Quest ''Necessary Roughness'' Rewarded Remove Aura ''Necessary Roughness: On Quest Aura''');
+(37106,0,5,0,19,0,100,0,28414,0,0,0,0,28,69990,0,0,0,0,0,7,0,0,0,0,0,0,0,'Coach Crosscheck - On Quest ''Fourth and Goal'' Taken Remove Aura ''Necessary Roughness: On Quest Aura''');
 
 -- Apply Generic Quest Invisibility Detection 4 on Coach Crosscheck quests to protect against server error.
 DELETE FROM `smart_scripts` WHERE `entryorguid` = 37106 AND `source_type` = 0 AND `id` IN (6,7);
@@ -100,9 +98,13 @@ INSERT INTO `quest_template_addon` (`ID`,`MaxLevel`,`AllowableClasses`,`SourceSp
 DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 19 AND `SourceEntry` IN (26712,26711,14109,14110);
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES
 (19,0,26712,0,0,20,0,0,0,0,0,0,0,'','Show quest Off to the Bank (26712) for Males only.'),
+(19,0,26712,0,0,20,1,0,0,0,1,0,0,'','Show quest Off to the Bank (26712) for Males only.'),
 (19,0,26711,0,0,20,1,0,0,0,0,0,0,'','Show quest Off to the Bank (26711) for Females only.'),
+(19,0,26711,0,0,20,0,0,0,0,1,0,0,'','Show quest Off to the Bank (26711) for Females only.'),
 (19,0,14109,0,0,20,0,0,0,0,0,0,0,'','Show quest The New You (14109) for Males only.'),
-(19,0,14110,0,0,20,1,0,0,0,0,0,0,'','Show quest The New You (14110) for Females only.');
+(19,0,14109,0,0,20,1,0,0,0,1,0,0,'','Show quest The New You (14109) for Males only.'),
+(19,0,14110,0,0,20,1,0,0,0,0,0,0,'','Show quest The New You (14110) for Females only.'),
+(19,0,14110,0,0,20,0,0,0,0,1,0,0,'','Show quest The New You (14110) for Females only.');
 
 DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 14 AND `SourceGroup` IN (10620,10622,10624) AND `SourceEntry` IN (14697,14699,14700,14701,14703,14704);
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES
