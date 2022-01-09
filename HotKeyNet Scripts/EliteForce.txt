@@ -185,7 +185,7 @@
 // Start Rotation
 <Hotkey ScrollLockOn LShift D>
 	<SendLabel w2,w3,w4,w5>
-		<Key LShift 1>
+		<Key Shift 1>
 		<Key 1>
 	<SendLabel w2,w4>
 		<Key d>
@@ -203,7 +203,7 @@
 // Start Rotation with Healer DPS
 <Hotkey ScrollLockOn LShift LCtrl D>
 	<SendLabel w2,w3,w4,w5>
-		<Key LShift 1>
+		<Key Shift 1>
 		<Key 1>
 	<SendLabel w2,w4>
 		<Key d>
@@ -220,30 +220,44 @@
 		<Key 6>
 // Followup Rotation
 <Hotkey ScrollLockOn LShift S>
-	<SendLabel w3,w4,w5>
-		<Key LShift 1>
-		<Key 1>
-	<SendLabel w4>
-		<Key d>
-		<Wait 100>
-	<SendLabel w3,w4,w5>
-		<Key 2>
-	<SendLabel w3>
-		<Wait 100>
-		<Key 5>
-	<SendLabel w5>
-		<Wait 1500>
-		<Key 2>
+	<Toggle>
+		<SendLabel w3,w4,w5>
+			<Key Shift 1>
+			<Key 1>
+		<SendLabel w4>
+			<Key d>
+			<Wait 100>
+		<SendLabel w4,w5>
+			<Key 2>
+		<SendLabel w5>
+			<Wait 1500>
+			<Key 2>
+	<Toggle>
+		<SendLabel w3,w4,w5>
+			<Key Shift 1>
+			<Key 1>
+		<SendLabel w4>
+			<Key d>
+			<Wait 100>
+		<SendLabel w3, w4,w5>
+			<Key 2>
+		<SendLabel w3>
+			<Wait 100>
+			<Key 5>
+		<SendLabel w5>
+			<Wait 1500>
+			<Key 2>
 // Finisher
 <Hotkey ScrollLockOn LShift A>
 	<SendLabel w5>
-		<Key LShift 1>
+		<Key Shift 1>
 		<Key 5>
 	<SendLabel w4>
-		<Key LShift 1>
+		<Key Shift 1>
 		<Key d>
 	<SendLabel w3>
-		<Key Numpad2>
+		<Key Shift 1>
+		<Key Numpad3>
 	<SendLabel w4>
 		<Wait 100>
 		<Key F2>
@@ -255,6 +269,14 @@
 	<SendLabel w4>
 		<Wait 1700>
 		<Key 2>
+	<SendLabel w3>
+		<Key Numpad2>
+// AoE
+<Hotkey ScrollLockOn LShift LCtrl A>
+	<SendLabel w4>
+		<Key NumpadMinus>
+//	<SendLabel w3>
+//		<Key >
 // Refocus Melee
 <Hotkey ScrollLockOn LShift R>
 	<SendLabel w3,w5>
@@ -427,34 +449,30 @@
 // Cancel All and Auto Follow
 <Hotkey ScrollLockOn LShift F>
 	<SendLabel w2,w3,w4,w5>
-		<KeyDown LShift 1>
-		<Wait 200>
+		<Key Shift 1>
 		<Cancel>
-		<KeyUp LShift 1>
-		<Key d>
 		<Wait 10>
 		<Key 1>
 // Cancel All and Reverse Auto Follow
 <Hotkey ScrollLockOn LCtrl LShift F>
 	<SendLabel w1>
-		<Key LShift 1>
+		<Key Shift 1>
 		<Cancel>
-		<Key d>
 		<Wait 10>
 		<Key 1>
 // Cancel and Stop Follow
 <Hotkey ScrollLockOn LShift C>
 	<SendLabel w2,w3,w4,w5>
-		<Key LShift 1>
+		<Key Shift 1>
 		<Cancel>
 		<Key d>
 		<Wait 10>
 // Call Ground Mount
 <Hotkey ScrollLockOn LShift H>
 	<SendLabel w1,w2,w3,w4,w5>
-		<Key LShift 2>
+		<Key Shift 2>
 		<Key 1>
-		<Key LShift 1>
+		<Key Shift 1>
 // Set Auto Run
 <Hotkey ScrollLockOn LShift LCtrl Button4>
 	<SendLabel w2,w3,w4,w5>
@@ -464,7 +482,7 @@
 <Hotkey ScrollLockOn LShift Z>
 	<SendLabel w1,w2,w3,w4,w5>
 		<Cancel>
-		<Key LShift Z>
+		<Key Shift Z>
 //-----------------------------------------------------------
 // BROADCAST MOUSE CLICKS. HOLD DOWN OEM3 (ON U.S. KEYBOARDS,
 // THAT'S THE SQUIGGLE KEY IN UPPPER LEFT CORNER) WHEN YOU
