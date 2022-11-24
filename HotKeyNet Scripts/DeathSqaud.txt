@@ -399,72 +399,72 @@
 		<Cancel>
 		<Key F2>
 		<Wait 200>
-		<Key 0>
+		<Key Minus>
+		<Wait 2200>
+		<Key 9>
 <Hotkey ScrollLockOn F2>
 	<SendLabel w2>
 		<Cancel>
 		<Key F1>
 		<Wait 200>
-		<Key 0>
+		<Key Minus>
+		<Wait 2200>
+		<Key 9>
 <Hotkey ScrollLockOn F3>
 	<SendLabel w2>
 		<Cancel>
 		<Key F3>
 		<Wait 200>
-		<Key 0>
+		<Key Minus>
+		<Wait 2200>
+		<Key 9>
 <Hotkey ScrollLockOn F4>
 	<SendLabel w2>
 		<Cancel>
 		<Key F4>
 		<Wait 200>
-		<Key 0>
+		<Key Minus>
+		<Wait 2200>
+		<Key 9>
 <Hotkey ScrollLockOn F5>
 	<SendLabel w2>
 		<Cancel>
 		<Key F5>
 		<Wait 200>
-		<Key 0>
+		<Key Minus>
+		<Wait 2200>
+		<Key 9>
 // Emergency Heals
 <Hotkey ScrollLockOn LShift F1>
 	<SendLabel w2>
 		<Cancel>
 		<Key F2>
 		<Wait 200>
-		<Key Minus>
-		<Wait 2200>
-		<Key 9>
+		<Key 0>
 <Hotkey ScrollLockOn LShift F2>
 	<SendLabel w2>
 		<Cancel>
 		<Key F1>
 		<Wait 200>
-		<Key Minus>
-		<Wait 2200>
-		<Key 9>
+		<Key 0>
 <Hotkey ScrollLockOn LShift F3>
 	<SendLabel w2>
 		<Cancel>
 		<Key F3>
 		<Wait 200>
-		<Key Minus>
-		<Wait 2200>
-		<Key 9>
+		<Key 0>
 <Hotkey ScrollLockOn LShift F4>
 	<SendLabel w2>
 		<Cancel>
 		<Key F4>
 		<Wait 200>
-		<Key Minus>
-		<Wait 2200>
-		<Key 9>
+		<Key 0>
 <Hotkey ScrollLockOn LShift F5>
 	<SendLabel w2>
 		<Cancel>
 		<Key F5>
 		<Wait 200>
-		<Key Minus>
-		<Wait 2200>
-		<Key 9>
+		<Key 0>
 // Heals
 <Hotkey ScrollLockOn Ctrl Shift F1>
 	<SendLabel w5>
