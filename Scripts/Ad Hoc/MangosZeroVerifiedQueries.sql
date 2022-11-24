@@ -12,15 +12,21 @@ from (
 		, max(totaltime) div 60 as minutes
         , max(totaltime) mod 60 as minutesFrac
 		, max(totaltime) as seconds
+        , sum(money) as money
+        , sum(money) div 10000 as gold
+        , sum(money) div 100 as silver
 	from zero_character.characters
 	where guid in (1,2,3,4,5)
 	union
 	select 'Elite Force'
-		, ((max(totaltime) div 60) div 60) div 60
+		, ((max(totaltime) div 60) div 60) div 24
 		, (max(totaltime) div 60) div 60
 		, max(totaltime) div 60
         , max(totaltime) mod 60
 		, max(totaltime)
+        , sum(money) as money
+        , sum(money) div 10000 as gold
+        , sum(money) div 100 as silver
 	from zero_character.characters
 	where guid in (6,7,8,9,10)
 ) totalTime;
