@@ -79,3 +79,121 @@ where guid between 6 and 10
     where guid between 6 and 10
       and level = c.level
   );
+  
+--find approximate character item level
+select sub.guid
+	, c.name
+	, avg(iLevel)
+from (
+	select ci.guid as guid
+		, it.inventoryType as type
+		, max(it.itemLevel) as iLevel
+	from zero_character.character_inventory ci
+	  join zero_character.item_instance ii on ii.guid = ci.item
+	  join zero_world.item_template it on it.entry = ci.item_template
+	where ci.guid in (1,2,3,4,5,6,7,8,9,10)
+	  and it.inventoryType between 1 and 17
+	  and it.inventoryType <> 4
+	  and (slot < 18 and ci.bag = 0
+		or ci.bag in (18, 19, 20, 21, 22))
+	  and it.inventoryType not in (/*shirt*/4,/*one-hand*/13,14,21,22,23,/*two-hand*/17,/*ranged*/15,25,26,28)
+	group by ci.guid
+		, it.inventoryType
+	union
+	select ci.guid as guid
+		, 13 as type
+		, max(it.itemLevel)
+	from zero_character.character_inventory ci
+	  join zero_character.item_instance ii on ii.guid = ci.item
+	  join zero_world.item_template it on it.entry = ci.item_template
+	where it.inventoryType between 1 and 28
+	  and (slot < 18 and ci.bag = 0
+		or ci.bag in (18, 19, 20, 21, 22))
+	  and it.inventoryType in (/*one-hand*/13,14,21,22,23,/*two-hand*/17)
+	group by ci.guid
+		, it.inventoryType
+	union
+	select ci.guid as guid
+		, 15 as type
+		, max(it.itemLevel)
+	from zero_character.character_inventory ci
+	  join zero_character.item_instance ii on ii.guid = ci.item
+	  join zero_world.item_template it on it.entry = ci.item_template
+	where it.inventoryType between 1 and 28
+	  and (slot < 18 and ci.bag = 0
+		or ci.bag in (18, 19, 20, 21, 22))
+	  and it.inventoryType in (/*ranged*/15,25,26,28)
+      and it.name != 'Egan''s Blaster'
+	group by ci.guid
+		, it.inventoryType
+	) sub
+  join zero_character.characters c on c.guid = sub.guid
+group by sub.guid
+	, c.name;
+	
+-- view character equipment
+select c.name
+	, sub.*
+from (
+	select ci.guid as guid
+		, it.inventoryType as type
+		, max(it.itemLevel) as iLevel
+        , it.name
+	from zero_character.character_inventory ci
+	  join zero_character.item_instance ii on ii.guid = ci.item
+	  join zero_world.item_template it on it.entry = ci.item_template
+	where ci.guid in (1,2,3,4,5,6,7,8,9,10)
+	  and it.inventoryType between 1 and 17
+	  and it.inventoryType <> 4
+	  and (slot < 18 and ci.bag = 0
+		or ci.bag in (18, 19, 20, 21, 22))
+	  and it.inventoryType not in (/*shirt*/4,/*one-hand*/13,14,21,22,23,/*two-hand*/17,/*ranged*/15,25,26,28)
+	group by ci.guid
+		, it.inventoryType
+        , it.name
+	union
+	select ci.guid as guid
+		, 13 as type
+		, max(it.itemLevel)
+        , it.name
+	from zero_character.character_inventory ci
+	  join zero_character.item_instance ii on ii.guid = ci.item
+	  join zero_world.item_template it on it.entry = ci.item_template
+	where it.inventoryType between 1 and 28
+	  and (slot < 18 and ci.bag = 0
+		or ci.bag in (18, 19, 20, 21, 22))
+	  and it.inventoryType in (/*one-hand*/13,14,21,22,23,/*two-hand*/17)
+	group by ci.guid
+		, it.inventoryType
+        , it.name
+	union
+	select ci.guid as guid
+		, 15 as type
+		, max(it.itemLevel)
+        , it.name
+	from zero_character.character_inventory ci
+	  join zero_character.item_instance ii on ii.guid = ci.item
+	  join zero_world.item_template it on it.entry = ci.item_template
+	where it.inventoryType between 1 and 28
+	  and (slot < 18 and ci.bag = 0
+		or ci.bag in (18, 19, 20, 21, 22))
+	  and it.inventoryType in (/*ranged*/15,25,26,28)
+	group by ci.guid
+		, it.inventoryType
+        , it.name
+	) sub
+  join zero_character.characters c on c.guid = sub.guid
+where c.guid in (1,2,3,4,5,6,7,8,9,10)
+order by guid
+	, type;
+	
+-- view creature loot table by name
+select ct.name
+	, clt.ChanceOrQuestChance
+    , clt.groupid
+    , it.name
+    , it.itemLevel
+from zero_world.creature_template ct
+  join zero_world.creature_loot_template clt on clt.entry = ct.entry
+  join zero_world.item_template it on it.entry = clt.item
+where ct.name = ''
