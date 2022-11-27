@@ -334,6 +334,13 @@
 		<Key d>
 		<Wait 100>
 		<Key Numpad1>
+// Druid Innervate
+<Hotkey ScrollLockOn LCtrl T>
+	<SendLabel w2>
+		<Key 2>
+		<Key F1>
+		<Wait 100>
+		<Key Multiply>
 // Refocus Melee
 <Hotkey ScrollLockOn LShift R>
 	<SendLabel w5>
