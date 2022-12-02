@@ -19,6 +19,12 @@ DESOLACE
 ARATHI HIGHLANDS
 	The Real Threat (680) - Or'Kalar respawns too quickly, before group can
 		loot the corpse.
+DIRE MAUL
+	Pusillin - Despawns before reaching final area, boss fight inaccessible.
+	Hydrospawn - Geyser adds can attack, but should only cast a knockback spell.
+	Felvine Shards - Despawn too quickly.
+	Alzzin the Wildshaper - Smaller mobs near him respawn too quickly.
+	
 WARRIOR
 	Chimeric Horn (1844) - Unable to accept, requirements not met.
 	Brutal Legguards (1847) - Saw grey ! at 28, should require level 20.
