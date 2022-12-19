@@ -197,7 +197,7 @@
 		<Key F>
 	<SendLabel w3,w4>
 		<Key r>
-	<SendLabel w4,w5>
+	<SendLabel w5>
 		<Key 3>
 	<SendLabel w4>
 		<Key Numpad3>
@@ -205,9 +205,10 @@
 		<Key 7>
 		<Wait 100>
 		<Key 4>
-		<Wait 1200>
+		<Wait 1700>
+	<SendLabel w4>
+		<Key 4>
 	<SendLabel w3>
-		<Wait 500>
 		<Key 3>
 // Start Rotation part 2
 <Hotkey ScrollLockOn LCtrl D>
@@ -267,9 +268,6 @@
 		<Key Shift 5>
 		<Key 1>
 		<Key Shift 1>
-	<SendLabel w4>
-		<Key 3>
-	<SendLabel w2,w3,w4>
 		<Wait 100>
 		<Key r>
 	<SendLabel w3,w4>
@@ -327,6 +325,10 @@
 		<Key 6>
 	<SendLabel w3,w4>
 		<Key 2>
+// AoE
+<Hotkey ScrollLockOn LShift LCtrl A>
+	<SendLabel w3>
+		<Key NumpadMinus>
 // Warlock Drain Soul
 <Hotkey ScrollLockOn LShift T>
 	<SendLabel w3>
