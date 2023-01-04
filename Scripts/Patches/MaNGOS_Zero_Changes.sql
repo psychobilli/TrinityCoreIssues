@@ -19,6 +19,79 @@ set spawntimesecs = 300
 where id = 9956
   and spawntimesecs = 600;
   
+-- remove some mob pools in BRD Golem room which caused bizarre, 
+-- unexpected respawns.
+delete from zero_world.creature
+where guid in (
+	154623,154625,154627,154628,/*154630,*/154632,
+    154635,154637,/*154650,*/154653,/*154654,154657,*/
+	/*154658,154661,*/154662,154664,154668,/*154670,*/
+    /*154672*/154660,154673)
+  and id in (8900,8906,8907,8920);
+
+delete from zero_world.pool_creature
+where pool_entry in (
+	25471,25472,25473,25474,/*25475,*/25476,25477,
+	25478,/*25479,*/25480,/*25481,25482,25483,*/25484,
+    /*25485,*/25488,25489,/*25490,*/25491)
+  and guid in (
+	select guid
+    from zero_world.creature
+    where id in (8900,8906,8907,8920)
+	);
+    
+-- nerf Fireguard Destroyer damage
+update zero_world.creature_template
+set damagemultiplier = 3 -- 3.6
+where entry = '8911';
+
+-- nerf General Angerforge damage
+update zero_world.creature_template
+set damagemultiplier = 6 -- 6.5
+where entry = '9033';
+
+-- nerf Golem Lord Argelmach damage
+update zero_world.creature_template
+set damagemultiplier = 5.25 -- 6.25
+where entry = '8983';
+
+-- nerf Emperor Dagran Thaurissan damage
+update zero_world.creature_template
+set damagemultiplier = 6.25 -- 7.25
+where entry = '9019';
+
+-- remove Vosh'gajin's adds.  She's hard enough.
+delete from zero_world.creature
+where guid in (43550,43551)
+  and id = 9240;
+  
+-- remove pulls before Zigris as there's too many.
+delete from zero_world.creature
+where guid in (45743,45748)
+  and id = 9717;
+  
+delete from zero_world.creature
+where guid in (45744)
+  and id = 9716;
+  
+delete from zero_world.creature
+where guid in (45756)
+  and id = 9583;
+
+-- move Quartermaster Zigris and an add so he doesn't aggro adds.
+update zero_world.creature
+set position_x = -190.19
+where id = '9736';
+
+update zero_world.creature
+set position_x = -204.898
+where guid = 45751;
+  
+-- correct Overlord Wyrmthalak attack rate
+update zero_world.creature_template
+set meleebaseattacktime = 2000 -- 800
+where entry = '9568';
+  
 -- add a linen exchange to the cloth quartermasters.
 delete from zero_world.quest_template where entry in (10000,10001,10002,10003,10004,10005,10006,10007);
 insert into zero_world.quest_template
