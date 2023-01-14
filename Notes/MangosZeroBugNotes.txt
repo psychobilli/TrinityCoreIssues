@@ -1,5 +1,9 @@
 STORMWIND CITY
 	The Attack! (434) - Conversation criteria does not yield group credit.
+	James Hyal (1302) - Did not meet the requirements for the quest despite
+		following the breadcrumb.
+MULGORE
+	Winterspring Cleansing (754) - Tauren only, completely inaccessible.
 THE BARRENS
 	Counterattack! (4021) - Gameobject despawns after a single looting.
 WAILING CAVERNS
@@ -13,12 +17,65 @@ GNOMEREGAN
 THOUSAND NEEDLES
 	The Swarm Grows (1147) - Only 1 Silithid Invader spawns.  Workers are
 		not hostile.
+	Galek Mauler (4095) and Galek Stormer (4097) - Multiple spawns in single 
+		location.
 DESOLACE
 	Body Guard for Hire (5821) - Caravan does not path with Cork, event does
 		not start.
 ARATHI HIGHLANDS
 	The Real Threat (680) - Or'Kalar respawns too quickly, before group can
 		loot the corpse.
+WINTERSPRING
+	Are We There, Yeti? (5163) - Yeti does not chase named npcs on summon.
+	Guardians of the Alter (4901) - Ranshalla does not advance after first 
+		summon point, mobs do not spawn and attack.
+	Seal of Ascension (4743) - Emberstrife's spell does not affect the unforged
+		seal.
+	The Dragon's Eye (6501) - Unable to teleport to Haleh via the runes in 
+		Mazorthil.
+BLACKROCK DEPTHS
+	The Love Potion (4201) - After turn in, Mistress Nagmara freezes during the
+		script.  She does not take Rocknot through the door, nor can other
+		players turn in the quest.
+	Ribbly Screwspigot (4136) - No gossip is available to aggro and attack
+		Ribbly.
+	Rocknot - Giving Roknot ale causes extra mobs to appear due to "a disturbance."
+		Rocknot should activate Phalanx, not summon the extras. The extras appear
+		when attacking Ribbly, Thunderbrew or any bar patrons.
+BLACKROCK SPIRE
+	Urok Doomhowl Event - Urok is summoned twice, mobs spawn too quickly (maybe).
+	
+SCHOLOMANCE
+	Dark Summoner - Should summon skeletons endlessly, never bothering to
+		run to the player.
+	Kirtonos the Herald - Crits one shot tank with ease.  
+		Videos hit cloth for 1198
+	Spectral Tutors - Image Projection does not despawn and heal original - 
+		they just pile up.
+	Jandice Barov - Illusions do too much damage too quickly, they should 
+		despawn after 30 sec.
+	Rattlegore - Damage too high.
+	Pre Viewing Room - Killing Rattlegore should clear out numerous mobs.
+		Impossible otherwise.
+	Ras Frostwhisper - Some of his spells hit a little too hard, although
+		his CC is what really cripples me.
+	Doctor Theolen Krastinov - Hits very hard, like he should, but crits 
+		might kill the tank.
+			dmgmult 5 - hits tank for 890, crits for 1806
+	Instructor Malicia - Her health seems too high.
+	The Ravenian - Hits too hard.
+
+STRATHOLME
+	Mangled Cadavers summon 2 broken cadavers, that might not be right.
+	Aboms and Eyes are slow to start pathing.
+	Timmy the Cruel hits too hard.  Damage Multiplier 13, Attack Speed 1.4
+	Mobs in the live side don't path when they should
+	Cannon Master Willey to hard. Dmg Mult 7
+	Magistrate Barthilas enrages constantly, should probably be slowed down.
+	Baroness Anastari - MC's players, MC doesn't work, drags out fight too long.
+	Venom Belcher poison may do a little too much damage.
+	Aboms may come too quickly.
+	
 DIRE MAUL
 	Pusillin - Despawns before reaching final area, boss fight inaccessible.
 	Hydrospawn - Geyser adds can attack, but should only cast a knockback spell.

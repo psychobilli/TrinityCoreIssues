@@ -28,7 +28,6 @@ where guid in (
 	/*154658,154661,*/154662,154664,154668,/*154670,*/
     /*154672*/154660,154673)
   and id in (8900,8906,8907,8920);
-
 delete from zero_world.pool_creature
 where pool_entry in (
 	25471,25472,25473,25474,/*25475,*/25476,25477,
@@ -44,17 +43,14 @@ where pool_entry in (
 update zero_world.creature_template
 set damagemultiplier = 3 -- 3.6
 where entry = '8911';
-
 -- nerf General Angerforge damage
 update zero_world.creature_template
 set damagemultiplier = 6 -- 6.5
 where entry = '9033';
-
 -- nerf Golem Lord Argelmach damage
 update zero_world.creature_template
 set damagemultiplier = 5.25 -- 6.25
 where entry = '8983';
-
 -- nerf Emperor Dagran Thaurissan damage
 update zero_world.creature_template
 set damagemultiplier = 6.25 -- 7.25
@@ -64,34 +60,224 @@ where entry = '9019';
 delete from zero_world.creature
 where guid in (43550,43551)
   and id = 9240;
-  
 -- remove pulls before Zigris as there's too many.
 delete from zero_world.creature
 where guid in (45743,45748)
   and id = 9717;
-  
 delete from zero_world.creature
 where guid in (45744)
   and id = 9716;
-  
 delete from zero_world.creature
 where guid in (45756)
   and id = 9583;
-
 -- move Quartermaster Zigris and an add so he doesn't aggro adds.
 update zero_world.creature
 set position_x = -190.19
 where id = '9736';
-
 update zero_world.creature
 set position_x = -204.898
 where guid = 45751;
-  
 -- correct Overlord Wyrmthalak attack rate
 update zero_world.creature_template
 set meleebaseattacktime = 2000 -- 800
 where entry = '9568';
-  
+
+-- remove Spectral Tutor script, creature_ai_scripts work fine.
+delete from zero_world.script_binding where bind = 10498;
+-- Lengthen time between Cast Spectral Projection
+update zero_world.creature_ai_scripts
+set event_param1 = 19500, event_param2 = 24500, event_param3 = 34500, event_param4 = 45000
+where id = 1049803 and event_type = 0 and action1_type = 11 and action1_param1 = 17651;
+-- Update Spectral Projection and Illusion of Jandice Barov
+update zero_world.creature_template
+set AIName = 'EventAI'
+where entry in (11263,11439);
+-- Despawn Spectral Projections on Timer
+delete from zero_world.creature_ai_scripts where id = 1126301;
+insert into zero_world.creature_ai_scripts
+(id, creature_id, event_type, event_inverse_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action1_type, action1_param1, action1_param2, action1_param3, action2_type, action2_param1, action2_param2, action2_param3, action3_type, action3_param1, action3_param2, action3_param3, comment)
+values ('1126301', '11263', '11', '0', '100', '0', '0', '0', '0', '0', '41', '6000', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'Spectral Projection - Forced Despawn on timer');
+-- Depsawn Illusion of Jandice Barov on timer.
+delete from zero_world.creature_ai_scripts where id = 1143902;
+insert into zero_world.creature_ai_scripts
+(id, creature_id, event_type, event_inverse_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action1_type, action1_param1, action1_param2, action1_param3, action2_type, action2_param1, action2_param2, action2_param3, action3_type, action3_param1, action3_param2, action3_param3, comment)
+values ('1143902', '11439', '11', '0', '100', '0', '0', '0', '0', '0', '41', '30000', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'Illusion of Jandice Barov - Forced Despawn on timer');
+-- bind rattlegore boss script
+delete from zero_world.script_binding where Scriptname = 'boss_rattlegore';
+insert into zero_world.script_binding
+(type, ScriptName, bind, data)
+values (0, 'boss_rattlegore', 11622, 0);
+-- Nerf Alexi Barov Curse Timer
+delete from zero_world.creature_ai_scripts where id = 1050402;
+insert into zero_world.creature_ai_scripts
+(id, creature_id, event_type, event_inverse_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action1_type, action1_param1, action1_param2, action1_param3, action2_type, action2_param1, action2_param2, action2_param3, action3_type, action3_param1, action3_param2, action3_param3, comment)
+values ('1050402', '10504', '0', '0', '100', '3', '15000', '30000', '35000', '50000', '11', '17820', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'Alexei Barov - Cast Veil of Shadow');
+-- delete creature pools and extra creatures outside the Viewing Room
+-- otherwise it'll conflict with an SD3 script.
+delete from zero_world.pool_creature
+where pool_entry in (25494,25495,25496,25496,25497,25497,25498,25498,25499,25500,25500,25501);
+delete from zero_world.creature
+where guid in (154678, 154684, 154688, 154694, 154699, 154703, 154709, 154713);
+
+-- nerf Spectral Researcher
+update zero_world.creature_template
+set damageMultiplier = 2.4 -- 3.9
+where entry = 10499;
+-- nerf Scholomance Acolyte
+update zero_world.creature_template
+set damageMultiplier = 2.3 -- 3.8
+where entry = 10471;
+-- nerf Scholomance Neophyte
+update zero_world.creature_template
+set damageMultiplier = 2.3 -- 3.8
+where entry = 10470;
+-- nerf Kirtonos the Herald
+update zero_world.creature_template
+set damageMultiplier = 6 -- 12
+where entry = 10506;
+-- nerf Illusion of Jandice Barov attack speed *
+update zero_world.creature_template
+set DamageMultiplier = .125 -- 1
+  , MeleeBaseAttackTime = 2000 -- 1166
+  , HealthMultiplier = .00508906 -- 0.508906
+where entry = 11439;
+-- move a Construct so Ratt can be solo pulled.
+update zero_world.creature
+set position_x = 156.487, position_y = 175.949, position_z = 93.086
+where guid = 48801;
+-- nerf Rattlegore
+update zero_world.creature_template
+set damageMultiplier = 5 -- 7
+where entry = 11622;
+-- nerf Lady Illucia Barov
+update zero_world.creature_template
+set damageMultiplier = 5 -- 6.5
+where entry = 10502;
+-- nerf Doctor Theolen Krastinov
+update zero_world.creature_template
+set damageMultiplier = 3 -- 11
+where entry = 11261;
+-- nerf The Ravenian
+update zero_world.creature_template
+set damageMultiplier = 3.5 -- 7
+where entry = 10507;
+-- nerf Risen Guard because Barov
+update zero_world.creature_template
+set HealthMultiplier = 2.60826 -- 3.00826
+where entry = 10504;
+-- nerf Lord Alexi Barov *
+update zero_world.creature_template
+set damageMultiplier = 1 -- 6
+where entry = 10504;
+-- nerf Ras Frostwhisper *
+update zero_world.creature_template
+set damageMultiplier = 3 -- 4
+where entry = 10508;
+-- nerf Bone Minion because Gandling *
+update zero_world.creature_template
+set HealthMultiplier = .25 -- .5,
+	, DamageMultiplier = .5 -- 1.5
+where entry = 16119;
+
+-- add movement to mobs in live Stratholme.
+update zero_world.creature set movementType = 2
+where guid in ('54071','54085','52141','54169','54170','52144','54205','54206');
+delete from zero_world.creature_movement where id in ('54071','54085','52141','54169','54170','52144','54205','54206');
+insert into zero_world.creature_movement
+(id, point, position_x, position_y, position_z, waittime, script_id, textid1, textid2, textid3, textid4, textid5, emote, spell, orientation, model1, model2)
+values ('54071','1','3641.86','-3079.73','134.12','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54071','2','3647.76','-3088.65','134.12','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54071','3','3641.86','-3079.73','134.12','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54071','4','3605.77','-3104.84','134.12','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54071','5','3572.27','-3057.82','135','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54071','6','3605.77','-3104.84','134.12','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54071','7','3641.86','-3079.73','134.12','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54085','1','3641.86','-3079.73','134.12','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54085','2','3647.76','-3088.65','134.12','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54085','3','3641.86','-3079.73','134.12','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54085','4','3605.77','-3104.84','134.12','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54085','5','3572.27','-3057.82','135','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54085','6','3605.77','-3104.84','134.12','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54085','7','3641.86','-3079.73','134.12','0','0','0','0','0','0','0','0','0','0','0','0'),
+('52141','1','3527.1','-3056.44','135','0','0','0','0','0','0','0','0','0','0','0','0'),
+('52141','2','3525.54','-3054.8','135','0','0','0','0','0','0','0','0','0','0','0','0'),
+('52141','3','3527.1','-3056.44','135','0','0','0','0','0','0','0','0','0','0','0','0'),
+('52141','4','3492.93','-3079.9','135','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54169','1','3527.1','-3056.44','135','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54169','2','3525.54','-3054.8','135','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54169','3','3527.1','-3056.44','135','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54169','4','3492.93','-3079.9','135','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54170','1','3444.89','-3086.52','135.0','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54170','2','3436.49','-3074.12','136.54','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54170','3','3444.89','-3086.52','135.0','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54170','4','3480.57','-3061.04','135.0','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54170','5','3487.22','-3069.66','135.0','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54170','6','3480.57','-3061.04','135.0','0','0','0','0','0','0','0','0','0','0','0','0'),
+('52144','1','3444.89','-3086.52','135.0','0','0','0','0','0','0','0','0','0','0','0','0'),
+('52144','2','3436.49','-3074.12','136.54','0','0','0','0','0','0','0','0','0','0','0','0'),
+('52144','3','3444.89','-3086.52','135.0','0','0','0','0','0','0','0','0','0','0','0','0'),
+('52144','4','3480.57','-3061.04','135.0','0','0','0','0','0','0','0','0','0','0','0','0'),
+('52144','5','3487.22','-3069.66','135.0','0','0','0','0','0','0','0','0','0','0','0','0'),
+('52144','6','3480.57','-3061.04','135.0','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54205','1','3548.35','-2986.84','125','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54205','2','3567.92','-2973.21','125','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54205','3','3582.73','-2994.48','125','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54205','4','3545.91','-3020.68','125','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54205','5','3563.13','-3044.79','133.75','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54205','6','3545.91','-3020.68','125','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54205','7','3582.73','-2994.48','125','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54205','8','3567.92','-2973.21','125','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54205','9','3548.35','-2986.84','125','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54205','10','3537.53','-2970.63','125','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54206','1','3548.35','-2986.84','125','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54206','2','3567.92','-2973.21','125','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54206','3','3582.73','-2994.48','125','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54206','4','3545.91','-3020.68','125','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54206','5','3563.13','-3044.79','133.75','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54206','6','3545.91','-3020.68','125','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54206','7','3582.73','-2994.48','125','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54206','8','3567.92','-2973.21','125','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54206','9','3548.35','-2986.84','125','0','0','0','0','0','0','0','0','0','0','0','0'),
+('54206','10','3537.53','-2970.63','125','0','0','0','0','0','0','0','0','0','0','0','0');
+-- Ravaged Cadavers should summon 1 Broken Cadaver, not 2
+delete from zero_world.creature_ai_scripts
+where id = 1038103 and action1_param1 = 16324;
+-- nerf Timmy the Cruel
+update zero_world.creature_template
+set damageMultiplier = 3 -- 13
+where entry = 10808;
+-- nerf Cannon Master Willey
+update zero_world.creature_template
+set damageMultiplier = 2 -- 7
+where entry = 10997;
+-- nerf Magistrate Barthilas
+update zero_world.creature_template
+set damageMultiplier = 3 -- 7.5
+where entry = 10435;
+-- nerf Bile Spewers
+update zero_world.creature_template
+set damageMultiplier = 3 -- 6
+where entry = 10416;
+-- nerf Venom Belchers
+update zero_world.creature_template
+set damageMultiplier = 3.1 -- 6.1
+where entry = 10417;
+-- nerf Ramstein the Gorger
+update zero_world.creature_template
+set damageMultiplier = 3 -- 9
+where entry = 10439;
+-- nerf Black Guard Sentry
+update zero_world.creature_template
+set damageMultiplier = .5 -- 1
+where entry = 10394;
+-- nerf Baron Rivendare
+update zero_world.creature_template
+set PowerMultiplier = 3 -- 5
+	, damageMultiplier = .75 -- 1
+    , MeleeBaseAttackTime = 2000 -- 1150
+    , RangedBaseAttackTime = 2000 -- 1265
+where entry = 10440;
+
 -- add a linen exchange to the cloth quartermasters.
 delete from zero_world.quest_template where entry in (10000,10001,10002,10003,10004,10005,10006,10007);
 insert into zero_world.quest_template
@@ -160,3 +346,115 @@ values ('0', '14722', '10000', '0'),
 	('0', '14728', '10006', '1'),
     ('0', '14729', '10007', '0'),
 	('0', '14729', '10007', '1');
+
+-- Add additional set drops to Drakkisath, Gandling and Rivendare.
+insert into zero_world.reference_loot_template
+(entry, item, ChanceOrQuestChance, groupid, mincountOrRef, maxcount, condition_id)
+select 40000
+	, clt.item
+    , clt.ChanceOrQuestChance
+    , maxG.maxGroup + 1
+    , clt.minCountOrRef
+    , clt.maxcount
+    , clt.condition_id
+from zero_world.creature_loot_template clt
+  join (
+	select entry
+		, max(groupId) as maxGroup
+    from zero_world.creature_loot_template
+    group by entry
+  ) maxG on maxG.entry = clt.entry
+where clt.entry = 10363
+  and clt.groupid = 1
+  and mincountOrRef > 0;
+  
+insert into zero_world.creature_loot_template
+(entry, item, ChanceOrQuestChance, groupid, mincountOrRef, maxcount, condition_id)
+select 10363
+	, 40000
+    , 100
+    , maxG.maxGroup + 1
+    , -40000
+    , 1
+    , 0
+from (
+	select entry
+		, max(groupId) as maxGroup
+    from zero_world.creature_loot_template
+    where entry = 10363
+    group by entry
+  ) maxG;
+
+insert into zero_world.reference_loot_template
+(entry, item, ChanceOrQuestChance, groupid, mincountOrRef, maxcount, condition_id)
+select 40001
+	, clt.item
+    , clt.ChanceOrQuestChance
+    , maxG.maxGroup + 1
+    , clt.minCountOrRef
+    , clt.maxcount
+    , clt.condition_id
+from zero_world.creature_loot_template clt
+  join (
+	select entry
+		, max(groupId) as maxGroup
+    from zero_world.creature_loot_template
+    group by entry
+  ) maxG on maxG.entry = clt.entry
+where clt.entry = 1853
+  and clt.groupid = 1
+  and mincountOrRef > 0;
+  
+insert into zero_world.creature_loot_template
+(entry, item, ChanceOrQuestChance, groupid, mincountOrRef, maxcount, condition_id)
+select 1853
+	, 40001
+    , 100
+    , maxG.maxGroup + 1
+    , -40001
+    , 1
+    , 0
+from (
+	select entry
+		, max(groupId) as maxGroup
+    from zero_world.creature_loot_template
+    where entry = 1853
+    group by entry
+  ) maxG;
+
+insert into zero_world.reference_loot_template
+(entry, item, ChanceOrQuestChance, groupid, mincountOrRef, maxcount, condition_id)
+select 40002
+	, clt.item
+    , clt.ChanceOrQuestChance
+    , maxG.maxGroup + 1
+    , clt.minCountOrRef
+    , clt.maxcount
+    , clt.condition_id
+from zero_world.creature_loot_template clt
+  join (
+	select entry
+		, max(groupId) as maxGroup
+    from zero_world.creature_loot_template
+    group by entry
+  ) maxG on maxG.entry = clt.entry
+where clt.entry = 10440
+  and clt.groupid = 1
+  and mincountOrRef > 0;
+  
+insert into zero_world.creature_loot_template
+(entry, item, ChanceOrQuestChance, groupid, mincountOrRef, maxcount, condition_id)
+select 10440
+	, 40002
+    , 100
+    , maxG.maxGroup + 1
+    , -40002
+    , 1
+    , 0
+from (
+	select entry
+		, max(groupId) as maxGroup
+    from zero_world.creature_loot_template
+    where entry = 10440
+    group by entry
+  ) maxG;
