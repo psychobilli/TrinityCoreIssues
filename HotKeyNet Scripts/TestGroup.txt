@@ -96,14 +96,9 @@
 		<Text %3%>
 		<Key Enter>
 		
-<Command LaunchAndRenameSSD>
-	<SendPC %1%>
-		<Run "C:\Temp\World of Warcraft Van - Copy\WoW.exe">
-		<RenameWindows %2%>
-		
 <Command LaunchAndRename>
 	<SendPC %1%>
-		<Run "E:\Games\World of Warcraft Van - Copy\WoW.exe">
+		<Run "E:\Games\World of Warcraft Van\WoW.exe">
 		<RenameWindows %2%>
 		
 <Command LoginAccounts>
@@ -184,18 +179,18 @@
 //-----------------------------------------------------------
 // Start Rotation
 <Hotkey ScrollLockOn LShift D>
-	<SendLabel w2,w3,w5>
+	<SendLabel w2,w5>
 		<Key Shift 1>
 		<Key 1>
 	<SendLabel w2,w3,w4>
 		<Key d>
 		<Wait 100>
-	<SendLabel w3>
-		<Key 2>
-	<SendLabel w4>
+	<SendLabel w3,w4>
 		<Key F2>
 		<Wait 100>
 		<Key F>
+	<SendLabel w3>
+		<Key 2>
 	<SendLabel w4>
 		<Key r>
 	<SendLabel w4,w5>
@@ -219,14 +214,14 @@
 		<Key 6>
 // Complete Start Rotation
 <Hotkey ScrollLockOn LShift LCtrl D>
-	<SendLabel w2,w3,w5>
+	<SendLabel w2,w5>
 		<Key Shift 1>
 		<Key 1>
 	<SendLabel w2,w3,w4>
 		<Key d>
 	<SendLabel w2>
 		<Wait 100>
-	<SendLabel w4>
+	<SendLabel w3,w4>
 		<Key F2>
 		<Wait 100>
 		<Key F>
@@ -256,7 +251,7 @@
 		<Key 5>
 // Followup Rotation
 <Hotkey ScrollLockOn LShift S>
-	<SendLabel w2,w3,w5>
+	<SendLabel w2,w5>
 		<Key Shift 1>
 		<Key 1>
 	<SendLabel w2,w3,w4>
@@ -264,7 +259,7 @@
 		<Wait 100>
 	<SendLabel w3>
 		<Key 2>
-	<SendLabel w4>
+	<SendLabel w3,w4>
 		<Key F2>
 		<Wait 100>
 		<Key F>
@@ -283,12 +278,12 @@
 	<SendLabel w3>
 		<Key 2>
 <Hotkey ScrollLockOn LShift LCtrl S>
-	<SendLabel w3,w5>
+	<SendLabel w5>
 		<Key Shift 1>
 		<Key 1>
 	<SendLabel w3,w4>
 		<Key d>
-	<SendLabel w4>
+	<SendLabel w3,w4>
 		<Wait 100>
 		<Key F2>
 		<Wait 100>
@@ -349,7 +344,7 @@
 		<KeyUp w>
 // AoE
 <Hotkey ScrollLockOn LShift LCtrl A>
-	<SendLabel w4>
+	<SendLabel w3>
 		<Key NumpadMinus>
 // Beast/Dragonkin Crowd Control
 <Hotkey ScrollLockOn LShift W>
@@ -495,6 +490,12 @@
 		<Key F1>
 		<Wait 200>
 		<Key 9>
+// Decursive
+<Hotkey ScrollLockOn LShift X>
+	<SendLabel w2,w3,w5>
+		<Key Shift 5>
+		<Key 4>
+		<Key Shift 1>
 // Short term Buffs
 <Hotkey ScrollLockOn LShift LCtrl V>
 	<SendLabel w5>
@@ -544,6 +545,19 @@
 	<SendLabel w3>
 		<Wait 1700>
 		<Key Numpad5>
+// Wipe Recovery
+<Hotkey ScrollLockOn RCtrl O>
+	<SendLabel w4>
+		<Key Numpad5>
+	<Wait 1500>
+	<SendLabel w1>
+		<Key Ctrl F2>
+	<SendLabel w4>
+		<Key Shift 2>
+		<Key 0>
+		<Wait 100>
+		<Key 9>
+		<Key Shift 1>
 // Cancel All and Auto Follow
 <Hotkey ScrollLockOn LShift F>
 	<SendLabel w2,w3,w4,w5>

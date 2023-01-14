@@ -1,7 +1,7 @@
 //-----------------------------------------------------------
 // PRESS CTRL R TO RENAME WOW'S IF YOU LAUNCH THEM MANUALLY.
 //-----------------------------------------------------------
-<Hotkey ScrollLockOn Ctrl R>
+<Hotkey ScrollLockOn RCtrl R>
     <SendPC Local>
         <RenameWin "World of Warcraft" WoW1> 
         <RenameWin "World of Warcraft" WoW2> 
@@ -9,7 +9,7 @@
         <RenameWin "World of Warcraft" WoW4>        
         <RenameWin "World of Warcraft" WoW5>
 
-<Hotkey ScrollLockOn Ctrl T>
+<Hotkey ScrollLockOn RCtrl T>
 	<SendPC Local>
 		<RenameWin WoW1 "World of Warcraft">
 		<RenameWin WoW2 "World of Warcraft">
@@ -184,13 +184,16 @@
 //-----------------------------------------------------------
 // Start Rotation
 <Hotkey ScrollLockOn LShift D>
-	<SendLabel w2,w3,w4,w5>
+	<SendLabel w2,w3,w5>
 		<Key Shift 1>
 		<Key 1>
 	<SendLabel w2,w4>
 		<Key d>
-		<Wait 100>
 	<SendLabel w4>
+		<Key F2>
+		<Wait 100>
+		<Key F>
+		<Wait 100>
 		<Key 2>
 	<SendLabel w3>
 		<Key 5>
@@ -202,12 +205,14 @@
 		<Key 6>
 // Start Rotation with Healer DPS
 <Hotkey ScrollLockOn LShift LCtrl D>
-	<SendLabel w2,w3,w4,w5>
+	<SendLabel w3,w5>
 		<Key Shift 1>
 		<Key 1>
 	<SendLabel w2,w4>
 		<Key d>
+		<Key F2>
 		<Wait 100>
+		<Key F>
 		<Key 2>
 	<SendLabel w3>
 		<Key 5>
@@ -221,24 +226,28 @@
 // Followup Rotation
 <Hotkey ScrollLockOn LShift S>
 	<Toggle>
-		<SendLabel w3,w4,w5>
+		<SendLabel w3,w5>
 			<Key Shift 1>
 			<Key 1>
 		<SendLabel w4>
 			<Key d>
+			<Key F2>
 			<Wait 100>
+			<Key F>
 		<SendLabel w4,w5>
 			<Key 2>
 		<SendLabel w5>
 			<Wait 1500>
 			<Key 2>
 	<Toggle>
-		<SendLabel w3,w4,w5>
+		<SendLabel w3,w5>
 			<Key Shift 1>
 			<Key 1>
 		<SendLabel w4>
 			<Key d>
+			<Key F2>
 			<Wait 100>
+			<Key F>
 		<SendLabel w3, w4,w5>
 			<Key 2>
 		<SendLabel w3>
@@ -290,8 +299,10 @@
 // Crowd Control
 <Hotkey ScrollLockOn LShift W>
 	<SendLabel w4>
-		<Key 1>
-		<Key d>
+		<Wait 100>
+		<Key F2>
+		<Wait 100>
+		<Key F>
 		<Wait 100>
 		<Key Minus>
 // Combat Prep
@@ -383,6 +394,12 @@
 		<Key 8>
 		<Wait 1700>
 		<Key 0>
+// Decursive
+<Hotkey ScrollLockOn LShift X>
+	<SendLabel w2,w3,w4>
+		<Key Shift 5>
+		<Key 4>
+		<Key Shift 1>
 // Short term Buffs
 <Hotkey ScrollLockOn LShift LCtrl V>
 	<SendLabel w3>
@@ -446,6 +463,20 @@
 	<SendLabel w4>
 		<Wait 1700>
 		<Key Numpad5>
+// Wipe Recovery
+<Hotkey ScrollLockOn RCtrl O>
+	<SendLabel w1,w4>
+		<Key Shift 6>
+		<Wait 100>
+	<SendLabel w1>
+		<Key 7>
+	<SendLabel w4>
+		<Key 6>
+	<SendLabel w1,w4>
+		<Key Shift 1>
+	<Wait 1500>
+	<SendLabel w1,w3>
+		<Key Ctrl F2>
 // Cancel All and Auto Follow
 <Hotkey ScrollLockOn LShift F>
 	<SendLabel w2,w3,w4,w5>

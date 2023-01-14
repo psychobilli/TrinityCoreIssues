@@ -1,7 +1,7 @@
 //-----------------------------------------------------------
 // PRESS CTRL R TO RENAME WOW'S IF YOU LAUNCH THEM MANUALLY.
 //-----------------------------------------------------------
-<Hotkey ScrollLockOn Ctrl R>
+<Hotkey ScrollLockOn RCtrl R>
     <SendPC Local>
         <RenameWin "World of Warcraft" WoW1> 
         <RenameWin "World of Warcraft" WoW2> 
@@ -9,7 +9,7 @@
         <RenameWin "World of Warcraft" WoW4>        
         <RenameWin "World of Warcraft" WoW5>
 
-<Hotkey ScrollLockOn Ctrl T>
+<Hotkey ScrollLockOn RCtrl T>
 	<SendPC Local>
 		<RenameWin WoW1 "World of Warcraft">
 		<RenameWin WoW2 "World of Warcraft">
@@ -329,6 +329,8 @@
 <Hotkey ScrollLockOn LShift LCtrl A>
 	<SendLabel w3>
 		<Key NumpadMinus>
+	<SendLabel w4>
+		<Key Numpad9>
 // Warlock Drain Soul
 <Hotkey ScrollLockOn LShift T>
 	<SendLabel w3>
@@ -347,6 +349,10 @@
 <Hotkey ScrollLockOn LShift R>
 	<SendLabel w5>
 		<Key 1>
+// Activate Hunter Autoshoot
+<Hotkey ScrollLockOn LCtrl LShift E>
+	<SendLabel w4>
+		<Key 3>
 // Step Melee Forward
 <Hotkey ScrollLockOn LShift LCtrl R>
 	<SendLabel w5>
@@ -367,6 +373,13 @@
 		<Key d>
 		<Wait 100>
 		<Key Numpad6>
+// Fear
+<Hotkey ScrollLockOn LShift LCtrl W>
+	<SendLabel w3>
+		<Key 1>
+		<Key d>
+		<Wait 100>
+		<Key Numpad2>
 // Combat Prep
 <Hotkey ScrollLockOn LShift E>
 	<SendLabel w5>
@@ -382,10 +395,6 @@
 		<Key Numpad9>
 		<Wait 1700>
 		<Key Multiply>
-// Activate Hunter Autoshoot
-<Hotkey ScrollLockOn LCtrl LShift E>
-	<SendLabel w4>
-		<Key 3>
 // Healer Aggro
 <Hotkey ScrollLockOn LShift Q>
 	<SendLabel w4>
@@ -505,6 +514,12 @@
 		<Key F1>
 		<Wait 200>
 		<Key 9>
+// Decursive
+<Hotkey ScrollLockOn LShift X>
+	<SendLabel w2,w3,w5>
+		<Key Shift 5>
+		<Key 4>
+		<Key Shift 1>
 // Short term Buffs
 <Hotkey ScrollLockOn LShift LCtrl V>
 	<SendLabel w5>
@@ -551,6 +566,31 @@
 		<Wait 1700>
 		<Key Numpad4>
 		<Wait 1700>
+// Wipe Recovery
+<Hotkey ScrollLockOn RCtrl O>
+	<SendLabel w1,w2>
+		<Key Shift 6>
+		<Wait 100>
+	<SendLabel w1>
+		<Key 7>
+	<SendLabel w2>
+		<Key 6>
+	<SendLabel w1,w2>
+		<Key Shift 1>
+	<SendLabel w3>
+		<Key Shift 4>
+		<Key 1>
+		<Key Shift 1>
+	<SendLabel w4>
+		<Key Numpad5>
+	<Wait 1500>
+	<SendLabel w1>
+		<Key Ctrl F2>
+	<SendLabel w4>
+		<Key Shift 2>
+		<Key 0>
+		<Key 9>
+		<Key Shift 1>
 // Cancel All and Auto Follow
 <Hotkey ScrollLockOn LShift F>
 	<SendLabel w2,w3,w4,w5>
