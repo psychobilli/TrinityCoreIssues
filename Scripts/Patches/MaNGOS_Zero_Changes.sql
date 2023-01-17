@@ -178,6 +178,13 @@ update zero_world.creature_template
 set HealthMultiplier = .25 -- .5,
 	, DamageMultiplier = .5 -- 1.5
 where entry = 16119;
+-- nerf Death Knight Darkweaver
+update zero_world.creature_template
+set MeleeBaseAttackTime = 2000, -- 1150
+	RangedBaseAttackTime = 2000, -- 1265
+	MinMeleeDmg = 773, -- 873
+	MaxMeleeDmg = 939 -- 1039
+where entry = 14516;
 
 -- add movement to mobs in live Stratholme.
 update zero_world.creature set movementType = 2
@@ -277,6 +284,52 @@ set PowerMultiplier = 3 -- 5
     , MeleeBaseAttackTime = 2000 -- 1150
     , RangedBaseAttackTime = 2000 -- 1265
 where entry = 10440;
+
+-- nerf Alzzin the Wildshaper
+update zero_world.creature_template
+set damageMultiplier = 4.5 -- 5.5
+where entry = 11492;
+-- nerf Ironbark Protector
+update zero_world.creature_template
+set damageMultiplier = 4 -- 6
+where entry = 11459;
+-- nerf Illyanna Ravenoak
+update zero_world.creature_template
+set damageMultiplier = 4 -- 6
+where entry = 11488;
+-- nerf Tendris Warpwood
+update zero_world.creature_template
+set damageMultiplier = 5 -- 8
+where entry = 11489;
+-- nerf Immol'thar
+update zero_world.creature_template
+set damageMultiplier = 6 -- 8
+where entry = 11496;
+-- nerf Prince Tortheldrin
+update zero_world.creature_template
+set MinMeleeDmg = 604, -- 854
+	MaxMeleeDmg = 765 -- 1015
+where entry = 11486;
+-- nerf Xorothian Dreadsteed
+update zero_world.creature_template
+set MeleeBaseAttackTime = 2000 -- 1166
+where entry = 14502;
+-- nerf Lord Hel'nurath
+update zero_world.creature_template
+set MeleeBaseAttackTime = 2000, -- 1133
+	RangedBaseAttackTime = 2000, -- 1246
+	MinMeleeDmg = 764, -- 914
+	MaxMeleeDmg = 938 -- 1088
+where entry = 14506;
+-- nerf Guard Fengus, Guard Moldar and Guard Slip'kik
+update zero_world.creature_template
+set damageMultiplier = 6 -- 7
+where entry in (14321,14326,14323);
+-- nerf King Gordok
+update zero_world.creature_template
+set MinMeleeDmg = 723, -- 873
+	MaxMeleeDmg = 889 -- 1039
+where entry = 11501;
 
 -- add a linen exchange to the cloth quartermasters.
 delete from zero_world.quest_template where entry in (10000,10001,10002,10003,10004,10005,10006,10007);
