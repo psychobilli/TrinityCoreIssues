@@ -2,6 +2,8 @@ STORMWIND CITY
 	The Attack! (434) - Conversation criteria does not yield group credit.
 	James Hyal (1302) - Did not meet the requirements for the quest despite
 		following the breadcrumb.
+	Collection of Goods (7642) - Quest cannot be turned in even when all 
+		criteria are met.
 MULGORE
 	Winterspring Cleansing (754) - Tauren only, completely inaccessible.
 THE BARRENS
@@ -46,6 +48,10 @@ BLACKROCK SPIRE
 	Urok Doomhowl Event - Urok is summoned twice, mobs spawn too quickly (maybe).
 	
 SCHOLOMANCE
+	Deed to Southshore - Game Object respawn is too slow.  Max 25 sec.
+	Deed to Tarren Mill - Game Object respawn is too slow.  Max 25 sec.
+	Deed to Brill - Game Object respawn is too slow.  Max 25 sec.
+	Deed to Caer Darrow - Game Object respawn is too slow.  Max 25 sec.
 	Dark Summoner - Should summon skeletons endlessly, never bothering to
 		run to the player.
 	Kirtonos the Herald - Crits one shot tank with ease.  
@@ -67,7 +73,7 @@ SCHOLOMANCE
 
 STRATHOLME
 	Mangled Cadavers summon 2 broken cadavers, that might not be right.
-	Aboms and Eyes are slow to start pathing.
+	Supply Crates seem off, too few drop loot, and never bugs or disease.
 	Timmy the Cruel hits too hard.  Damage Multiplier 13, Attack Speed 1.4
 	Mobs in the live side don't path when they should
 	Cannon Master Willey to hard. Dmg Mult 7
@@ -81,6 +87,21 @@ DIRE MAUL
 	Hydrospawn - Geyser adds can attack, but should only cast a knockback spell.
 	Felvine Shards - Despawn too quickly.
 	Alzzin the Wildshaper - Smaller mobs near him respawn too quickly.
+	
+	Ironbark Protector (11459) - All surviving Ironbark Protectors in DM West
+		should attack the party when Tendris Warpwood is attacked.
+		They should also path around the area in a square.
+			Use the creature start location, then set them to path around
+			SE corner	-87.118	214.437	-4.987
+			NE corner	113.039	213.468	-4.987
+			NW corner	116.943	338.322	-4.987
+			SW corner	-88.391	337.765	-4.987
+		Just remember that the first creature_movement record needs to be
+		at the point ahead of their start point, which is not necessary the se 
+		corner.
+	Warlock Epic Mount Quest - Game Objects do not appear, Imp attacks on sight.
+		The rest of the mobs spawn, except Lord Hel'nurath.
+		Possible a warlock must be present.
 	
 WARRIOR
 	Chimeric Horn (1844) - Unable to accept, requirements not met.
