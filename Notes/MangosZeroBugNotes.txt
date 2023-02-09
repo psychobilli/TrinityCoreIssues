@@ -27,6 +27,8 @@ DESOLACE
 ARATHI HIGHLANDS
 	The Real Threat (680) - Or'Kalar respawns too quickly, before group can
 		loot the corpse.
+WESTERN PLAGUELANDS
+	In Dreams (5944) - Event does not run correctly after a wipe.
 WINTERSPRING
 	Are We There, Yeti? (5163) - Yeti does not chase named npcs on summon.
 	Guardians of the Alter (4901) - Ranshalla does not advance after first 
@@ -90,6 +92,7 @@ DIRE MAUL
 	
 	Ironbark Protector (11459) - All surviving Ironbark Protectors in DM West
 		should attack the party when Tendris Warpwood is attacked.
+			Actually, they do aggro, they just don't run to attack.
 		They should also path around the area in a square.
 			Use the creature start location, then set them to path around
 			SE corner	-87.118	214.437	-4.987
@@ -102,6 +105,7 @@ DIRE MAUL
 	Warlock Epic Mount Quest - Game Objects do not appear, Imp attacks on sight.
 		The rest of the mobs spawn, except Lord Hel'nurath.
 		Possible a warlock must be present.
+		It is possible to summon the dreadsteed without doing the full ritual.
 	
 WARRIOR
 	Chimeric Horn (1844) - Unable to accept, requirements not met.

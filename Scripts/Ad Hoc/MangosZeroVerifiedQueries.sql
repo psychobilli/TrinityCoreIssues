@@ -100,6 +100,29 @@ where guid between 6 and 10
     where guid between 6 and 10
       and level = c.level
   );
+
+-- Check Dungeon 1 set items acquired.
+select ci.guid
+	, c.name
+    , ci.slot
+    , ci.bag
+    , it.name
+    , it.InventoryType
+from zero_character.character_inventory ci
+  join zero_character.characters c on c.guid = ci.guid
+  join zero_world.item_template it on it.entry = ci.item_template
+where (it.name like '%valor%'
+   or it.name like '%wildheart%'
+   or it.name like '%dreadmist%'
+   or it.name like '%beaststalker%'
+   or it.name like '%elements%'
+   or it.name like '%devout%'
+   or it.name like '%lightforge%'
+   or it.name like '%magister%'
+   or it.name like '%shadowcraft%')
+  and it.name not in ('Core of Elements')
+order by ci.guid
+	, it.inventoryType;
   
 -- find approximate character item level
 select sub.guid
