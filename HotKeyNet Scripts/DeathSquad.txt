@@ -397,8 +397,10 @@
 		<Key Multiply>
 // Healer Aggro
 <Hotkey ScrollLockOn LShift Q>
-	<SendLabel w4>
+	<SendLabel w2>
 		<Key Plus>
+		<Wait 1500>
+		<Key 8>
 // Hunter Aggro
 <Hotkey ScrollLockOn LCtrl Q>
 	<SendLabel w4>
@@ -483,6 +485,37 @@
 		<Key F5>
 		<Wait 200>
 		<Key 0>
+// Light Heals
+<Hotkey ScrollLockOn LCtrl F1>
+	<SendLabel w2>
+		<Cancel>
+		<Key F2>
+		<Wait 200>
+		<Key 9>
+<Hotkey ScrollLockOn LCtrl F2>
+	<SendLabel w2>
+		<Cancel>
+		<Key F1>
+		<Wait 200>
+		<Key 9>
+<Hotkey ScrollLockOn LCtrl F3>
+	<SendLabel w2>
+		<Cancel>
+		<Key F3>
+		<Wait 200>
+		<Key 9>
+<Hotkey ScrollLockOn LCtrl F4>
+	<SendLabel w2>
+		<Cancel>
+		<Key F4>
+		<Wait 200>
+		<Key 9>
+<Hotkey ScrollLockOn LCtrl F5>
+	<SendLabel w2>
+		<Cancel>
+		<Key F5>
+		<Wait 200>
+		<Key 9>
 // Heals
 <Hotkey ScrollLockOn Ctrl Shift F1>
 	<SendLabel w5>

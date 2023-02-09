@@ -394,6 +394,37 @@
 		<Key 8>
 		<Wait 1700>
 		<Key 0>
+// Light Heals
+<Hotkey ScrollLockOn LCtrl F1>
+	<SendLabel w2>
+		<Cancel>
+		<Key F2>
+		<Wait 200>
+		<Key Minus>
+<Hotkey ScrollLockOn LCtrl F2>
+	<SendLabel w2>
+		<Cancel>
+		<Key F1>
+		<Wait 200>
+		<Key Minus>
+<Hotkey ScrollLockOn LCtrl F3>
+	<SendLabel w2>
+		<Cancel>
+		<Key F3>
+		<Wait 200>
+		<Key Minus>
+<Hotkey ScrollLockOn LCtrl F4>
+	<SendLabel w2>
+		<Cancel>
+		<Key F4>
+		<Wait 200>
+		<Key Minus>
+<Hotkey ScrollLockOn LCtrl F5>
+	<SendLabel w2>
+		<Cancel>
+		<Key F5>
+		<Wait 200>
+		<Key Minus>
 // Decursive
 <Hotkey ScrollLockOn LShift X>
 	<SendLabel w2,w3,w4>
