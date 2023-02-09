@@ -107,11 +107,18 @@ delete from zero_world.script_binding where Scriptname = 'boss_rattlegore';
 insert into zero_world.script_binding
 (type, ScriptName, bind, data)
 values (0, 'boss_rattlegore', 11622, 0);
+-- nerf Ras Frostwhisper knockback and fear.
+update zero_world.creature_ai_scripts
+set event_param1 = 16000, event_param2 = 25000, event_param3 = 25000, event_param4 = 32000
+where creature_id = 10508 and id = 1050810;
+update zero_world.creature_ai_scripts
+set event_param1 = 27000, event_param2 = 34000, event_param3 = 25000, event_param4 = 32000
+where creature_id = 10508 and id = 1050814;
 -- Nerf Alexi Barov Curse Timer
 delete from zero_world.creature_ai_scripts where id = 1050402;
 insert into zero_world.creature_ai_scripts
 (id, creature_id, event_type, event_inverse_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action1_type, action1_param1, action1_param2, action1_param3, action2_type, action2_param1, action2_param2, action2_param3, action3_type, action3_param1, action3_param2, action3_param3, comment)
-values ('1050402', '10504', '0', '0', '100', '3', '15000', '30000', '35000', '50000', '11', '17820', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'Alexei Barov - Cast Veil of Shadow');
+values ('1050402', '10504', '0', '0', '100', '3', '15000', '25000', '25000', '35000', '11', '17820', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'Alexei Barov - Cast Veil of Shadow');
 -- delete creature pools and extra creatures outside the Viewing Room
 -- otherwise it'll conflict with an SD3 script.
 delete from zero_world.pool_creature
@@ -135,7 +142,7 @@ where entry = 10470;
 update zero_world.creature_template
 set damageMultiplier = 6 -- 12
 where entry = 10506;
--- nerf Illusion of Jandice Barov attack speed *
+-- nerf Illusion of Jandice Barov attack speed
 update zero_world.creature_template
 set DamageMultiplier = .125 -- 1
   , MeleeBaseAttackTime = 2000 -- 1166
@@ -165,15 +172,15 @@ where entry = 10507;
 update zero_world.creature_template
 set HealthMultiplier = 2.60826 -- 3.00826
 where entry = 10504;
--- nerf Lord Alexi Barov *
+-- nerf Lord Alexi Barov
 update zero_world.creature_template
 set damageMultiplier = 1 -- 6
 where entry = 10504;
--- nerf Ras Frostwhisper *
+-- nerf Ras Frostwhisper
 update zero_world.creature_template
 set damageMultiplier = 3 -- 4
 where entry = 10508;
--- nerf Bone Minion because Gandling *
+-- nerf Bone Minion because Gandling
 update zero_world.creature_template
 set HealthMultiplier = .25 -- .5,
 	, DamageMultiplier = .5 -- 1.5
@@ -257,6 +264,15 @@ where entry = 10808;
 update zero_world.creature_template
 set damageMultiplier = 2 -- 7
 where entry = 10997;
+-- remove gargoyle pools because the pool system is broken.
+delete from zero_world.pool_creature
+where pool_entry in (25460,25461,25462,25463,25464,25465,25466,25460,25461,25462,25463,25464,25465,25466,25460);
+delete from zero_world.creature
+where guid in (160326,160332,160333,160334,160335,160336,160337,160338);
+-- nerf Baroness Anastari.
+update zero_world.creature_template
+set DamageMultiplier = 4 -- 7.25
+where Entry = 10436;
 -- nerf Magistrate Barthilas
 update zero_world.creature_template
 set damageMultiplier = 3 -- 7.5
@@ -277,13 +293,95 @@ where entry = 10439;
 update zero_world.creature_template
 set damageMultiplier = .5 -- 1
 where entry = 10394;
+-- nerf Mindless Skeleton
+update zero_world.creature_template
+set damageMultiplier = .5 -- 1
+	, HealthMultiplier = .05 -- .11
+where entry = 11197;
 -- nerf Baron Rivendare
 update zero_world.creature_template
-set PowerMultiplier = 3 -- 5
+set PowerMultiplier = 2 -- 5
 	, damageMultiplier = .75 -- 1
     , MeleeBaseAttackTime = 2000 -- 1150
     , RangedBaseAttackTime = 2000 -- 1265
+    , HealthMultiplier = 7.1053 -- 14.2107
 where entry = 10440;
+
+-- remove duplicate spawns
+delete from zero_world.creature
+where guid in (160150);
+-- increase the cast rate of Encage, because it's OP for a 5 man
+update zero_world.creature_ai_scripts
+set event_param1 = 25000, event_param2 = 35000, event_param3 = 45000, event_param4 = 50000
+where id = 1031602;
+-- nerf Blackhand Incarcerator
+update zero_world.creature_template
+set healthMultiplier = 1 -- 2.42857
+where entry = 10316;
+-- nerf Blackhand Incarcerator
+update zero_world.creature_template
+set healthMultiplier = 1 -- 2.42857
+where entry = 10316;
+-- nerf Rage Talon Dragonspawn
+update zero_world.creature_template
+set damageMultiplier = 3 -- 5
+where entry = 9096;
+-- nerf Pyroguard Embersee
+update zero_world.creature_template
+set damageMultiplier = 2 -- 6
+where entry = 9816;
+-- nerf Solakar Flamewreath
+update zero_world.creature_template
+set damageMultiplier = 3 -- 6
+where entry = 10264;
+-- remove duplicate spawns
+delete from zero_world.creature
+where guid in (160198,160117,160148,160163,160186);
+-- nerf Blackhand Elite
+update zero_world.creature_template
+set damageMultiplier = 5 -- 6
+where entry = 10317;
+-- nerf Blackhand Veteran
+update zero_world.creature_template
+set damageMultiplier = 3.5 -- 4
+where entry = 9819;
+-- nerf Gyth
+update zero_world.creature_template
+set damageMultiplier = 3 -- 5
+where entry = 10339;
+-- nerf Warchief Rend Blackhand
+update zero_world.creature_template
+set damageMultiplier = 2.5 -- 6.5
+where entry = 10429;
+-- nerf Blackhand Iron Guard
+update zero_world.creature_template
+set damageMultiplier = 5 -- 6
+where entry = 10319;
+-- nerf Blackhand Assassin
+update zero_world.creature_template
+set damageMultiplier = 4.5 -- 7.5
+where entry = 10318;
+-- remove a spawn that the Beast should kill, but doesn't.
+delete from zero_world.creature
+where guid = 58024;
+-- nerf The Beast
+update zero_world.creature_template
+set damageMultiplier = 4.5 -- 10
+	, healthMultiplier = 10 -- 25
+where entry = 10430;
+-- remove duplicate spawns
+delete from zero_world.creature
+where guid in (160239,160206,160205,160249,160225,160226,160244,160230,160254,160207,160208,160224,160247,160250,160231,160204,160245,160209,160243);
+-- nerf Chromatic Elite Guard
+update zero_world.creature_template
+set damageMultiplier = 2 -- 9.1
+	, healthMultiplier = 6 -- 8.03175
+where entry = 10814;
+-- nerf General Drakkisath
+update zero_world.creature_template
+set damageMultiplier = 2.5 -- 10
+	, healthMultiplier = 10 -- 25
+where entry = 10363;
 
 -- nerf Alzzin the Wildshaper
 update zero_world.creature_template
@@ -303,7 +401,7 @@ set damageMultiplier = 5 -- 8
 where entry = 11489;
 -- nerf Immol'thar
 update zero_world.creature_template
-set damageMultiplier = 6 -- 8
+set damageMultiplier = 3 -- 8
 where entry = 11496;
 -- nerf Prince Tortheldrin
 update zero_world.creature_template
