@@ -48,6 +48,12 @@ BLACKROCK DEPTHS
 		when attacking Ribbly, Thunderbrew or any bar patrons.
 BLACKROCK SPIRE
 	Urok Doomhowl Event - Urok is summoned twice, mobs spawn too quickly (maybe).
+	Egg Freezing (4734) - Eggscilloscope cannot target eggs within range.
+	Finkle Einhorn (10776) - Possible to attack, should only be interactable 
+		with gossips.
+	Egg Collection (4735) - Collection Module can be used anywhere, not just near
+		eggs.
+	Leonid Barthalomew (5522) - Should require Egg Collection (4735)
 	
 SCHOLOMANCE
 	Deed to Southshore - Game Object respawn is too slow.  Max 25 sec.
