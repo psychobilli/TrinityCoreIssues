@@ -345,6 +345,14 @@ where entry = 10317;
 update zero_world.creature_template
 set damageMultiplier = 3.5 -- 4
 where entry = 9819;
+-- nerf Chromatic Dragonspawn
+update zero_world.creature_template
+set healthMultiplier = 2.99 -- 4.99257
+where entry = 10447;
+-- nerf Blachand Dragon Handler
+update zero_world.creature_template
+set healthMultiplier = 2.48 -- 2.98278
+where entry = 10742;
 -- nerf Gyth
 update zero_world.creature_template
 set damageMultiplier = 3 -- 5
@@ -374,13 +382,13 @@ delete from zero_world.creature
 where guid in (160239,160206,160205,160249,160225,160226,160244,160230,160254,160207,160208,160224,160247,160250,160231,160204,160245,160209,160243);
 -- nerf Chromatic Elite Guard
 update zero_world.creature_template
-set damageMultiplier = 2 -- 9.1
-	, healthMultiplier = 6 -- 8.03175
+set damageMultiplier = 1.5 -- 9.1
+	, healthMultiplier = 3 -- 8.03175
 where entry = 10814;
 -- nerf General Drakkisath
 update zero_world.creature_template
-set damageMultiplier = 2.5 -- 10
-	, healthMultiplier = 10 -- 25
+set damageMultiplier = 2 -- 10
+	, healthMultiplier = 6 -- 25
 where entry = 10363;
 
 -- nerf Alzzin the Wildshaper
