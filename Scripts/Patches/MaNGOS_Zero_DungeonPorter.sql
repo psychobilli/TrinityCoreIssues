@@ -66,8 +66,8 @@ SET
 @SUBNAME		:= "",
 @MODEL			:= 6761,
 
-@TEXT_ID		:= 300007,
-@GOSSIP_MENU	:= 52059,
+@TEXT_ID		:= 300008,
+@GOSSIP_MENU	:= 52060,
 @GOSSIP_SCRIPT	:= 16000686;
 
 SET @CONDITIONID	:= 2160;
@@ -95,9 +95,9 @@ INSERT INTO gossip_menu (entry, text_id, condition_id) VALUES
 INSERT INTO npc_text (ID, text0_0, em0_1) VALUES
 (@TEXT_ID, "$B I am merely here to observe.$B", 6),
 (@TEXT_ID+1, "$B Your past deeds have earned my respect.  I can send you deeper into the school, but you will be on your own from there.$B", 6);
-INSERT INTO conditions (condition_entry, type, value1, value2) VALUES
 
 -- Quest Requirements
+INSERT INTO conditions (condition_entry, type, value1, value2) VALUES
 (@CONDITIONID, 8, 5382, 0),
 (@CONDITIONID+1, -3, @CONDITIONID, 0);
 
@@ -109,6 +109,36 @@ INSERT INTO db_scripts (id, script_type, delay, command, datalong, x, y, z, o, c
 
 INSERT INTO creature (id, map, modelid, position_x, position_y, position_z, orientation, spawntimesecs, spawndist, curhealth, curmana) VALUES
 (@ENTRY, 289, 0, 208.833160, 105.944580, 128.414581, 3.953696, 25, 0, 13700, 6540);
+
+-- Additional options to Black Rock Spire assistant.
+SET
+@ENTRY 			:= 190001,
+@NAME			:= "Ralegos",	
+@SUBNAME		:= "",
+@MODEL			:= 8314,
+
+@TEXT_ID		:= 300010,
+@GOSSIP_MENU	:= 52058,
+@GOSSIP_SCRIPT	:= 16000687;
+
+SET @CONDITIONID	:= (SELECT condition_entry FROM conditions WHERE type = 8 AND value1 = 7761 AND value2 = 0);
+
+DELETE FROM gossip_menu WHERE entry = @GOSSIP_MENU;
+DELETE FROM npc_text WHERE ID = @TEXT_ID;
+DELETE FROM db_scripts WHERE id = @GOSSIP_SCRIPT AND script_type = 2;
+
+INSERT INTO gossip_menu (entry, text_id, condition_id) VALUES
+(@GOSSIP_MENU, @TEXT_ID, @CONDITIONID);
+
+INSERT INTO npc_text (ID, text0_0, em0_1) VALUES
+(@TEXT_ID, "$B Your past deeds have earned my respect.  I can send you into the upper city, but you will be on your own from there.$B", 6);
+
+-- Quest Requirements
+INSERT INTO gossip_menu_option (menu_id, id, option_icon, option_text, option_id, npc_option_npcflag, action_menu_id, action_poi_id, action_script_id, box_coded, box_money, box_text, condition_id) VALUES
+(@GOSSIP_MENU, 1, 2, "Send me to the upper city", 1, 1, 0, 0, @GOSSIP_SCRIPT, 0, 0, "Are you sure? There is no way to return.", @CONDITIONID);
+
+INSERT INTO db_scripts (id, script_type, delay, command, datalong, x, y, z, o, comments) VALUES
+(@GOSSIP_SCRIPT, 2, 0, 6, 229, 12.290852, -545.077515, 110.932137, 0.051838, "");
 
 select *
 from gossip_menu gm
