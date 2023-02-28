@@ -199,8 +199,6 @@
 		<Key r>
 	<SendLabel w5>
 		<Key 3>
-	<SendLabel w4>
-		<Key Numpad3>
 	<SendLabel w3>
 		<Key 7>
 		<Wait 100>
@@ -239,8 +237,6 @@
 		<Key r>
 	<SendLabel w4,w5>
 		<Key 3>
-	<SendLabel w4>
-		<Key Numpad3>
 	<SendLabel w3>
 		<Key 7>
 		<Wait 100>
@@ -350,7 +346,7 @@
 	<SendLabel w5>
 		<Key 1>
 // Activate Hunter Autoshoot
-<Hotkey ScrollLockOn LCtrl LShift E>
+<Hotkey ScrollLockOn LCtrl R>
 	<SendLabel w4>
 		<Key 3>
 // Step Melee Forward
