@@ -372,6 +372,10 @@ where entry = 10318;
 -- remove a spawn that the Beast should kill, but doesn't.
 delete from zero_world.creature
 where guid = 58024;
+-- nerf Rage Talon Captain
+update zero_world.creature_template
+set damageMultiplier = 5 -- 6
+where entry = 10371;
 -- nerf The Beast
 update zero_world.creature_template
 set damageMultiplier = 4.5 -- 10
@@ -382,13 +386,13 @@ delete from zero_world.creature
 where guid in (160239,160206,160205,160249,160225,160226,160244,160230,160254,160207,160208,160224,160247,160250,160231,160204,160245,160209,160243);
 -- nerf Chromatic Elite Guard
 update zero_world.creature_template
-set damageMultiplier = 1.5 -- 9.1
-	, healthMultiplier = 3 -- 8.03175
+set damageMultiplier = 1 -- 9.1
+	, healthMultiplier = 2 -- 8.03175
 where entry = 10814;
 -- nerf General Drakkisath
 update zero_world.creature_template
-set damageMultiplier = 2 -- 10
-	, healthMultiplier = 6 -- 25
+set damageMultiplier = 1.5 -- 10
+	, healthMultiplier = 4 -- 25
 where entry = 10363;
 
 -- nerf Alzzin the Wildshaper

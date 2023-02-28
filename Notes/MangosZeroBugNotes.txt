@@ -24,6 +24,11 @@ THOUSAND NEEDLES
 DESOLACE
 	Body Guard for Hire (5821) - Caravan does not path with Cork, event does
 		not start.
+DUSTWALLOW MARSH
+	Test of Skulls, Axtroz (6585) - Incorrectly flagged as a raid quest.
+	Test of Skulls, Chronalis (6584) - Incorrectly flagged as a raid quest.
+	Test of Skulls, Scryer (6582) - Incorrectly flagged as a raid quest.
+	Test of Skulls, Somnus (6583) - Incorrectly flagged as a raid quest.
 ARATHI HIGHLANDS
 	The Real Threat (680) - Or'Kalar respawns too quickly, before group can
 		loot the corpse.

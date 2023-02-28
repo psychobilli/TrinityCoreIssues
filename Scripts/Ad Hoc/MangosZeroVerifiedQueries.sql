@@ -355,6 +355,67 @@ from zero_world.quest_template qt
 	select 67 as ZoneOrder, 36 as Continent,207 as ID, 'The Great Sea' as AreaName union
 	select 68 as ZoneOrder, 0 as Continent,0 as ID, 'Undefined' as AreaName
   ) z on z.ID = qt.ZoneOrSort or z.ID = 0
--- where ZoneOrder > 38
+where (case when (RequiredRaces & 1 != 0
+				  or RequiredRaces & 4 != 0
+				  or RequiredRaces & 8 != 0
+				  or RequiredRaces & 64 != 0)
+			 and (RequiredRaces & 2 = 0
+				  and RequiredRaces & 16 = 0
+				  and RequiredRaces & 32 = 0
+				  and RequiredRaces & 128 = 0)
+			then 0
+			when (RequiredRaces & 2 != 0
+				  or RequiredRaces & 16 != 0
+				  or RequiredRaces & 32 != 0
+				  or RequiredRaces & 128 != 0)
+			 and (RequiredRaces & 1 = 0
+				  and RequiredRaces & 4 = 0
+				  and RequiredRaces & 8 = 0
+				  and RequiredRaces & 64 = 0)
+			then 1
+            else 2
+	 end = 0 and ifnull(ef.completecount, 0) < 5)
+     or (case when (RequiredRaces & 1 != 0
+				  or RequiredRaces & 4 != 0
+				  or RequiredRaces & 8 != 0
+				  or RequiredRaces & 64 != 0)
+			 and (RequiredRaces & 2 = 0
+				  and RequiredRaces & 16 = 0
+				  and RequiredRaces & 32 = 0
+				  and RequiredRaces & 128 = 0)
+			then 0
+			when (RequiredRaces & 2 != 0
+				  or RequiredRaces & 16 != 0
+				  or RequiredRaces & 32 != 0
+				  or RequiredRaces & 128 != 0)
+			 and (RequiredRaces & 1 = 0
+				  and RequiredRaces & 4 = 0
+				  and RequiredRaces & 8 = 0
+				  and RequiredRaces & 64 = 0)
+			then 1
+            else 2
+	 end = 1 and ifnull(ds.completecount, 0) < 5)
+     or (case when (RequiredRaces & 1 != 0
+				  or RequiredRaces & 4 != 0
+				  or RequiredRaces & 8 != 0
+				  or RequiredRaces & 64 != 0)
+			 and (RequiredRaces & 2 = 0
+				  and RequiredRaces & 16 = 0
+				  and RequiredRaces & 32 = 0
+				  and RequiredRaces & 128 = 0)
+			then 0
+			when (RequiredRaces & 2 != 0
+				  or RequiredRaces & 16 != 0
+				  or RequiredRaces & 32 != 0
+				  or RequiredRaces & 128 != 0)
+			 and (RequiredRaces & 1 = 0
+				  and RequiredRaces & 4 = 0
+				  and RequiredRaces & 8 = 0
+				  and RequiredRaces & 64 = 0)
+			then 1
+            else 2
+	 end = 2 and ifnull(ds.completecount, 0) < 5
+			and ifnull(ef.completecount, 0) < 5)
+-- and ZoneOrder > 38
 order by z.ZoneOrder
 	, qt.QuestLevel;
