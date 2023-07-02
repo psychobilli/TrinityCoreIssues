@@ -6,8 +6,12 @@ STORMWIND CITY
 		criteria are met.
 MULGORE
 	Winterspring Cleansing (754) - Tauren only, completely inaccessible.
+DARKSHORE
+	Gyromast's Revenge (2078) - Gossip with mob never makes it hostile.
 THE BARRENS
 	Counterattack! (4021) - Gameobject despawns after a single looting.
+TIRISFAL GLADES
+	The Dead Fields (437) - Nightlash never spawns.
 WAILING CAVERNS
 	Awaken Naralax Event - Mobs spawn too fast, corpses despawn too fast.
 RAZORFEN KRAUL

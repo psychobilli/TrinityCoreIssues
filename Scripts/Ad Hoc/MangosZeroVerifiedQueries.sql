@@ -414,8 +414,8 @@ where (case when (RequiredRaces & 1 != 0
 				  and RequiredRaces & 64 = 0)
 			then 1
             else 2
-	 end = 2 and ifnull(ds.completecount, 0) < 5
-			and ifnull(ef.completecount, 0) < 5)
+	 end = 2 and (ifnull(ds.completecount, 0) < 5
+			or ifnull(ef.completecount, 0) < 5))
 -- and ZoneOrder > 38
 order by z.ZoneOrder
 	, qt.QuestLevel;
