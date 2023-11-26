@@ -1,0 +1,277 @@
+GENERAL
+	Holiday Events do not start correctly - they're always available.
+	Some creatures commonly drop quest items as regular loot.
+	Hunter pets do not move as fast as the player.  Likely a similar problem for Warlocks.
+	
+	Flying from Org to TB caused a server desync.
+	Flying from TB to Org caused a server desync.
+	Flying from Razor Hill to Org caused desync, but everything loaded after a  moment.
+	The desyncing appears to be a lag, possibly because I have the database on another server.
+	
+	Warlock pets don't get correct names.
+	
+ORGRIMMAR
+	Z - Fishing loot table is severly distrought.
+
+THUNDERBLUFF
+	Q - Aska Mistrunner (3026) - Quest giver, all dailies are available, not on a rotation.
+	
+MULGORE
+	Z - Quest flow seems a little off.
+	Q - Demon Scarred Cloak (754) - Tauren cannot accept quest, quest cannot be turned in.
+	Q - War Dance (24540) - Baine does not assist in the fight with Orno Grimtotem.
+	
+DUROTAR
+	Q - Back to the Den (25130) - Unable to pick up quest after prereq turn in
+	Q - Clean up on Isle E (26951) - Red at level 5.
+	Q - Riding On (25171) - Unable to pick up quest after prereq turn in.
+		Perhaps it was only offered prematurely.
+		The wolf didn't let me dismount.
+	Q - Loss Reduction (25179) - Did not receive quest.
+	Q - Spirits Be Praised (25189) - Tekla does not do her full script, merely walks.
+	Q - Unbidden Visitors (25194) - Plainstriders do not run to the Barrens.
+	Q - Watershed Patrol (25188) - Didn't seem to offer a proper follow up.
+	Q - The Wolf and the Kodo (25205) - Shin Stonepillar doesn't offer a gossip.
+	Q - Thunder Down Under (25236) - Thunder Lizards aggro, quest item does nothing.
+	N - Spiketooth (39590) - Not present, should offer 3 quests.
+	N - Vek'nag (39604) - Not present, offers a breadcrumb quest.
+	
+DUN MOROH
+	N - Rockjaw Goon (37073) - Has a gossip option.  Should only be attackable.
+	Q - A Trip to Ironforge (24490) - Turn in does not cause rocks to appear at cave.
+	N - Wayward Fire Elemental (37112) - Objective of Ice and Fire (218), health too high.
+	Z - There are very high level mobs in the Gnome start area.
+	Q - The Ultrasafe Personnel Launcher (25839) - Launcher teleports, doesn't launch.
+	Q - The View from Down Here (28868) - Not sure Builders aggro correctly.
+	Q - Strike From Above (25841) - Signal Flare does not summon air strike.
+	Q - It's Raid Night Every Night (25932) - Quest objective is met immediately.
+	Q - Rams on the Lam (25905) - Killing mounted trolls doesn't allow players to get
+		quest credit from the Troll's mount.  This may or may not be Blizz like.
+	Q - Get to the Airfield (25998) - Player teleports, does not taxi.
+	Q - Extinguish the Fires () - Not enough hitboxes get kill credit.
+		Or maybe kill credit isn't accurately accessed.
+	Q - Rallying the Defenders () - Corpses attack the player.  Standards spawn on the
+		player, inhibit movement.
+	Z - Dying in the airfield prevents the player from returning.
+	Q - Striking Back U(26094) - Unable to board taxi.
+	Q - Grimaxe's Demise (26102) - Grimaxe does not aggro correctly.
+	Q - Seize the Ambassador (26118) - Ambassador does not trigger quest credit.
+	
+ELWYNN FOREST
+	Q - Blackrock Invasion (26389) - Offered too early.
+	Q - They Sent Assassins (28791) - Player did not meet the requirements of the quest.
+		There may be multiple versions, one per class.
+
+ECHO ISLES
+	Q - Proving Pit (24768) - Captive Spitescale Scout does not attack.
+	Q - Saving the Young (24623) - Young Raptors do not despawn after being recalled.
+	Q - Young and Vicious (24626) - Swiftclaw does not follow player/not mountable.
+	Q - An Ancient Enemy (24814) - Player is teleported back to Darkspear Hold.  
+		Named does not spawn.
+
+TIRISFAL GLADES
+	Q - Assault n the Rotbrain Encampment (24971) - Deathguard Protectors do not fight.
+	Q - Johaan's Experiment (24977) - Captured Scarlet Zealot does not eat the food.
+	N - Scarlet Warrior (1535) - They hit too hard, or their health is too high.
+	Q - A Scarlet Letter (24979) - Scene plays out, quest does not complete.
+	Q - Escaped from Gilneas (24992) - Not received while doing Darkhoung Pounding (24990)
+	Q - Warchief's Command: Silverpine Forest! (28568) - Not available to Trolls.
+
+NEW TINKERTOWN
+	G - Gnomes do not appear to start irradiated.
+	Q - Decontamination (27635) - Event does not start, quest does not complete.
+	
+TELDRASSIL
+	Q - To Darnassus (6341) - Dolanaar flight path does not connect to Darnassus.
+		Yes it does, but the player doesn't have that flight path for the quest.
+	Q - Resident Danger (13945) - Not all furlbog give credit.
+	Q - Mist (938) - Mist doesn't assist correctly.
+		Sentinel Arynia Cloudsbreak (3519) is not in the world.
+	Q - The Vengeance of Elune (14005) - Treant vehicle does not activate.
+	
+KEZAN/BROKEN ISLES
+	Q - Life of the Party (14113,14153) - Seems to be an occasional client crash with this quest.  Occured with a warlock.
+		Vehicle resets frequently, causing the controls to appear and disappear.
+	Q - Waltz Right In (14123) - Unable to use disguise after completing the quest.
+	Q - Life Savings (14126) - Cannon sends player to the wrong location.
+	Q - It's a Town-In-A-Box (26705) - Player is catapulted up and dies on fall.
+	Q - Trading Up (24741) - Able to place eggs in traps and immediately loot raptor egg.
+	Q - Naga Hide (24859) - Quest Item is not flagged as a quest item.
+	Q - Surrender or Else! (24868) - Named flees and cannot be aggroed.
+	Q - Zombies vs. Super Booster Rocket Boots (24942) - Cannot use boots once quest is complete.
+	Q - Wild Mine Cart Ride (25184) - End of the ride catapults the player too far away.
+	Q - The Fastest Way to His Heart (25202) - Should have a gender requirement.
+	Q - What Kind of Name is Chip, Anyway? (25203) - Should have a gender requirement.
+	Q - She Loves Me, She Loves Me NOT! (25243) - Should have a gender requirement.
+	Q - What Kind of Name is Candy, Anyway? (25244) - Should have a gender requirement.
+	Q - Final Confrontation (25251) - Defeating Gallywix does not give kill credit.
+
+EVERSONG WOODS
+	Z - Initial quests seem available too soon, but EW works differently.
+	Q - Goods from Silvermoon City (9130) - Quest is not visible over questgiver, but quest can be obtained.
+	
+GILNEAS
+	Q - By the Skin of His Teeth (14154) - Worgen do not attack during the event.
+	Q - Save Krennan Aranas (14293) - Worgen do not chase mount.
+	Q - Sacrifices (14212) - Worgen do not chase mount.
+	Q - Last Stand (14222) - After cutscene, player is not set to the correct phase.
+	N - Huntsman Blake (?) - Does not appear in Duskhaven.
+	Q - You Can't Take 'Em Alone (14348) - Using gunpowder has no effect on aboms.
+	Q - As the Land Shatters (14396) - Picking up the quest fails to alter phase.
+	Q - Alas, Gilneas! (14467) - Using telescope does not play cutscene.
+	Q - Preparations (24628) - Moonleaf cannot be looted from game object.
+	Q - The Battle for Gilneas City (24904) - Cannot start event.
+	Q - Laid to Rest (24602) - Most quests were broken between Battle for Gilneas and Laid to Rest.
+	Q - They Have Allies, But So Do We (24681) - No event scripted.
+	Q - Endgame (26706) - No event scripted.
+	Q - Rut'theron Village (14434) - Fails to teleport player.
+
+AZUREMYST ISLE
+	Q - Aiding the Injured (26970) - There are no Injured Dranei spawns.
+	Q - Spare Parts (9305) - Technician Zhanaa doesn't offer the quest after completing
+		Vindicator Aldar (10304)
+	Q - Red Snapper - Very Tasty! (9452) - Spawned Murlocs are not hostile to player.
+		Schools don't despawn after use.
+	Q - Totem of Yor (9541) - Player does not get a fast swimming buff.
+	N - Siltfin Oracle (17191) - Ridiculously overpowered.
+
+NORTHERN BARRENS
+	N - Dorak (34284) - Does not offer quest Through Fire and Flames (13878).
+	Q - Crossroads Caravan Delivery (13975) - May be offered too early.
+	Q - Crossroads Caravan Pickup (13949) - Player constantly uses attack animation.
+		Caravan does not path.
+		Event does not start.
+	Q - By Hook or by Crook (13963) - Cannot interrogate prisoner.
+	Z - After completing all quests at Grol'dom Farm, there was no breadcrumb to XR.
+		Followup is Crossroads Caravan Delivery (13975) offered by Rocco Whipshank (34578)
+	Q - Crossroads Caravan Delivery (13975) - Not scripted.
+	Q - Echeyakee (881) - Map POI is inaccurate.
+		Kodo bones are not visible.
+	Q - A Growing Problem (13988) - No Map POI.
+	Q - The Stagnant Oasis (877) - No animations of growing plants, may not be a thing.
+	Q - King of Centaur Mountain (13995) - Gorgal Angerscar (34634) does not assist.
+	Q - Into the Raptor's Den (905) - Map POI is off.
+	Q - Fungal Spores (848) - Map POI shows at WC Pool, but no mushrooms are present.
+		The quest flow may be out of sorts, too.
+	Q - Counterattack! (4021) - Cannot loot banner, may be due to loot rights.
+	Q - Investigate the Wreckage (14066) - Follow up quest, To Track a Thief (869) is self provided.
+	Q - To Track a Thief (869) - Same issue as above, follow up is The Stolen Silver (14067)
+	Q - WANTED: Cap'n Garvey (895) - Map POI is wrong.
+		Cap'n's head isn't lootable.
+	Q - Southsea Freebooters (887) - Seems to be offered too late.  POI is off.
+	Q - Raging River Ride (26769) - Does not show the cutscene.
+	Q - Sludge Investigation (29087) - No POI.
+	Q - Sludge Beast! (29089) - Self provided after completing Sludge Investigation (29087)
+		No POI.
+		Cannot be completed, named does not offer kill credit.
+	Q - Hyena Extermination (29088) - No POI.
+	Q - Competition Schmompetition (29086) - No POI.
+	Q - Wenikee Boltbucket (29026) - Brak (34674) does not teleport player to Wenikee.
+	Q - The Short Way Home (29094) - X-831 is not present.
+	Q - Serena Bloodfeather (876) - Self provided after completing Harpy Raiders (867).
+	Q - Mor'shan Caravan Pick-up (29109) - Rocco Whipshank (52220) not present at Norther Crossroads.
+	Q - Mor'shan Caravan Delivery (29111) - Event does not play.
+	N - Kadrak (8582) - Kadrak does not offer quests after completing Mor'shan Caravan Delivery (29111).
+		May require Hero's Call: Ashenvale! (28492), which shouldn't be correct.
+
+LOCH MODAN
+	Q - The Winds of Loch Modan (27116) - No taxi is provided.
+	
+AZSHARA
+	Q - Runaway Shreddar (14129) - Player did not board the shreddar.
+	Q - The Captain's Logs (14134) - Sheddar move speed is painfully slow (it switches to walk mode).
+		Runaway Shreddars attack and go friendly.  Probably not blizzlike.
+	Q - Up a Tree (14135) - Buzzsaw does nothing.  Unable to complete quest.
+	I - Scout's Orders (47039) - Goblin unable to start quest, requirements not met.
+		After completing Ag'tor's quests, this quest was available.
+	N - Ag'tor Bloodfist (8576) - Quest flow seems off.
+	Q - A Quata to Meet (14197) - No game objects to loot.
+	Q - The Perfect Prism (14190) - The Nelves are very stingy with the reward.
+		Unable to turn in quest.  May be self accepted.
+	Q - Prismbreak (14192) - No gameobject to interact with, cannot complete quest.
+	Q - Refleshification (14194) - Cannot target miners.  Cannot complete quest.
+	N - Private Worcester (36752) - Should offer Another Warm Body (14468) after completing Refleshification.
+	N - Commander Molotov (36749) - Not present at Forlorn Ridge.
+	N - Xiz "The Eye" Salvoblast (36749) - Hostile to Goblins at Forlorn Ridge, should Horde friendly.
+	Q - First Degree Mortar (14471) - Vehicles not present, cannot complete quest.
+	Z - Forlorn Ridge quest hub is inoperable.
+	Q - Survey the Lakeshore (14202) - Goblin Surveyor Jr. Grade (35485) is not scripted.
+	Q - Gunk in the Trunk (14209) - Inspacting Glubnik's Dozer (35526) does nothing.
+	Q - Dozercism (14423) - Event does not start.
+	Q - Memories of the Dead (14215) - Spirit of Kalytha (35567) is not present.
+	N - Bilgewater Rocket-jockey (43217) - Offers no gossips for rocket taxis.
+	Q - When Science Attacks (14308) - Provided quest item does not extinguish fires.
+	Q - Segmentation Fault: Core Dumped (14310) - Interacting with gameobject does not start event.
+	Q - Nine's Plan (14408) - No gameobjects to interact with at the quest location.
+	Q - Raptor Raptor Rocket (14422) - Interacting with Specimen Cage (20958) does not yield kill credit.
+	Q - Investigating the Sea Shrine (14267) - No gameobject to interact with.
+	Q - The Keystone Shard (14270) - No gameobject to loot.
+	Q - Mysterious Azsharite (14370) - Limited gameobjects, none drop quest item.
+	Q - Befriending Giants (14377) - Gormungan (36297) has no gossips.
+	Q - Azsharite Experiment Number One (14385) - Gormungan (36297) has no gossips.
+	Q - Azsharite Experiment Number Two (14388) - Gormungan (36297) has no gossips.
+	Q - A Hello to Arms (24458) - Friz Groundspin (37005) offers no gossips.
+		Quest cannot be turned in, Bleenik Fizzlefuse (37009) is not present.
+	Q - Hand-me-downs (14469) - Unable to loot Dead Soldier (36756).
+	Q - There Are Many Like It (14479) - Unable to board taxi, Surface to Other Surface Transport (36917).
+	Q - Halo Drops (24436) - Airborne Priest (36937) does nothing when summoned.
+	Q - Field Promotion (24448) - Unable to pick up quest after completing Halo Drops (24436).
+		It seemed fine after completing First Come, First Served (24437).
+		Unable to turn in quest, Captain Tork (36745) is not present.
+	Q - First Come, First Served (24437) - Planting the flag does not give kill credit.
+	Z - Forward post quest hub is non functional.  Captain Tork is not present.
+	Q - Ticker Required (14485) - Gob Squad does not spawn, unable to complete quest.
+	Q - Still Beating Heart (14487) - Unable to obtain due to Tork's abscence.
+		Event doesn't seem to trigger.
+	Q - Shore Leave (24449) - Unable to pick up quest after completing the hub, requirements not met.
+		Gyrocopter vehicle does not taxi.
+	Q - A Little Pick-me-up (14131) - No gameobjects to loot.
+	Q - Absorbent (14323) - Quest is flagged as repeatable, preventing looting of quest items.
+		Provided quest item does not trigger absorption effect on mobs.
+	Q - Full of Hot Water (14324) - Summoning stone is not present.
+	N - Sorata Firespinner (36210) - NPC is in the wrong phase mask.
+	Q - Amberwind's Journal (14428) - No gameobject to turn in quest to.
+		This prevent pick up of Arcane De-Construction (14429) and Hacking the Construct (14430)
+	Q - Renewable Resource (14250) - Balboa (32832) does not path correctly.
+		Placing mines does nothing.
+	Q - Waste of Thyme (14263) - No gameobjects to loot.
+	N - Will Robotronic (35648) - Invisible to player.
+	Q - Trouble Under Foot (14226) - No personal assistant to transform quest mobs.
+	N - Teresa Spireleaf (35756) - NPC is not present, cannot obtain Manual Labor (14230).
+	Q - Manual Labor (14230) - No gameobject to loot.
+	Q - Pinnacle of Learning (14413) - Player is not teleported to the Arcane Pinnacle.
+		Archmage Xylem (36334) is not present at the Pinnacle.
+	Q - Watch Your Step (14296) - Required spell not cast on player.
+		Archmage Xylem (36361) is not present at the top.
+	Q - The Trial of Fire (14300), The Trial of Frost (24478), The Trial of Shadow (24479) - Gate does not teleport player.
+	Q - Wasn't It Obvious (14389) - There is no portal to teleport the player.
+		Spirit of Azuregos (36436) is not present for turn-in.
+	Q - Turning the Tables (14391) - Kalec (35867) is not present.
+	Z - Northern Rocketway Terminus quest hub is non functional.  More like Kalec (35867) is missing.
+	Q - Fade to Black (24467) - Malicion attacks the player, Kalecgos does not assist.
+	Q - Farewell, Minnow (14392) - Sorata Firespinner is not present in Bilgewater Harbor.
+	Q - Airborne Again (24497) - Wings of Steel (37139) does not taxi player.
+	Q - Lightning Strike Assassination (14464) - Cannot start event.
+	Q - Commando Drop (24434) - Talrendis Lorekeepers (36849) are friendly to Horde.
+	Q - Grounded! (14475) - Bombardier Captain Smooks (36785) is not present.
+	Q - Blacken the Skies (24430) - Unable to mount Grounded Wind Rider (36900).
+	Q - The Conquest of Azshara (24439) - Commander Jarrodenus (36884) is friendly to Horde.
+
+WESTFALL
+	Q - Murder Was The Case That They Gave Me (26209) - Peasants do nothing unless they give quest credit.
+	Q - Lou's Parting Thoughts (26232) - Thugs do not attack player.
+	Q - Feeding the Hungry and the Hopeless (26271) - Far too easy to get quest credit.
+	Q - A Vision of the Past (26320) - Vision does not path, does not yield quest credit.
+		Aura persists after logout.
+	Q - Rise of the Brotherhood (26322) - Quest is rewarded after the event, player does not select reward from the King.
+	
+REDRIDGE MOUNTAINS
+	Q - Tuning the Gnomecorder (26512) - Quest awards credit without any player action.
+	Q - Jorgensen (26560) - Messner does not follow and assist player.
+		Maybe he does and it just doesn't persist after logout.
+	Q - To Win a War, You Gotta Become War (26651) - Seems too difficult to sneak past mobs.
+	Q - Detonation (26668) - Unable to trigger detonation.
+	Q - Grand Magus Doane (26694) - Completing the quest does not place the player in the correct phase.
+
+ASHENVALE
+	Q - To the Ramparts (13866) - Kulg Gorespatter (34195) has no gossip to teleport player.
