@@ -33,7 +33,7 @@
 //-----------------------------------------------------------
 <Command LaunchAndRename>
    <SendPC %1%>
-      <Run "E:\Games\World of Warcraft WotLK\Wow.exe">
+      <Run "G:\Games\World of Warcraft WotLK\Wow.exe">
         <RenameTargetWin %2%>
  
 //-----------------------------------------------------------

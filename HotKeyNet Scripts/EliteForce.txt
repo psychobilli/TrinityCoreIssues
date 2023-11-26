@@ -98,12 +98,12 @@
 		
 <Command LaunchAndRenameSSD>
 	<SendPC %1%>
-		<Run "C:\Temp\World of Warcraft Van\WoW.exe">
+		<Run "G:\Temp\World of Warcraft Van\WoW.exe">
 		<RenameWindows %2%>
 		
 <Command LaunchAndRename>
 	<SendPC %1%>
-		<Run "E:\Games\World of Warcraft Van\WoW.exe">
+		<Run "G:\Games\World of Warcraft Van\WoW.exe">
 		<RenameWindows %2%>
 		
 <Command LoginAccounts>

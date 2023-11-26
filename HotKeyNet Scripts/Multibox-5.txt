@@ -98,7 +98,7 @@
 		
 <Command LaunchAndRename>
 	<SendPC %1%>
-		<Run "E:\Games\World of Warcraft Van\WoW.exe">
+		<Run "G:\Games\World of Warcraft Van\WoW.exe">
 		<RenameWindows %2%>
 		<Login %1% %3% %4%>
  
