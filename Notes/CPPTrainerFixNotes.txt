@@ -10,7 +10,7 @@ insert into entries select entry from creature_template where entry in
     17442, 20914);
 call test_creature_template_entry_trainer(3169);
 
-resume working on -- switch trainers who do nothing to either wotlk or generic gossips.
+resume working on -- Correct Profession Trainers
 
 WARRIOR TRAINERS
 	Llane Beshere (911)

@@ -43,6 +43,7 @@ where go.map = 429
   and got.name like '%%';
   
 -- Find approximate character item level
+use characters;
 select sub.guid
 	, c.name
 	, avg(iLevel)
@@ -50,11 +51,10 @@ from (
 	select ci.guid as guid
 		, it.inventoryType as type
 		, max(it.itemLevel) as iLevel
-	from characters.character_inventory ci
-	  join characters.item_instance ii on ii.guid = ci.item
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
 	  join world.item_template it on it.entry = ii.itementry
-	where ci.guid in (1,2,3,4)
-	  and it.inventoryType between 1 and 17
+	where it.inventoryType between 1 and 17
 	  and it.inventoryType <> 4
 	  and (slot < 18 and ci.bag = 0
 		or ci.bag in (18, 19, 20, 21, 22))
@@ -65,8 +65,8 @@ from (
 	select ci.guid as guid
 		, 13 as type
 		, max(it.itemLevel)
-	from characters.character_inventory ci
-	  join characters.item_instance ii on ii.guid = ci.item
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
 	  join world.item_template it on it.entry = ii.itementry
 	where it.inventoryType between 1 and 28
 	  and (slot < 18 and ci.bag = 0
@@ -78,8 +78,8 @@ from (
 	select ci.guid as guid
 		, 15 as type
 		, max(it.itemLevel)
-	from characters.character_inventory ci
-	  join characters.item_instance ii on ii.guid = ci.item
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
 	  join world.item_template it on it.entry = ii.itementry
 	where it.inventoryType between 1 and 28
 	  and (slot < 18 and ci.bag = 0
@@ -88,12 +88,244 @@ from (
 	group by ci.guid
 		, it.inventoryType
 	) sub
-  join characters.characters c on c.guid = sub.guid
+  join characters c on c.guid = sub.guid
 -- where c.guid in (1,2,3,4)
 group by sub.guid
 	, c.name;
+	
+-- character equipped inventory
+select c.guid
+	, c.name
+    , (Head.ItemLevel + Neck.ItemLevel + Shoulders.ItemLevel + Chest.ItemLevel + 
+		Waist.ItemLevel + Legs.ItemLevel + Feet.ItemLevel + Wrists.ItemLevel + 
+        Hands.ItemLevel + Finger1.ItemLevel +Finger2.ItemLevel + Trinket1.ItemLevel + 
+        Trinket2.ItemLevel + Back.ItemLevel + MainHand.ItemLevel - (13 * 15) ) / 15 as Average_ILevel
+    , Head.ItemLevel as Head_ILevel
+    , concat(Head.name,' (',Head.entry,')') as Head
+    , Neck.ItemLevel as Neck_ILevel
+    , concat(Neck.name,' (',Neck.entry,')') as Neck
+    , Shoulders.ItemLevel as Shoulders_ILevel
+    , concat(Shoulders.name,' (',Shoulders.entry,')') as Shoulders
+    , Chest.ItemLevel as Chest_ILevel
+    , concat(Chest.name,' (',Chest.entry,')') as Chest
+    , Waist.ItemLevel as Waist_ILevel
+    , concat(Waist.name,' (',Waist.entry,')') as Waist
+    , Legs.ItemLevel as Legs_ILevel
+    , concat(Legs.name,' (',Legs.entry,')') as Legs
+    , Feet.ItemLevel as Feet_ILevel
+    , concat(Feet.name,' (',Feet.entry,')') as Feet
+    , Wrists.ItemLevel as Wrists_ILevel
+    , concat(Wrists.name,' (',Wrists.entry,')') as Wrists
+    , Hands.ItemLevel as Hands_ILevel
+    , concat(Hands.name,' (',Hands.entry,')') as Hands
+    , Finger1.ItemLevel as Finger1_ILevel
+    , concat(Finger1.name,' (',Finger1.entry,')') as Finger1
+    , Finger2.ItemLevel as Finger2_ILevel
+    , concat(Finger2.name,' (',Finger2.entry,')') as Finger2
+    , Trinket1.ItemLevel as Trinket1_ILevel
+    , concat(Trinket1.name,' (',Trinket1.entry,')') as Trinket1
+    , Trinket2.ItemLevel as Trinket2_ILevel
+    , concat(Trinket2.name,' (',Trinket2.entry,')') as Trinket2
+    , Back.ItemLevel as Back_ILevel
+    , concat(Back.name,' (',Back.entry,')') as Back
+    , MainHand.ItemLevel as MainHand_ILevel
+    , concat(MainHand.name,' (',MainHand.entry,')') as MainHand
+    , OffHand.ItemLevel as OffHand_ILevel
+    , concat(OffHand.name,' (',OffHand.entry,')') as OffHand
+    , Ranged.ItemLevel as Ranged_ILevel
+    , concat(Ranged.name,' (',Ranged.entry,')') as Ranged
+from characters c
+  left join (
+	select ci.guid
+		, it.ItemLevel
+		, it.name
+        , it.entry
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
+      join world_mod.item_template it on it.entry = ii.itementry
+	where ci.slot = 0
+	  and ci.bag = 0
+	) as Head on Head.guid = c.guid
+  left join (
+	select ci.guid
+		, it.ItemLevel
+		, it.name
+        , it.entry
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
+      join world_mod.item_template it on it.entry = ii.itementry
+	where ci.slot = 1
+	  and ci.bag = 0
+	) as Neck on Neck.guid = c.guid
+  left join (
+	select ci.guid
+		, it.ItemLevel
+		, it.name
+        , it.entry
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
+      join world_mod.item_template it on it.entry = ii.itementry
+	where ci.slot = 2
+	  and ci.bag = 0
+	) as Shoulders on Shoulders.guid = c.guid
+  left join (
+	select ci.guid
+		, it.ItemLevel
+		, it.name
+        , it.entry
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
+      join world_mod.item_template it on it.entry = ii.itementry
+	where ci.slot = 4
+	  and ci.bag = 0
+	) as Chest on Chest.guid = c.guid
+  left join (
+	select ci.guid
+		, it.ItemLevel
+		, it.name
+        , it.entry
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
+      join world_mod.item_template it on it.entry = ii.itementry
+	where ci.slot = 5
+	  and ci.bag = 0
+	) as Waist on Waist.guid = c.guid
+  left join (
+	select ci.guid
+		, it.ItemLevel
+		, it.name
+        , it.entry
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
+      join world_mod.item_template it on it.entry = ii.itementry
+	where ci.slot = 6
+	  and ci.bag = 0
+	) as Legs on Legs.guid = c.guid
+  left join (
+	select ci.guid
+		, it.ItemLevel
+		, it.name
+        , it.entry
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
+      join world_mod.item_template it on it.entry = ii.itementry
+	where ci.slot = 7
+	  and ci.bag = 0
+	) as Feet on Feet.guid = c.guid
+  left join (
+	select ci.guid
+		, it.ItemLevel
+		, it.name
+        , it.entry
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
+      join world_mod.item_template it on it.entry = ii.itementry
+	where ci.slot = 8
+	  and ci.bag = 0
+	) as Wrists on Wrists.guid = c.guid
+  left join (
+	select ci.guid
+		, it.ItemLevel
+		, it.name
+        , it.entry
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
+      join world_mod.item_template it on it.entry = ii.itementry
+	where ci.slot = 9
+	  and ci.bag = 0
+	) as Hands on Hands.guid = c.guid
+  left join (
+	select ci.guid
+		, it.ItemLevel
+		, it.name
+        , it.entry
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
+      join world_mod.item_template it on it.entry = ii.itementry
+	where ci.slot = 10
+	  and ci.bag = 0
+	) as Finger1 on Finger1.guid = c.guid
+  left join (
+	select ci.guid
+		, it.ItemLevel
+		, it.name
+        , it.entry
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
+      join world_mod.item_template it on it.entry = ii.itementry
+	where ci.slot = 11
+	  and ci.bag = 0
+	) as Finger2 on Finger2.guid = c.guid
+  left join (
+	select ci.guid
+		, it.ItemLevel
+		, it.name
+        , it.entry
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
+      join world_mod.item_template it on it.entry = ii.itementry
+	where ci.slot = 12
+	  and ci.bag = 0
+	) as Trinket1 on Trinket1.guid = c.guid
+  left join (
+	select ci.guid
+		, it.ItemLevel
+		, it.name
+        , it.entry
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
+      join world_mod.item_template it on it.entry = ii.itementry
+	where ci.slot = 13
+	  and ci.bag = 0
+	) as Trinket2 on Trinket2.guid = c.guid
+  left join (
+	select ci.guid
+		, it.ItemLevel
+		, it.name
+        , it.entry
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
+      join world_mod.item_template it on it.entry = ii.itementry
+	where ci.slot = 14
+	  and ci.bag = 0
+	) as Back on Back.guid = c.guid
+  left join (
+	select ci.guid
+		, it.ItemLevel
+		, it.name
+        , it.entry
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
+      join world_mod.item_template it on it.entry = ii.itementry
+	where ci.slot = 15
+	  and ci.bag = 0
+	) as MainHand on MainHand.guid = c.guid
+  left join (
+	select ci.guid
+		, it.ItemLevel
+		, it.name
+        , it.entry
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
+      join world_mod.item_template it on it.entry = ii.itementry
+	where ci.slot = 16
+	  and ci.bag = 0
+	) as OffHand on OffHand.guid = c.guid
+  left join (
+	select ci.guid
+		, it.ItemLevel
+		, it.name
+        , it.entry
+	from character_inventory ci
+	  join item_instance ii on ii.guid = ci.item
+      join world_mod.item_template it on it.entry = ii.itementry
+	where ci.slot = 17
+	  and ci.bag = 0
+	) as Ranged on Ranged.guid = c.guid
+order by c.guid;
 
 -- Mob loot by Dungeon Map and Difficulty
+use world;
 select ct.entry
 	, ct.name
 	, ct.lootId

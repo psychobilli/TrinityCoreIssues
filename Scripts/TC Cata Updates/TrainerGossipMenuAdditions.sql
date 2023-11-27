@@ -532,6 +532,18 @@ UPDATE `creature_template` SET `gossip_menu_id` = 14136 WHERE `entry` = 50714;
 UPDATE `creature_template` SET `gossip_menu_id` = 14136 WHERE `entry` = 50715;
 UPDATE `creature_template` SET `gossip_menu_id` = 14136 WHERE `entry` = 50717;
 UPDATE `creature_template` SET `gossip_menu_id` = 14136 WHERE `entry` = 50720;
+	
+-- switch numerous trainers to correct gossip menus.
+-- gnome mage trainers
+UPDATE `creature_template` SET `gossip_menu_id` = 4554 WHERE `entry` = 1228;
+UPDATE `creature_template` SET `gossip_menu_id` = 4554 WHERE `entry` = 5144;
+UPDATE `creature_template` SET `gossip_menu_id` = 4554 WHERE `entry` = 5145;
+
+-- Undead rogue trainer
+UPDATE `creature_template` SET `gossip_menu_id` = 4540 WHERE `entry` = 2130;
+
+-- update Gilneans to standard class trainers.
+UPDATE `creature_template` SET `gossip_menu_id` = 10834 WHERE `entry` = 35873;
 
 -- correct low level class trainers who share gossips with standard class trainers.
 SET @Frang := 3153;

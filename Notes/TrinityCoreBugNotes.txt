@@ -178,6 +178,8 @@ Howling Fjord npc 23728 - Guard Captain Zorek - Does not summon taxi after compl
 	npc 24473 - Lead Archaeologist Malzie - Gives a level 50 quest.
 	11154 - Scare the Guano Out of Them! - Requires a second cast of fireworks to
 		get the guano to drop.
+	11453 - The Slumbering King - Seems out of sequence - available with crypt quests.
+	12182 - Tp Venomspite! - Quest giver does not offer taxi.
 Dragonblight - 12321 - A Righteous Sermon - Does not yield group credit.
 	12352 - Into Hostile Territory - Gryphon Commander Urik does not offer taxi.
 	11930 - Across Transborea - Accepting as group does not create second escort.
@@ -185,6 +187,7 @@ Dragonblight - 12321 - A Righteous Sermon - Does not yield group credit.
 		continues.  Sometimes.
 	12098 - Search Indu'le Village - Mages near ley line should not be alive.
 	12260 - The Perfect Dissemblance - Does not yield quest credit.
+	12252 - Torture the Torturer - Should yield group credit.
 	12274 - A Fall from Grace - Raven Priest Image (48761, 48763) does not make
 		mobs friendly.
 	12097 - Sarathstra, Scourge of the North - Unable to summon named.  
@@ -192,9 +195,33 @@ Dragonblight - 12321 - A Righteous Sermon - Does not yield group credit.
 	12498 - On Ruby Wings - Necrolord Antiok does not spawn after killing the giant.
 	12500 - Return to Angrathar - Turn in does not play movie.
 Dalaran - 12790 - Learning to Leave and Return: the Magical Way - Teleport Crystal
-		doesn't work for multiple players.
-Grizzly Hills - 12070 - Rallying the Troops - Unable to get credit for buffing giants.
+		doesn't work for multiple players.  It does, but you can't use it if you
+		have credit for the objective.
+Grizzly Hills - 11984 - Filling the Cages - Frost Troll does not despawn correctly,
+		cage may not cast at correct time (mob was full health).
+	12468 - The Conqueror's Task - Follow up quests are immedicately available.
+		(12257) A Show of Strength, (12256) The Flamebinders' Secrets.
+		Final quest in chain, (12259) The Thane of Voidrune appears correct.
+	12453 - Eyes Above - Should not be available until Mikhail's Journal is complete,
+		or maybe it should be available with (12176) A Minor Substitution.
+	12425 - Ruuna the Blind - Immediately available, should not be
+		obtainable until (12422) Tactical Clemancy is complete.
+	12427 - The Conquest Pit: Bear Wrestling! - Quest dialog remains open on turn-in.
+		Probably handles the next quest incorrectly.
+	12431 - The Conquest Pit: Final Showdown - Change in phase when talking to 
+		Gorgonna should happen on quest complete, not turn-in.
+	12451 - Onward to Camp Oneqwah - Immediately available, should not be
+		obtainable until most Conquest Hold quests are complete, probably after
+		(12431) The Conquest Pit: Final Showdown.
+	12070 - Rallying the Troops - Unable to get credit for buffing giants.
+	12094 - Latent Power - Using the quest item triggers the objective, it should
+		wait until the channeling is complete.
 	12131 - We Have the Power - Power cells do not have a 100% drop rate.
+	12197 - We Have the Power - Power cells do not have a 100% drop rate.
+	12185 - Put on Your Best Face for Loken - Does not award group credit.
+	12203 - Loken's Orders - Does not award group credit.
+	12138 - ... Or Maybe We Don't - Golem does not despawn on quest reward.
+	12198 - ... Or Maybe We Don't - Golem does not despawn on quest reward.
 	12154 - Blackout - Does not yield group credit.
 Zul'Drak item 12919 - The Storm King's Vengeance - Killing mobs and healing is buggy.
 	41390 - Stefan's Horn - Stephan spawns but does not land.
@@ -219,6 +246,12 @@ Sholazar Basin - 12614 - Post-partum Aggression - Broodmother does not always
 		allow turn in.
 Storm Peaks - 12820 - A Delicate Touch - Mobs do not path, using mines does not
 		yield credit.
+	12907 - Mobs attack NPC, killing it before the player can.
+	12997 - Into the Pit - Mobs assist each other, rather than attack each other.
+		Vehicle knockback does not work.
+	12886 - The Drakkensryd - Quest accept causes disguise to fail. Disguise is
+		restored when leaving and returning. Event does not start. Can be manually
+		started, unable to exit vehicles correctly.
 	13005 - The Earthen Oath - Mobs do not correctly yield credit.
 	12980 - The Armor's Secrets - Attendant Tock paths northward, through
 		walls after interaction.
@@ -244,7 +277,6 @@ Ahn'Kahet - 13204 - Funky Fungi - Drop rate should be 100%.
 Drak'Tharon - Oh Novos achievement doesn't proc.
 	Better off Dread achievement doesn't tally correctly.
 Halls of Stone - Tribunal does not correctly stop attacking at event end.
-Dungeons L 80 - Many mobs do not yield dungeon reputation.
 Utgarde Pinnacle - Skadi the Ruthless does not dismount correctly.
 Culling of Stratholme - Chromie's pathing is weird at the end.
 	Arthas reappears at the end after leaving.
@@ -277,6 +309,11 @@ LOVE IS IN THE AIR
 
 ROGUE
 	Hack and Slash may trigger PVP.
+	
+WORLD DROPS
+	A Guide to Northrend Cloth Scavenging (43876) - drops like candy for everyone.
+		Should be limited to tailors with 325 tailoring skill who don't have the
+		recipe.  Manual: Heavy Frostweave Bandage (39152) works correctly.
 
 -- COULD BE RESTORED
 Alliance Onyxia quest line.
@@ -297,6 +334,7 @@ Grizzly Hills - 12255 - The Thame of Voidrune - May be out of sequence.
 	12430 - The Conquest Pit: Death is Likely - Does not give group credit.
 	12431 - The Conquest Pit: Final Showdown - Does not give group credit.
 	
+Dungeons L 80 - Many mobs do not yield dungeon reputation.
 
 Violet Hold - Mobs do not yield dungeon rep.
 Gundrak - Spitting Cobra does not give rep.
